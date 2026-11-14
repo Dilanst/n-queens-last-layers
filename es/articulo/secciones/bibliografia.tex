@@ -54,10 +54,16 @@ existencia, ecuaciones de Euler y regularidad hasta el tablero lleno},
 \ifx\arXivPerfil\empty 2026.\else\href{https://arxiv.org/abs/\arXivPerfil}{arXiv:\arXivPerfil} (2026).\fi
 \else 2026. \href{https://doi.org/\DOIPerfil}{doi:\DOIPerfil}.\fi
 
-\ifx\DOIcodigo\empty\else
 \bibitem{Codigo} D.~S.~Mejia, \emph{Verificación numérica: últimas capas y perfil variacional
 del problema de las $n$ reinas}, versión~1.0, 2026.
-\href{https://doi.org/\DOIcodigo}{doi:\DOIcodigo}.
+\ifx\DOIcodigo\empty\else\href{https://doi.org/\DOIcodigo}{doi:\DOIcodigo}. \fi
+Repositorio: \href{https://github.com/Dilanst/n-queens-last-layers}{\nolinkurl{github.com/Dilanst/n-queens-last-layers}}.
+
+\ifverificacionLean
+\bibitem{CodigoLean} D.~S.~Mejia, \emph{Formalización en Lean del artículo «Completabilidad de las
+últimas capas en el problema de las $n$ reinas»}, versión~1.0, 2026.
+\ifx\DOIcodigoLean\empty\else\href{https://doi.org/\DOIcodigoLean}{doi:\DOIcodigoLean}. \fi
+Repositorio: \href{https://github.com/Dilanst/n-queens-last-layers}{\nolinkurl{github.com/Dilanst/n-queens-last-layers}}.
 \fi
 
 \ifverificacionLean
