@@ -7,10 +7,11 @@
  {\IfFontExistsTF{Palatino Linotype}{\setmainfont{Palatino Linotype}}{\setmainfont{Latin Modern Roman}}}
 \linespread{1.05}
 % Con babel-spanish instalado (MiKTeX, TeX Live completo) se usa la opción clásica; si falta,
-% se carga el locale español de babel sin patrones de guionado.
+% se carga el locale español de babel sin patrones de guionado y los cortes de palabra se
+% toman de guionado.tex.
 \IfFileExists{spanish.ldf}
  {\usepackage[spanish,es-noshorthands,es-nodecimaldot,es-tabla]{babel}}
- {\usepackage{babel}\babelprovide[import,main,hyphenrules=nohyphenation]{spanish}}
+ {\usepackage{babel}\babelprovide[import,main,hyphenrules=nohyphenation]{spanish}\input{guionado}}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{unicode-math}
 \IfFontExistsTF{texgyrepagella-math.otf}{\setmathfont{texgyrepagella-math.otf}}{\setmathfont{Latin Modern Math}}
