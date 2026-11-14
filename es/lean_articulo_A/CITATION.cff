@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Si usas esta formalización, cita el artículo [A] y este repositorio."
+message: "Si usas esta formalización, cita este repositorio y el artículo que formaliza."
 title: "Formalización en Lean del artículo «Completabilidad de las últimas capas en el problema de las n reinas»"
 version: "1.0.0"
 license: MIT
@@ -13,3 +13,4 @@ references:
       - family-names: "Mejia"
         given-names: "Dilan Steven"
     year: 2026
+    url: "https://github.com/Dilanst/n-queens-last-layers"
