@@ -7,6 +7,6 @@ Este repositorio reúne el artículo, su formalización en Lean y los programas 
 | Carpeta | Contenido |
 |---|---|
 | `es/articulo/` | El artículo en español: fuentes LaTeX, que se compilan con XeLaTeX, y el PDF |
-| `es/lean_articulo_A/` | La formalización en Lean 4 de los resultados principales |
+| `es/lean_completabilidad_ultimas_capas/` | La formalización en Lean 4 de los resultados principales |
 | `es/verificacion_numerica_reinas/` | Los programas que reproducen los valores de la Tabla 1 |
-| `en/` | La versión en inglés de las tres carpetas: `paper/`, `lean_paper_A/` y `numerical_verification/` |
+| `en/` | La versión en inglés de las tres carpetas: `paper/`, `lean_completability_final_layers/` y `numerical_verification/` |

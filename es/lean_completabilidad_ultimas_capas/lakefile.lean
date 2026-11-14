@@ -1,20 +1,20 @@
 import Lake
 open Lake DSL
 
-/-! Lean formalization of Paper A
-("Completability of the final layers in the n-queens problem").
-Lean 4.19.0 and Mathlib at revision c44e0c8ee63ca166450922a373c7409c5d26b00b. -/
+/-! Formalización en Lean del artículo
+«Completabilidad de las últimas capas en el problema de las n reinas».
+Lean 4.19.0 y Mathlib en la revisión c44e0c8ee63ca166450922a373c7409c5d26b00b. -/
 
 package «articuloA»
 
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "c44e0c8ee63ca166450922a373c7409c5d26b00b"
 
-/-- The 659 source files of the checked import graph. As in `verify.py`, warnings count
-as errors. -/
+/-- Las 659 fuentes del grafo comprobado. Como en `verificar.py`, las advertencias cuentan
+como errores. -/
 @[default_target]
 lean_lib «ArticuloA» where
-  srcDir := "sources"
+  srcDir := "fuentes"
   moreLeanArgs := #["-DwarningAsError=true"]
   roots := #[
     `AbsorbedoresSimultaneosAntesDelCorte,
