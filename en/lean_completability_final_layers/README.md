@@ -81,7 +81,7 @@ lake env lean4checker/.lake/build/bin/lean4checker --fresh CierreDeLosSeisBloque
 - **Theorems 2.2 and 2.3 of [A].** The formalization does not take them as hypotheses: it constructs the family of profiles and proves the first-order lower bound for log Q(n) on its own, by a route different from that of the paper. That route is in the modules whose names contain `Reserva`, `Historias` or `E2`, and its final statement is in `sources/PrimerOrdenDeLasSalidasConReserva.lean`.
 - **What it does not check:** the written proof of [A], its explicit constants or its numerical values.
 
-**[P]** D. S. Mejia, *The variational profile of partial queen placements: existence, Euler equations, and regularity up to the full board*, 2026. Repository: [n-queens-variational-profile](https://github.com/Dilanst/n-queens-variational-profile).
+**[P]** D. S. Mejia, *The variational profile of partial queen placements: existence, Euler equations, and regularity up to the full board*, 2026. DOI: [10.5281/zenodo.24220042](https://doi.org/10.5281/zenodo.24220042). Repository: [n-queens-variational-profile](https://github.com/Dilanst/n-queens-variational-profile).
 
 ## Names
 

@@ -79,7 +79,7 @@ En `.github/workflows/` hay dos flujos de GitHub Actions que repiten en Linux, d
 - **Teoremas 2.2 y 2.3 de [A].** La formalización no los toma como hipótesis: construye la familia de perfiles y demuestra por su cuenta la cota inferior de primer orden para log Q(n), por un camino distinto del del artículo. Ese camino está en los módulos cuyo nombre contiene `Reserva`, `Historias` o `E2`, y su enunciado final, en `fuentes/PrimerOrdenDeLasSalidasConReserva.lean`.
 - **Lo que no comprueba:** la demostración escrita de [A], sus constantes explícitas ni sus valores numéricos.
 
-**[P]** D. S. Mejia, *El perfil variacional de las colocaciones parciales de reinas: existencia, ecuaciones de Euler y regularidad hasta el tablero lleno*, 2026. Repositorio: [n-queens-variational-profile](https://github.com/Dilanst/n-queens-variational-profile).
+**[P]** D. S. Mejia, *El perfil variacional de las colocaciones parciales de reinas: existencia, ecuaciones de Euler y regularidad hasta el tablero lleno*, 2026. DOI: [10.5281/zenodo.24220042](https://doi.org/10.5281/zenodo.24220042). Repositorio: [n-queens-variational-profile](https://github.com/Dilanst/n-queens-variational-profile).
 
 ## Nombres
 
