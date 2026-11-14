@@ -1,0 +1,47 @@
+\section{Una cota positiva para las dos últimas capas}\label{sec:positiva}
+
+Aplicamos primero la doble cuenta en una sola dirección. La cota determinista
+del número de operaciones inversas convierte una cota inferior para la media de
+reparaciones directas en la cota inferior para $f_h$ del Teorema~\ref{thm:positiva}.
+El corte temprano proporciona las reparaciones bajo el proceso de referencia.
+Queda comprobar qué proporción de la capa conserva esa cota bajo la ley uniforme.
+
+Sea $h\in\{1,2\}$ y sea $\mathcal B_n\subseteq\Om_h(n)$ el evento de que algún cruce vacío tenga
+menos de $a_0n/2$ reparaciones legales de un movimiento (incluido el filtro $G$).
+
+\emph{Bajo el proceso.} Sea $\omega$ una trayectoria exitosa en la que vale~\eqref{eq:corte}.
+Para todo cruce finalmente vacío, el Lema~\ref{lem:perdida} con $\delta=\delta_0$ y~\eqref{eq:constantes} dan
+\[
+ A^{rc}_{\mathrm{final}}\ge a_0n-4\delta_0n-4\ge a_0n/2
+\]
+para $n$ grande, pues $a_0>8\delta_0$. La cota~\eqref{eq:corte} se obtuvo simultáneamente para
+todas las raíces antes de seleccionar las que permanecen vacías, de modo que no hay sesgo de
+supervivencia. Por el Lema~\ref{lem:corte},
+\[
+ \QQ_h(S\cap\{\text{la colocación final está en }\mathcal B_n\})\le e^{-cn}.
+\]
+No se necesita que el fallo del proceso completo sea raro.
+
+\emph{Transferencia.} Por el Teorema~\ref{thm:comparacion}, $\QQ_h(S)\ge e^{-d_n}$, luego
+$\nu'_h(\mathcal B_n)\le e^{-cn+d_n}\le e^{-cn/2}$ para $n$ grande. El
+Lema~\ref{lem:binaria} y $\KL{\mu_h}{\nu'_h}\le d_n=o(n)$ dan
+\[
+ \mu_h(\mathcal B_n)\le\frac{d_n+\log2}{cn-d_n}\longrightarrow0 .
+\]
+Es una convergencia a cero, no una cola exponencial bajo $\mu_h$.
+
+\emph{Doble cuenta.} Cada colocación de $\Om_h$ tiene exactamente $h^2$ cruces vacíos, y
+$d_{h,1}$ suma las reparaciones sobre todos ellos; en $\mathcal B_n^c$, $d_{h,1}\ge h^2a_0n/2$. Por
+el Lema~\ref{lem:doblecuenta},
+\[
+ f_h\ge\frac{\E_{\mu_h}d_{h,1}}{h^2(n-h)}\ge\frac{a_0n}{2(n-h)}\,\mu_h(\mathcal B_n^c),
+ \qquad\text{luego}\qquad \liminf_{n\to\infty}f_h(n)\ge\frac{a_0}2 .
+\]
+La normalización por los $h^2$ cruces evita perder un factor $h^2$. \qed
+
+\begin{observacion}
+El resultado es asintótico y no asigna una constante útil a tamaños pequeños; no se sustituye
+$a_0$ por la media numérica del perfil. La prueba no altera el proceso de referencia, no
+condiciona sus transiciones durante el análisis y no usa ningún producto de vacancias bajo
+$\mu_h$. Aquí el número de reinas colocadas tras el corte es $m_{\delta_0}\asymp n$.
+\end{observacion}

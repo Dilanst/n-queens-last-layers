@@ -1,0 +1,73 @@
+\section{Discusión y problemas abiertos}\label{sec:discusion}
+
+\subsection{Una ilustración numérica}
+
+En las seis filas de tamaño finito de la Tabla~\ref{tab:ilustracion}, $f_1$ y $f_2$
+proceden de conteos enteros por enumeración completa. Se muestran redondeados a seis
+decimales. En la última fila, la existencia del límite común es el Teorema~\ref{thm:limite}, con
+$F(0)=1/b_0$; el decimal que figura a su derecha es una estimación numérica de $1/b_0$, sin
+intervalo de error certificado.
+
+La estimación $F'(0)\approx0{,}516$ también es numérica. Sugiere comparar, a tamaño
+finito, $f_h(n)$ con $F((h-\tfrac12)/n)$. La utilidad de esta comparación como
+aproximación a tamaño finito es heurística. El resultado demostrado en el
+Corolario~\ref{cor:capas} concierne a la suma en $K$ capas fijas cuando $n\to\infty$.
+Los cocientes de la tabla se obtienen de los conteos mediante la ecuación~\eqref{eq:fh}.
+\ifx\DOIcodigo\empty\else
+Los conteos y el programa que los reproduce están en~\cite{Codigo}.
+\fi
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rccc}
+\toprule
+$n$ & $f_1(n)$ & $f_2(n)$ & $F(0)$ (numérico)\\
+\midrule
+10 & 0{,}127393 & 0{,}200891 & \\
+11 & 0{,}111437 & 0{,}181943 & \\
+12 & 0{,}123894 & 0{,}170782 & \\
+13 & 0{,}122402 & 0{,}165452 & \\
+14 & 0{,}109393 & 0{,}158389 & \\
+15 & 0{,}114223 & 0{,}152947 & \\
+$\infty$ & \multicolumn{2}{c}{límite común (Teorema~\ref{thm:limite})} & 0{,}080914\\
+\bottomrule
+\end{tabular}
+\caption{Valores exactos de $f_1$ y $f_2$, obtenidos por enumeración exhaustiva y
+redondeados a seis decimales, y valor numérico del límite común. El valor $0{,}080914$ es la
+extrapolación de Richardson de segundo orden de los valores en las mallas de $128$ y $256$ puntos
+($0{,}0809029$ y $0{,}0809114$); con las mallas de $64$ y $128$ puntos la extrapolación cambia en
+menos de $10^{-8}$ (véase~\cite[Sección~9]{Perfil}). Es un valor numérico, sin certificación por
+intervalos.}
+\label{tab:ilustracion}
+\end{table}
+
+\subsection{Lo que queda abierto}
+
+\begin{enumerate}[1.]
+\item \emph{Tasa.} No se sabe si $f_h(n)-F(0)$, o $\log[f_h(n)/F((h-\frac12)/n)]$, es de orden
+$1/n$. Las transferencias de la ley de referencia a la ley uniforme usan la cota de
+entropía relativa $d_n=o(n)$ del Teorema~\ref{thm:comparacion}, sin tasa, y tolerancias fijas, de
+modo que no pueden invertirse los límites para deducir una tasa.
+\item \emph{Capas crecientes.} El término constante de $\log Q(n)$ depende de todas las capas.
+Como $F$ se extiende a una función analítica y positiva en $[0,1]$~\cite[Teorema~8.1]{Perfil},
+podemos considerar $\tau_{n,h}=n\log[f_h(n)/F((h-\frac12)/n)]$ para todas las capas,
+$1\le h\le n$. Una ruta suficiente requiere la convergencia de los promedios
+$\frac1n\sum_h\tau_{n,h}$ sobre los $h$ con $h/n$ en cada compacto de $(0,1)$ y un control
+uniforme de los dos bordes; en el del tablero lleno, por ejemplo,
+\[
+ \lim_{x_0\downarrow0}\ \limsup_{n\to\infty}\ \sum_{h\le x_0n}
+ \Bigl|\log\frac{f_h(n)}{F((h-\frac12)/n)}\Bigr|=0 .
+\]
+La convergencia para cada $h$ fijo no implica esta condición.
+\item \emph{Ley conjunta de los huecos.} Para $h>1$ se identifica sólo la medida media de los
+cruces vacíos. ¿Son asintóticamente independientes las posiciones de las filas y las columnas vacías? ¿Se concentra
+$d_{h,1}/n$ sin peso?
+\item \emph{Constantes efectivas.} La prueba no da un umbral $n_0$ explícito ni constantes útiles
+para tamaños moderados.
+\end{enumerate}
+
+Volviendo al tablero con $n-1$ reinas, la probabilidad de que el único cruce vacío
+admita la última reina tiende a $1/b_0$. Si faltan $h$ reinas, con $h$ fijo, ese
+mismo valor describe la probabilidad de añadir una reina en un cruce elegido al azar.
+El problema que queda al dejar crecer $h$ es controlar cómo se acumulan las
+diferencias entre la fracción $f_h(n)$ de cada capa y el valor correspondiente de $F$.

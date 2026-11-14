@@ -1,0 +1,82 @@
+\section{Absorbedores: patrones directos y corte temprano}\label{sec:absorbedores}
+
+Fijamos $1\le h\le K$ y trabajamos bajo $\QQ_h$. Seguiremos las reinas que
+podrían retirarse para dar lugar a una reparación en un cruce determinado.
+El control de los grados de la sección anterior permite estimar cómo cambia
+su número cuando se coloca la siguiente pieza.
+
+\subsection{Reparaciones en un cruce y marcas}
+
+La \emph{raíz} es la casilla $(r,c)$ que seguimos como posible cruce vacío. En la
+Figura~\ref{fig:reparacion-tablero} sería $(2,1)$. La reina candidata está en
+$(0,0)$ y sus dos \emph{destinos} son $(2,0)$ y $(0,1)$. Primero se comprueba
+que los destinos sean compatibles entre sí; a esta condición la llamamos filtro $G$.
+Después hay que comprobar que las diagonales de ambos destinos estén libres de otras reinas.
+
+Fijamos una raíz $(r,c)$. Sea $\mathcal I_{rc}$ el conjunto de casillas $e=(i,j)$ con $i\ne r$,
+$j\ne c$ y cuyos \emph{destinos} $(r,j)$ e $(i,c)$ no se atacan (filtro $G=1$); se excluyen a lo
+sumo $Cn$ casillas. Llamamos \emph{candidatas} de la raíz a las casillas de $\mathcal I_{rc}$, y \emph{ocupadas}
+a las candidatas que tienen reina. Las cuatro líneas de $e$ y las cuatro diagonales y antidiagonales de sus
+destinos son ocho vértices distintos: éste es el uso del filtro $G$. Denotamos estas cuatro
+últimas por $d_1,\dots,d_4$ y su lista por $\mathcal D(r,c;i,j)$.
+
+Para un vértice $v$, sea $\chi_v$ el indicador de que $v$ está activo y $V_v$ el de que la línea
+$v$ está físicamente vacía de reinas; siempre $\chi_v\le V_v$. Llamamos \emph{marca} de la
+línea $v$ a su estado: marca activa si $\chi_v=1$ y marca $V$ si $V_v=1$. Sea $O_e$ el indicador de que se
+ha colocado una reina real en $e$, y $\chi_e=\prod_{v\in e}\chi_v$. Para $J\subseteq\{1,2,3,4\}$
+ponemos
+\begin{equation}\label{eq:patrones}
+ M_J=\prod_{i\in J}\chi_{d_i}\prod_{i\notin J}V_{d_i},\qquad
+ Z^\oc_{e,J}=O_e\,M_J,\qquad Z^\di_{e,J}=\chi_e\,M_J .
+\end{equation}
+Son $32$ patrones por casilla y, salvo los restos del Lema~\ref{lem:generador}, la evolución del
+proceso no genera otros. El contador
+físico prolongado es
+\[
+ A^{rc}=\sum_{e\in\mathcal I_{rc}}Z^\oc_{e,\varnothing}=\sum_{e\in\mathcal I_{rc}}O_e\prod_{i=1}^4V_{d_i}.
+\]
+Si la fila $r$ y la columna $c$ están físicamente vacías, $A^{rc}$ coincide con el número de
+reparaciones legales de un movimiento en el cruce $(r,c)$, pues retirar la reina de $e$ y colocar
+sus dos destinos es legal exactamente cuando las cuatro diagonales de los destinos están vacías.
+La disponibilidad ponderada reescalada es $\overline Y^{rc}=\sum_{e\in\mathcal I_{rc}}v_eZ^\di_{e,\varnothing}$;
+con los pesos originales vale $x_*^2\overline Y^{rc}$.
+
+\subsection{Generador de referencia}
+
+En tiempo discreto, con $z=(N-t)/N$, definimos
+\[
+ \alpha=\frac1{Nz},\qquad \beta_i=\frac{p_{d_i}}{Nz},\qquad k_e=\frac{\pi_e}{Nz^4},
+\]
+y el operador lineal
+\begin{equation}\label{eq:generador}
+\begin{aligned}
+ \cL Z^\oc_{e,J}&=-|J|\,\alpha\,Z^\oc_{e,J}-\sum_{i\notin J}\beta_i\,Z^\oc_{e,J\cup\{i\}}+k_e\,Z^\di_{e,J},\\
+ \cL Z^\di_{e,J}&=-(4+|J|)\,\alpha\,Z^\di_{e,J}-\sum_{i\notin J}\beta_i\,Z^\di_{e,J\cup\{i\}} .
+\end{aligned}
+\end{equation}
+Una marca activa muere a tasa $\alpha$, por una pieza real o virtual. La muerte de una marca $V$
+sólo se produce por una pieza real, que exige la marca activa correspondiente; por eso convierte
+$V_{d_i}$ en una contribución con $\chi_{d_i}$, con tasa $\beta_i$. La muerte virtual afecta a
+$\chi$ pero no a $V$. El nacimiento de $O_e$ tiene probabilidad exactamente
+$[q_t/(N-t)]\,v_e/W$ por el indicador de sus cuatro líneas activas, que en la región~\eqref{eq:regularidad} es
+$k_e\chi_e$ salvo errores; el nacimiento no toca los cuatro destinos, distintos de sus líneas.
+
+\begin{lema}[Comparación con el generador verdadero]\label{lem:generador}
+En la región~\eqref{eq:regularidad}, las derivas verdaderas difieren de~\eqref{eq:generador} en
+restos que satisfacen
+\[
+ |R^\oc_{e,J}|\le C_\zeta\bigl[(\eps/n+n^{-2})\,O_e+\eps n^{-2}\,Z^\di_{e,J}\bigr],\qquad
+ |R^\di_{e,J}|\le C_\zeta(\eps/n+n^{-2}).
+\]
+\end{lema}
+
+\begin{proof}
+Ajustar $\eps$ absorbe el error de colores de~\eqref{eq:regularidad}. Las
+tasas~\eqref{eq:tasas} controlan cada borrado simple, y la probabilidad de borrar dos marcas
+distintas en un paso es $O_\zeta(n^{-2})$. La selección de $e$, que borra sus cuatro marcas
+activas, está incluida en ese error para $Z^\di$, pero su nacimiento en $Z^\oc$ se conserva
+exactamente.
+\end{proof}
+
+No se factoriza ninguna probabilidad conjunta bajo $\mu_h$: el generador actúa sobre
+indicadores del proceso de referencia.

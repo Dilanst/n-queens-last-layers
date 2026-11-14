@@ -1,0 +1,19 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[tablero A]
+ \begin{scope}
+  \cuadriculaA{4}\trazarRejillaA{4}
+  \reinaA{0}{1}\reinaA{1}{3}\reinaA{2}{0}\reinaA{3}{2}
+  \panelA{2,5.34}{(a) Solución de $4\times4$}
+ \end{scope}
+ \begin{scope}[shift={(7,0)}]
+  \cuadriculaA{5}\trazarRejillaA{5}
+  \reinaA{0}{1}\reinaA{1}{3}\reinaA{2}{0}\reinaA{3}{2}
+  \aroA{4}{4}\reinaA[colorAro]{4}{4}
+  \panelA{2.5,5.34}{(b) Solución de $5\times5$}
+ \end{scope}
+\end{tikzpicture}
+\caption{Dos soluciones pequeñas. Cada corona representa una reina; el aro señala la reina
+$(4,4)$, que se usa en los ejemplos siguientes.}
+\label{fig:ejemplos}
+\end{figure}

@@ -1,0 +1,103 @@
+
+La comparación reduce el problema a controlar las reparaciones a lo largo del
+proceso. Mientras quede una fracción fija de piezas, los grados y los normalizadores
+se concentran alrededor de sus trayectorias deterministas (Sección~\ref{sec:regularidad}).
+Un \emph{patrón} fija qué se exige a las casillas cuya reina se retira, en una reparación o
+en su operación inversa, y a las diagonales de las casillas que se ocupan: que cada casilla
+tenga ya su reina o siga disponible, y que cada diagonal esté libre de toda pieza o, al
+menos, de reinas. Para la cuenta directa seguimos $32$ patrones
+por cada casilla candidata de un cruce, y para la inversa $16$ por cada par de casillas.
+En cada familia, el cambio esperado de un patrón se expresa mediante los patrones de la
+misma familia, con un error que se acota en la prueba. Resolviendo hacia atrás el sistema
+lineal correspondiente se obtiene una combinación lineal de patrones, el \emph{compensador},
+que coincide con el contador en el instante elegido y cuya deriva es pequeña; una
+desigualdad de martingalas da entonces la concentración hasta un corte
+temprano, cuando quedan unas $\delta n$ reinas por colocar. Después del corte, cada reina
+cambia el contador directo de cada cruce en a lo sumo cinco unidades y el contador
+inverso en $O(n)$. Al dividir por $n$ y por $n^2$, respectivamente, el efecto
+de todo el tramo final es $O(\delta)$.
+
+Una vez controlada la pérdida tras el corte, la desigualdad de entropía binaria
+transfiere la concentración a la ley uniforme de cada capa. Para la cota inferior
+basta la cuenta directa, pues con probabilidad tendiente a uno cada cruce vacío
+admite al menos $a_0n/2$ reparaciones. Para hallar el límite hay que tener en
+cuenta la posición del cruce. En $(r,c)$, la cuenta directa se concentra alrededor
+de $n\,a(\bar r,\bar c)$. Al elegir el peso $w=1/a$ obtenemos
+$D_{1/a}/(h^2n)\to1$. La media del contador inverso dividido por $n^2$, con ese mismo
+peso, tiende a $\int\Gamma/a$,
+donde $\Gamma(r,c)$ es la densidad límite de las operaciones inversas que crean el cruce $(r,c)$
+(Lema~\ref{lem:nucleo}), y la identidad $\Gamma=b_0\,r_Rr_C\,a$, consecuencia de la forma producto del
+perfil, da $\int\Gamma/a=b_0$. Por tanto $f_h\to1/b_0=F(0)$.
+\ifverificacionLean
+La Sección~\ref{sec:verificacion} describe la formalización en Lean de los enunciados
+principales y precisa qué comprueba.
+\fi
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+ caja/.style={draw,rounded corners=2pt,align=center,font=\footnotesize,inner sep=3pt,
+ minimum height=9mm,text width=29mm},
+ flecha/.style={-{Stealth[length=2mm]},thick}]
+\node[caja] (perfil) at (0,0) {Perfil variacional\\ y primer orden (§\ref{sec:preliminares})};
+\node[caja] (ref) at (3.6,0) {Comparación\\ entrópica (§\ref{sec:referencia})};
+\node[caja] (din) at (7.2,0) {Regularidad\\ dinámica (§\ref{sec:regularidad})};
+\node[caja] (abs) at (3.6,-1.7) {32 patrones directos\\ y corte (§\ref{sec:absorbedores})};
+\node[caja] (inv) at (7.2,-1.7) {16 patrones\\ inversos (§\ref{sec:inversa})};
+\node[caja] (dc) at (0,-3.4) {Doble cuenta\\ entre capas (§\ref{sec:doblecuenta})};
+\node[caja] (pos) at (3.6,-3.4) {Teorema~\ref{thm:positiva}\\ (§\ref{sec:positiva})};
+\node[caja] (lim) at (7.2,-3.4) {Teoremas~\ref{thm:limite} y~\ref{thm:estructura}\\ (§\ref{sec:limite})};
+\node[caja] (cor) at (10.8,-3.4) {Corolarios~\ref{cor:cociente}\\ y~\ref{cor:capas} (§\ref{sec:corolarios})};
+\draw[flecha] (perfil) -- (ref);
+\draw[flecha] (ref) -- (din);
+\draw[flecha] (din) -- (abs);
+\draw[flecha] (din) -- (inv);
+\draw[flecha] (abs) -- (pos);
+\draw[flecha] (abs) -- (lim);
+\draw[flecha] (inv) -- (lim);
+\draw[flecha] (dc) -- (pos);
+\draw[flecha] (dc.south) to[out=-25,in=-155] (lim.south);
+\draw[flecha] (lim) -- (cor);
+\end{tikzpicture}
+\caption{Estructura lógica de la demostración. La doble cuenta es puramente combinatoria; la
+comparación entrópica de la Sección~\ref{sec:referencia} interviene en todas las flechas que
+llegan a resultados bajo $\mu_h$.}
+\label{fig:esquema}
+\end{figure}
+
+\subsection{Relación con trabajos previos}
+
+Simkin~\cite{Simkin} caracteriza el término exponencial de $Q(n)$ mediante una optimización de
+entropía y establece grandes desviaciones para el perfil de las soluciones completas; antes,
+Luria~\cite{Luria} había obtenido cotas superiores con el método de entropía. La cota inferior
+de primer orden que usamos procede del resultado de Simkin (Teorema~\ref{thm:simkin}). Para
+probarla, Simkin fija una \emph{queenon} escalonada, es decir, una queenon
+(Sección~\ref{sec:preliminares}) de densidad constante en cada bloque de una cuadrícula; en cada
+paso elige un bloque con la probabilidad que esa medida le asigna, coloca en él una
+reina al azar entre las casillas disponibles y, al final, completa la colocación con
+absorbedores~\cite[Sección~5]{Simkin}. Luria y Simkin~\cite{LS} construyen casi-soluciones
+mediante un proceso voraz aleatorio y las completan con absorbedores para obtener una cota
+inferior de conteo, y Bowtell y Keevash~\cite{BK} estudian el conteo toroidal y sus
+consecuencias para el tablero ordinario. El proceso de referencia y los absorbedores de este
+trabajo siguen ese espíritu, pero el éxito bajo un proceso de construcción no identifica por sí
+solo la ley uniforme sobre las colocaciones con $h$ huecos: esa identificación es el papel de
+la comparación entrópica. Comparar la ley uniforme con la del resultado de un proceso aleatorio
+es la herramienta principal del trabajo de Kwan~\cite{Kwan} sobre sistemas triples de Steiner.
+A su vez, la doble cuenta de reparaciones entre capas consecutivas es una forma del método de
+conmutaciones (\emph{switchings})~\cite{McKayWormald,HMcK}.
+
+Completar una colocación parcial dada es un problema que se remonta a 1850 y es
+NP-completo~\cite{GJN}. Glock, Munhá Correia y
+Sudakov~\cite{GMS} prueban que toda colocación legal de a lo sumo $n/60$ reinas puede
+completarse y construyen colocaciones no completables de tamaño cercano a $n/4$;
+Nielsen~\cite{Nielsen} mejora la cota superior del umbral extremal a $0{,}216\,n$ para $n$
+suficientemente grande. Esos
+enunciados son de peor caso; aquí se estudian probabilidades bajo la ley uniforme de
+colocaciones casi completas.
+
+Hasta donde sabemos (la búsqueda bibliográfica realizada no es exhaustiva), los
+Teoremas~\ref{thm:limite} y~\ref{thm:estructura} y el Corolario~\ref{cor:cociente} son nuevos.
+No se reclama novedad para las herramientas generales: regla de la cadena de la entropía
+relativa, comparación con procesos aleatorios~\cite{Kwan}, dobles cuentas y
+conmutaciones~\cite{HMcK}, método de ecuaciones diferenciales~\cite{Wormald} y desigualdades de
+concentración~\cite{AlonSpencer}.

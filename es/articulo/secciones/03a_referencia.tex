@@ -1,0 +1,95 @@
+\section{Proceso de referencia y comparación entrópica}\label{sec:referencia}
+
+El perfil continuo proporciona los pesos para construir colocaciones paso a paso.
+El objetivo de esta sección es comparar la ley de las colocaciones así construidas,
+condicionada al éxito, con la ley uniforme de la capa. La cota de entropía relativa
+permitirá trasladar a esta última las estimaciones obtenidas durante la construcción.
+
+Fijamos $K$ y $0\le h\le K$, y ponemos
+\[
+ q=n-h,\qquad N=2n-1,\qquad H=N-q=n+h-1 .
+\]
+En esta sección y en las dos siguientes, para $h\ge1$ el perfil se evalúa en el parámetro
+objetivo $x_*=h/n$, fijo durante todo el proceso, y omitimos el subíndice $x_*$. La capa $h=0$
+se trata por separado en la Sección~\ref{subsec:h0}.
+
+\subsection{Hipergrafo aumentado y pesos}
+
+Se añaden $n-1$ vértices \emph{ficticios} a las filas y otros tantos a las columnas, de modo que
+cada una de las cuatro familias tiene $N$ vértices. Las \emph{aristas reales} son las $n^2$
+casillas, con sus cuatro líneas físicas. Las \emph{aristas virtuales} son todas las cuaternas
+con un vértice de cada familia, físico o ficticio. El color (real o virtual) forma parte de la
+arista: una arista virtual es distinta de una real aunque tengan los mismos vértices.
+
+En la Figura~\ref{fig:cruces-vacios}, las líneas de $(3,2)$ son $R_3$, $C_2$,
+$D_1$ y $A_5$, pues $3-2=1$ y $3+2=5$.
+Una elección real en esa casilla coloca una reina. Una elección virtual con
+esas mismas cuatro líneas las desactiva en el proceso sin colocar ninguna
+reina en el tablero. Esta distinción se usará al contar las reparaciones. Llamaremos \emph{piezas} a las aristas de una
+trayectoria, es decir, a las que elige el proceso, reales o virtuales según su color.
+
+Para $h\ge1$, los pesos de vértice son $u_R(\bar r)=x_*r_R(\bar r)$ en las filas físicas,
+$u_C(\bar c)=x_*r_C(\bar c)$ en las columnas físicas, $u_D$ y $u_A$ en las coordenadas inducidas
+de diagonales y antidiagonales, y $1$ en los vértices ficticios. Todos son positivos. El peso de
+una arista, real o virtual, es el producto $\varpi(e)=\prod_{v\in e}u_v$; por el
+Teorema~\ref{thm:perfil}(a), toda arista real tiene peso entre $cx_*^2$ y $Cx_*^2$.
+
+\subsection{El proceso}
+
+\begin{definicion}[Proceso de referencia]\label{def:referencia}
+Se preasigna, sin revelarla, una palabra uniforme con $q$ colores reales y $H$ virtuales. En
+cada paso $t=1,\dots,N$ se revela sólo el siguiente color, se elige una arista disponible (con
+sus cuatro vértices todavía activos) de ese color, con probabilidad proporcional a su peso, y se
+desactivan sus cuatro vértices. Una pieza virtual no coloca ninguna reina. Si el normalizador
+del color pedido, es decir, la suma de los pesos de sus aristas disponibles, es cero, el proceso pasa a un estado de fallo. $\QQ_h$ es la ley de las
+trayectorias y $S$ el evento de éxito (los $N$ pasos se completan).
+\end{definicion}
+
+En $S$, las $q$ aristas reales elegidas son casillas sin líneas comunes, es decir, una
+colocación de $\Om_h(n)$: la \emph{colocación final}. Sea $\nu'_h$ su ley bajo
+$\QQ_h(\cdot\mid S)$. En las elecciones reales puede cancelarse el factor común $x_*^2$ sin
+cambiar la ley; no se cancela en las virtuales. La referencia no necesita tener éxito con
+probabilidad próxima a uno.
+
+\subsection{La ley de comparación}
+
+\begin{definicion}[Ley de comparación]\label{def:comparacion}
+Se elige $P\in\Om_h(n)$ uniforme; después, una completación virtual uniforme, es decir, un
+emparejamiento perfecto por aristas virtuales de los $H$ vértices libres de cada familia (hay
+$(H!)^3$); finalmente, un orden uniforme de las $N$ piezas. $\PP_h$ es la ley de la sucesión de
+aristas resultante.
+\end{definicion}
+
+Representamos el orden uniforme mediante tiempos independientes y uniformes en $[0,1]$
+asociados a las piezas; las piezas se revelan en orden creciente de tiempo. (La uniformidad del
+tiempo de una pieza aislada no bastaría: se usa la independencia.) La ley $\PP_h$ proyecta
+exactamente en $\mu_h$, y toda trayectoria de su soporte tiene probabilidad positiva bajo
+$\QQ_h$: la siguiente pieza del emparejamiento completo sigue disponible y tiene peso positivo.
+En particular $\PP_h(S)=1$.
+
+\subsection{La identidad entrópica}
+
+Sean $W_R(t)$ y $W_V(t)$ los pesos totales de las aristas disponibles de cada color antes del
+paso $t$, y $\col(t)$ el color revelado en ese paso.
+
+\begin{lema}\label{lem:identidad}
+Para $1\le h\le K$,
+\[
+ \KL{\PP_h}{\QQ_h}=\E_{\PP_h}\sum_{t=1}^N\log W_{\col(t)}(t)-\sum_v\log u_v-\log N_h-\log q!
+ -4\log H!,
+\]
+donde $\sum_v$ recorre los $4N$ vértices.
+\end{lema}
+
+\begin{proof}
+Sea $\omega$ una trayectoria del soporte de $\PP_h$. Entonces $\PP_h(\omega)=[N_h(H!)^3N!]^{-1}$.
+Bajo $\QQ_h$, la palabra de colores tiene probabilidad $\binom Nq^{-1}$ y cada elección tiene
+probabilidad $\varpi(e_t)/W_{\col(t)}(t)$. Como el emparejamiento completo cubre cada vértice
+exactamente una vez, el producto de los pesos elegidos es $\prod_vu_v$, independiente del
+emparejamiento y del orden. Por tanto
+\[
+ \log\frac{\PP_h(\omega)}{\QQ_h(\omega)}=\sum_t\log W_{\col(t)}(t)-\sum_v\log u_v
+ -\log\bigl[N_h(H!)^3N!\bigr]+\log\binom Nq ,
+\]
+y $-\log[(H!)^3N!]+\log\binom Nq=-\log q!-4\log H!$. Se toma la esperanza bajo $\PP_h$.
+\end{proof}

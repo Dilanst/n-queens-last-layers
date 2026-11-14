@@ -1,0 +1,98 @@
+\section{El límite común y la posición de los huecos}\label{sec:limite}
+
+Ya conocemos la media límite del contador inverso para un peso continuo. Para
+probar los Teoremas~\ref{thm:limite} y~\ref{thm:estructura}, identificamos ahora
+el contador directo en cada cruce y elegimos el mismo peso en las dos cuentas.
+
+En esta sección $\nu_1,r_R,r_C,u_D,u_A,b_0$ son el perfil lleno, de masa uno, y
+$\psi(r,c)=u_D(r-c)u_A(r+c)$, $a(r,c)=\int\nu_1(i,j)\psi(r,j)\psi(i,c)\,di\,dj$, como en la
+Sección~\ref{sec:intro}. Como en la
+Sección~\ref{subsec:variacional}, $u_D$ se evalúa en $r-c\in[-1,1]$ y $u_A$ en $r+c\in[0,2]$. Se tiene $\kappa^4\le a\le1$, y $a$ es Lipschitz.
+
+\subsection{La cuenta directa hasta el final}
+
+Para pasar al valor terminal hace falta una cota absoluta, no sólo inferior: por el
+Lema~\ref{lem:perdida}, $|\Delta A^{rc}|\le5$ por pieza real y las virtuales no cambian el
+contador físico.
+
+\begin{proposicion}\label{prop:directa}
+Sea $h\ge1$ fijo. Para toda tolerancia fija $\gamma>0$,
+\[
+ \QQ_h\Bigl(S\cap\Bigl\{\max_{(r,c)\ \text{vacío al final}}
+ \Bigl|\frac{A^{rc}}n-a(\bar r,\bar c)\Bigr|>\gamma\Bigr\}\Bigr)\le e^{-c_{\gamma,h}n}.
+\]
+En consecuencia, el máximo tiende a cero en probabilidad bajo $\mu_h$.
+\end{proposicion}
+
+\begin{proof}
+Por los Lemas~\ref{lem:conc_directa} y~\ref{lem:valor_inicial} y por~\eqref{eq:trayectoria},
+$A^{rc}_t/n$ se concentra, uniformemente en las raíces y en los tiempos $t\le T_\zeta$, alrededor de
+$\tilde a(y;\bar r,\bar c)$. Se corta cuando quedan $\lceil\delta n\rceil$ piezas reales
+pendientes, con $\delta$ libre y con el enlace temporal y el orden de elecciones de la
+Proposición~\ref{prop:inversa}; en el corte $y=1-\delta+O(\eps+n^{-1})$, y después la diferencia
+absoluta es a lo sumo $5\lceil\delta n\rceil$ por el Lema~\ref{lem:perdida}. Como
+$\tilde a(\cdot;r,c)$ es continua en $y=1$ uniformemente en $(r,c)$ y
+$\tilde a(1;\cdot)=a$ por~\eqref{eq:a_infinito}, basta tomar $\delta$ pequeño frente a $\gamma$.
+La cota vale para cualquier $h$ fijo y uniformemente en un conjunto finito de ellos. Se analiza
+antes de condicionar y después se divide por $\QQ_h(S)\ge e^{-d_n}$; el
+Lema~\ref{lem:binaria} transfiere a $\mu_h$ la convergencia en probabilidad, no una cola
+exponencial.
+\end{proof}
+
+Como sólo hay $h^2$ cruces vacíos,
+$d_{h,1}/n-\sum_{(r,c)}a(\bar r,\bar c)\to0$ en probabilidad bajo $\mu_h$, y en media por
+acotación determinista. El segundo término puede seguir siendo aleatorio y no se sustituye por
+una media espacial: la concentración escalar del contador directo sin peso no se deduce.
+
+\subsection{El peso que elimina la posición del hueco}
+
+La posición del cruce puede seguir siendo aleatoria, pero conocemos el valor
+$a(\bar r,\bar c)$ al que se aproxima su contador normalizado. Al dar al cruce el
+peso recíproco, su contribución tiende a uno con independencia de dónde se
+encuentre. Tomamos por tanto $w_n(r,c)=1/a(\bar r,\bar c)$. Se cumple
+$\|w_n\|_\infty\le\kappa^{-4}$. Por la Proposición~\ref{prop:directa}, aplicada
+simultáneamente a todas las raíces finales vacías, y sin suponer ninguna distribución para los
+huecos,
+\begin{equation}\label{eq:directa_ponderada}
+ \frac{D_{w_n}}{h^2n}=\frac1{h^2}\sum_{(r,c)\ \text{vacío}}\frac{A^{rc}}{n\,a(\bar r,\bar c)}
+ \longrightarrow1\qquad\text{en probabilidad y en media bajo }\mu_h .
+\end{equation}
+
+\begin{lema}[Identidad del núcleo inverso]\label{lem:nucleo}
+Sea $\Gamma(r,c)=\int\nu_1(r,j)\,\nu_1(i,c)\,\psi(i,j)\,di\,dj$. Entonces
+\[
+ \Gamma(r,c)=b_0\,r_R(r)\,r_C(c)\,a(r,c),\qquad B_{1/a}=\int\frac\Gamma a=b_0 .
+\]
+\end{lema}
+
+\begin{proof}
+Por~\eqref{eq:perfil} con $x=0$, $\nu_1(r,j)=b_0r_R(r)r_C(j)\psi(r,j)$ y
+$\nu_1(i,c)=b_0r_R(i)r_C(c)\psi(i,c)$. Luego
+$\Gamma(r,c)=b_0^2r_R(r)r_C(c)\int r_R(i)r_C(j)\psi(i,j)\psi(r,j)\psi(i,c)\,di\,dj
+=b_0r_R(r)r_C(c)a(r,c)$, pues $\nu_1(i,j)=b_0r_R(i)r_C(j)\psi(i,j)$. Integrando $\Gamma/a$ y usando
+$\int r_R=\int r_C=1$ se obtiene $b_0$. Se factoriza el perfil, no una probabilidad de reinas.
+\end{proof}
+
+\subsection{Conclusión}
+
+\begin{proof}[Demostración del Teorema~\ref{thm:limite}]
+Por la Proposición~\ref{prop:inversa} en la capa $h-1$ (incluido $h-1=0$) con $w=1/a$ y el
+Lema~\ref{lem:nucleo}, $\E_{\mu_{h-1}}[I_{1/a}/n^2]\to b_0>0$; en particular el denominador
+de~\eqref{eq:fh_cociente} es positivo para $n$ grande. Por~\eqref{eq:directa_ponderada},
+$\E_{\mu_h}[D_{1/a}/(h^2n)]\to1$. Ambos observables normalizados están acotados
+determinísticamente; la entropía relativa sólo se usa para transferir probabilidades, no para
+pasar esperanzas no acotadas. Como $m/n\to1$, el Lema~\ref{lem:doblecuenta} da
+$f_h\to1/b_0=F(0)$. Para $1\le h\le K$ el argumento es uniforme; no se permite $K=K(n)\to\infty$.
+\end{proof}
+
+\begin{proof}[Demostración del Teorema~\ref{thm:estructura}]
+(a) es la Proposición~\ref{prop:directa}. Para (b), sea $t$ continua y $w=t/a$, permitiendo
+signo (todo lo anterior es lineal en $w$). Por (a),
+$D_w/(h^2n)-h^{-2}\sum_{(r,c)}t(\bar r,\bar c)\to0$ en media bajo $\mu_h$, y por la
+Proposición~\ref{prop:inversa} y el Lema~\ref{lem:nucleo},
+$\E_{\mu_{h-1}}[I_w/n^2]\to\int t\,\Gamma/a=b_0\int t\,r_Rr_C$. La identidad
+$\E_{\mu_h}[D_w/(h^2n)]=f_h\,(n/m)\,\E_{\mu_{h-1}}[I_w/n^2]$ del Lema~\ref{lem:doblecuenta} y
+$f_h\to1/b_0$ dan (b). Para (c), con $w\equiv1$,
+$d_h^\inv/n^2\to B_1=\int\psi$, porque las marginales de filas y columnas de $\nu_1$ valen uno, y
+la misma identidad da $\E_{\mu_h}d_{h,1}/(h^2n)\to B_1/b_0$.
+\end{proof}

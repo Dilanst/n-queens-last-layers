@@ -1,0 +1,34 @@
+\begin{abstract}
+En una colocación legal de $n-1$ reinas sobre un tablero de $n\times n$, la única
+casilla que puede recibir la última reina es la intersección de la fila y la columna
+vacías. Estudiamos la probabilidad de que esa casilla esté libre de ataques cuando
+la colocación se elige uniformemente. Cuando faltan $h\ge1$ reinas, las $h$ filas
+y las $h$ columnas vacías se cortan en $h^2$ casillas, los cruces vacíos; sea $f_h(n)$ la fracción
+media de ellos que admite una reina. Probamos que, para cada $h$
+fijo, $f_h(n)\to F(0)=1/b_0>0$, donde $b_0$ es la constante de normalización del
+perfil variacional en el tablero lleno. La prueba se apoya en la cota inferior de Simkin para el
+número de soluciones y en la regularidad del perfil variacional hasta el tablero lleno, demostrada
+en un trabajo complementario. Para $f_1$ y $f_2$ damos además una prueba directa de una cota
+inferior asintótica explícita, aunque muy conservadora.
+
+Si $N_h(n)$ cuenta las colocaciones legales de $n-h$ reinas y $Q(n)=N_0(n)$,
+se deduce que $N_h(n)/Q(n)\sim n^h/((h!)^2F(0)^h)$. Además, para cada $K$ fijo,
+$\sum_{h\le K}\log[f_h(n)/F(h/n)]\to0$, donde $F(x)=(1-x)/b_x$ y $b_x$ es la constante de normalización
+del perfil de masa $1-x$. La prueba
+compara la ley uniforme con un proceso de referencia mediante entropía relativa
+$o(n)$ y cuenta, en ambos sentidos, las reparaciones que conectan dos capas
+consecutivas. Esta cuenta da también la ley media de la posición de los cruces vacíos y la
+concentración del número de reparaciones por cruce.
+\ifverificacionLean
+Los enunciados principales también se han formalizado en Lean~4; al final del artículo se
+precisa el alcance de esa verificación.
+\fi
+La estimación numérica $F(0)\approx0{,}0809$ carece de una cota de error certificada.
+
+\medskip\noindent
+\textbf{Palabras clave:} problema de las $n$ reinas; enumeración asintótica; completabilidad;
+entropía relativa; absorbedores; método de ecuaciones diferenciales; doble cuenta.
+
+\noindent
+\textbf{MSC 2020:} 05A16; 05C70; 60C05; 94A17.
+\end{abstract}

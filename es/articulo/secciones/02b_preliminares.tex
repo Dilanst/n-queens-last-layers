@@ -1,0 +1,124 @@
+\subsection{El primer orden de Simkin}
+
+\begin{teorema}[{\cite[Teorema~2.11]{Simkin}}]\label{thm:simkin}
+$\log Q(n)\ge n\log n+ns_1-o(n)$, con $s_1=s^*(1)=s[\nu_1]$.
+\end{teorema}
+
+El Teorema~2.11 de~\cite{Simkin} se enuncia para las
+\emph{queenons}~\cite[Definiciones~2.1, 2.3 y~2.4]{Simkin}, que forman el cierre débil de los
+permutones escalonados con marginales diagonales subuniformes. Tras trasladar el cuadrado a
+$[-\frac12,\frac12]^2$, una densidad con marginales de filas y columnas iguales a uno es un
+permutón, y tener marginales diagonales subuniformes equivale a $m_D,m_A\le1$.
+
+\begin{lema}\label{lem:queenon}
+La medida de densidad $\nu_1$, trasladada a $[-\frac12,\frac12]^2$, es una queenon.
+\end{lema}
+
+\begin{proof}
+Por el Teorema~\ref{thm:perfil}, $\nu_1$ es continua en el cuadrado cerrado, tiene marginales
+de filas y columnas iguales a uno, y sus proyecciones diagonales cumplen
+$m_D=1-u_D\le1-\kappa$ y $m_A=1-u_A\le1-\kappa$. Para $N\ge1$, sea $\nu^{(N)}$ la densidad que
+en cada casilla de la cuadrícula $N\times N$ vale el promedio de $\nu_1$ en esa casilla. En una
+franja de filas de anchura $1/N$, la marginal de filas de $\nu^{(N)}$ es el promedio de la de
+$\nu_1$, que vale uno; lo mismo ocurre con las columnas, así que $\nu^{(N)}$ es un permutón
+escalonado. Si $\omega$ es el módulo de continuidad uniforme de $\nu_1$, entonces
+$|\nu^{(N)}-\nu_1|\le\omega(\sqrt2/N)$ y, como las fibras diagonales tienen longitud
+paramétrica (en $r$) a lo sumo uno, $m_D[\nu^{(N)}],m_A[\nu^{(N)}]\le1-\kappa+\omega(\sqrt2/N)\le1$
+para $N$ grande. Ésa es la normalización de~\cite{Simkin}: la imagen de la medida por
+$(r,c)\mapsto r\mp c$ tiene por densidad la integral de fibra en $r$, porque el jacobiano es uno.
+Así $\nu^{(N)}$ tiene marginales diagonales subuniformes y converge uniformemente a $\nu_1$,
+luego en variación total y, en particular, débilmente.
+\end{proof}
+
+Por el Lema~\ref{lem:queenon}, el Teorema~2.11 de~\cite{Simkin} se aplica a $\nu_1$ tal como
+está enunciado; no hace falta su Observación~2.7, que lo extiende a todos los permutones con
+marginales diagonales subuniformes. Tras la traslación, las densidades de vacancia diagonal son $u_D,u_A$, ambas de integral
+uno; en la Definición~2.9 de~\cite{Simkin}, cada divergencia respecto de la uniforme en $[-1,1]$
+vale $\int u\log u+\log2$, y las dos constantes se cancelan con $2\log2$. El funcional de
+Simkin en $\nu_1$ es, por tanto,
+$-3-\int\nu_1\log\nu_1-\int u_D\log u_D-\int u_A\log u_A=s[\nu_1]=s_1$. La cota inferior de
+su Teorema~2.11 para este perfil da el enunciado: primero se fija la tolerancia, se toma el
+límite inferior en $n$ y después se hace tender la tolerancia a cero. No se obtiene de ahí
+ninguna tasa para el resto, y escribimos
+\begin{equation}\label{eq:Delta}
+ \Delta_n=\bigl[n\log n+ns_1-\log Q(n)\bigr]_+=o(n).
+\end{equation}
+
+\subsection{El valor variacional cerca del tablero lleno}
+
+\begin{lema}\label{lem:borde}
+Cuando $x\downarrow0$, $s^*(1-x)-s^*(1)=2x\log(1/x)+O(x)$. En consecuencia, para $K$ fijo y
+$0\le h\le K$,
+\[
+ n\bigl[s^*(1-h/n)-s_1\bigr]=2h\log n+O_K(1).
+\]
+\end{lema}
+
+Es la Proposición~8.3 de~\cite{Perfil}, donde también se prueban la desigualdad de soporte
+(Teorema~3.1(d), donde $\theta=-\log\lambda_\rho$) y la continuidad de $s^*$ en $\rho=1$ (Proposición~5.1). Incluimos la prueba
+por completitud.
+
+\begin{proof}
+El funcional $s$ es cóncavo en el dominio admisible. En un perfil positivo
+$\nu=\lambda_\rho\prod_fu_f$, su derivada en la dirección de una variación admisible $\dot\nu$,
+con $\int\dot\nu=\dot\rho$, es
+\[
+ \dot s=\int\Bigl[-3-1-\log\nu+\sum_f(1+\log u_f)\Bigr]\dot\nu=-\log\lambda_\rho\;\dot\rho ,
+\]
+pues $-\log\nu+\sum_f\log u_f=-\log\lambda_\rho$ y $-3-1+4=0$. La concavidad y la
+estacionariedad a masa fija identifican el valor $s^*(\rho)$ y dan la desigualdad de soporte
+\[
+ s^*(\rho')\le s^*(\rho)-\log\lambda_\rho\,(\rho'-\rho).
+\]
+En compactos de $(0,1)$, $s^*$ es cóncava y por tanto absolutamente continua, y en sus puntos de
+derivabilidad el supergradiente $-\log\lambda_\rho$ es su derivada. Las cotas bilaterales de
+$b_x=\lambda_\rho(1-\rho)^2$ dan $-\log\lambda_\rho=2\log(1-\rho)+O(1)$. Por el
+Teorema~\ref{thm:perfil}(c) y la continuidad de $u\log u$, el valor óptimo de masa $1-x$ tiende a
+$s[\nu_1]$, que es $s^*(1)$ porque $\nu_1$ es el maximizador de masa uno
+(Teorema~\ref{thm:perfil}); ésta es la continuidad de $s^*$ en $\rho=1$. Junto con la
+integrabilidad de $\log(1-\rho)$, permite integrar:
+\[
+ s^*(1)-s^*(1-x)=\int_{1-x}^1\bigl[2\log(1-\rho)+O(1)\bigr]d\rho=2x\log x-2x+O(x).
+\]
+Esto es la primera afirmación. La segunda se obtiene con $x=h/n$:
+$n[2(h/n)\log(n/h)+O(h/n)]=2h\log n+O_K(1)$.
+\end{proof}
+
+No se ha diferenciado el perfil respecto de su parámetro: sólo se usa la concavidad.
+
+\subsection{Dos lemas de entropía relativa}
+
+\begin{lema}[Condicionar al éxito]\label{lem:exito}
+Sean $\PP,\QQ$ leyes en un conjunto finito y $S$ un evento con $\PP(S)=1$ y $\QQ(S)>0$.
+Entonces $\KL{\PP}{\QQ(\cdot\mid S)}=\KL{\PP}{\QQ}+\log\QQ(S)$. En particular,
+$\QQ(S)\ge e^{-\KL{\PP}{\QQ}}$ y $\KL{\PP}{\QQ(\cdot\mid S)}\le\KL{\PP}{\QQ}$.
+\end{lema}
+
+\begin{proof}
+En $S$, $\QQ(\omega\mid S)=\QQ(\omega)/\QQ(S)$; se toma la esperanza de
+$\log(\PP/\QQ(\cdot\mid S))=\log(\PP/\QQ)+\log\QQ(S)$ bajo $\PP$. La no negatividad del primer
+miembro da las dos consecuencias.
+\end{proof}
+
+\begin{lema}[Transferencia binaria]\label{lem:binaria}
+Sean $\mu,\nu$ leyes en un conjunto finito y $B$ un evento con $\nu(B)<1$. Entonces
+\[
+ \mu(B)\log\frac1{\nu(B)}\le\KL{\mu}{\nu}+\log2 .
+\]
+Si $\nu(B)=0$ y $\KL{\mu}{\nu}<\infty$, entonces $\mu(B)=0$.
+\end{lema}
+
+\begin{proof}
+Sean $p=\mu(B)$ y $p'=\nu(B)$. Por procesamiento de datos aplicado al indicador de $B$,
+\[
+\begin{aligned}
+ \KL{\mu}{\nu}&\ge p\log\frac p{p'}+(1-p)\log\frac{1-p}{1-p'}\\
+ &\ge p\log\frac1{p'}+p\log p+(1-p)\log(1-p)\ge p\log\frac1{p'}-\log2 .
+\end{aligned}
+\]
+El caso $p'=0$ es la continuidad absoluta.
+\end{proof}
+
+En las Secciones~\ref{sec:regularidad}--\ref{sec:inversa} usaremos además la desigualdad de
+Azuma--Hoeffding para martingalas con incrementos acotados~\cite{AlonSpencer} y la desigualdad
+de Gronwall discreta, en la forma habitual del método de ecuaciones diferenciales~\cite{Wormald}.

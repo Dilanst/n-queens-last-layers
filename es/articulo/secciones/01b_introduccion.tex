@@ -1,0 +1,105 @@
+El Teorema~\ref{thm:limite} ya implica la positividad de $\lim_nf_h(n)$ para cada $h$ fijo.
+En efecto, \eqref{eq:F} y las cotas del Teorema~\ref{thm:perfil}(a) y~(c) dan
+$F(0)\ge\kappa^2>a_0/2$. La prueba directa del Teorema~\ref{thm:positiva} está en la
+Sección~\ref{sec:positiva}. La constante es conservadora y el
+umbral $n_0$ es existencial.
+
+Para entender esa prueba, volvamos al caso de la última reina. Si el cruce
+$(r,c)$ está atacado, la inserción en esa casilla falla. Al retirar
+una reina de $(i,j)$ podemos ocupar sus \emph{destinos} $(r,j)$ e $(i,c)$ si las dos reinas nuevas son
+compatibles con el resto del tablero y entre sí.
+Así se aprovechan tanto la fila $r$ como la columna $c$, aunque el cruce $(r,c)$
+quede sin reina.
+
+Para cualquier $h\ge1$, llamamos \emph{reparación de un movimiento} en $(r,c)$
+a esta sustitución de una reina por dos. Una reparación legal lleva la colocación
+$P\in\Om_h(n)$ a la capa $h-1$. La Figura~\ref{fig:reparacion-tablero}
+muestra un caso en $4\times4$. El cruce vacío $(2,1)$ está atacado por la reina
+de $(3,2)$. Retiramos la reina de $(0,0)$ y colocamos dos en $(2,0)$ y $(0,1)$.
+El cruce original sigue bajo ataque y queda sin ocupar. La nueva colocación ya
+tiene cuatro reinas y coincide con la Figura~\ref{fig:ejemplos}(a).
+
+\input{figuras/reparacion}
+
+Llamaremos \emph{absorbedor} de ese cruce a una reina cuya sustitución
+de esta manera es legal. En la Figura~\ref{fig:reparacion-tablero}(a), sólo
+sirve la de $(0,0)$. Si retiramos la de $(1,3)$, uno de sus destinos es $(1,1)$.
+Si retiramos la de $(3,2)$, uno de sus destinos es $(2,2)$. En ambos casos la
+reina de $(0,0)$ permanece en su sitio y ataca ese destino. Tenemos, pues, un
+cruce con cero inserciones directas y una reparación legal.
+
+Sea $A^{rc}(P)$ el número de
+reparaciones legales en $(r,c)$ y $d_{h,1}(P)=\sum A^{rc}(P)$, sumando sobre los $h^2$ cruces
+vacíos; el subíndice $1$ alude a las reparaciones de un movimiento, en las que se retira una sola reina. Escribimos $\bar r=(r+\frac12)/n$ y $\bar c=(c+\frac12)/n$ para los centros de las
+casillas. Para expresar cómo varía el número de reparaciones con la posición del
+cruce, usamos el perfil lleno. Denotamos su densidad por $\nu_1$: el subíndice
+es la masa de reinas, igual a uno, que corresponde a $x=0$. Escribimos sus factores sin
+el subíndice $x$ (la constante conserva el suyo, $b_0$) y ponemos
+\begin{gather*}
+ \nu_1=b_0\,r_R\,r_C\,u_D\,u_A,\qquad \psi(r,c)=u_D(r-c)\,u_A(r+c),\\
+ a(r,c)=\int_{[0,1]^2}\nu_1(i,j)\,\psi(r,j)\,\psi(i,c)\,di\,dj .
+\end{gather*}
+Se tiene $\kappa^4\le a\le1$.
+
+\begin{teorema}[Estructura típica]\label{thm:estructura}
+Sea $h\ge1$ fijo y $P$ distribuida según $\mu_h$.
+\begin{enumerate}[(a)]
+\item \emph{Reparaciones de un movimiento.} En probabilidad,
+\[
+ \max_{(r,c)\ \text{cruce vacío de }P}\ \Bigl|\frac{A^{rc}(P)}{n}-a(\bar r,\bar c)\Bigr|\longrightarrow0 .
+\]
+\item \emph{Posición media de los huecos.} Para toda función continua $t$ en $[0,1]^2$,
+\[
+ \E_{\mu_h}\Bigl[\frac1{h^2}\sum_{(r,c)\ \text{cruce vacío}}t(\bar r,\bar c)\Bigr]
+ \longrightarrow\int_{[0,1]^2}t(r,c)\,r_R(r)\,r_C(c)\,dr\,dc .
+\]
+Para $h=1$ esto es la convergencia débil de la ley de la posición del único cruce vacío.
+\item \emph{Contador sin peso.} $\E_{\mu_h}[d_{h,1}]/(h^2n)\to B_1/b_0$, donde
+$B_1=\int_{[0,1]^2}\psi$.
+\end{enumerate}
+\end{teorema}
+
+\begin{observacion}[Alcance]\label{obs:alcance}
+\begin{enumerate}[(i)]
+\item Todos los enunciados son para $h$ y $K$ fijos cuando $n\to\infty$. No se obtienen tasas de
+convergencia ni uniformidad para $K=K(n)\to\infty$, y no se determina la asintótica completa
+de $Q(n)$.
+\item En (b), para $h>1$ sólo se identifica la medida media de los cruces vacíos: no se afirma
+que las filas y las columnas vacías sean asintóticamente independientes, ni que la medida empírica
+de los cruces vacíos se concentre. En (c) se trata de
+convergencia de medias: por (a), $d_{h,1}/n-\sum a(\bar r,\bar c)\to0$, y el segundo término
+puede seguir siendo aleatorio, de modo que no se afirma concentración de $d_{h,1}/n$.
+\item El valor $F(0)\approx0{,}0809$ procede de una resolución numérica determinista del
+problema variacional~\cite[Sección~9]{Perfil}, sin certificación de error. A tamaño finito los valores exactos, obtenidos por
+enumeración exhaustiva, quedan lejos del límite (por ejemplo $f_1(15)\approx0{,}114$ y $f_2(15)\approx0{,}153$;
+Tabla~\ref{tab:ilustracion}); el teorema no da información sobre la velocidad de convergencia.
+\end{enumerate}
+\end{observacion}
+
+\subsection{Idea de la demostración}\label{subsec:idea}
+
+La Figura~\ref{fig:esquema} resume la estructura de la prueba.
+
+Una misma colocación puede admitir varias reparaciones en un cruce. Contamos cada
+operación legal una vez desde su colocación inicial y otra desde la final. En
+la segunda descripción, partimos de $P'\in\Om_{h-1}$, elegimos el par ordenado
+de reinas $(r,j),(i,c)$ y las sustituimos por $(i,j)$ para recuperar $P\in\Om_h$.
+Asignamos al cruce $(r,c)$ el mismo peso $w(r,c)$ en ambas descripciones. La
+doble cuenta de la Sección~\ref{sec:doblecuenta} da
+\[
+ N_h\,\E_{\mu_h}D_w=N_{h-1}\,\E_{\mu_{h-1}}I_w,\qquad\text{luego}\qquad
+ f_h=\frac{n-h+1}{n}\,\frac{\E_{\mu_h}[D_w/(h^2n)]}{\E_{\mu_{h-1}}[I_w/n^2]},
+\]
+donde $D_w$ e $I_w$ son los contadores directo e inverso ponderados. Para usar el
+cociente elegiremos un peso para el que el denominador tenga límite positivo.
+
+Las dos medias se toman bajo leyes distintas: $\mu_h$ en la cuenta directa y
+$\mu_{h-1}$ en la inversa. Para tratar ambas, la Sección~\ref{sec:referencia}
+construye un proceso aleatorio para cada capa $h$. Coloca sucesivamente piezas reales
+(reinas) y piezas virtuales, que no colocan ninguna reina pero desactivan las líneas que tocan,
+hasta que no queda ninguna línea activa; los pesos proceden del perfil variacional. Denotemos por
+$\nu'_h$ la ley de la colocación final en la capa $h$, condicionada al éxito del proceso. Una identidad entrópica, las estimaciones
+de los normalizadores (las sumas de pesos que normalizan cada elección) y la cota inferior de
+primer orden de Simkin dan
+$\KL{\mu_h}{\nu'_h}=o(n)$. En consecuencia, un evento con probabilidad a lo sumo
+$e^{-cn}$ bajo $\nu'_h$, con $c>0$ fijo, tiene probabilidad $o(1)$ bajo $\mu_h$.

@@ -1,0 +1,62 @@
+\subsection{Corte temprano}
+
+Tenemos una trayectoria determinista para el contador y una estimación de
+concentración mientras queda una fracción positiva de piezas. Elegimos ahora el
+corte de modo que las reinas colocadas después puedan destruir sólo una parte de
+las reparaciones ya disponibles. Para ello fijamos
+\begin{equation}\label{eq:constantes}
+ \eta=\kappa/2,\qquad a_0=\eta^4/16,\qquad \delta_0=a_0/16;
+\end{equation}
+así $a_0>8\delta_0$ y $\delta_0<1/4$. Para un corte $\delta\in(0,1/4)$ sea
+$m_\delta=\lceil\delta n\rceil$, $\tau_\delta$ el instante en que quedan exactamente $m_\delta$
+piezas reales pendientes, y $\zeta=\delta/4$. El corte $\delta_0$ se usa en la cota inferior
+(Sección~\ref{sec:positiva}); en las Secciones~\ref{sec:inversa} y~\ref{sec:limite} el corte
+$\delta$ es libre y se hace tender a cero.
+
+\begin{lema}[Absorbedores en el corte]\label{lem:corte}
+Sea $h\in\{1,2\}$ y $\delta=\delta_0$. Salvo un evento de probabilidad $e^{-cn}$ bajo $\QQ_h$, se
+alcanza el corte con $\tau_{\delta_0}\le T_{\delta_0/4}$ y, simultáneamente para todas las raíces,
+\begin{equation}\label{eq:corte}
+ A^{rc}_{\tau_{\delta_0}}\ge a_0n .
+\end{equation}
+\end{lema}
+
+\begin{proof}
+La concentración de los colores en~\eqref{eq:regularidad}, con tolerancia menor que $\delta_0/8$,
+asegura $\tau_{\delta_0}\le T_{\delta_0/4}$ salvo un evento de probabilidad $e^{-cn}$. Determinísticamente,
+en el corte $y=\tau_{\delta_0}/N\ge(q-m_{\delta_0})/N\ge1/4$ para $n$ grande. Además
+$\sum_{e\in\mathcal I_{rc}}\pi_e\ge q-O(1)\ge n/2$, pues $\sum_e\pi_e=q$ y las casillas excluidas
+son $O(n)$ con $\pi_e\le C/n$. Por el Lema~\ref{lem:balance}, $1-yp_{d_i}\ge1-p_{d_i}\ge\eta$, de
+modo que $a_n^{rc}(y)\ge\eta^4n/8$ para todo $y\ge1/4$. El Lema~\ref{lem:conc_directa} con
+tolerancia $\gamma=\eta^4/16$, aplicado a todos los horizontes deterministas $T\le T_{\delta_0/4}$ con
+$T/N\ge1/4$ (unión sobre $O(n)$ horizontes, lo que permite el corte aleatorio), da
+$A^{rc}_{\tau_{\delta_0}}\ge\eta^4n/16=a_0n$ para todas las raíces. La afirmación sólo requiere que
+se alcance el corte; un fallo previo ya está cubierto por el Lema~\ref{lem:regularidad}.
+\end{proof}
+
+\emph{Orden de las elecciones.} Se fijan $\eta,a_0,\delta_0$ y $\zeta=\delta_0/4$; después las tolerancias de los
+Lemas~\ref{lem:regularidad}--\ref{lem:conc_directa}, que dependen de ellas; finalmente se toma
+$n$ grande. No se exige uniformidad cuando $\delta\to0$. Las constantes son analíticas y muy
+conservadoras.
+
+\subsection{Pérdida determinista después del corte}
+
+\begin{lema}\label{lem:perdida}
+Sea $\delta\in(0,1/4)$ y $(r,c)$ una raíz cuya fila y cuya columna permanecen físicamente vacías. Cada pieza real
+crea a lo sumo una candidata ocupada de $(r,c)$ y anula el término de a lo sumo cuatro; las piezas
+virtuales no cambian $A^{rc}$. En consecuencia, en el evento de éxito y para todo cruce
+finalmente vacío,
+\[
+ A^{rc}_{\mathrm{final}}\ge A^{rc}_{\tau_\delta}-4m_\delta,\qquad
+ |A^{rc}_{\mathrm{final}}-A^{rc}_{\tau_\delta}|\le5m_\delta .
+\]
+\end{lema}
+
+\begin{proof}
+Una nueva reina en la casilla $g$ sólo puede crear el término $Z^\oc_{g,\varnothing}$. Destruye
+el término de una candidata ocupada $e$ si $g$ está en una de las diagonales de destino de $e$;
+$g$ está en una diagonal y una antidiagonal, y cada una de ellas es diagonal de destino de a lo
+sumo dos candidatas ocupadas, por unicidad de filas y columnas. Las piezas virtuales sólo
+desactivan vértices, y $A^{rc}$ depende únicamente de $O$ y $V$. Tras el corte se colocan
+exactamente $m_\delta$ piezas reales.
+\end{proof}

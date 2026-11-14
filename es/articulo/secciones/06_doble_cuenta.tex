@@ -1,0 +1,69 @@
+\section{Doble cuenta entre capas}\label{sec:doblecuenta}
+
+Hasta aquí hemos contado reparaciones desde un cruce de la capa $h$. Para que
+ese conteo informe sobre $f_h(n)$, necesitamos relacionarlo con los tamaños
+$N_h$ y $N_{h-1}$. Lo hacemos emparejando cada reparación directa con la operación
+que la deshace. Sea $h\ge1$ fijo, $q=n-h$ y $m=q+1=n-h+1$.
+
+\begin{definicion}[Reparaciones directas e inversas]\label{def:reparaciones}
+Una \emph{reparación directa} parte de $P\in\Om_h$, elige un cruce vacío $(r,c)$ y una reina
+$(i,j)$ de $P$, y sustituye esta última por $(r,j)$ e $(i,c)$ cuando el resultado es legal. Una
+\emph{operación inversa} parte de $P'\in\Om_{h-1}$, elige un par ordenado de reinas distintas
+$(r,j),(i,c)$ de $P'$ y las sustituye por $(i,j)$ si el resultado es legal; el cruce creado es
+$(r,c)$.
+\end{definicion}
+
+En la Figura~\ref{fig:reparacion-tablero}(b), la primera reina del par ordenado
+es $(2,0)$ y la segunda es $(0,1)$. Para deshacer la reparación tomamos la fila
+de la segunda y la columna de la primera: así reaparece la reina de $(0,0)$.
+La fila de la primera y la columna de la segunda vuelven a quedar vacías y
+se cortan en el cruce original $(2,1)$.
+
+Las dos orientaciones de un par corresponden a las dos sustituciones posibles, de modo que no
+aparece ningún otro factor dos. En una colocación legal, las dos reinas del par tienen filas y
+columnas distintas y no comparten diagonal, así que sus ocho líneas son distintas; las dos
+diagonales de $(i,j)$ son distintas de esas ocho líneas, y las reinas retiradas no atacan
+diagonalmente a $(i,j)$. Por eso la operación inversa es legal exactamente cuando la diagonal y
+la antidiagonal de $(i,j)$ están vacías en $P'$, y cada reparación directa legal corresponde a
+una única operación inversa legal, y recíprocamente.
+
+Para un peso acotado $w(r,c)$, asignado igual a una operación y a su inversa, definimos
+\[
+ D_w(P)=\sum_{r\in R_\vac,\,c\in C_\vac}w(r,c)\,A^{rc}(P),\qquad
+ I_w(P')=\sum_{\substack{(r,j),(i,c)\in P'\\ \text{distintas}}}w(r,c)\,V_{D(i,j)}V_{A(i,j)},
+\]
+donde $V_{D(i,j)}$ y $V_{A(i,j)}$ indican que la diagonal y la antidiagonal de $(i,j)$ están
+vacías. Para $w\equiv1$ escribimos $d_{h,1}=D_1$ y $d_h^\inv=I_1$.
+
+\begin{lema}[Doble cuenta]\label{lem:doblecuenta}
+Para todo peso acotado $w$,
+\begin{equation}\label{eq:doblecuenta}
+ N_h\,\E_{\mu_h}D_w=N_{h-1}\,\E_{\mu_{h-1}}I_w ,
+\end{equation}
+y $|D_w|/(h^2n)\le\|w\|_\infty$, $|I_w|/n^2\le\|w\|_\infty$. En particular, con
+$\overline d_h=d_{h,1}/(h^2q)$ y $\overline d{}^{\,\inv}_h=d_h^\inv/(mq)$,
+\[
+ 0\le\overline d_h,\overline d{}^{\,\inv}_h\le1,\qquad
+ \E_{\mu_h}\overline d_h=f_h\,\E_{\mu_{h-1}}\overline d{}^{\,\inv}_h,\qquad
+ f_h\ge\frac{\E_{\mu_h}d_{h,1}}{h^2q}.
+\]
+Si $\E_{\mu_{h-1}}I_w\ne0$,
+\begin{equation}\label{eq:fh_cociente}
+ f_h=\frac mn\,\frac{\E_{\mu_h}[D_w/(h^2n)]}{\E_{\mu_{h-1}}[I_w/n^2]} .
+\end{equation}
+\end{lema}
+
+\begin{proof}
+Ambos miembros de~\eqref{eq:doblecuenta} suman $w(r,c)$ sobre el mismo conjunto de pares
+(colocación, operación legal), por la biyección descrita. Cada cruce tiene a lo sumo $q$
+reinas candidatas y hay $h^2$ cruces, luego $0\le d_{h,1}\le h^2q$; una colocación de
+$\Om_{h-1}$ tiene $m$ reinas y $m(m-1)=mq$ pares ordenados, luego $0\le d_h^\inv\le mq$. Las cotas
+ponderadas siguen de $q\le n$ y $m\le n$. Dividiendo~\eqref{eq:doblecuenta} por $N_h$ y usando la
+definición~\eqref{eq:fh} se obtienen la identidad entre medias y~\eqref{eq:fh_cociente}; la cota
+inferior de $f_h$ resulta de $\overline d{}^{\,\inv}_h\le1$.
+\end{proof}
+
+El cociente~\eqref{eq:fh_cociente} sólo se escribe cuando su denominador es positivo; en la
+Sección~\ref{sec:limite} esa positividad se obtiene para $n$ grande, porque el denominador
+converge a un límite positivo. No se divide por grados individuales ni se pretende reparar cada
+colocación: los grados individuales pueden ser cero.

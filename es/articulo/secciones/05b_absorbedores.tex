@@ -1,0 +1,97 @@
+\subsection{Compensación hacia atrás y concentración}
+
+Fijamos un tiempo entero $T\le T_\zeta$ y una raíz. Para el valor terminal
+$\sum_eZ^\oc_{e,\varnothing}$ resolvemos hacia atrás $\partial_t\Phi+\cL_t\Phi=0$ en el espacio
+lineal generado por~\eqref{eq:patrones}, escribiendo
+$\Phi_t=\sum_{e,J}\{c^\oc_{e,J}(t)Z^\oc_{e,J}+c^\di_{e,J}(t)Z^\di_{e,J}\}$. Se usa la ecuación
+en tiempo real; el error al muestrear en enteros es $O_\zeta(n^{-1})$ para la suma que sigue. Por
+variación de constantes en dimensión $32$ (el sistema~\eqref{eq:generador} es triangular, con
+coeficientes $O_\zeta(1/n)$; el bloque ocupado es acotado y alimenta al disponible con la fuente
+$k_e=O_\zeta(n^{-2})$ durante $O(n)$ pasos), uniformemente,
+\begin{equation}\label{eq:coeficientes}
+ |c^\oc|\le C_\zeta,\quad |\partial_tc^\oc|\le C_\zeta/n,\quad |c^\di|\le C_\zeta/n,\quad
+ |\partial_tc^\di|\le C_\zeta/n^2,
+\end{equation}
+y además $|\partial_t^2c^\oc|=O_\zeta(n^{-2})$ y $|\partial_t^2c^\di|=O_\zeta(n^{-3})$.
+
+\begin{lema}[Concentración de los absorbedores]\label{lem:conc_directa}
+Para toda tolerancia fija $\gamma>0$, eligiendo $\eps$ suficientemente pequeña en el
+Lema~\ref{lem:regularidad},
+\begin{equation}\label{eq:conc_directa}
+ \Pr\bigl\{|A_T^{rc}-\Phi_0|>\gamma n,\ \sigma'>T\bigr\}\le e^{-c_{\zeta,\gamma}n},
+\end{equation}
+donde $\sigma'=\inf\{t:E_t\ge\eps n\text{ o fallo}\}$ cumple $\Pr(\sigma'\le T_\zeta)\le
+e^{-c_{\zeta,\eps}n}$. La unión sobre las $n^2$ raíces y los $O(n)$ tiempos conserva la cola.
+\end{lema}
+
+\begin{proof}
+\emph{Deriva.} Como $\sum_eO_e\le n$ y hay $n^2$ casillas, el Lema~\ref{lem:generador}
+y~\eqref{eq:coeficientes} dan $|\E(\Phi_{t+1}-\Phi_t\mid\mathcal F_t)|\le C_\zeta(\eps+n^{-1})$.
+En la discretización, $\sum|\Delta Z^\oc|=O(1)$ y $\sum|\Delta Z^\di|=O(n)$ por raíz; así los
+términos mixtos $\Delta c^\oc\Delta Z^\oc$ y $\Delta c^\di\Delta Z^\di$, y los segundos
+incrementos temporales de los coeficientes, suman $O_\zeta(n^{-1})$.
+
+\emph{Saltos.} Una diagonal de destino afecta a lo sumo a dos candidatas ocupadas, por unicidad
+de filas y columnas. Cualquier vértice aparece en $O(n)$ patrones disponibles de esta raíz, con
+coeficientes $O(1/n)$. Un nacimiento añade un término ocupado de coeficiente acotado. Junto con
+el cambio de coeficientes, esto da $|\Delta\Phi|\le C_\zeta$, también en la transición de salida.
+
+\emph{Martingala.} El Lema~\ref{lem:regularidad} con tolerancia $\eps/2$ acota
+$\Pr(\sigma'\le T_\zeta)$. Congelamos $\widetilde\Phi_s=\Phi_{s\wedge\sigma'}(\text{estado}_{s\wedge\sigma'})$,
+incluido su argumento temporal. La cota de la deriva vale también en la transición de salida; la
+martingala $\widetilde\Phi_s-\widetilde\Phi_0-\sum_{u<s}\E(\Delta\widetilde\Phi_u\mid\mathcal F_u)$
+tiene saltos acotados, y el error acumulado de deriva es $C_\zeta(2n\eps+2)$. Se fija $\eps$ para
+absorberlo en la tolerancia $\gamma$ antes de tomar $n$ grande, y Azuma da~\eqref{eq:conc_directa},
+pues $\Phi_T=A_T^{rc}$.
+\end{proof}
+
+\begin{lema}[Valor inicial]\label{lem:valor_inicial}
+Con $y=T/N$,
+\begin{equation}\label{eq:valor_inicial}
+ \Phi_0=a_n^{rc}(y):=y\sum_{e\in\mathcal I_{rc}}\pi_e\prod_{i=1}^4\bigl(1-y\,p_{d_i}\bigr).
+\end{equation}
+\end{lema}
+
+\begin{proof}
+Al inicio $O_e=0$ y $\chi_v=V_v=1$ en todas las líneas. La solución hacia delante del sistema lineal
+ideal~\eqref{eq:generador} con esos datos es, en el tiempo $y$ y con $z=1-y$,
+\[
+ Z^{\di,*}_{e,J}=z^{4+|J|}\prod_{i\notin J}(1-yp_{d_i}),\qquad
+ Z^{\oc,*}_{e,J}=y\,\pi_e\,z^{|J|}\prod_{i\notin J}(1-yp_{d_i}),
+\]
+como se comprueba derivando: la fuente $k_eZ^{\di,*}_{e,J}$ cancela $z^4$ y los demás términos
+son exactamente los de~\eqref{eq:generador}. Por dualidad con la ecuación hacia atrás,
+$\Phi_0=\sum_eZ^{\oc,*}_{e,\varnothing}(y)$. Es la solución de un sistema lineal, no una
+factorización de la ley verdadera.
+\end{proof}
+
+Con valor terminal $\overline Y^{rc}_T/n$ y sólo el bloque disponible, el mismo argumento da
+concentración a escala $n$ alrededor de
+\[
+ \frac{z^4}{n}\sum_{e\in\mathcal I_{rc}}v_e\prod_{i=1}^4(1-yp_{d_i}).
+\]
+Así se siguen simultáneamente $A$ e $\overline Y$, sin una jerarquía ilimitada de patrones.
+
+\subsection{Trayectoria límite}
+
+Como $x_*\to0$, los perfiles objetivo convergen al perfil lleno $\nu_1$, de vacancias
+diagonales $u_D,u_A\ge\kappa$. Por el Teorema~\ref{thm:perfil} y~\eqref{eq:balance},
+$\pi_e=b\,v_e/n\,(1+O(n^{-1}))$ y $p_{d}=1-u_{d}+O(n^{-1})$; las cuadraturas son uniformes y
+las $O(n)$ exclusiones de $G$, fila y columna aportan $O(1/n)$. Por tanto, uniformemente en la
+raíz,
+\begin{equation}\label{eq:trayectoria}
+ \frac{a_n^{rc}(y)}n\longrightarrow\tilde a(y;\bar r,\bar c):=
+ y\int_{[0,1]^2}\nu_1(i,j)\prod_{d\in\mathcal D(r,c;i,j)}\bigl[1-y(1-u_d)\bigr]\,di\,dj .
+\end{equation}
+En el límite, $u_d$ es la vacancia del perfil lleno. Por~\eqref{eq:regularidad}, $|q_t-qz_t|\le\eps n$ salvo probabilidad $e^{-cn}$, de modo que $1-y$ es, en probabilidad, el límite de la fracción
+de piezas reales pendientes; no se sustituye el perfil objetivo por el perfil óptimo de masa
+$y$. La
+función $\tilde a$ cumple $\partial_y\tilde a=\int\nu_1\prod_d\vartheta_d
+-y\int\nu_1\sum_d(1-u_d)\prod_{\ell\ne d}\vartheta_\ell$, con $\vartheta_d=1-y(1-u_d)$ y
+$\tilde a(0)=0$ (nacimiento menos pérdida), y depende de la posición de la raíz. En el tablero
+lleno,
+\begin{equation}\label{eq:a_infinito}
+ \tilde a(1;r,c)=\int\nu_1\prod_du_d=a(r,c)\ge\kappa^4>0,
+\end{equation}
+con $a$ como en la Sección~\ref{sec:intro}. Esto es un límite del perfil determinista: no exige
+regularidad del proceso hasta su último paso.

@@ -1,0 +1,59 @@
+\section{Alcance de la verificación en Lean}\label{sec:verificacion}
+
+Los enunciados principales de este artículo están formalizados en Lean~4~\cite{Lean4} (versión~4.19.0,
+con Mathlib~\cite{Mathlib} en la revisión \texttt{c44e0c8}) para una familia de perfiles construida en la propia
+formalización, que más abajo se identifica con la del texto. Los reúne el teorema
+\begin{center}
+\texttt{ArticuloA.\allowbreak Historias.\allowbreak
+conclusion\_del\_articulo\_A\_para\_los\_tableros\_fisicos},
+\end{center}
+\noindent que no tiene hipótesis. \ifx\DOIcodigoLean\empty El código consta de 659 módulos.\else
+El código, de 659 módulos, está disponible en
+{\urlstyle{same}\href{https://doi.org/\DOIcodigoLean}{doi:\nolinkurl{\DOIcodigoLean}}}.\fi{} Según \texttt{\#print axioms}, el teorema sólo usa los axiomas
+\texttt{propext}, \texttt{Classical.choice} y \texttt{Quot.sound}.
+
+\emph{Qué afirma.} Existe una familia
+$(\tilde\nu_x,\tilde b_x,\tilde r_{R,x},\tilde r_{C,x},\tilde u_{D,x},\tilde u_{A,x})_{x\in[0,1/2]}$
+que cumple~\eqref{eq:perfil} y~\eqref{eq:euler} con masa $1-x$, cuyos cuatro factores toman
+valores en un intervalo $[\kappa,M]\subset(0,\infty)$ y son $L$-Lipschitz, con $\kappa$, $M$ y
+$L$ independientes de $x$, y cuyo término $\tilde\nu_0$ maximiza $s$ entre las densidades
+admisibles de masa uno. Sea $\tilde F(x)=(1-x)/\tilde b_x$. Para esa familia, el teorema
+demuestra sobre el tablero de $n\times n$:
+\begin{itemize}
+\item el Teorema~\ref{thm:limite} con límite $1/\tilde b_0$, es decir, $f_h(n)\to1/\tilde b_0$
+para cada $h\ge1$ fijo, con su forma uniforme en $1\le h\le K$;
+\item la equivalencia asintótica del Corolario~\ref{cor:cociente}, con $\tilde F(0)$; la identidad
+exacta que la precede es elemental;
+\item el Corolario~\ref{cor:capas}, con $\tilde F((h-\sigma)/n)$ en el denominador para cualquier
+$\sigma\in[0,1]$, lo que incluye los casos $\sigma=\frac12$ y $\sigma=0$ del enunciado;
+\item el Teorema~\ref{thm:positiva}, con un $\kappa$ existencial que acota inferiormente los
+cuatro factores, y no con el valor explícito del Apéndice~\ref{app:perfil};
+\item los tres apartados del Teorema~\ref{thm:estructura}, con $\tilde\nu_0$ y sus factores en
+lugar de $\nu_1$ y los suyos.
+\end{itemize}
+Todas estas conclusiones se refieren a la misma familia.
+
+\emph{Identificación con el perfil del texto.} Para $x\in(0,1/2]$, la densidad $\tilde\nu_x$ y
+sus vacancias están acotadas inferiormente por constantes positivas y cumplen la ecuación de
+Euler con actividad $\tilde b_x/x^2$; por el argumento de la prueba del Lema~\ref{lem:borde}
+(concavidad y estacionariedad a masa fija), $\tilde\nu_x$ maximiza $s$ en masa $1-x$. Para
+$x=0$, la maximalidad forma parte del enunciado. Como el maximizador de cada masa es
+único~\cite[Teorema~3.1(a) y Proposición~5.1]{Perfil}, resultado que no está formalizado,
+$\tilde\nu_x=\nu_x$ para $x\in(0,1/2]$ y $\tilde\nu_0=\nu_1$. Además, la
+factorización~\eqref{eq:perfil}, con las vacancias diagonales como factores y
+$\int r_R=\int r_C=1$, queda determinada por la densidad. Por tanto $\tilde b_x=b_x$ y
+$\tilde F=F$ en $[0,1/2]$, y los enunciados anteriores se refieren al perfil del texto. Por otra
+parte, la igualdad $F(0)=1/b_0$ es la definición~\eqref{eq:F}: lo que se verifica es que $1/b_0$
+es el límite.
+
+\emph{Qué no cubre.} La formalización no toma como hipótesis los Teoremas~\ref{thm:perfil}
+y~\ref{thm:simkin}: construye la familia y obtiene la cota inferior de primer orden para
+$\log Q(n)$ por una vía propia, que no se reproduce en este artículo. Lean comprueba, pues, los
+enunciados, pero no la demostración que se da en las Secciones~\ref{sec:preliminares}
+a~\ref{sec:corolarios}, que se apoya en el Teorema~\ref{thm:simkin} y en~\cite{Perfil}. Tampoco
+cubre las constantes explícitas del Apéndice~\ref{app:perfil} ni los valores numéricos de la
+Sección~\ref{sec:discusion}.
+
+\emph{Estado de la comprobación.} La compilación que dio la lista de axiomas reutilizó módulos
+compilados previamente. Todavía no se ha hecho una compilación completa desde cero ni una
+comprobación independiente con \texttt{lean4checker}.

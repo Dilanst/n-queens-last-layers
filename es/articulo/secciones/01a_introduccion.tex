@@ -1,0 +1,132 @@
+\section{Introducción}\label{sec:intro}
+
+El problema de las $n$ reinas consiste en colocar $n$ reinas en un tablero de
+$n\times n$ de modo que ninguna ataque a otra. En una solución hay exactamente una
+reina en cada fila y en cada columna, y a lo sumo una en cada diagonal de cualquiera
+de las dos direcciones. Denotamos por $Q(n)$ el número de soluciones.
+
+Consideremos el tablero un paso antes de completarse. Si ya hay $n-1$ reinas que
+no se atacan, quedan una sola fila y una sola columna vacías. Su intersección es
+la única casilla en la que cabría la última reina sin mover las anteriores. La
+colocación se completa si y sólo si ambas diagonales de esa casilla están libres.
+Si elegimos uniformemente la colocación de las $n-1$ reinas, ¿con qué probabilidad
+ocurre esto cuando crece el tablero?
+
+Usaremos tableros pequeños como ejemplos. En las figuras numeramos filas y columnas
+desde cero y escribimos primero la fila. La Figura~\ref{fig:ejemplos} muestra una
+solución de $4\times4$ y otra de $5\times5$.
+
+\input{figuras/ejemplos}
+
+En todo el artículo fijamos el tamaño del tablero y agrupamos las colocaciones según
+el número de reinas que faltan: éste es el sentido de \emph{capa} en el título. Por
+ejemplo, si en la Figura~\ref{fig:ejemplos}(b) retiramos la reina $(4,4)$, obtenemos
+una colocación de la capa $h=1$ de $5\times5$; al colocarla de nuevo pasamos a la
+capa $h=0$.
+
+La misma pregunta tiene sentido cuando faltan $h$ reinas; diremos entonces que la
+colocación tiene $h$ \emph{huecos}. Llamamos \emph{capa $h$}
+al conjunto $\Om_h(n)$ de colocaciones legales de $n-h$ reinas. Sean
+$N_h(n)=|\Om_h(n)|$ y $\mu_h$ la ley uniforme en esa capa cuando contiene al menos
+una colocación. Tomamos una colocación con ley $\mu_h$. Sus $h$ filas vacías y sus
+$h$ columnas vacías se cortan en $h^2$ \emph{cruces vacíos}; cuando hablemos de la posición de los
+huecos nos referiremos a la de estos cruces. Elegimos uno de ellos
+uniformemente. Diremos que
+está \emph{disponible} si podemos añadir allí una reina, lo que equivale a que sus dos
+diagonales estén libres. Para $h>1$, este experimento pregunta por la siguiente
+inserción, aunque todavía queden reinas por colocar.
+
+La probabilidad de una inserción legal se puede expresar mediante los tamaños de dos
+capas consecutivas. Cada colocación de la capa $h-1$ tiene $n-h+1$ reinas que
+podemos retirar para volver a la capa $h$. A la inversa, cada colocación de la
+capa $h$ ofrece $h^2$ cruces para intentar la inserción. Al contar las inserciones
+legales en ambos sentidos (Lema~\ref{lem:interpretacion}) se ve que la fracción media de
+cruces disponibles bajo $\mu_h$ es el cociente
+\begin{equation}\label{eq:fh}
+ f_h(n)=\frac{(n-h+1)\,N_{h-1}(n)}{h^2\,N_h(n)} ,
+\end{equation}
+que tomamos como definición de $f_h(n)$ para $1\le h\le n$. Así, $f_1(n)$ responde
+exactamente a la pregunta sobre la última reina. Demostramos que, para cada $h$ fijo,
+$f_h(n)$ tiende a una misma constante positiva cuando crece el tablero.
+
+Para ver qué se promedia, volvamos a la Figura~\ref{fig:ejemplos}(b) y
+retiremos las reinas $(1,3)$ y $(4,4)$. Al quedar tres reinas en $5\times5$
+tenemos dos huecos y cuatro cruces (Figura~\ref{fig:cruces-vacios}). Las filas
+vacías son $1$ y $4$ y las columnas vacías son $3$ y $4$. La reina de $(3,2)$
+ataca $(1,4)$ por la antidiagonal de suma $5$, y $(4,3)$ por la diagonal de
+diferencia $1$. Los otros dos cruces admiten una reina.
+
+\input{figuras/cruces}
+
+Escribimos $X_h(P)$ para el número de cruces disponibles en una colocación $P$.
+En el ejemplo $X_2(P)=2$, de modo que un cruce elegido al azar en este tablero
+admite una reina con probabilidad $2/4$. Para obtener $f_2(5)$ hay que promediar
+esa fracción sobre todas las colocaciones legales de tres reinas en $5\times5$.
+
+\subsection{Resultados principales}
+
+Para identificar la constante, escribimos $x=h/n$ para la fracción de huecos. Al crecer $n$
+con $h$ fijo, $x$ se acerca a cero. Esto lleva a estudiar el extremo de tablero lleno del perfil
+variacional: la densidad $\nu_x$ en $[0,1]^2$, de masa $1-x$, que maximiza el funcional de
+entropía de la Sección~\ref{subsec:variacional}. Para $x\in[0,1/2]$ tiene la forma
+\[
+ \nu_x(r,c)=b_x\,r_{R,x}(r)\,r_{C,x}(c)\,u_{D,x}(r-c)\,u_{A,x}(r+c),
+ \qquad \int_0^1 r_{R,x}=\int_0^1 r_{C,x}=1,
+\]
+donde $r_{R,x}$ y $r_{C,x}$ describen los perfiles reescalados de filas y columnas
+vacías, $u_{D,x}$ y $u_{A,x}$ las \emph{vacancias} de diagonales y antidiagonales (la densidad
+de las que quedan vacías), y $b_x>0$ es la constante de normalización. Las propiedades del perfil se
+demuestran en~\cite{Perfil}. Definimos
+\begin{equation}\label{eq:F}
+ F(x)=\frac{1-x}{b_x}=\int_{[0,1]^2}r_{R,x}(r)\,r_{C,x}(c)\,u_{D,x}(r-c)\,u_{A,x}(r+c)\,dr\,dc .
+\end{equation}
+Heurísticamente, $F(x)$ es la probabilidad de que un cruce vacío típico tenga libres sus dos
+diagonales cuando hay $xn$ huecos: la posición del cruce se distribuye según $r_{R,x}r_{C,x}$ y
+cada diagonal está vacía con densidad $u_{D,x}$ o $u_{A,x}$. Para las últimas capas la constante
+relevante es $F(0)=1/b_0$.
+
+\begin{teorema}[Ley de las últimas capas]\label{thm:limite}
+Para cada $h\ge1$ fijo,
+\[
+ \lim_{n\to\infty}f_h(n)=F(0)=\frac1{b_0}\in(0,\infty).
+\]
+En particular, $\max_{1\le h\le K}|f_h(n)-F(0)|\to0$ para cada $K$ fijo.
+\end{teorema}
+
+Cada factor $f_j(n)$ relaciona dos capas consecutivas. Al multiplicar esas relaciones
+desde $j=1$ hasta $j=h$, aparece el número de soluciones completas en el denominador.
+
+\begin{corolario}[Cociente entre capas]\label{cor:cociente}
+Para cada $h\ge1$ fijo,
+\[
+ \frac{N_h(n)}{Q(n)}=\frac{(n)_h}{(h!)^2\prod_{j=1}^hf_j(n)}
+ \sim\frac{n^h}{(h!)^2F(0)^h},\qquad (n)_h=n(n-1)\cdots(n-h+1).
+\]
+\end{corolario}
+
+El paso de la capa $h$ a la capa $h-1$ lleva la fracción de huecos de $h/n$ a
+$(h-1)/n$. El corolario siguiente compara cada $f_h(n)$ con el valor de $F$
+en el punto medio, $(h-\tfrac12)/n$.
+
+\begin{corolario}[Las capas fijas no dejan constante residual]\label{cor:capas}
+Para cada $K$ fijo,
+\[
+ \sum_{h=1}^K\log\frac{f_h(n)}{F\bigl((h-\tfrac12)/n\bigr)}\longrightarrow0,
+\]
+y lo mismo vale si $F((h-\tfrac12)/n)$ se sustituye por $F(h/n)$.
+\end{corolario}
+
+El número $K$ se fija antes de que crezca el tablero. Identificar el término
+constante de $\log Q(n)$ exigiría controlar además las capas cuyo índice crece
+con $n$. Para las dos últimas capas damos además una prueba directa de una cota inferior
+explícita para $\liminf_nf_h(n)$, que no necesita la concentración de la cuenta inversa
+(Sección~\ref{sec:inversa}).
+
+\begin{teorema}[Cota inferior con constante explícita]\label{thm:positiva}
+Sea $\kappa\in(0,1]$ la cota inferior de las vacancias diagonales $u_{D,x}$ y $u_{A,x}$ del perfil
+(Teorema~\ref{thm:perfil}) y $a_0=(\kappa/2)^4/16$. Entonces
+\[
+ \liminf_{n\to\infty}f_h(n)\ge\frac{a_0}{2}>0,\qquad h=1,2.
+\]
+En particular, existen $c>0$ y $n_0$ tales que $f_1(n),f_2(n)\ge c$ para todo $n\ge n_0$.
+\end{teorema}

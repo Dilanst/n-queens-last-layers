@@ -1,0 +1,67 @@
+\subsection{Traslaciones y regularidad Lipschitz uniforme}
+
+Se extienden $u_D,u_A$ por uno fuera de sus intervalos; el empalme es continuo porque sus fibras
+extremas tienen longitud cero. Para $s\in\mathbb R$ se define
+\[
+ \widehat r_R(s)=\Bigl[x+b\int_0^1r_C(c)\,\widehat u_D(s-c)\,\widehat u_A(s+c)\,dc\Bigr]^{-1}.
+\]
+Como $\int r_C=1$, el denominador está entre $b_-\kappa^2$ y $1+b_+$, así que
+$\widehat r_R\in[m_0,\overline K]$, y coincide con $r_R$ en $[0,1]$. Para una traslación $t$ sean
+$r_R^t(r)=\widehat r_R(r+t)$, $r_C^t=r_C$, $u_D^t(d)=\widehat u_D(d+t)$,
+$u_A^t(s)=\widehat u_A(s+t)$ y $v^t=\log(r_R^t,r_C^t,u_D^t,u_A^t)$. Con
+$e^t=\mathcal G_{x,b}(v^t)$ se tiene
+\[
+ e_R^t=0,\qquad |e_C^t|,|e_D^t|,|e_A^t|\le2\overline B|t|,\qquad
+ \|e^t\|_{\mathcal H}\le2\sqrt5\,\overline B|t| .
+\]
+En efecto, la definición de $\widehat r_R$ da exactamente la ecuación de filas. En la de
+columnas se cambia $r$ por $r+t$: los dominios difieren en dos tiras de longitud total a lo sumo
+$2|t|$, con densidad extendida a lo sumo $\overline B$. En diagonales y antidiagonales se cambia
+la misma variable, y el dominio original de la diagonal trasladada difiere en las mismas tiras;
+fuera del intervalo diagonal la fibra original es vacía y la vacancia extendida vale uno. Todos
+los segmentos conservan las cotas. Como $v_C^t=v_C$, el Lema~\ref{lem:coercividad} da
+$\|v^t-v\|_{\mathcal H}\le2\sqrt5\,\overline B|t|/\lambda_c$.
+
+\emph{De la norma $L^2$ a la norma uniforme.} En una fibra de $f$, cada coordenada de las otras
+familias avanza con pendiente de módulo uno o dos. Telescopar tres factores acotados por
+$\overline K$, Cauchy--Schwarz y $|e^\alpha-e^\beta|\le\overline K|\alpha-\beta|$ dan
+$|J_f(v^t)-J_f(v)|\le\sqrt3\,\overline K^3\|v^t-v\|_{\mathcal H}$. Los denominadores de las
+ecuaciones de filas y columnas son $x+bJ_f\ge b_-m_0\kappa^2$, y los diagonales son al menos uno.
+Con
+\[
+ d_0=\min\{1,b_-m_0\kappa^2\},\qquad
+ L_*=\frac{2\overline B}{d_0}+\frac{2\sqrt{15}\,b_+\overline K^3\overline B}{d_0^2\lambda_c},
+\]
+y escribiendo $y_f$ para el factor normalizado correspondiente,
+$y_f^t(d_f+bJ_f(v^t))=1+e_f^t$ e $y_f(d_f+bJ_f(v))=1$, con $d_{R,C}=x$ y $d_{D,A}=1$. Comparando
+los recíprocos se obtiene $|y_f^t-y_f|\le L_*|t|$. La traslación de filas controla $R$, $D$ y
+$A$; la construcción simétrica, que traslada $C$ y mantiene $R$ idéntica, controla $C$.
+
+\begin{teorema}[Regularidad uniforme hasta el tablero lleno; {\cite[Teorema~7.7]{Perfil}}]\label{thm:lipschitz}
+Los perfiles óptimos~\cite[Teorema~3.1]{Perfil}, reescalados y normalizados por $\int r_R=\int r_C=1$, se
+prolongan continuamente a $x=0$ y satisfacen, con constantes independientes de $x\in[0,1/2]$,
+\[
+ \|r_R\|_\infty,\|r_C\|_\infty\le\overline K,\quad \|u_D\|_\infty,\|u_A\|_\infty\le1,\quad
+ \Lip(r_R,r_C,u_D,u_A)\le L_*,
+\]
+\[
+ \|\nu\|_\infty\le\overline B,\quad \Lip_\infty\nu\le6b_+\overline K^2L_*,\quad
+ \|\Theta_x\|_\infty\le\overline K^2,\quad \Lip_\infty\Theta_x\le2\overline KL_*,
+\]
+donde $\Theta_x(r,c)=r_R(r)r_C(c)$.
+\end{teorema}
+
+\begin{proof}
+La continuidad en el extremo es la Proposición~5.3 de~\cite{Perfil}. La prueba anterior funciona también en ese límite;
+alternativamente, las cotas Lipschitz pasan a él por convergencia uniforme. Para $\nu$,
+telescopar los cuatro factores cuesta a lo sumo
+$b_+\overline K^2L_*(|\Delta r|+|\Delta c|+|\Delta r-\Delta c|+|\Delta r+\Delta c|)
+\le6b_+\overline K^2L_*\|\Delta(r,c)\|_\infty$; el producto de los dos factores de $\Theta_x$
+cuesta $2\overline KL_*$.
+\end{proof}
+
+La continuidad en el parámetro $x$ es uniforme en el espacio
+(\cite[Proposiciones~5.3 y~7.5]{Perfil}), y \cite[Teorema~5.4]{Perfil} da incluso una rama
+analítica cerca de cero en el espacio de funciones continuas. No se afirma regularidad $C^1$
+espacial, y la acotación del problema continuo no demuestra por sí sola ninguna estimación
+discreta.

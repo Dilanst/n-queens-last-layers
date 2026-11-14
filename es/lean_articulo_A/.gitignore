@@ -1,0 +1,6 @@
+.lake/
+build/
+*.olean
+*.ilean
+axiomas.txt
+lean4checker.txt

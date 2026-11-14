@@ -1,0 +1,23 @@
+\section{Consecuencias para un número fijo de capas}\label{sec:corolarios}
+
+El límite de $f_h(n)$ se obtuvo comparando dos capas consecutivas. Para pasar de la capa
+$h$ al tablero lleno basta multiplicar los cocientes entre capas sucesivas.
+La misma finitud permite sumar sus errores logarítmicos.
+
+\begin{proof}[Demostración del Corolario~\ref{cor:cociente}]
+Por la definición~\eqref{eq:fh}, $N_j/N_{j-1}=(n-j+1)/(j^2f_j)$ para cada $j\ge1$. Multiplicando
+para $j=1,\dots,h$,
+\[
+ \frac{N_h}{Q}=\prod_{j=1}^h\frac{n-j+1}{j^2f_j}=\frac{(n)_h}{(h!)^2\prod_{j=1}^hf_j},
+\]
+y el Teorema~\ref{thm:limite} da $\prod_{j\le h}f_j\to F(0)^h>0$ y $(n)_h\sim n^h$. Sólo se ha
+iterado la definición exacta de $f_h$.
+\end{proof}
+
+\begin{proof}[Demostración del Corolario~\ref{cor:capas}]
+Para cada $h\le K$, $f_h(n)\to F(0)$ por el Teorema~\ref{thm:limite}, y
+$F((h-\frac12)/n)\to F(0)$ y $F(h/n)\to F(0)$ por la continuidad de $F$ en cero
+(Teorema~\ref{thm:perfil}). Como $F(0)>0$, cada uno de los $K$ sumandos tiende a cero.
+\end{proof}
+
+La prueba suma sólo $K$ términos y no puede invertir los límites $K\to\infty$ y $n\to\infty$.

@@ -1,0 +1,109 @@
+\section{Preliminares}\label{sec:preliminares}
+
+\subsection{Notación}
+
+Indexamos filas y columnas por $\{0,\dots,n-1\}$. La casilla $(r,c)$ está en la fila $r$, la
+columna $c$, la diagonal $r-c\in\{-(n-1),\dots,n-1\}$ y la antidiagonal
+$r+c\in\{0,\dots,2n-2\}$. Llamamos \emph{líneas} a filas, columnas, diagonales y antidiagonales,
+y $R,C,D,A$ a sus cuatro familias, con $n$, $n$, $2n-1$ y $2n-1$ elementos. El tablero es así un
+hipergrafo $4$-partito y $4$-uniforme cuyos vértices son las líneas y cuyas aristas son las
+casillas, cada una con sus cuatro líneas. Dos líneas distintas están juntas en a lo sumo una
+casilla (\emph{codegrado uno}). Una colocación legal es un emparejamiento de este hipergrafo.
+
+Para $P\in\Om_h(n)$, $R_\vac(P)$ y $C_\vac(P)$ son las $h$ filas y las $h$ columnas vacías, y
+$X_h(P)$ es el número de cruces vacíos disponibles. Para coordenadas continuas usamos los centros
+$\bar r=(r+\frac12)/n$, $\bar c=(c+\frac12)/n$; una diagonal o antidiagonal recibe la coordenada
+que inducen los centros de sus casillas, $\bar r-\bar c\in[-1,1]$ o $\bar r+\bar c\in[0,2]$.
+
+Salvo indicación, $n\to\infty$ con $h$ (o $K$) fijo; $c,C$ denotan constantes positivas que
+pueden cambiar de una aparición a otra y cuya dependencia de parámetros fijos se indica con
+subíndices. Para leyes $\mu,\nu$ en un conjunto finito,
+$\KL{\mu}{\nu}=\sum\mu\log(\mu/\nu)$ es la entropía relativa (infinita si
+$\mu\not\ll\nu$). Usaremos que es no negativa y que no aumenta al aplicar una misma función a
+ambas leyes (procesamiento de datos)~\cite{CoverThomas}.
+
+\subsection{Interpretación de \texorpdfstring{$f_h$}{fh}}
+
+En la Figura~\ref{fig:cruces-vacios} contamos los cruces en una colocación
+particular. Al sumar el mismo contador sobre toda la capa obtenemos la
+identidad siguiente.
+
+\begin{lema}\label{lem:interpretacion}
+Para $1\le h\le n$, $\E_{\mu_h}[X_h]=h^2f_h(n)$. En particular, $f_1(n)$ es la probabilidad de
+que una colocación uniforme de $\Om_1(n)$ pueda completarse a una solución.
+\end{lema}
+
+\begin{proof}
+Contamos los pares $(P,P')$ con $P\in\Om_h$, $P'\in\Om_{h-1}$ y $P\subset P'$. Cada $P'$ tiene
+$n-h+1$ reinas y al retirar cualquiera de ellas se obtiene un $P$ distinto: hay
+$(n-h+1)N_{h-1}$ pares. Recíprocamente, añadir una reina a $P$ da una colocación legal si y
+sólo si la reina ocupa un cruce vacío disponible: hay $X_h(P)$ extensiones. Así
+$N_h\E_{\mu_h}X_h=(n-h+1)N_{h-1}$, que es la identidad buscada. Si $h=1$, $X_1\in\{0,1\}$ y
+$X_1(P)=1$ exactamente cuando $P$ se completa.
+\end{proof}
+
+\subsection{El problema variacional y el perfil}\label{subsec:variacional}
+
+La doble cuenta anterior es exacta para cada tamaño. Para estudiar su límite
+necesitamos una descripción del tablero que conserve las restricciones de fila,
+columna y diagonales al pasar a coordenadas continuas.
+
+Para una masa $\rho\in(0,1]$, una densidad \emph{admisible} es una función medible
+$\nu\ge0$ en $[0,1]^2$ con $\int\nu=\rho$ cuyas proyecciones (o marginales) sobre las cuatro familias,
+\[
+ m_R(r)=\int_0^1\nu(r,c)\,dc,\quad m_C(c)=\int_0^1\nu(r,c)\,dr,\quad
+ m_D(d)=\int_{r-c=d}\nu,\quad m_A(s)=\int_{r+c=s}\nu,
+\]
+no exceden uno (las dos últimas integran a lo largo de la fibra, parametrizada por $r$). Sus
+vacancias son $u_f=1-m_f$ en $I_R=I_C=[0,1]$, $I_D=[-1,1]$, $I_A=[0,2]$; así
+$\int u_R=\int u_C=1-\rho$ y $\int u_D=\int u_A=2-\rho$. El funcional de entropía es
+\[
+ s[\nu]=-3\rho-\int\nu\log\nu-\sum_{f\in\{R,C,D,A\}}\int_{I_f}u_f\log u_f ,
+\]
+y $s^*(\rho)$ es su supremo sobre las densidades admisibles de masa $\rho$; ponemos
+$s_1=s^*(1)$. Para $0<\rho<1$ el óptimo $\nu$ es positivo y satisface la ecuación de Euler
+$\nu=\lambda_\rho\,u_Ru_Cu_Du_A$, con una constante $\lambda_\rho>0$, la \emph{actividad}~\cite[Teorema~3.1 y Lema~3.3]{Perfil}.
+
+Con $x=1-\rho$ se reescala: $r_R=u_R/x$, $r_C=u_C/x$ y $b_x=\lambda_\rho x^2$, la actividad reescalada. Entonces
+\begin{equation}\label{eq:perfil}
+ \nu=b_x\,r_Rr_Cu_Du_A,\qquad \int r_R=\int r_C=1,
+\end{equation}
+y las ecuaciones de Euler se escriben
+\begin{equation}\label{eq:euler}
+ r_R=\frac1{x+b_xJ_R},\quad r_C=\frac1{x+b_xJ_C},\quad
+ u_D=\frac1{1+b_xJ_D},\quad u_A=\frac1{1+b_xJ_A},
+\end{equation}
+donde cada $J_f$ integra a lo largo de la fibra de $f$ el producto de los otros tres factores;
+por ejemplo $J_R(r)=\int_0^1r_C(c)u_D(r-c)u_A(r+c)\,dc$. En efecto, la masa de la fila $r$ es
+$1-xr_R(r)=b_xr_R(r)J_R(r)$. Integrando~\eqref{eq:perfil} se obtiene la expresión~\eqref{eq:F}
+de $F(x)=(1-x)/b_x$. Escribimos $\nu_x$ y $(b_x,r_{R,x},r_{C,x},u_{D,x},u_{A,x})$ cuando haga
+falta indicar $x$; el subíndice es entonces la fracción de huecos, no la masa
+(en~\cite{Perfil} las densidades se indexan por la masa: nuestra $\nu_x$ es allí $\nu_{1-x}$). La única
+excepción es la densidad de masa uno, que corresponde a $x=0$ y se denota $\nu_1$, como
+en~\cite{Perfil}.
+
+\begin{teorema}[El perfil cerca del tablero lleno~\cite{Perfil}]\label{thm:perfil}
+Existen constantes $0<\kappa\le1$, $0<\underline r\le M<\infty$, $0<b_-\le b_+<\infty$ y
+$L_*<\infty$ tales que, para todo $x\in(0,1/2]$, el perfil óptimo de masa $1-x$~\cite[Teorema~3.1]{Perfil}, reescalado como
+en~\eqref{eq:perfil}, satisface~\eqref{eq:euler} y:
+\begin{enumerate}[(a)]
+\item $b_-\le b_x\le b_+$, $\ \underline r\le r_{R,x},r_{C,x}\le M$ y
+$\kappa\le u_{D,x},u_{A,x}\le1$;
+\item $r_{R,x},r_{C,x},u_{D,x},u_{A,x}$ son Lipschitz en sus intervalos con constante a lo sumo
+$L_*$, y $\nu_x$ es acotada y Lipschitz, uniformemente en $x$;
+\item cuando $x\downarrow0$ convergen uniformemente a límites $(b_0,r_R,r_C,u_D,u_A)$ que
+satisfacen~\eqref{eq:euler} con $x=0$ y las mismas cotas.
+\end{enumerate}
+En particular, $\nu_1=b_0r_Rr_Cu_Du_A$ es una densidad continua en $[0,1]^2$, de masa uno, con
+marginales de filas y columnas iguales a uno y vacancias diagonales $u_D=1-m_D$ y $u_A=1-m_A$, de
+modo que $\int u_D=\int u_A=1$; $\nu_1$ es el único maximizador de $s$ entre las densidades
+admisibles de masa uno, así que $s[\nu_1]=s^*(1)=s_1$; y $F$ es continua en $0$ con
+$F(0)=1/b_0>0$.
+\end{teorema}
+
+Las afirmaciones (a) y (c) son las Proposiciones~4.2, 5.2 y~5.3 de~\cite{Perfil}; que el
+límite $\nu_1$ sea el único maximizador de masa uno es su Proposición~5.1 junto con la~5.2; la
+regularidad Lipschitz uniforme (b) es su Teorema~7.7, y la continuidad de $F$ en $0$, con
+$F(0)=1/b_0$, es su Teorema~8.1. El Apéndice~\ref{app:perfil} resume esas pruebas y da valores
+explícitos de las constantes. No se usa ninguna identificación del perfil con leyes discretas de colocaciones:
+el Teorema~\ref{thm:perfil} es un enunciado sobre el problema continuo.

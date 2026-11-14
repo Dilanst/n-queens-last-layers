@@ -1,0 +1,85 @@
+\section{Regularidad del perfil hasta el tablero lleno}\label{app:perfil}
+
+Este apéndice resume la prueba del Teorema~\ref{thm:perfil}. Las pruebas completas están
+en~\cite{Perfil}: la existencia del óptimo y las ecuaciones de Euler, en su Sección~3; las cotas
+bilaterales, en la Sección~4; la continuidad hasta $x=0$, en la Sección~5, y la regularidad
+Lipschitz uniforme, en la Sección~7. Escribimos $\ell_R(r,c)=r$, $\ell_C=c$,
+$\ell_D=r-c$, $\ell_A=r+c$, y $M_f\nu$ para la proyección de $\nu$ sobre la familia $f$.
+Para cotejar con~\cite{Perfil}: lo que aquí se escribe $M_f$, $J_f$ (integrales de fibra del
+sistema reescalado), $\phi$ (direcciones), $e^t$ (residuos) y $d_f$ se escribe allí $T_f$,
+$\Phi_f$, $w$, $\eta^t$ y $a_f$, y allí los límites en $x=0$ llevan el subíndice~$0$
+($r_{R,0}$, etc.). En~\cite{Perfil}, $J_f$ designa la integral de fibra sin reescalar.
+
+\subsection{Sistema reescalado y cotas}
+
+Para $0<x\le1/2$, el perfil reescalado satisface~\eqref{eq:perfil}--\eqref{eq:euler} con
+$b=b_x=(1-x)/F(x)$; las diagonales conservan sus vacancias, sin dividir por $x$. Con
+\[
+ \kappa_0=\tfrac1{10},\quad M_0=\tfrac65,\quad
+ L_0=\tfrac2{\kappa_0}\bigl\{M_0+e^{-1}+4\log(2/\kappa_0)\bigr\}+4\log(2/\kappa_0),
+\]
+\[
+ M=2e^{L_0},\quad b_-=\tfrac12,\quad b_+=e^{L_0}M^2,\quad \kappa=\frac1{1+b_+M^2},
+\]
+se tiene, para todo $0<x\le1/2$ \cite[Proposición~4.2]{Perfil},
+\begin{equation}\label{eq:cotas_perfil}
+ b_-\le b\le b_+,\qquad \frac1{1+b_+}\le r_R,r_C\le M,\qquad \kappa\le u_D,u_A\le1,
+\end{equation}
+y el límite en $x=0$ hereda las mismas cotas. Así, en el Teorema~\ref{thm:perfil},
+$\underline r=1/(1+b_+)$. Son constantes analíticas muy conservadoras, sin utilidad numérica.
+
+\emph{Cómo se obtiene la cota $\kappa$ de las vacancias diagonales, sin circularidad.} La densidad
+$1-\frac15\cos(2\pi r)\cos(2\pi c)$ es admisible, de masa uno, con marginales de filas y columnas
+iguales a uno y marginales diagonales a lo sumo $9/10$. Comparar la ecuación de Euler con su
+múltiplo de masa $\rho$ acota $\int-\log u_D+\int-\log u_A$ por $L_0$. Jensen, la normalización
+geométrica e $\int r_R=\int r_C=1$ dan las cotas de $b,r_R,r_C$, y finalmente~\eqref{eq:euler}
+da $u_D,u_A\ge\kappa$. No se usa ninguna hipótesis sobre el modelo discreto.
+
+Para las traslaciones fijamos
+\begin{gather*}
+ m_0=\min\{\kappa,(1+b_+)^{-1}\},\qquad \overline K=\max\{1,M,(b_-\kappa^2)^{-1}\},\\
+ \overline B=b_+\overline K^2,\qquad c_0=b_-m_0^4,\qquad \lambda_c=\min\{c_0/2,\kappa/5\}.
+\end{gather*}
+Los factores de filas y columnas y sus extensiones usadas abajo estarán en $[m_0,\overline K]$,
+y los diagonales en $[\kappa,1]$; toda densidad del segmento logarítmico estará entre $c_0$ y
+$\overline B$.
+
+\subsection{Coercividad en las direcciones de traslación}
+
+En $\mathcal H=\bigoplus_fL^2(I_f)$ escribimos $v=(\log r_R,\log r_C,\log u_D,\log u_A)$ y
+\[
+ \mathcal E_{x,b}(v)=\sum_{f=R,C}\int(xe^{v_f}-v_f)+\sum_{f=D,A}\int(e^{v_f}-v_f)
+ +b\int_{[0,1]^2}\exp\Bigl(\sum_fv_f\circ\ell_f\Bigr).
+\]
+Con $\nu_v=b\exp(\sum_fv_f\circ\ell_f)$, su gradiente es
+$\mathcal G_{R,C}=xe^{v_{R,C}}-1+M_{R,C}\nu_v$ y $\mathcal G_{D,A}=e^{v_{D,A}}-1+M_{D,A}\nu_v$. El
+perfil satisface $\mathcal G_{x,b}(v)=0$, también en $x=0$ por convergencia uniforme. Si
+$S_\phi=\sum_f\phi_f\circ\ell_f$, el hessiano cumple
+\[
+ \langle\phi,D\mathcal G_{x,b}(v)\phi\rangle=x\sum_{R,C}\int e^{v_f}\phi_f^2+\sum_{D,A}\int e^{v_f}\phi_f^2
+ +\int\nu_vS_\phi^2\ \ge\ \kappa\bigl(\|\phi_D\|_2^2+\|\phi_A\|_2^2\bigr)+c_0\|S_\phi\|_2^2 ,
+\]
+usando las cotas anteriores, también a lo largo de segmentos.
+
+\begin{lema}[Coercividad fijando una familia transversal]\label{lem:coercividad}
+Si $\phi_C=0$, o si $\phi_R=0$, entonces $\langle\phi,D\mathcal G_{x,b}(v)\phi\rangle\ge\lambda_c\|\phi\|_{\mathcal H}^2$.
+Por consiguiente, si $\widetilde v_C=v_C$ y las cotas valen a lo largo del segmento,
+\[
+ \|\widetilde v-v\|_{\mathcal H}\le\|\mathcal G_{x,b}(\widetilde v)-\mathcal G_{x,b}(v)\|_{\mathcal H}/\lambda_c ,
+\]
+y lo mismo si se fija $R$ en lugar de $C$.
+\end{lema}
+
+\begin{proof}
+Con $\phi_C=0$, $\phi_R\circ\ell_R=S_\phi-\phi_D\circ\ell_D-\phi_A\circ\ell_A$. Levantar $R$ al cuadrado es una
+isometría y levantar $D$ o $A$ no aumenta la norma $L^2$, pues sus fibras tienen longitud
+paramétrica a lo sumo uno. De $|a-b-c|^2\le2a^2+4(b^2+c^2)$ resulta
+$\|\phi\|_{\mathcal H}^2\le2\|S_\phi\|_2^2+5(\|\phi_D\|_2^2+\|\phi_A\|_2^2)$, lo que con la cota del hessiano
+da la coercividad. Se integra el hessiano en el segmento logarítmico y se aplica
+Cauchy--Schwarz. El caso $\phi_R=0$ es simétrico.
+\end{proof}
+
+En $x=0$, $\phi=(1,-1,0,0)$ anula la forma cuadrática, de modo que la estimación no vale para
+variaciones arbitrarias. La normalización $\int r_R=\int r_C=1$ fija la representación de la
+solución, pero igualdad de masas no equivale a ortogonalidad al modo neutro; por eso la prueba
+siguiente mantiene $C$ idéntica punto a punto al trasladar $R$, y viceversa.

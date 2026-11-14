@@ -1,0 +1,93 @@
+\section{La cuenta inversa: dieciséis patrones}\label{sec:inversa}
+
+Para obtener el valor del límite necesitamos evaluar el denominador de la doble
+cuenta. Vista desde la capa con una reina más, una reparación se reconoce por el
+par de reinas que dejó en el tablero. Por eso el contador inverso sigue pares y
+su normalización es de orden $n^2$.
+
+En esta sección $0\le h\le K$ (la capa cero está incluida), el proceso es $\QQ_h$ y $w$ es una
+función continua y acotada en $[0,1]^2$, evaluada en los centros de las raíces. Se estudia
+$I_w$ sobre la colocación final.
+
+\subsection{Patrones y compensador explícito}
+
+Escribimos un par ordenado compatible como $e_1=(r,j)$, $e_2=(i,c)$: se inserta $e^\star=(i,j)$
+y se crea la raíz $o=(r,c)$. Sus ocho líneas son distintas, y las dos diagonales $d_1,d_2$ de
+$e^\star$ son distintas de ellas; sólo se suman pares compatibles. Para
+$L\subseteq\{1,2\}$ y $J\subseteq\{1,2\}$ definimos
+\[
+ Z_{L,J}=\prod_{g\in L}O_{e_g}\prod_{g\notin L}\chi_{e_g}\prod_{i\in J}\chi_{d_i}\prod_{i\notin J}V_{d_i}.
+\]
+Son dieciséis patrones por par; sea $\ell=|L|$. Para $z_t\ge\zeta$, con
+$\alpha=(Nz_t)^{-1}$, $\beta_i=p_{d_i}/(Nz_t)$ y $k_g=\pi_{e_g}/(Nz_t^4)$, el generador ideal es
+\[
+ \cL Z_{L,J}=-\bigl[4(2-\ell)+|J|\bigr]\alpha\,Z_{L,J}-\sum_{i\notin J}\beta_i\,Z_{L,J\cup\{i\}}
+ +\sum_{g\in L}k_g\,Z_{L\setminus\{g\},J}.
+\]
+Un nacimiento no borra las otras marcas, por la geometría anterior; la parte real de una muerte
+de $V$ exige la marca activa y por eso aumenta $J$. En la región~\eqref{eq:regularidad}, con tolerancia $\eps n$, el
+resto respecto del generador verdadero satisface
+\[
+ |R_{L,J}|\le C_\zeta\Bigl[(\eps/n+n^{-2})Z_{L,J}+(\eps/n^2+n^{-3})\sum_{g\in L}Z_{L\setminus\{g\},J}\Bigr];
+\]
+la cota $O(n^{-2})$ de los borrados dobles incluye tanto las reales, de codegrado uno, como las
+virtuales cartesianas.
+
+Fijamos un horizonte determinista $T\le T_\zeta$ y ponemos $\Delta y=(T-t)/N$,
+$\theta_g=\pi_{e_g}\Delta y/z_t^4$ y $\xi_i=p_{d_i}\Delta y/z_t$.
+
+\begin{lema}[Compensador]\label{lem:compensador}
+La función
+\[
+ \Phi^{(e_1,e_2)}_t=\bigl(O_{e_1}+\theta_1\chi_{e_1}\bigr)\bigl(O_{e_2}+\theta_2\chi_{e_2}\bigr)
+ \bigl(V_{d_1}-\xi_1\chi_{d_1}\bigr)\bigl(V_{d_2}-\xi_2\chi_{d_2}\bigr)
+\]
+resuelve $\partial_t\Phi+\cL\Phi=0$ con valor terminal
+$O_{e_1}O_{e_2}V_{d_1}V_{d_2}$ en $t=T$. Sus coeficientes
+$c_{L,J}=\prod_{g\notin L}\theta_g\prod_{i\in J}(-\xi_i)$ en la base $Z_{L,J}$ satisfacen
+$|c_{L,J}|\le C_\zeta n^{-(2-\ell)}$, $|\partial_tc_{L,J}|\le C_\zeta n^{-(3-\ell)}$ y
+$|\partial_t^2c_{L,J}|\le C_\zeta n^{-(4-\ell)}$.
+\end{lema}
+
+\begin{proof}
+El generador ideal es la suma de operadores que actúan sobre una sola de las diez marcas
+distintas, de modo que basta que cada factor resuelva su propia ecuación hacia atrás. Para
+$O_{e_g}+\theta_g\chi_{e_g}$: $\cL O_{e_g}=k_g\chi_{e_g}$ y $\cL\chi_{e_g}=-4\alpha\chi_{e_g}$, y
+$\theta_g'+k_g-4\alpha\theta_g=0$ porque $\partial_t\Delta y=\partial_tz_t=-1/N$. Para
+$V_{d_i}-\xi_i\chi_{d_i}$: $\cL V_{d_i}=-\beta_i\chi_{d_i}$ y $\cL\chi_{d_i}=-\alpha\chi_{d_i}$, y
+$\xi_i'+\beta_i-\alpha\xi_i=0$. En $t=T$, $\Delta y=0$. Las cotas de los coeficientes siguen de
+$\pi_{e_g}=O(n^{-1})$ y $p_{d_i}=O(1)$.
+\end{proof}
+
+Multiplicando cada par por $w(\bar r,\bar c)$ y sumando, el compensador agregado vale en $t=0$,
+donde $\chi\equiv V\equiv1$ y $O\equiv0$,
+\[
+ \Phi_0=y_T^2\sum_{(e_1,e_2)}\pi_{e_1}\pi_{e_2}\bigl(1-y_Tp_{d_1}\bigr)\bigl(1-y_Tp_{d_2}\bigr)
+ w(\bar r,\bar c),\qquad y_T=T/N .
+\]
+De nuevo es la solución de un sistema lineal, no una factorización de la ley real.
+
+\subsection{Concentración}
+
+\begin{lema}\label{lem:conc_inversa}
+Para toda tolerancia fija $\gamma>0$,
+$\Pr\{|I_w(T)-\Phi_0|>\gamma n^2,\ T<\sigma'\}\le e^{-c_{\zeta,\gamma,w}n}$, y la unión sobre
+$O(n)$ horizontes conserva la cola.
+\end{lema}
+
+\begin{proof}
+Para $\ell=0,1,2$, la suma de los indicadores con $\ell$ aristas ocupadas es $O(n^{4-\ell})$: hay
+a lo sumo $n$ reinas por arista ocupada y $n^2$ casillas posibles por arista disponible. En un paso, la
+suma de cambios absolutos es $O(n^{3-\ell})$: una diagonal fija corta cada fila y cada columna
+una sola vez, lo que afecta a $O(n)$ pares con dos aristas ocupadas, $O(n^2)$ con una y $O(n^3)$
+con ninguna; para los indicadores $\chi_{e_g}$ se usa que cada línea incide en $O(n)$ casillas,
+y los nacimientos dan los mismos órdenes. Los coeficientes $n^{-(2-\ell)}$ dan saltos $O(n)$.
+Los errores de muerte suman $O(\eps n+1)$ por paso. En un nacimiento hay que contar el estado
+fuente, no el destino: $n^{5-\ell}\,n^{-(2-\ell)}(\eps/n^2+n^{-3})=O(\eps n+1)$. Los segundos
+incrementos temporales y los términos mixtos suman $O(1)$ por paso, por las cotas de derivadas
+del Lema~\ref{lem:compensador} y la cuenta de cambios. Se congelan estado y tiempo en la parada
+$\sigma'$ (Lema~\ref{lem:conc_directa}), incluida la transición de salida, cuya probabilidad
+hasta $T_\zeta$ es $e^{-cn}$. La deriva acumulada es $O_\zeta(\eps n^2+n)$ y los saltos de la
+martingala son $O_\zeta(n)$ durante $O(n)$ pasos; Azuma, eligiendo primero la tolerancia y
+después $\eps$, da la cota. No hace falta unir eventos sobre las $n^4$ parejas.
+\end{proof}

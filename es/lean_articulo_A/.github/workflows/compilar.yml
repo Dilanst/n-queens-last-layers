@@ -1,0 +1,36 @@
+# Compilación completa desde cero en Linux y comprobación de los axiomas del teorema final.
+# Se ejecuta en cada envío al repositorio y también a mano (pestaña Actions).
+name: Compilación Lean
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  compilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      # Instala Lean 4.19.0 (según lean-toolchain), descarga Mathlib ya compilado en la
+      # revisión fijada en lakefile.lean y compila los 659 módulos del proyecto.
+      - name: Compilar
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+
+      - name: Axiomas del teorema final
+        run: |
+          lake env lean Comprobacion.lean 2>&1 | tee axiomas.txt
+          grep -q "depends on axioms: \[propext, Classical.choice, Quot.sound\]" axiomas.txt
+
+      - name: Guardar el registro y el manifiesto de dependencias
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: registro-compilacion
+          path: |
+            axiomas.txt
+            lake-manifest.json

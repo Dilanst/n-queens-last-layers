@@ -1,0 +1,25 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[tablero A]
+ \cuadriculaA{5}
+ \foreach \rA in {1,4}{\fill[colorAro!7] (0,\rA) rectangle ++(5,1);}
+ \foreach \cA in {3,4}{\fill[colorAro!7] (\cA,0) rectangle ++(1,5);}
+ \foreach \rA in {1,4}{\foreach \cA in {3,4}{\fill[colorFondo] (\cA,\rA) rectangle ++(1,1);}}
+ \trazarRejillaA{5}
+ \ataqueA{3}{2}{1}{4}\ataqueA{3}{2}{4}{3}
+ \reinaA{0}{1}\reinaA{2}{0}\reinaA{3}{2}
+ \aroA{1}{3}\aroA{4}{4}\aspaA{1}{4}\aspaA{4}{3}
+ \begin{scope}[shift={(6.0,.23)}]
+  \node[anchor=west,font=\small\sffamily\bfseries] at (0,.25) {Los cuatro cruces};
+  \aroA{1}{0}
+  \node[anchor=west,font=\small] at (1.06,1.5) {Disponible: $(1,3)$ y $(4,4)$};
+  \aspaA{2}{0}
+  \node[anchor=west,font=\small] at (1.06,2.5) {Atacado: $(1,4)$ y $(4,3)$};
+  \node[anchor=west,font=\small] at (.1,3.95) {$X_2(P)=2$ de $2^2=4$ cruces};
+ \end{scope}
+\end{tikzpicture}
+\caption{Una colocación de la capa $\Omega_2(5)$. Los círculos y las aspas
+ocupan las cuatro intersecciones de las filas y columnas vacías. Las líneas
+discontinuas muestran por qué dos de ellas quedan bajo ataque.}
+\label{fig:cruces-vacios}
+\end{figure}

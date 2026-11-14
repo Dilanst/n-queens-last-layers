@@ -1,0 +1,55 @@
+\subsection{La capa cero}\label{subsec:h0}
+
+En $h=0$ los pesos $x_*r_R$ de filas y columnas físicas se anulan, de modo que no se puede
+sustituir $x_*=0$ en la construcción anterior. Se usa una extensión límite explícita.
+
+\begin{definicion}[Referencia en la capa cero]\label{def:referencia_cero}
+Sea $q=n$, $H=n-1$, $N=2n-1$. Las aristas reales tienen peso $v_e=r_Rr_Cu_Du_A$, evaluado en el
+perfil lleno. Los pesos de vértice para las aristas virtuales son cero en filas y columnas
+físicas, uno en sus ficticios, y $u_D,u_A$ en diagonales y antidiagonales. La palabra de colores
+sigue siendo uniforme y, si falta una arista del color pedido, el proceso pasa al estado de
+fallo. Las leyes $\QQ_0$, $\PP_0$ y $\nu'_0$ se definen como antes.
+\end{definicion}
+
+\begin{proof}[Demostración del Teorema~\ref{thm:comparacion} para $h=0$]
+\emph{Soporte.} Toda solución usa todas las filas y columnas físicas, así que sus completaciones
+virtuales usan exclusivamente los vértices ficticios de filas y columnas. Por tanto $\PP_0$,
+uniforme sobre soluciones, completaciones y órdenes, tiene soporte positivo bajo $\QQ_0$ pese a
+los pesos nulos fuera de él.
+
+\emph{Identidad.} El producto de pesos en cualquier trayectoria de ese soporte es
+\[
+ \mathcal K=\prod_{R}r_R\prod_{C}r_C\prod_{D}u_D\prod_{A}u_A>0
+\]
+(productos sobre los vértices físicos). Hay $Q(H!)^3N!$ trayectorias de comparación y la
+palabra de colores tiene probabilidad exacta $n!H!/N!$. Por tanto
+\[
+ \KL{\PP_0}{\QQ_0}=\E\sum_t\log W_{\col(t)}(t)-\log\mathcal K-\log Q-\log n!-4\log H! .
+\]
+No aparece $\log0$.
+
+\emph{Normalizadores.} Con el perfil lleno, Lipschitz, las masas dan
+\[
+ W_R(0)=\frac{n^2}{b_0}\bigl(1+O(n^{-1})\bigr),\qquad
+ W_V(0)=H^2\Bigl(\sum_Du_D\Bigr)\Bigl(\sum_Au_A\Bigr)=H^4\bigl(1+O(n^{-1})\bigr),
+\]
+pues $\int u_D=\int u_A=1$ sobre dominios de longitud dos y cada suma discreta es
+$n\int+O(1)$. Asimismo $\log\mathcal K=n\mathcal J+O(1)$ con
+$\mathcal J=\int\log r_R+\int\log r_C+\int\log u_D+\int\log u_A$. En el revelado de un
+emparejamiento completado, las aristas ordinarias sobreviven con probabilidad $z^4$; hay
+$O(n)$ excepciones reales, de peso $O(1)$, y $O(n^3)$ virtuales, de peso a lo sumo uno, y salvo
+la propia pieza requieren otra pieza sin revelar. Los ceros virtuales sólo anulan
+términos del normalizador virtual. Jensen da, como en el Lema~\ref{lem:normalizadores}, un error integrado
+$O(n^{-1/3})$ por pieza. Con Stirling y $s_1=-3-\log b_0-\mathcal J$ (que es $s[\nu_1]$ calculado
+con $\nu_1=b_0r_Rr_Cu_Du_A$ y marginales de filas y columnas iguales a uno),
+\[
+ \KL{\PP_0}{\QQ_0}\le n\log n+ns_1-\log Q+Cn^{2/3}+O(\log n)\le d_n .
+\]
+Las otras dos desigualdades se obtienen como para $h\ge1$.
+\end{proof}
+
+\begin{observacion}
+La prueba para $1\le h\le K$ es uniforme en $h$: sólo usa $x_*=h/n$, la cancelación del factor
+$x_*^2$, el Lema~\ref{lem:retirada} y el Lema~\ref{lem:borde}. El mismo $d_n$ sirve
+simultáneamente para $h=0,\dots,K$. No se obtiene uniformidad cuando $K=K(n)\to\infty$.
+\end{observacion}

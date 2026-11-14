@@ -1,0 +1,89 @@
+\subsection{Normalizadores}
+
+\begin{lema}\label{lem:normalizadores}
+Sea $\rho=1-x_*=q/n$. Uniformemente en $1\le h\le K$:
+\begin{enumerate}[(i)]
+\item $W_R(0)=n^2\rho/\lambda_\rho\,(1+O(n^{-1}))\asymp x_*^2n^2$ y $W_V(0)=H^4(1+O(n^{-1}))$;
+\item $\sum_v\log u_v=n\sum_f\int_{I_f}\log u_f+O(1)$;
+\item $\E_{\PP_h}\sum_t\log W_{\col(t)}(t)\le q\log W_R(0)+H\log W_V(0)-4N+O(n^{2/3})$.
+\end{enumerate}
+\end{lema}
+
+\begin{proof}
+(i) Por cuadratura de los factores reescalados, positivos y Lipschitz,
+$W_R(0)=x_*^2n^2\int r_Rr_Cu_Du_A\,(1+O(n^{-1}))=x_*^2n^2\rho/b\,(1+O(n^{-1}))$, y
+$x_*^2/b=1/\lambda_\rho$. En cada familia la suma de pesos es $H+O(1)$: en filas se suman
+$n-1$ ficticios y $\sum u_R=nx_*+O(x_*)$; en diagonales, $\sum u_D=n\int u_D+O(1)=n(2-\rho)+O(1)$.
+Como $W_V(0)$ es el producto de las cuatro sumas, $W_V(0)=H^4(1+O(n^{-1}))$.
+
+(ii) En filas, $\sum\log u_R=n\log x_*+\sum\log r_R(\bar r)$: la constante $\log x_*$ se suma
+exactamente $n$ veces y $\log r_R$ es uniformemente Lipschitz, de modo que el error de
+cuadratura es $O(1)$ sin depender de $1/x_*$. Lo mismo en columnas, diagonales y
+antidiagonales; los ficticios aportan cero.
+
+(iii) Fijemos un emparejamiento completado y una pieza $p$, revelada en el tiempo
+$\mathsf t_p\in[0,1]$; sea $z=1-\mathsf t_p$ y sea $W^{(p)}$ el normalizador del color de $p$ en el
+momento en que se revela. Condicionalmente al emparejamiento y a $\mathsf t_p$, cada una de las
+demás piezas sigue sin revelar, independientemente, con probabilidad $z$. Una arista
+\emph{ordinaria} del color de $p$ tiene sus cuatro vértices cubiertos por cuatro piezas distintas
+de $p$ y está disponible con probabilidad $z^4$. Por codegrado uno hay $O(n)$ aristas reales
+excepcionales, de peso $O(x_*^2)$; salvo la contenida en $p$, cada una necesita al menos otra
+pieza sin revelar y está disponible con probabilidad a lo sumo $z$. Las excepciones virtuales son
+$O(n^3)$, de peso a lo sumo uno. Así, uniformemente en el emparejamiento,
+\[
+ \E W^{(p)}\le W_R(0)z^4+Cx_*^2nz+Cx_*^2\ \ (p\text{ real}),\qquad
+ \E W^{(p)}\le W_V(0)z^4+Cn^3z+C\ \ (p\text{ virtual}).
+\]
+Por Jensen, (i) y $\log(1+u+v)\le\log(1+u)+\log(1+v)$, los términos de error son de orden
+$1/(nz^3)$ y $1/(n^2z^4)$ para reales, y $1/(nz^3)$ y $1/(n^4z^4)$ para virtuales. Como
+$\int_0^1\log z^4\,dz=-4$ y, para $c>0$ fijo, $\int_0^1\log(1+cn^{-1}z^{-3})\,dz=O(n^{-1/3})$,
+$\int_0^1\log(1+cn^{-2}z^{-4})\,dz=O(n^{-1/2})$ e $\int_0^1\log(1+cn^{-4}z^{-4})\,dz=O(n^{-1})$,
+\[
+ \E\log W^{(p)}\le\log W_{\col(p)}(0)-4+O(n^{-1/3}).
+\]
+Como $\sum_t\log W_{\col(t)}(t)=\sum_p\log W^{(p)}$, sumando sobre las $N$ piezas se obtiene
+(iii).
+\end{proof}
+
+\begin{lema}\label{lem:retirada}
+$N_h(n)\ge\binom nh Q(n)/h!$.
+\end{lema}
+
+\begin{proof}
+Al retirar $h$ reinas de una solución se obtiene una colocación de $\Om_h$, y cada
+colocación de $\Om_h$ tiene a lo sumo $h!$ completaciones, porque las $h$ reinas que faltan
+ocupan una permutación de los $h$ cruces vacíos. Luego $\binom nhQ\le h!N_h$.
+\end{proof}
+
+\begin{teorema}[Comparación entrópica]\label{thm:comparacion}
+Sea $K$ fijo. Existe $d_n=\Delta_n+C_Kn^{2/3}+O_K(\log n)=o(n)$ tal que, para todo
+$0\le h\le K$,
+\[
+ \KL{\PP_h}{\QQ_h}\le d_n,\qquad \QQ_h(S)\ge e^{-d_n},\qquad \KL{\mu_h}{\nu'_h}\le d_n .
+\]
+\end{teorema}
+
+\begin{proof}[Demostración para $1\le h\le K$]
+Por los Lemas~\ref{lem:identidad} y~\ref{lem:normalizadores} y Stirling
+($\log H!=H\log H-H+O(\log n)$, y lo mismo para $q!$),
+\[
+ \KL{\PP_h}{\QQ_h}\le q\log\frac{n^2\rho}{\lambda_\rho}-4q-n\sum_f\int\log u_f-(q\log q-q)
+ -\log N_h+Cn^{2/3}+O(\log n),
+\]
+donde se usó $4H\log H-4\log H!=4H+O(\log n)$ y $N-H=q$. Con $q=n\rho$,
+$q\log(n^2\rho)-q\log q=q\log n$, de modo que el segundo miembro es
+$q\log n+n[-3\rho-\rho\log\lambda_\rho-\sum_f\int\log u_f]-\log N_h+Cn^{2/3}+O(\log n)$. La
+expresión entre corchetes es $s^*(\rho)$: por la ecuación de Euler,
+$\int\nu\log\nu=\rho\log\lambda_\rho+\sum_f\int m_f\log u_f$ y
+$\int m_f\log u_f=\int\log u_f-\int u_f\log u_f$. Así
+\[
+ \KL{\PP_h}{\QQ_h}\le q\log n+ns^*(q/n)-\log N_h+Cn^{2/3}+O(\log n).
+\]
+Por el Lema~\ref{lem:borde}, $ns^*(q/n)=ns_1+2h\log n+O_K(1)$; por el Lema~\ref{lem:retirada},
+$-\log N_h\le-\log Q-\log\binom nh+\log h!=-\log Q-h\log n+O_K(1)$. Los términos en
+$\log n$ se cancelan exactamente ($-h+2h-h=0$) y, por~\eqref{eq:Delta},
+$\KL{\PP_h}{\QQ_h}\le\Delta_n+C_Kn^{2/3}+O_K(\log n)=d_n$. No se usa ninguna tasa para
+$\Delta_n$. Como $\PP_h(S)=1$, el Lema~\ref{lem:exito} da $\QQ_h(S)\ge e^{-d_n}$ y
+$\KL{\PP_h}{\QQ_h(\cdot\mid S)}\le d_n$; al proyectar en la colocación final, el
+procesamiento de datos da $\KL{\mu_h}{\nu'_h}\le d_n$.
+\end{proof}
