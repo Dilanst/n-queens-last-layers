@@ -1,0 +1,45 @@
+\subsection{Translations and uniform Lipschitz regularity}
+
+Extend $u_D,u_A$ by one outside their intervals. The extensions are continuous at the endpoints because the endpoint fibers have length
+zero. For $s\in\mathbb R$ define \[
+ \widehat r_R(s)=\Bigl[x+b\int_0^1r_C(c)\,\widehat u_D(s-c)\,\widehat u_A(s+c)\,dc\Bigr]^{-1}.
+\] Since $\int r_C=1$, the denominator lies between $b_-\kappa^2$ and $1+b_+$, so $\widehat r_R\in[m_0,\overline K]$, and the extension
+agrees with $r_R$ on $[0,1]$. For a translation $t$, let $r_R^t(r)=\widehat r_R(r+t)$, $r_C^t=r_C$, $u_D^t(d)=\widehat u_D(d+t)$,
+$u_A^t(s)=\widehat u_A(s+t)$, and $v^t=\log(r_R^t,r_C^t,u_D^t,u_A^t)$. With $e^t=\mathcal G_{x,b}(v^t)$ we have \[
+ e_R^t=0,\qquad |e_C^t|,|e_D^t|,|e_A^t|\le2\overline B|t|,\qquad
+ \|e^t\|_{\mathcal H}\le2\sqrt5\,\overline B|t| .
+\] Indeed, the definition of $\widehat r_R$ gives the row equation exactly. In the column equation, change variables from $r$ to $r+t$.
+The domains differ by two strips of total length at most $2|t|$, on which the extended density is at most $\overline B$. For the
+diagonals and antidiagonals, make the same change of variable. The original domain of the translated diagonal differs by the same
+strips. Outside the diagonal interval the original fiber is empty and the extended vacancy equals one. The bounds hold along every
+segment. Since $v_C^t=v_C$, Lemma~\ref{lem:coercividad} gives $\|v^t-v\|_{\mathcal H}\le2\sqrt5\,\overline B|t|/\lambda_c$.
+
+\emph{From the $L^2$ norm to the uniform norm.} Along a fiber of $f$, each coordinate of the other families varies with a slope of
+absolute value one or two. Telescoping three factors bounded by $\overline K$ and applying Cauchy--Schwarz and
+$|e^\alpha-e^\beta|\le\overline K|\alpha-\beta|$ gives $|J_f(v^t)-J_f(v)|\le\sqrt3\,\overline K^3\|v^t-v\|_{\mathcal H}$. The
+denominators in the row and column equations are $x+bJ_f\ge b_-m_0\kappa^2$, and those in the diagonal equations are at least one. With
+\[
+ d_0=\min\{1,b_-m_0\kappa^2\},\qquad
+ L_*=\frac{2\overline B}{d_0}+\frac{2\sqrt{15}\,b_+\overline K^3\overline B}{d_0^2\lambda_c},
+\] and writing $y_f$ for the corresponding normalized factor, we have $y_f^t(d_f+bJ_f(v^t))=1+e_f^t$ and $y_f(d_f+bJ_f(v))=1$, with
+$d_{R,C}=x$ and $d_{D,A}=1$. Comparing reciprocals gives $|y_f^t-y_f|\le L_*|t|$. The row translation controls $R$, $D$, and $A$. The
+symmetric construction, which translates $C$ and keeps $R$ fixed, controls $C$.
+
+\begin{teorema}[Uniform regularity up to the full board, {\cite[Theorem~7.7]{Perfil}}]\label{thm:lipschitz} The optimal
+profiles~\cite[Theorem~3.1]{Perfil}, rescaled and normalized by $\int r_R=\int r_C=1$, extend continuously to $x=0$ and satisfy, with
+constants independent of $x\in[0,1/2]$, \[
+ \|r_R\|_\infty,\|r_C\|_\infty\le\overline K,\quad \|u_D\|_\infty,\|u_A\|_\infty\le1,\quad
+ \Lip(r_R,r_C,u_D,u_A)\le L_*,
+\] \[
+ \|\nu\|_\infty\le\overline B,\quad \Lip_\infty\nu\le6b_+\overline K^2L_*,\quad
+ \|\Theta_x\|_\infty\le\overline K^2,\quad \Lip_\infty\Theta_x\le2\overline KL_*,
+\] where $\Theta_x(r,c)=r_R(r)r_C(c)$. \end{teorema}
+
+\begin{proof} Continuity at the endpoint is Proposition~5.3 of~\cite{Perfil}. The preceding proof applies at the endpoint as well.
+Alternatively, the Lipschitz bounds pass to the limit by uniform convergence. For $\nu$, telescoping the four factors contributes at
+most $b_+\overline K^2L_*(|\Delta r|+|\Delta c|+|\Delta r-\Delta c|+|\Delta r+\Delta c|)
+\le6b_+\overline K^2L_*\|\Delta(r,c)\|_\infty$, and the product of the two factors of $\Theta_x$ contributes $2\overline KL_*$. \end{proof}
+
+Continuity in the parameter $x$ is uniform in space (\cite[Propositions~5.3 and~7.5]{Perfil}), and \cite[Theorem~5.4]{Perfil} even
+gives an analytic branch near zero in the space of continuous functions. We claim no spatial $C^1$ regularity. The bounds for the
+continuous problem do not by themselves prove any discrete estimate.

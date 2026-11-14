@@ -1,0 +1,67 @@
+\section{The common limit and the positions of the holes}\label{sec:limite}
+
+We now know the limiting mean of the reverse counter for a continuous weight. To prove Theorems~\ref{thm:limite}
+and~\ref{thm:estructura}, we identify the forward counter at each crossing and use the same weight in both counts.
+
+In this section $\nu_1,r_R,r_C,u_D,u_A,b_0$ denote the full-board profile of mass one, and $\psi(r,c)=u_D(r-c)u_A(r+c)$,
+$a(r,c)=\int\nu_1(i,j)\psi(r,j)\psi(i,c)\,di\,dj$, as in Section~\ref{sec:intro}. As in Section~\ref{subsec:variacional}, $u_D$ is
+evaluated at $r-c\in[-1,1]$ and $u_A$ at $r+c\in[0,2]$. We have $\kappa^4\le a\le1$, and $a$ is Lipschitz.
+
+\subsection{The forward count up to the final step}
+
+To reach the terminal value, we need a two-sided bound, not merely a lower bound. By Lemma~\ref{lem:perdida},
+$|\Delta A^{rc}|\le5$ per real piece, and virtual pieces leave the physical counter unchanged.
+
+\begin{proposicion}\label{prop:directa} Fix $h\ge1$. For every fixed tolerance $\gamma>0$, \[
+ \QQ_h\Bigl(S\cap\Bigl\{\max_{(r,c)\ \text{empty at the end}}
+ \Bigl|\frac{A^{rc}}n-a(\bar r,\bar c)\Bigr|>\gamma\Bigr\}\Bigr)\le e^{-c_{\gamma,h}n}.
+\] Consequently, the maximum tends to zero in probability under $\mu_h$. \end{proposicion}
+
+\begin{proof} By Lemmas~\ref{lem:conc_directa} and~\ref{lem:valor_inicial} and by~\eqref{eq:trayectoria}, $A^{rc}_t/n$ concentrates
+uniformly over the roots and the times $t\le T_\zeta$ around $\tilde a(y;\bar r,\bar c)$. We cut off the process when $\lceil\delta
+n\rceil$ real pieces remain to be placed, with $\delta$ free and with the relation between the time parameters and the order of choices
+from Proposition~\ref{prop:inversa}. At the cut-off $y=1-\delta+O(\eps+n^{-1})$, and the subsequent absolute change is at most
+$5\lceil\delta n\rceil$ by Lemma~\ref{lem:perdida}. Since $\tilde a(\cdot;r,c)$ is continuous at $y=1$, uniformly in $(r,c)$, and
+$\tilde a(1;\cdot)=a$ by~\eqref{eq:a_infinito}, it suffices to choose $\delta$ small relative to $\gamma$. The bound holds for any
+fixed $h$ and uniformly over any finite set of such values. We carry out the analysis before conditioning and then divide by
+$\QQ_h(S)\ge e^{-d_n}$. Lemma~\ref{lem:binaria} transfers convergence in probability to $\mu_h$ without giving an exponential tail
+bound. \end{proof}
+
+Since there are only $h^2$ empty crossings, $d_{h,1}/n-\sum_{(r,c)}a(\bar r,\bar c)\to0$ in probability under $\mu_h$, and in mean by
+deterministic boundedness. The second term may remain random, and we do not replace it by a spatial average:
+scalar concentration of the unweighted forward counter is not deduced.
+
+\subsection{A weight that eliminates the dependence on the hole position}
+
+The position of the crossing may still be random, but we know the value $a(\bar r,\bar c)$ that its normalized counter approaches.
+Giving the crossing the reciprocal weight makes its contribution tend to one regardless of its position. We therefore take
+$w_n(r,c)=1/a(\bar r,\bar c)$. We have $\|w_n\|_\infty\le\kappa^{-4}$. By Proposition~\ref{prop:directa}, applied simultaneously to all
+roots that are empty at the end and without assuming any distribution for the holes, \begin{equation}\label{eq:directa_ponderada}
+ \frac{D_{w_n}}{h^2n}=\frac1{h^2}\sum_{(r,c)\ \text{empty}}\frac{A^{rc}}{n\,a(\bar r,\bar c)}
+ \longrightarrow1\qquad\text{in probability and in mean under }\mu_h .
+\end{equation}
+
+\begin{lema}[Reverse kernel identity]\label{lem:nucleo} Let $\Gamma(r,c)=\int\nu_1(r,j)\,\nu_1(i,c)\,\psi(i,j)\,di\,dj$. Then \[
+ \Gamma(r,c)=b_0\,r_R(r)\,r_C(c)\,a(r,c),\qquad B_{1/a}=\int\frac\Gamma a=b_0 .
+\] \end{lema}
+
+\begin{proof} By~\eqref{eq:perfil} with $x=0$, $\nu_1(r,j)=b_0r_R(r)r_C(j)\psi(r,j)$ and $\nu_1(i,c)=b_0r_R(i)r_C(c)\psi(i,c)$. Hence
+$\Gamma(r,c)=b_0^2r_R(r)r_C(c)\int r_R(i)r_C(j)\psi(i,j)\psi(r,j)\psi(i,c)\,di\,dj
+=b_0r_R(r)r_C(c)a(r,c)$, since $\nu_1(i,j)=b_0r_R(i)r_C(j)\psi(i,j)$. Integrating $\Gamma/a$ and using $\int r_R=\int r_C=1$ gives
+$b_0$. The factorization applies to the profile and makes no assumption about queen probabilities. \end{proof}
+
+\subsection{Conclusion}
+
+\begin{proof}[Proof of Theorem~\ref{thm:limite}] By Proposition~\ref{prop:inversa} in layer $h-1$ (including $h-1=0$) with $w=1/a$ and
+by Lemma~\ref{lem:nucleo}, $\E_{\mu_{h-1}}[I_{1/a}/n^2]\to b_0>0$. In particular, the denominator in~\eqref{eq:fh_cociente} is positive
+for large $n$. By~\eqref{eq:directa_ponderada}, $\E_{\mu_h}[D_{1/a}/(h^2n)]\to1$. Both normalized observables have deterministic
+bounds. Relative entropy serves only to transfer probabilities, and the argument does not use it to pass to expectations of unbounded
+observables. Since $m/n\to1$, Lemma~\ref{lem:doblecuenta} gives $f_h\to1/b_0=F(0)$. The argument is uniform for $1\le h\le K$ and does
+not allow $K=K(n)\to\infty$. \end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:estructura}] Part (a) is Proposition~\ref{prop:directa}. For (b), let $t$ be continuous and let
+$w=t/a$, allowing either sign (all the preceding arguments are linear in $w$). By (a), $D_w/(h^2n)-h^{-2}\sum_{(r,c)}t(\bar r,\bar
+c)\to0$ in mean under $\mu_h$, and by Proposition~\ref{prop:inversa} and Lemma~\ref{lem:nucleo}, $\E_{\mu_{h-1}}[I_w/n^2]\to\int
+t\,\Gamma/a=b_0\int t\,r_Rr_C$. The identity $\E_{\mu_h}[D_w/(h^2n)]=f_h\,(n/m)\,\E_{\mu_{h-1}}[I_w/n^2]$ in
+Lemma~\ref{lem:doblecuenta} and $f_h\to1/b_0$ give (b). For (c), with $w\equiv1$, we have $d_h^\inv/n^2\to B_1=\int\psi$ because the
+row and column marginals of $\nu_1$ equal one. The same identity gives $\E_{\mu_h}d_{h,1}/(h^2n)\to B_1/b_0$. \end{proof}

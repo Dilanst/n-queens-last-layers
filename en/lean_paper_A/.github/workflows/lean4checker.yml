@@ -1,0 +1,35 @@
+# Independent check with lean4checker: replays through the Lean kernel every declaration the
+# final theorem depends on, including those of Mathlib (--fresh).
+# It is slow (it can take hours), so it is started by hand from the Actions tab.
+name: lean4checker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lean4checker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+
+      - name: Build lean4checker (v4.19.0)
+        run: |
+          git clone --depth 1 --branch v4.19.0 https://github.com/leanprover/lean4checker "$RUNNER_TEMP/lean4checker"
+          cd "$RUNNER_TEMP/lean4checker" && lake build
+
+      - name: Check the final theorem from scratch
+        run: |
+          lake env "$RUNNER_TEMP/lean4checker/.lake/build/bin/lean4checker" --fresh CierreDeLosSeisBloquesDelArticuloA 2>&1 | tee lean4checker.txt
+
+      - name: Save the log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean4checker-log
+          path: lean4checker.txt

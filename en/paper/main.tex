@@ -1,0 +1,68 @@
+\input{preamble}
+\input{figures/boards}
+
+% Lean verification.
+% \verificacionLeantrue: the abstract mentions it and the paper includes the section
+%   "Scope of the Lean verification".
+% \verificacionLeanfalse: removes that section and every mention of Lean. The rest of the
+%   paper is unchanged.
+% If \omitLeanSection is defined before this file is read, the switch is set to false.
+\newif\ifverificacionLean
+\ifdefined\omitLeanSection\verificacionLeanfalse\else\verificacionLeantrue\fi
+% Identifiers to fill in on the day of publication. While they are empty, the PDF shows
+% nothing in their place.
+% Zenodo DOI of the Lean code, without "https://doi.org/" (for example 10.5281/zenodo.1234567).
+\newcommand*{\DOIcodigoLean}{}
+% Zenodo DOI of the numerical verification repository, without "https://doi.org/".
+\newcommand*{\DOIcodigo}{}
+% Variational profile paper: filling in one of the two identifiers is enough.
+% Its Zenodo DOI, without "https://doi.org/" (for example 10.5281/zenodo.1234567).
+\newcommand*{\DOIPerfil}{}
+% Or its arXiv number (for example 2611.01234).
+\newcommand*{\arXivPerfil}{}
+\ifx\DOIcodigoLean\empty\typeout{WARNING: missing DOI of the Lean code (DOIcodigoLean).}\fi
+\ifx\DOIcodigo\empty\typeout{WARNING: missing DOI of the numerical repository (DOIcodigo).}\fi
+\ifx\DOIPerfil\empty\ifx\arXivPerfil\empty\typeout{WARNING: missing DOIPerfil or arXivPerfil (profile paper).}\fi\fi
+
+\title{Completability of the Final Layers\\ in the $n$-Queens Problem}
+\author{Dilan Steven Mejia\thanks{\href{mailto:mejiadilan@hotmail.com}{\nolinkurl{mejiadilan@hotmail.com}}}}
+\date{}
+
+\hypersetup{pdftitle={Completability of the Final Layers in the n-Queens Problem},
+ pdfauthor={Dilan Steven Mejia},
+ pdfsubject={The n-queens problem. MSC 2020: 05A16, 05C70, 60C05, 94A17},
+ pdfkeywords={n-queens problem, asymptotic enumeration, completability, relative entropy, absorbers, differential equation method, double counting},
+ pdflang={en}}
+
+\begin{document}
+\maketitle
+\input{sections/00_abstract}
+
+\input{sections/01a_introduction}
+\input{sections/01b_introduction}
+\input{sections/01c_introduction}
+\input{sections/02a_preliminaries}
+\input{sections/02b_preliminaries}
+\input{sections/03a_reference_process}
+\input{sections/03b_reference_process}
+\input{sections/03c_reference_process}
+\input{sections/04_regularity}
+\input{sections/05a_absorbers}
+\input{sections/05b_absorbers}
+\input{sections/05c_absorbers}
+\input{sections/06_double_counting}
+\input{sections/07_positive_bound}
+\input{sections/08_reverse_count}
+\input{sections/08b_reverse_count}
+\input{sections/09_limit_law}
+\input{sections/10_corollaries}
+\input{sections/11_discussion}
+\ifverificacionLean\input{sections/01d_lean_verification}\fi
+\input{sections/12_ai_use}
+
+\appendix
+\input{sections/A1_profile}
+\input{sections/A2_profile}
+
+\input{sections/bibliography}
+\end{document}

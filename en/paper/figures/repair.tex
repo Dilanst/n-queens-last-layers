@@ -1,0 +1,24 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[tablero A]
+ \begin{scope}
+  \cuadriculaA{4}\trazarRejillaA{4}
+  \ataqueA{3}{2}{2}{1}\aspaA{2}{1}
+  \aroA{0}{0}\reinaA[colorAro]{0}{0}\reinaA{1}{3}\reinaA{3}{2}
+  \panelA{2,4.38}{(a) Remove one queen}
+ \end{scope}
+ \draw[-{Stealth[length=2mm]},tintaReina,line width=.9pt] (4.9,2)--(6.65,2);
+ \begin{scope}[shift={(8,0)}]
+  \cuadriculaA{4}\trazarRejillaA{4}
+  \ataqueA{3}{2}{2}{1}\aspaA{2}{1}
+  \reinaA{1}{3}\reinaA{3}{2}
+  \aroA{0}{1}\reinaA[colorAro]{0}{1}
+  \aroA{2}{0}\reinaA[colorAro]{2}{0}
+  \panelA{2,4.38}{(b) Place two queens}
+ \end{scope}
+\end{tikzpicture}
+\caption{A legal repair takes a placement from $\Omega_1(4)$ to $\Omega_0(4)$.
+The rings mark the pieces involved. The cross marks the same square $(2,1)$ in both panels.
+Reading from right to left recovers the reverse operation with the ordered pair $(2,0),(0,1)$.}
+\label{fig:reparacion-tablero}
+\end{figure}

@@ -1,0 +1,68 @@
+\section{Reference process and entropy comparison}\label{sec:referencia}
+
+The continuous profile supplies the weights for constructing placements one step at a time. This section compares the law of the
+resulting placements, conditional on success, with the uniform law on the layer. The relative entropy bound will allow us to transfer
+estimates obtained during the construction to the uniform law.
+
+Fix $K$ and $0\le h\le K$, and set \[
+ q=n-h,\qquad N=2n-1,\qquad H=N-q=n+h-1 .
+\] In this section and the next two, for $h\ge1$ we evaluate the profile at the target parameter $x_*=h/n$, which is held fixed
+throughout the process, and omit the subscript $x_*$. We treat layer $h=0$ separately in Section~\ref{subsec:h0}.
+
+\subsection{Augmented hypergraph and weights}
+
+We add $n-1$ \emph{dummy} vertices to the rows and as many to the columns, so that each of the four families contains $N$ vertices. The
+\emph{real edges} are the $n^2$ squares, each with its four physical lines. The \emph{virtual edges} are all quadruples containing one
+vertex from each family, whether physical or dummy. The color (real or virtual) is part of the edge. A virtual edge is distinct from a
+real edge even if they have the same vertices.
+
+In Figure~\ref{fig:cruces-vacios}, the lines through $(3,2)$ are $R_3$, $C_2$, $D_1$, and $A_5$ because $3-2=1$ and $3+2=5$. Choosing
+the real edge on that square places a queen there. Choosing the virtual edge with the same four lines deactivates those lines in the
+process without placing a queen on the board. We will use this distinction when counting repairs. We call the edges in a trajectory
+\emph{pieces}. These are the edges chosen by the process, real or virtual according to their color.
+
+For $h\ge1$, the vertex weights are $u_R(\bar r)=x_*r_R(\bar r)$ on the physical rows, $u_C(\bar c)=x_*r_C(\bar c)$ on the physical
+columns, $u_D$ and $u_A$ at the induced coordinates of the diagonals and antidiagonals, respectively, and $1$ on the dummy vertices.
+All weights are positive. The weight of an edge, real or virtual, is the product $\varpi(e)=\prod_{v\in e}u_v$. By
+Theorem~\ref{thm:perfil}(a), every real edge has weight between $cx_*^2$ and $Cx_*^2$.
+
+\subsection{The process}
+
+\begin{definicion}[Reference process]\label{def:referencia} Choose in advance, without revealing it, a uniformly random word with $q$
+occurrences of the real color and $H$ of the virtual color. At each step $t=1,\dots,N$, reveal only the next color, choose an available
+edge of that color (one whose four vertices are still active) with probability proportional to its weight, and deactivate its four
+vertices. A virtual piece places no queen. If the normalizer for the requested color, namely the sum of the weights of its available
+edges, is zero, the process enters a failure state. Let $\QQ_h$ be the law of the trajectories and $S$ the success event (all $N$ steps
+are completed). \end{definicion}
+
+On $S$, the $q$ selected real edges are squares with no lines in common. They form a placement in $\Om_h(n)$, called the \emph{final
+placement}. Let $\nu'_h$ be its law under $\QQ_h(\cdot\mid S)$. For real choices the common factor $x_*^2$ can be cancelled without
+changing the law; it does not cancel for virtual choices. The reference process need not succeed with probability close to one.
+
+\subsection{The comparison law}
+
+\begin{definicion}[Comparison law]\label{def:comparacion} Choose $P\in\Om_h(n)$ uniformly at random, then choose a uniform virtual
+completion, that is, a perfect matching by virtual edges of the $H$ free vertices in each family (there are $(H!)^3$ such matchings).
+Finally, choose a uniform ordering of the $N$ pieces. Let $\PP_h$ be the law of the resulting sequence of edges. \end{definicion}
+
+We represent the uniform order by assigning the pieces independent uniform times in $[0,1]$ and revealing them in increasing order of
+time. (This uses independence. Uniformity of each individual time would not suffice.) The law $\PP_h$ projects exactly onto $\mu_h$, and
+each trajectory in its support has positive probability under $\QQ_h$ because the next piece of the complete matching remains available
+and has positive weight. In particular, $\PP_h(S)=1$.
+
+\subsection{The entropy identity}
+
+Let $W_R(t)$ and $W_V(t)$ be the total weights of the available edges of the two colors before step $t$, and let $\col(t)$ denote the
+color revealed at that step.
+
+\begin{lema}\label{lem:identidad} For $1\le h\le K$, \[
+ \KL{\PP_h}{\QQ_h}=\E_{\PP_h}\sum_{t=1}^N\log W_{\col(t)}(t)-\sum_v\log u_v-\log N_h-\log q!
+ -4\log H!,
+\] where $\sum_v$ ranges over the $4N$ vertices. \end{lema}
+
+\begin{proof} Let $\omega$ be a trajectory in the support of $\PP_h$. Then $\PP_h(\omega)=[N_h(H!)^3N!]^{-1}$. Under $\QQ_h$, the color
+word has probability $\binom Nq^{-1}$ and each choice has probability $\varpi(e_t)/W_{\col(t)}(t)$. Since the complete matching covers
+every vertex exactly once, the product of the chosen weights is $\prod_vu_v$, independent of the matching and its order. Hence \[
+ \log\frac{\PP_h(\omega)}{\QQ_h(\omega)}=\sum_t\log W_{\col(t)}(t)-\sum_v\log u_v
+ -\log\bigl[N_h(H!)^3N!\bigr]+\log\binom Nq ,
+\] and $-\log[(H!)^3N!]+\log\binom Nq=-\log q!-4\log H!$. Taking the expectation under $\PP_h$ gives the result. \end{proof}

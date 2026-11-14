@@ -1,0 +1,35 @@
+% Input coordinates (row, column), with the origin at the top left.
+\definecolor{colorAro}{HTML}{146764}
+\definecolor{colorFondo}{HTML}{D8ECE8}
+\definecolor{tintaReina}{HTML}{243441}
+\definecolor{cuadroClaro}{HTML}{F0F2F2}
+\definecolor{rejilla}{HTML}{A3ACAE}
+\definecolor{ataque}{HTML}{974428}
+\tikzset{tablero A/.style={x=5.3mm,y=-5.3mm,line join=round,line cap=round}}
+\newcommand{\cuadriculaA}[1]{%
+  \pgfmathtruncatemacro{\ultA}{#1-1}
+  \foreach \rA in {0,...,\ultA}{
+    \foreach \cA in {0,...,\ultA}{
+      \ifodd\numexpr\rA+\cA\relax
+        \fill[cuadroClaro] (\cA,\rA) rectangle ++(1,1);
+      \fi}}
+  \foreach \iA in {0,...,\ultA}{
+    \node[font=\scriptsize\sffamily,text=tintaReina] at (\iA+.5,-.39) {\iA};
+    \node[font=\scriptsize\sffamily,text=tintaReina] at (-.38,\iA+.5) {\iA};}}
+\newcommand{\trazarRejillaA}[1]{%
+  \foreach \iA in {0,...,#1}{
+    \draw[rejilla,line width=.25pt] (\iA,0)--(\iA,#1) (0,\iA)--(#1,\iA);}
+  \draw[tintaReina,line width=.6pt] (0,0) rectangle (#1,#1);}
+\newcommand{\reinaA}[3][tintaReina]{%
+  \begin{scope}[shift={(#3+.5,#2+.5)}]
+    \fill[#1] (-.29,-.19)--(-.12,-.065)--(0,-.32)--(.12,-.065)--(.29,-.19)
+       --(.20,.16)--(-.20,.16)--cycle;
+    \draw[#1,line width=1.05pt] (-.21,.24)--(.21,.24);
+  \end{scope}}
+\newcommand{\aroA}[2]{\draw[colorAro,line width=1.05pt] (#2+.5,#1+.5) circle[radius=2.18mm];}
+\newcommand{\aspaA}[2]{\draw[ataque,line width=1.05pt]
+  (#2+.31,#1+.31)--(#2+.69,#1+.69) (#2+.31,#1+.69)--(#2+.69,#1+.31);}
+\newcommand{\ataqueA}[4]{\draw[ataque,densely dashed,line width=.75pt]
+  (#2+.5,#1+.5)--(#4+.5,#3+.5);}
+\newcommand{\panelA}[2]{\node[font=\small\sffamily,text=tintaReina,align=center,anchor=north]
+  at (#1) {#2};}

@@ -1,0 +1,79 @@
+\section{Dynamic regularity of the process}\label{sec:regularidad}
+
+The entropy comparison already allows us to transfer sufficiently rare events. To apply it to repairs, we first need to know how often
+the process selects the lines that the two queens in a repair would occupy. These probabilities depend on the weights and the available
+degrees at each step.
+
+\subsection{Rescaled weights and initial balance}
+
+For $1\le h\le K$ we rescale only the real weights by the common factor $x_*^{-2}$, which leaves the law unchanged, giving
+$v_e=\varpi(e)/x_*^2=r_Rr_Cu_Du_A$. For $h=0$, $v_e$ is the real weight from Definition~\ref{def:referencia_cero} itself. By
+Theorem~\ref{thm:perfil}(a), $c\le v_e\le C$ with $c=\underline r^2\kappa^2$ and $C=M^2$. Set \[
+ W_0=\sum_ev_e\asymp n^2,\quad \deg_v^0=\sum_{e\ni v}v_e,\quad \pi_e=\frac{qv_e}{W_0},\quad
+ p_v=\sum_{e\ni v}\pi_e,\quad U_f^0=\sum_{v\in f}u_v .
+\] We retain the virtual weights $u_v$. The dummy vertices have $u_v=1$ and $p_v=0$.
+
+\begin{lema}[Initial balance]\label{lem:balance} Uniformly in $0\le h\le K$, for every physical vertex $v$ and every real edge $e$,
+\begin{equation}\label{eq:balance}
+ p_v+u_v=1+O(n^{-1}),\qquad U_f^0=H+O(1),\qquad p_v\le C,\qquad \pi_e\le C/n .
+\end{equation} Moreover, $\sum_{v\in f}p_v=q$ in each family, and for diagonals and antidiagonals, $p_v\le1-\eta$ with $\eta=\kappa/2$,
+for $n$ large. \end{lema}
+
+\begin{proof} Let $\rho_n=q/n$. By quadrature, $W_0=n^2\rho_n/b\,(1+O(n^{-1}))$. On a row $r$, the Euler equation~\eqref{eq:euler} gives
+$q\deg_v^0/W_0=b\,r_R(\bar r)J_R(\bar r)+O(n^{-1})=1-u_R+O(n^{-1})$. On a diagonal,
+$q\deg_v^0/W_0=b\,u_DJ_D+O(n^{-1})=1-u_D+O(n^{-1})$. The arguments for columns and antidiagonals are analogous. The bounds and
+quadrature estimates are uniform up to the boundary of the target profile. Each real edge appears exactly once in each family, so
+$\sum_{v\in f}\deg_v^0=W_0$ and $\sum_{v\in f}p_v=q$. Summing the pointwise balance gives $U_f^0=N-q+O(N/n)=H+O(1)$, including the
+dummy vertices. On diagonals, $u_v\ge\kappa$, whence $p_v\le1-\kappa+O(n^{-1})\le1-\eta$. At $h=0$ the balance is $p_v=1+O(n^{-1})$,
+with $u_v=0$ on physical rows and columns. The sum of the virtual weights in each of these families is $H$ (from dummy vertices alone),
+and the diagonals are unchanged. \end{proof}
+
+\emph{Clocks.} The index $t$ counts all pieces placed, $z_t=(N-t)/N$ is the active fraction, and $q_t$ is the number of real pieces still to be
+placed. Neither $z_t$ nor $q_t/n$ replaces the fixed parameter $x_*$ in the weights.
+
+\subsection{Deterministic trajectories}
+
+Let $\mathcal A_t$ be the set of active vertices after $t$ steps. We define auxiliary degrees even for vertices that have already been
+removed, by setting \[
+ \deg_v(t)=\sum_{e\ni v}v_e\,\ind\{e\setminus\{v\}\subset\mathcal A_t\},\quad
+ W(t)=\sum_{e\subset\mathcal A_t}v_e,\quad U_f(t)=\sum_{v\in f\cap\mathcal A_t}u_v .
+\] If $v$ is still active, $\deg_v(t)$ is its available real degree. We group the quantities $\Upsilon=(\deg_v,\,W/n,\,U_f,\,q_t)$ and
+their deterministic trajectories $\Upsilon^*=(\deg_v^0z^3,\,W_0z^4/n,\,U_f^0z,\,qz)$, with $z=z_t$. For fixed $\zeta>0$, let
+$T_\zeta=\lfloor(1-\zeta)N\rfloor$.
+
+\begin{lema}[Dynamic regularity]\label{lem:regularidad} Let $0\le h\le K$ and $\zeta>0$. For every sufficiently small fixed tolerance
+$\eps>0$, with probability $1-e^{-c_{\zeta,\eps}n}$ the process runs without failure up to $T_\zeta$ and
+\begin{equation}\label{eq:regularidad}
+ \max_{t\le T_\zeta}\max_i|\Upsilon_i(t)-\Upsilon_i^*(t)|\le\eps n .
+\end{equation} Success beyond $T_\zeta$ is not required. \end{lema}
+
+\begin{proof} Let $E_t=\max_i|\Upsilon_i(t)-\Upsilon_i^*(t)|$ and let $\sigma$ be the first time at which $E_t\ge\eps_0n$ or the process fails. Fix
+$\eps_0>0$ small enough that in the region $E_t<\eps_0 n$ and for $t\le T_\zeta$ we have $W\ge c_\zeta n^2$ and $U_f\ge c_\zeta n$. An
+immediate failure from this region is impossible.
+
+\emph{Trends.} In this region, each active vertex satisfies \begin{equation}\label{eq:tasas}
+ P_R(v)=\frac{q_t}{N-t}\frac{\deg_v}{W}=\frac{p_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}{n^2}\Bigr),\qquad
+ P_V(v)=\frac{N-t-q_t}{N-t}\frac{u_v}{U_f}=\frac{u_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}{n^2}\Bigr),
+\end{equation} for the probabilities that a real or virtual piece removes $v$. Their sum is $1/(Nz)$ up to the same error,
+by~\eqref{eq:balance}. The probability of removing two given distinct vertices in the same step is $O_\zeta(n^{-2})$. For real pieces
+this follows from codegree one, and for virtual pieces from the Cartesian structure and $U_f\asymp n$. Two vertices in the same family
+cannot be removed in a single step. By inclusion--exclusion, the drifts of $\deg_v$, $W/n$, and $U_f$ are $-3\deg_v/(Nz)$,
+$-4(W/n)/(Nz)$, and $-U_f/(Nz)$, with errors $O_\zeta((E_t+1)/n)$. The formula for $\deg_v$ holds even if $v$ is inactive, since it
+tracks only the other three vertices. Since the color word is assigned in advance and kept hidden, $\E(\Delta q_t\mid\mathcal
+F_t)=-q_t/(N-t)$ holds exactly. The deterministic trajectories have the same drifts up to $O_\zeta(n^{-1})$. Thus, for each coordinate,
+\begin{equation}\label{eq:deriva}
+ \bigl|\E(\Delta \Upsilon_i\mid\mathcal F_t)-\Delta \Upsilon_i^*(t)\bigr|\le C_\zeta(E_t+1)/n .
+\end{equation}
+
+\emph{Stopped martingales.} By codegree one, $|\Delta\deg_v|\le3C$ even when $v$ is removed. We also have $|\Delta(W/n)|\le4C$,
+$|\Delta U_f|\le1$, and $|\Delta q_t|\le1$. Let $B$ be a common bound and let
+$M_i(t)=\Upsilon_i(t\wedge\sigma)-\Upsilon_i(0)-\sum_{s<t\wedge\sigma}\E(\Delta \Upsilon_i\mid\mathcal F_s)$, whose increments are at
+most $2B$ in absolute value, including the exit step. Azuma's inequality and a union bound over $O(n)$
+coordinates and $O(n)$ times give $\Pr\{\max_{i,t\le T_\zeta}|M_i(t)|>\gamma_0n\}\le Cn^2e^{-c\gamma_0^2n}$.
+
+\emph{Closing the argument.} The stopped error is $\Upsilon(t\wedge\sigma)-\Upsilon^*(t\wedge\sigma)$, since we stop both the process
+and the time argument of the deterministic trajectory. Pathwise,~\eqref{eq:deriva} and the discrete Gronwall inequality give $\max_{s\le
+T_\zeta}E_{s\wedge\sigma}\le C'_\zeta(\max_{i,t}|M_i(t)|+1)$. For fixed $\eps<\eps_0/2$, choose $\gamma_0<\eps/(2C'_\zeta)$ and then
+take $n$ large. The bound is smaller than $\eps n$, ruling out an exit $E_\sigma\ge\eps_0n$. Nor could a failure have occurred from the
+interior. This gives~\eqref{eq:regularidad} and $\sigma>T_\zeta$ with the stated tail bound. At $h=0$ the proof is the same. It uses
+only positive normalizers of orders $n^2$ and $n$ and requires no positivity of the individual virtual weights. \end{proof}

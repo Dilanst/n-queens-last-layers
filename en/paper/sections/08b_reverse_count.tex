@@ -1,0 +1,28 @@
+\subsection{Trajectory, cut-off, and transfer}
+
+There are $O(n^3)$ excluded pairs, each with ideal contribution $O(n^{-2})$, so their normalized contribution is $O(n^{-1})$. The
+quadrature estimates and the profile limit give, for $y=T/N$, \begin{multline*}
+ \frac{\Phi_0}{n^2}\longrightarrow b_w(y)=y^2\int w(r,c)\,\nu_1(r,j)\,\nu_1(i,c)\\
+ \times\bigl[1-y(1-u_{D}(i-j))\bigr]\bigl[1-y(1-u_{A}(i+j))\bigr]\,dr\,dc\,di\,dj ,
+\end{multline*} uniformly for $y$ in compact sets, where $\nu_1$ is the full-board profile (of mass one).
+
+\begin{proposicion}[Reverse count up to the final step]\label{prop:inversa} Let $0\le h\le K$ and let $w$ be bounded and continuous.
+For every fixed tolerance $\gamma>0$, \[
+ \QQ_h\Bigl(S\cap\Bigl\{\Bigl|\frac{I_w}{n^2}-B_w\Bigr|>\gamma\Bigr\}\Bigr)\le e^{-c_{\gamma,w}n},
+ \qquad B_w=\int w(r,c)\,\nu_1(r,j)\,\nu_1(i,c)\,\psi(i,j)\,dr\,dc\,di\,dj,
+\] where $I_w$ is evaluated on the final placement. Consequently, under $\mu_h$, $I_w/n^2\to B_w$ in probability and in mean. \end{proposicion}
+
+\begin{proof} We cut off the process when $m_\delta=\lceil\delta n\rceil$ real pieces remain to be placed, with $\delta\in(0,1/4)$ free
+to vary independently of the choice $\delta_0$ in Section~\ref{sec:absorbedores}. Control of the colors, $q_t=qz_t+O(\eps n)$ with
+$q/n\to1$, ensures $\tau_\delta\le T_{\delta/4}$ and $y_{\tau_\delta}=1-\delta+O(\eps+n^{-1})$. Fix $\delta$ first, then
+$\eps\ll\delta$, and then $n$. A union bound over deterministic horizons allows for the random cut-off. Each new queen creates at most
+$2n$ reverse pairs and destroys at most $2n$ through its two diagonals. Virtual pieces leave $I_w$ unchanged. Thus the last $m_\delta$
+real steps change $I_w$ by at most $4nm_\delta\|w\|_\infty$. For each fixed final tolerance, choose $\delta$ sufficiently small, then
+the tolerances in~\eqref{eq:regularidad}, and finally take $n$ large. Since $b_w$ is continuous at $y=1$ and $b_w(1)=B_w$,
+Lemma~\ref{lem:conc_inversa} gives the bound under $\QQ_h$.
+
+Dividing by $\QQ_h(S)\ge e^{-d_n}$ preserves a bound of $e^{-cn+o(n)}$ under $\nu'_h$. Theorem~\ref{thm:comparacion} and
+Lemma~\ref{lem:binaria} give convergence in probability under $\mu_h$, and the deterministic bound $|I_w|/n^2\le\|w\|_\infty$ gives
+convergence in mean. \end{proof}
+
+We claim neither an exponential tail under $\mu_h$ nor a rate for the error in its expectation.

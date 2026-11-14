@@ -1,0 +1,78 @@
+\section{Preliminaries}\label{sec:preliminares}
+
+\subsection{Notation}
+
+We index the rows and columns by $\{0,\dots,n-1\}$. The square $(r,c)$ lies in row $r$, column $c$, diagonal
+$r-c\in\{-(n-1),\dots,n-1\}$, and antidiagonal $r+c\in\{0,\dots,2n-2\}$. We call the rows, columns, diagonals, and antidiagonals
+\emph{lines} and denote their four families by $R,C,D,A$, with $n$, $n$, $2n-1$, and $2n-1$ elements, respectively. The board is thus
+a $4$-partite, $4$-uniform hypergraph whose vertices are the lines and whose edges are the squares, each consisting of its four lines.
+Two distinct lines share at most one square (\emph{codegree one}). A legal placement is a matching in this hypergraph.
+
+For $P\in\Om_h(n)$, $R_\vac(P)$ and $C_\vac(P)$ are the sets of $h$ empty rows and $h$ empty columns, respectively, and $X_h(P)$ is the
+number of available empty crossings. For continuous coordinates we use the centers of the squares, $\bar r=(r+\frac12)/n$, $\bar c=(c+\frac12)/n$.
+A diagonal or antidiagonal is assigned the coordinate induced by the centers of its squares, $\bar r-\bar c\in[-1,1]$ or $\bar r+\bar
+c\in[0,2]$.
+
+Unless otherwise stated, $n\to\infty$ with $h$ (or $K$) fixed. The symbols $c,C$ denote positive constants that may vary from one
+occurrence to the next. Subscripts indicate dependence on fixed parameters. For laws $\mu,\nu$ on a finite set,
+$\KL{\mu}{\nu}=\sum\mu\log(\mu/\nu)$ denotes relative entropy (infinite if $\mu\not\ll\nu$). We use its nonnegativity and the fact that
+applying the same function to both laws cannot increase relative entropy (data processing)~\cite{CoverThomas}.
+
+\subsection{Interpretation of \texorpdfstring{$f_h$}{fh}}
+
+In Figure~\ref{fig:cruces-vacios} we counted the crossings in a particular placement. Summing the same counter over the entire layer
+gives the following identity.
+
+\begin{lema}\label{lem:interpretacion} For $1\le h\le n$, $\E_{\mu_h}[X_h]=h^2f_h(n)$. In particular, $f_1(n)$ is the probability that
+a placement chosen uniformly from $\Om_1(n)$ can be completed to a solution. \end{lema}
+
+\begin{proof} We count the pairs $(P,P')$ with $P\in\Om_h$, $P'\in\Om_{h-1}$, and $P\subset P'$. Each $P'$ has $n-h+1$ queens, and
+removing any one of them gives a distinct $P$, yielding $(n-h+1)N_{h-1}$ pairs. Conversely, adding a queen to $P$ gives a legal
+placement if and only if the queen occupies an available empty crossing, yielding $X_h(P)$ extensions. Thus
+$N_h\E_{\mu_h}X_h=(n-h+1)N_{h-1}$, as claimed. If $h=1$, then $X_1\in\{0,1\}$ and $X_1(P)=1$ precisely when $P$ can be completed.
+\end{proof}
+
+\subsection{The variational problem and its profile}\label{subsec:variacional}
+
+The preceding double count is exact at each board size. To study its limit, we need a description of the board that retains the row,
+column, and diagonal constraints in continuous coordinates.
+
+For a given mass $\rho\in(0,1]$, an \emph{admissible} density is a measurable function $\nu\ge0$ on $[0,1]^2$ with $\int\nu=\rho$ whose
+projections (or marginals) onto the four families, \[
+ m_R(r)=\int_0^1\nu(r,c)\,dc,\quad m_C(c)=\int_0^1\nu(r,c)\,dr,\quad
+ m_D(d)=\int_{r-c=d}\nu,\quad m_A(s)=\int_{r+c=s}\nu,
+\] are at most one (the last two integrate along the fiber parametrized by $r$). Its vacancies are $u_f=1-m_f$ on $I_R=I_C=[0,1]$,
+$I_D=[-1,1]$, $I_A=[0,2]$. Thus $\int u_R=\int u_C=1-\rho$ and $\int u_D=\int u_A=2-\rho$. The entropy functional is \[
+ s[\nu]=-3\rho-\int\nu\log\nu-\sum_{f\in\{R,C,D,A\}}\int_{I_f}u_f\log u_f ,
+\] and $s^*(\rho)$ is its supremum over the admissible densities of mass $\rho$. We set $s_1=s^*(1)$. For $0<\rho<1$ the optimizer
+$\nu$ is positive and satisfies the Euler equation $\nu=\lambda_\rho\,u_Ru_Cu_Du_A$ with a constant $\lambda_\rho>0$ called the
+\emph{activity}~\cite[Theorem~3.1 and Lemma~3.3]{Perfil}.
+
+With $x=1-\rho$, we rescale by setting $r_R=u_R/x$, $r_C=u_C/x$, and $b_x=\lambda_\rho x^2$, the rescaled activity. Then
+\begin{equation}\label{eq:perfil}
+ \nu=b_x\,r_Rr_Cu_Du_A,\qquad \int r_R=\int r_C=1,
+\end{equation} and the Euler equations take the form \begin{equation}\label{eq:euler}
+ r_R=\frac1{x+b_xJ_R},\quad r_C=\frac1{x+b_xJ_C},\quad
+ u_D=\frac1{1+b_xJ_D},\quad u_A=\frac1{1+b_xJ_A},
+\end{equation} where each $J_f$ integrates the product of the other three factors along the fiber of $f$. For example,
+$J_R(r)=\int_0^1r_C(c)u_D(r-c)u_A(r+c)\,dc$. Indeed, row $r$ has mass $1-xr_R(r)=b_xr_R(r)J_R(r)$. Integrating~\eqref{eq:perfil} gives
+expression~\eqref{eq:F} for $F(x)=(1-x)/b_x$. We write $\nu_x$ and $(b_x,r_{R,x},r_{C,x},u_{D,x},u_{A,x})$ when we need to specify $x$.
+The subscript then denotes the fraction of holes, not the mass (in~\cite{Perfil} the densities are indexed by mass, so our $\nu_x$ is denoted there
+by $\nu_{1-x}$). The sole exception is the density of mass one, corresponding to $x=0$, which we denote by $\nu_1$ as in~\cite{Perfil}.
+
+\begin{teorema}[The profile near the full board~\cite{Perfil}]\label{thm:perfil} There exist constants $0<\kappa\le1$, $0<\underline
+r\le M<\infty$, $0<b_-\le b_+<\infty$, and $L_*<\infty$ such that for all $x\in(0,1/2]$ the optimal profile of mass
+$1-x$~\cite[Theorem~3.1]{Perfil}, rescaled as in~\eqref{eq:perfil}, satisfies~\eqref{eq:euler} and the following properties.
+\begin{enumerate}[(a)] \item $b_-\le b_x\le b_+$, $\ \underline r\le r_{R,x},r_{C,x}\le M$, and $\kappa\le u_{D,x},u_{A,x}\le1$. \item
+$r_{R,x},r_{C,x},u_{D,x},u_{A,x}$ are Lipschitz on their respective intervals with Lipschitz constant at most $L_*$, and $\nu_x$ is
+bounded and Lipschitz, uniformly in $x$. \item As $x\downarrow0$ they converge uniformly to limits $(b_0,r_R,r_C,u_D,u_A)$
+satisfying~\eqref{eq:euler} with $x=0$ and the same bounds. \end{enumerate} In particular, $\nu_1=b_0r_Rr_Cu_Du_A$ is a continuous
+density on $[0,1]^2$ of mass one, with row and column marginals equal to one and diagonal vacancies $u_D=1-m_D$ and $u_A=1-m_A$, so
+$\int u_D=\int u_A=1$; $\nu_1$ is the unique maximizer of $s$ among admissible densities of mass one, so that
+$s[\nu_1]=s^*(1)=s_1$; and $F$ is continuous at $0$ with $F(0)=1/b_0>0$. \end{teorema}
+
+Parts (a) and (c) are Propositions~4.2, 5.2, and~5.3 of~\cite{Perfil}. The assertion that the limit $\nu_1$ is the unique maximizer of
+mass one follows from Propositions~5.1 and~5.2 of that work. Uniform Lipschitz regularity (b) is its Theorem~7.7, and continuity of $F$
+at $0$, with $F(0)=1/b_0$, is its Theorem~8.1. Appendix~\ref{app:perfil} summarizes those proofs and gives explicit values for the
+constants. No identification of the profile with discrete laws on placements is used:
+Theorem~\ref{thm:perfil} is a statement about the continuous problem.

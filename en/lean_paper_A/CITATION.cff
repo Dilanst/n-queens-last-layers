@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this formalization, please cite this repository and the paper it formalizes."
+title: "Lean formalization of the paper “Completability of the final layers in the n-queens problem”"
+version: "1.0.0"
+license: MIT
+authors:
+  - family-names: "Mejia"
+    given-names: "Dilan Steven"
+references:
+  - type: article
+    title: "Completability of the final layers in the n-queens problem"
+    authors:
+      - family-names: "Mejia"
+        given-names: "Dilan Steven"
+    year: 2026
+    url: "https://github.com/Dilanst/n-queens-last-layers"

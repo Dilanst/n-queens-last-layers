@@ -1,0 +1,68 @@
+Theorem~\ref{thm:limite} already implies that $\lim_nf_h(n)$ is positive for each fixed $h$. Indeed, \eqref{eq:F} and the bounds in
+Theorem~\ref{thm:perfil}(a) and~(c) give $F(0)\ge\kappa^2>a_0/2$. The direct proof of Theorem~\ref{thm:positiva} is in
+Section~\ref{sec:positiva}. The constant is conservative, and the proof gives only the existence of the threshold $n_0$.
+
+To understand this proof, return to the case of the last queen. If the crossing $(r,c)$ is under attack, direct insertion there fails.
+After removing a queen from $(i,j)$, we can occupy its \emph{destinations} $(r,j)$ and $(i,c)$ if the two new queens are compatible both
+with the rest of the board and with each other. This fills row $r$ and column $c$ even though the crossing $(r,c)$ remains unoccupied.
+
+For any $h\ge1$, we call this replacement of one queen by two a \emph{one-move repair} at $(r,c)$. A legal repair takes the placement
+$P\in\Om_h(n)$ to layer $h-1$. Figure~\ref{fig:reparacion-tablero} shows an example on the $4\times4$ board. The queen at $(3,2)$ attacks the
+empty crossing $(2,1)$. We remove the queen at $(0,0)$ and place two queens at $(2,0)$ and $(0,1)$. The original crossing remains under
+attack and unoccupied. The resulting placement has four queens and is the one in Figure~\ref{fig:ejemplos}(a).
+
+\input{figures/repair}
+
+We call a queen that can legally be replaced in this way an \emph{absorber} for the crossing. In
+Figure~\ref{fig:reparacion-tablero}(a), only the queen at $(0,0)$ qualifies. If we remove the queen at $(1,3)$, one of its destinations is
+$(1,1)$. If we remove the queen at $(3,2)$, one of its destinations is $(2,2)$. In both cases, the queen at $(0,0)$ remains in place and
+attacks that destination. Thus this crossing admits no direct insertion and exactly one legal repair.
+
+Let $A^{rc}(P)$ be the number of legal repairs at $(r,c)$ and let $d_{h,1}(P)=\sum A^{rc}(P)$, where the sum runs over the $h^2$ empty
+crossings. The subscript $1$ refers to one-move repairs, in which a single queen is removed. We write $\bar r=(r+\frac12)/n$ and $\bar
+c=(c+\frac12)/n$ for the coordinates of the centers of the squares. To express how the number of repairs varies with the position of the
+crossing, we use the full-board profile. We denote its density by $\nu_1$, whose subscript is the mass of queens, equal to one,
+corresponding to $x=0$. We drop the subscript $x$ from its factors (the constant retains its subscript, $b_0$) and set \begin{gather*}
+ \nu_1=b_0\,r_R\,r_C\,u_D\,u_A,\qquad \psi(r,c)=u_D(r-c)\,u_A(r+c),\\
+ a(r,c)=\int_{[0,1]^2}\nu_1(i,j)\,\psi(r,j)\,\psi(i,c)\,di\,dj .
+\end{gather*} Then $\kappa^4\le a\le1$.
+
+\begin{teorema}[Typical structure]\label{thm:estructura} Fix $h\ge1$ and let $P$ have law $\mu_h$. \begin{enumerate}[(a)] \item
+\emph{One-move repairs.} In probability, \[
+ \max_{(r,c)\ \text{empty crossing of }P}\ \Bigl|\frac{A^{rc}(P)}{n}-a(\bar r,\bar c)\Bigr|\longrightarrow0 .
+\] \item \emph{Mean spatial distribution of the holes.} For every continuous function $t$ on $[0,1]^2$, \[
+ \E_{\mu_h}\Bigl[\frac1{h^2}\sum_{(r,c)\ \text{empty crossing}}t(\bar r,\bar c)\Bigr]
+ \longrightarrow\int_{[0,1]^2}t(r,c)\,r_R(r)\,r_C(c)\,dr\,dc .
+\] For $h=1$ this gives weak convergence of the law of the position of the unique empty crossing. \item \emph{Unweighted counter.}
+$\E_{\mu_h}[d_{h,1}]/(h^2n)\to B_1/b_0$, where $B_1=\int_{[0,1]^2}\psi$. \end{enumerate} \end{teorema}
+
+\begin{observacion}[Scope]\label{obs:alcance} \begin{enumerate}[(i)] \item All statements hold for fixed $h$ and $K$ as $n\to\infty$.
+We obtain neither convergence rates nor uniformity for $K=K(n)\to\infty$, and we do not determine the full asymptotics of $Q(n)$. \item
+For $h>1$, part (b) identifies only the mean measure of the empty crossings. It makes no claim about asymptotic independence of the
+empty rows and columns or concentration of the empirical measure of the empty crossings. Part (c) concerns convergence of means. By
+(a), $d_{h,1}/n-\sum a(\bar r,\bar c)\to0$, and the second term may remain random, so we make no claim about concentration of
+$d_{h,1}/n$. \item The value $F(0)\approx0.0809$ comes from a deterministic numerical solution of the variational
+problem~\cite[Section~9]{Perfil}, with no certified error bound. At finite board sizes, the exact values from exhaustive enumeration
+are far from the limit (for example $f_1(15)\approx0.114$ and $f_2(15)\approx0.153$, see Table~\ref{tab:ilustracion}). The theorem
+gives no information on the rate of convergence. \end{enumerate} \end{observacion}
+
+\subsection{Outline of the proof}\label{subsec:idea}
+
+Figure~\ref{fig:esquema} summarizes the structure of the proof.
+
+A placement may admit several repairs at a single crossing. We count each legal operation once from its initial placement and once from
+its final placement. In the second description we start from $P'\in\Om_{h-1}$, choose the ordered pair of queens $(r,j),(i,c)$, and
+replace them by $(i,j)$ to recover $P\in\Om_h$. We assign the crossing $(r,c)$ the same weight $w(r,c)$ in both descriptions. The
+double count in Section~\ref{sec:doblecuenta} gives \[
+ N_h\,\E_{\mu_h}D_w=N_{h-1}\,\E_{\mu_{h-1}}I_w,\qquad\text{hence}\qquad
+ f_h=\frac{n-h+1}{n}\,\frac{\E_{\mu_h}[D_w/(h^2n)]}{\E_{\mu_{h-1}}[I_w/n^2]},
+\] where $D_w$ and $I_w$ are the weighted forward and reverse counters. To use the ratio, we will choose a weight for which the
+denominator has a positive limit.
+
+The two means are taken under different laws, $\mu_h$ for the forward count and $\mu_{h-1}$ for the reverse count. To handle both,
+Section~\ref{sec:referencia} constructs a random process for each layer $h$. It places real pieces (queens) and virtual pieces
+successively until no active line remains. A virtual piece places no queen and deactivates the lines it touches. The weights come from
+the variational profile. Let $\nu'_h$ denote the law of the final placement in layer $h$, conditional on the success of the process. An
+entropy identity, estimates for the normalizers (the sums of weights that normalize each choice), and Simkin's first-order lower bound
+give $\KL{\mu_h}{\nu'_h}=o(n)$. Consequently, an event with probability at most $e^{-cn}$ under $\nu'_h$, for fixed $c>0$, has
+probability $o(1)$ under $\mu_h$.

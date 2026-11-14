@@ -1,0 +1,43 @@
+\subsection{Early cut-off}
+
+We have a deterministic trajectory for the counter and a concentration estimate while a positive fraction of the pieces remain. We now
+choose the cut-off so that the queens placed afterward can destroy only a fraction of the repairs already available. For this purpose,
+fix \begin{equation}\label{eq:constantes}
+ \eta=\kappa/2,\qquad a_0=\eta^4/16,\qquad \delta_0=a_0/16;
+\end{equation} so that $a_0>8\delta_0$ and $\delta_0<1/4$. For a cut-off $\delta\in(0,1/4)$, let $m_\delta=\lceil\delta n\rceil$, let
+$\tau_\delta$ be the time when exactly $m_\delta$ real pieces remain to be placed, and let $\zeta=\delta/4$. We use the cut-off
+$\delta_0$ in the lower bound (Section~\ref{sec:positiva}). In Sections~\ref{sec:inversa} and~\ref{sec:limite} the cut-off $\delta$ is
+a free parameter and is sent to zero.
+
+\begin{lema}[Absorbers at the cut-off]\label{lem:corte} Let $h\in\{1,2\}$ and $\delta=\delta_0$. Except on an event of probability
+$e^{-cn}$ under $\QQ_h$, the process reaches the cut-off with $\tau_{\delta_0}\le T_{\delta_0/4}$ and, simultaneously for all roots,
+\begin{equation}\label{eq:corte}
+ A^{rc}_{\tau_{\delta_0}}\ge a_0n .
+\end{equation} \end{lema}
+
+\begin{proof} Concentration of the colors in~\eqref{eq:regularidad}, with tolerance smaller than $\delta_0/8$, ensures
+$\tau_{\delta_0}\le T_{\delta_0/4}$ except on an event of probability $e^{-cn}$. Deterministically, at the cut-off
+$y=\tau_{\delta_0}/N\ge(q-m_{\delta_0})/N\ge1/4$ for $n$ large. Moreover, $\sum_{e\in\mathcal I_{rc}}\pi_e\ge q-O(1)\ge n/2$, since
+$\sum_e\pi_e=q$ and the excluded squares number $O(n)$ with $\pi_e\le C/n$. By Lemma~\ref{lem:balance},
+$1-yp_{d_i}\ge1-p_{d_i}\ge\eta$, so $a_n^{rc}(y)\ge\eta^4n/8$ for all $y\ge1/4$. Lemma~\ref{lem:conc_directa} with tolerance
+$\gamma=\eta^4/16$, applied to all deterministic horizons $T\le T_{\delta_0/4}$ with $T/N\ge1/4$ (a union bound over $O(n)$ horizons
+allows for the random cut-off), gives $A^{rc}_{\tau_{\delta_0}}\ge\eta^4n/16=a_0n$ for all roots. The claim only requires the process
+to reach the cut-off. Lemma~\ref{lem:regularidad} already accounts for any earlier failure. \end{proof}
+
+\emph{Order of choices.} Fix $\eta,a_0,\delta_0$ and $\zeta=\delta_0/4$, then choose the tolerances in
+Lemmas~\ref{lem:regularidad}--\ref{lem:conc_directa}, which depend on these parameters, and finally take $n$ large. Uniformity as
+$\delta\to0$ is not required. The constants come from analytic bounds and are very conservative.
+
+\subsection{Deterministic loss after the cut-off}
+
+\begin{lema}\label{lem:perdida} Let $\delta\in(0,1/4)$ and let $(r,c)$ be a root whose row and column remain physically empty. Each
+real piece creates at most one occupied candidate for $(r,c)$ and cancels the contributions of at most four. Virtual pieces leave
+$A^{rc}$ unchanged. Consequently, on the success event, for every crossing that is empty at the end, \[
+ A^{rc}_{\mathrm{final}}\ge A^{rc}_{\tau_\delta}-4m_\delta,\qquad
+ |A^{rc}_{\mathrm{final}}-A^{rc}_{\tau_\delta}|\le5m_\delta .
+\] \end{lema}
+
+\begin{proof} A new queen at square $g$ can create only the term $Z^\oc_{g,\varnothing}$. It destroys the term for an occupied
+candidate $e$ if $g$ lies on one of the destination diagonals of $e$. The square $g$ lies on one diagonal and one antidiagonal, and each is
+a destination diagonal for at most two occupied candidates, since each row and column contains at most one queen. Virtual pieces merely
+deactivate vertices, and $A^{rc}$ depends only on $O$ and $V$. Exactly $m_\delta$ real pieces are placed after the cut-off. \end{proof}

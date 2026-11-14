@@ -1,0 +1,66 @@
+\subsection{Backward compensation and concentration}
+
+Fix an integer time $T\le T_\zeta$ and a root. For the terminal value $\sum_eZ^\oc_{e,\varnothing}$ we solve
+$\partial_t\Phi+\cL_t\Phi=0$ backward in the linear space spanned by~\eqref{eq:patrones}, writing
+$\Phi_t=\sum_{e,J}\{c^\oc_{e,J}(t)Z^\oc_{e,J}+c^\di_{e,J}(t)Z^\di_{e,J}\}$. We use the continuous-time equation. Sampling at integer
+times introduces an error of $O_\zeta(n^{-1})$ in the sum below. By variation of constants in dimension $32$ (the
+system~\eqref{eq:generador} is triangular with coefficients $O_\zeta(1/n)$, and the occupied block is bounded and feeds the available
+block through the source $k_e=O_\zeta(n^{-2})$ over $O(n)$ steps), we have the uniform bounds \begin{equation}\label{eq:coeficientes}
+ |c^\oc|\le C_\zeta,\quad |\partial_tc^\oc|\le C_\zeta/n,\quad |c^\di|\le C_\zeta/n,\quad
+ |\partial_tc^\di|\le C_\zeta/n^2,
+\end{equation} and also $|\partial_t^2c^\oc|=O_\zeta(n^{-2})$ and $|\partial_t^2c^\di|=O_\zeta(n^{-3})$.
+
+\begin{lema}[Concentration of absorbers]\label{lem:conc_directa} For every fixed tolerance $\gamma>0$, choosing $\eps$ sufficiently
+small in Lemma~\ref{lem:regularidad} gives \begin{equation}\label{eq:conc_directa}
+ \Pr\bigl\{|A_T^{rc}-\Phi_0|>\gamma n,\ \sigma'>T\bigr\}\le e^{-c_{\zeta,\gamma}n},
+\end{equation} where $\sigma'=\inf\{t:E_t\ge\eps n\text{ or failure}\}$ satisfies $\Pr(\sigma'\le T_\zeta)\le
+e^{-c_{\zeta,\eps}n}$. A union bound over the $n^2$ roots and $O(n)$ times preserves the tail estimate. \end{lema}
+
+\begin{proof} \emph{Drift.} Since $\sum_eO_e\le n$ and there are $n^2$ squares, Lemma~\ref{lem:generador} and~\eqref{eq:coeficientes}
+give $|\E(\Phi_{t+1}-\Phi_t\mid\mathcal F_t)|\le C_\zeta(\eps+n^{-1})$. In the discretization, $\sum|\Delta Z^\oc|=O(1)$ and
+$\sum|\Delta Z^\di|=O(n)$ per root. Thus the mixed terms $\Delta c^\oc\Delta Z^\oc$ and $\Delta c^\di\Delta Z^\di$ and the second time
+differences of the coefficients sum to $O_\zeta(n^{-1})$.
+
+\emph{Increments.} A destination diagonal affects at most two occupied candidates, since each row and column contains at most one queen.
+Each vertex occurs in $O(n)$ available patterns for this root, with coefficients $O(1/n)$. A birth adds an occupied term with bounded
+coefficient. Accounting also for the change in the coefficients gives $|\Delta\Phi|\le C_\zeta$, including the exit step.
+
+\emph{Martingale.} Lemma~\ref{lem:regularidad} with tolerance $\eps/2$ bounds $\Pr(\sigma'\le T_\zeta)$. We freeze
+$\widetilde\Phi_s=\Phi_{s\wedge\sigma'}(\text{state}_{s\wedge\sigma'})$, including its time argument. The drift bound also holds on the
+exit step. The martingale $\widetilde\Phi_s-\widetilde\Phi_0-\sum_{u<s}\E(\Delta\widetilde\Phi_u\mid\mathcal F_u)$ has bounded
+increments, and the accumulated drift error is $C_\zeta(2n\eps+2)$. We choose $\eps$ to absorb this error into the tolerance $\gamma$
+before taking $n$ large. Azuma's inequality then gives~\eqref{eq:conc_directa}, since $\Phi_T=A_T^{rc}$. \end{proof}
+
+\begin{lema}[Initial value]\label{lem:valor_inicial} With $y=T/N$, \begin{equation}\label{eq:valor_inicial}
+ \Phi_0=a_n^{rc}(y):=y\sum_{e\in\mathcal I_{rc}}\pi_e\prod_{i=1}^4\bigl(1-y\,p_{d_i}\bigr).
+\end{equation} \end{lema}
+
+\begin{proof} Initially, $O_e=0$ and $\chi_v=V_v=1$ on all lines. The forward solution of the ideal linear system~\eqref{eq:generador}
+with these initial data is, at time $y$ and with $z=1-y$, \[
+ Z^{\di,*}_{e,J}=z^{4+|J|}\prod_{i\notin J}(1-yp_{d_i}),\qquad
+ Z^{\oc,*}_{e,J}=y\,\pi_e\,z^{|J|}\prod_{i\notin J}(1-yp_{d_i}),
+\] as can be checked by differentiation. The source $k_eZ^{\di,*}_{e,J}$ cancels $z^4$ and the remaining terms are exactly those
+of~\eqref{eq:generador}. By duality with the backward equation, $\Phi_0=\sum_eZ^{\oc,*}_{e,\varnothing}(y)$. This is the solution of a
+linear system, not a factorization of the true law. \end{proof}
+
+With terminal value $\overline Y^{rc}_T/n$ and only the available block, the same argument gives concentration on the scale $n$ around \[
+ \frac{z^4}{n}\sum_{e\in\mathcal I_{rc}}v_e\prod_{i=1}^4(1-yp_{d_i}).
+\] This allows us to track $A$ and $\overline Y$ simultaneously without an unbounded hierarchy of patterns.
+
+\subsection{Limiting trajectory}
+
+Since $x_*\to0$, the target profiles converge to the full-board profile $\nu_1$, with diagonal vacancies $u_D,u_A\ge\kappa$. By
+Theorem~\ref{thm:perfil} and~\eqref{eq:balance}, $\pi_e=b\,v_e/n\,(1+O(n^{-1}))$ and $p_{d}=1-u_{d}+O(n^{-1})$. The quadrature
+estimates are uniform, and the $O(n)$ exclusions from $G$, the row, and the column contribute $O(1/n)$. Thus, uniformly in the root,
+\begin{equation}\label{eq:trayectoria}
+ \frac{a_n^{rc}(y)}n\longrightarrow\tilde a(y;\bar r,\bar c):=
+ y\int_{[0,1]^2}\nu_1(i,j)\prod_{d\in\mathcal D(r,c;i,j)}\bigl[1-y(1-u_d)\bigr]\,di\,dj .
+\end{equation} In the limit, $u_d$ is the vacancy of the full-board profile. By~\eqref{eq:regularidad}, $|q_t-qz_t|\le\eps n$ except
+with probability $e^{-cn}$, so $1-y$ is the limit in probability of the fraction of real pieces still to be placed. We do not replace the target profile
+by the optimal profile of mass $y$. The function $\tilde a$ satisfies
+$\partial_y\tilde a=\int\nu_1\prod_d\vartheta_d
+-y\int\nu_1\sum_d(1-u_d)\prod_{\ell\ne d}\vartheta_\ell$, with $\vartheta_d=1-y(1-u_d)$ and $\tilde a(0)=0$ (birth minus loss), and
+depends on the position of the root. On the full board, \begin{equation}\label{eq:a_infinito}
+ \tilde a(1;r,c)=\int\nu_1\prod_du_d=a(r,c)\ge\kappa^4>0,
+\end{equation} with $a$ as in Section~\ref{sec:intro}. This is a limit of the deterministic profile and requires no regularity of the
+process up to its last step.

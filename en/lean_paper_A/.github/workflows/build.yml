@@ -1,0 +1,36 @@
+# Full build from scratch on Linux and check of the axioms of the final theorem.
+# Runs on every push to the repository and can also be started by hand (Actions tab).
+name: Lean build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      # Installs Lean 4.19.0 (as given in lean-toolchain), downloads the precompiled Mathlib at
+      # the revision pinned in lakefile.lean and builds the 659 modules of the project.
+      - name: Build
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+
+      - name: Axioms of the final theorem
+        run: |
+          lake env lean Check.lean 2>&1 | tee axioms.txt
+          grep -q "depends on axioms: \[propext, Classical.choice, Quot.sound\]" axioms.txt
+
+      - name: Save the log and the dependency manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: |
+            axioms.txt
+            lake-manifest.json
