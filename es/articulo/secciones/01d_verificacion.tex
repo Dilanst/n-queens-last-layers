@@ -2,14 +2,13 @@
 
 Los enunciados principales de este artículo están formalizados en Lean~4~\cite{Lean4} (versión~4.19.0,
 con Mathlib~\cite{Mathlib} en la revisión \texttt{c44e0c8}) para una familia de perfiles construida en la propia
-formalización, que más abajo se identifica con la del texto. Los reúne el teorema
-\begin{center}
-\texttt{ArticuloA.\allowbreak Historias.\allowbreak
-conclusion\_del\_articulo\_A\_para\_los\_tableros\_fisicos},
-\end{center}
-\noindent que no tiene hipótesis y se demuestra en el archivo
-\begin{center}
-\texttt{CierreDeLosSeisBloquesDelArticuloA.lean}.
+formalización, que más abajo se identifica con la del texto. Los reúne un teorema sin
+hipótesis; su nombre y el archivo donde se demuestra son:
+\begin{center}\small
+\begin{tabular}{@{}l@{\quad}l@{}}
+Teorema: & \texttt{ArticuloA.Historias.conclusion\_del\_articulo\_A\_para\_los\_tableros\_fisicos}\\[2pt]
+Archivo: & \texttt{fuentes/CierreDeLosSeisBloquesDelArticuloA.lean}
+\end{tabular}
 \end{center}
 \noindent El código, de 659 módulos, está disponible
 en~\cite{CodigoLean}; su archivo README explica cómo compilarlo y cómo obtener la lista de axiomas. Según \texttt{\#print axioms}, el teorema sólo usa los axiomas
