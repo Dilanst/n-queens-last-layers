@@ -2,6 +2,8 @@
 
 Dilan Steven Mejia
 
+DOI: [10.5281/zenodo.24221374](https://doi.org/10.5281/zenodo.24221374)
+
 Este repositorio reúne el artículo, su formalización en Lean y los programas de verificación numérica.
 
 | Carpeta | Contenido |
