@@ -7,12 +7,13 @@ el contador directo en cada cruce y elegimos el mismo peso en las dos cuentas.
 En esta sección $\nu_1,r_R,r_C,u_D,u_A,b_0$ son el perfil lleno, de masa uno, y
 $\psi(r,c)=u_D(r-c)u_A(r+c)$, $a(r,c)=\int\nu_1(i,j)\psi(r,j)\psi(i,c)\,di\,dj$, como en la
 Sección~\ref{sec:intro}. Como en la
-Sección~\ref{subsec:variacional}, $u_D$ se evalúa en $r-c\in[-1,1]$ y $u_A$ en $r+c\in[0,2]$. Se tiene $\kappa^4\le a\le1$, y $a$ es Lipschitz.
+Sección~\ref{subsec:variacional}, $u_D$ se evalúa en $r-c\in[-1,1]$ y $u_A$ en $r+c\in[0,2]$. Se tiene
+$\kappa^4\le a\le1$, y $a$ es Lipschitz.
 
 \subsection{La cuenta directa hasta el final}
 
 Para pasar al valor terminal hace falta una cota absoluta, no sólo inferior: por el
-Lema~\ref{lem:perdida}, $|\Delta A^{rc}|\le5$ por pieza real y las virtuales no cambian el
+Lema~\ref{lem:perdida}, $|\Delta A^{rc}|\le4$ por pieza real y las virtuales no cambian el
 contador físico.
 
 \begin{proposicion}\label{prop:directa}
@@ -28,9 +29,9 @@ En consecuencia, el máximo tiende a cero en probabilidad bajo $\mu_h$.
 Por los Lemas~\ref{lem:conc_directa} y~\ref{lem:valor_inicial} y por~\eqref{eq:trayectoria},
 $A^{rc}_t/n$ se concentra, uniformemente en las raíces y en los tiempos $t\le T_\zeta$, alrededor de
 $\tilde a(y;\bar r,\bar c)$. Se corta cuando quedan $\lceil\delta n\rceil$ piezas reales
-pendientes, con $\delta$ libre y con el enlace temporal y el orden de elecciones de la
-Proposición~\ref{prop:inversa}; en el corte $y=1-\delta+O(\eps+n^{-1})$, y después la diferencia
-absoluta es a lo sumo $5\lceil\delta n\rceil$ por el Lema~\ref{lem:perdida}. Como
+pendientes, con $\delta$ libre y con el enlace temporal $y_{\tau_\delta}=1-\delta+O(\eps+n^{-1})$
+y el orden de elecciones de la prueba de la Proposición~\ref{prop:inversa}; después del corte, la
+diferencia absoluta es a lo sumo $4\lceil\delta n\rceil$ por el Lema~\ref{lem:perdida}. Como
 $\tilde a(\cdot;r,c)$ es continua en $y=1$ uniformemente en $(r,c)$ y
 $\tilde a(1;\cdot)=a$ por~\eqref{eq:a_infinito}, basta tomar $\delta$ pequeño frente a $\gamma$.
 La cota vale para cualquier $h$ fijo y uniformemente en un conjunto finito de ellos. Se analiza
@@ -86,11 +87,11 @@ $f_h\to1/b_0=F(0)$. Para $1\le h\le K$ el argumento es uniforme; no se permite $
 \end{proof}
 
 \begin{proof}[Demostración del Teorema~\ref{thm:estructura}]
-(a) es la Proposición~\ref{prop:directa}. Para (b), sea $t$ continua y $w=t/a$, permitiendo
-signo (todo lo anterior es lineal en $w$). Por (a),
-$D_w/(h^2n)-h^{-2}\sum_{(r,c)}t(\bar r,\bar c)\to0$ en media bajo $\mu_h$, y por la
+(a) es la Proposición~\ref{prop:directa}. Para (b), sea $\varphi$ continua y $w=\varphi/a$,
+permitiendo signo (todo lo anterior es lineal en $w$). Por (a),
+$D_w/(h^2n)-h^{-2}\sum_{(r,c)}\varphi(\bar r,\bar c)\to0$ en media bajo $\mu_h$, y por la
 Proposición~\ref{prop:inversa} y el Lema~\ref{lem:nucleo},
-$\E_{\mu_{h-1}}[I_w/n^2]\to\int t\,\Gamma/a=b_0\int t\,r_Rr_C$. La identidad
+$\E_{\mu_{h-1}}[I_w/n^2]\to\int\varphi\,\Gamma/a=b_0\int\varphi\,r_Rr_C$. La identidad
 $\E_{\mu_h}[D_w/(h^2n)]=f_h\,(n/m)\,\E_{\mu_{h-1}}[I_w/n^2]$ del Lema~\ref{lem:doblecuenta} y
 $f_h\to1/b_0$ dan (b). Para (c), con $w\equiv1$,
 $d_h^\inv/n^2\to B_1=\int\psi$, porque las marginales de filas y columnas de $\nu_1$ valen uno, y

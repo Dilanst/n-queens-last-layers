@@ -1,17 +1,19 @@
 \section{Alcance de la verificación en Lean}\label{sec:verificacion}
 
 Los enunciados principales de este artículo están formalizados en Lean~4~\cite{Lean4} (versión~4.19.0,
-con Mathlib~\cite{Mathlib} en la revisión \texttt{c44e0c8}) para una familia de perfiles construida en la propia
+con Mathlib~\cite{Mathlib} en la revisión \texttt{c44e0c8}) para una familia de perfiles construida en la
+propia
 formalización, que más abajo se identifica con la del texto. Los reúne un teorema sin
 hipótesis; su nombre y el archivo donde se demuestra son:
 \begin{center}\small
 \begin{tabular}{@{}l@{\quad}l@{}}
 Teorema: & \texttt{ArticuloA.Historias.conclusion\_del\_articulo\_A\_para\_los\_tableros\_fisicos}\\[2pt]
-Archivo: & \texttt{fuentes/CierreDeLosSeisBloquesDelArticuloA.lean}
+Archivo: & \texttt{sources/CierreDeLosSeisBloquesDelArticuloA.lean}
 \end{tabular}
 \end{center}
 \noindent El código, de 659 módulos, está disponible
-en~\cite{CodigoLean}; su archivo README explica cómo compilarlo y cómo obtener la lista de axiomas. Según \texttt{\#print axioms}, el teorema sólo usa los axiomas
+en~\cite{CodigoLean}; su archivo README explica cómo compilarlo y cómo obtener la lista de axiomas. Según
+\texttt{\#print axioms}, el teorema sólo usa los axiomas
 \texttt{propext}, \texttt{Classical.choice} y \texttt{Quot.sound}.
 
 \emph{Qué afirma.} Existe una familia
@@ -39,9 +41,10 @@ Todas estas conclusiones se refieren a la misma familia.
 sus vacancias están acotadas inferiormente por constantes positivas y cumplen la ecuación de
 Euler con actividad $\tilde b_x/x^2$; por el argumento de la prueba del Lema~\ref{lem:borde}
 (concavidad y estacionariedad a masa fija), $\tilde\nu_x$ maximiza $s$ en masa $1-x$. Para
-$x=0$, la maximalidad forma parte del enunciado. Como el maximizador de cada masa es
-único~\cite[Teorema~3.1(a) y Proposición~5.1]{Perfil}, resultado que no está formalizado,
-$\tilde\nu_x=\nu_x$ para $x\in(0,1/2]$ y $\tilde\nu_0=\nu_1$. Además, la
+$x=0$, la maximalidad forma parte del enunciado. Como el maximizador de cada masa es único, por
+la concavidad estricta de $s$ (párrafo final de la Sección~\ref{subsec:variacional}),
+$\tilde\nu_x=\nu_x$ para $x\in(0,1/2]$ y $\tilde\nu_0=\nu_1$; esa unicidad no está formalizada, y
+su prueba no usa~\cite{Perfil}. Además, la
 factorización~\eqref{eq:perfil}, con las vacancias diagonales como factores y
 $\int r_R=\int r_C=1$, queda determinada por la densidad. Por tanto $\tilde b_x=b_x$ y
 $\tilde F=F$ en $[0,1/2]$, y los enunciados anteriores se refieren al perfil del texto. Por otra

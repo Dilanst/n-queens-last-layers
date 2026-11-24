@@ -1,58 +1,95 @@
 \subsection{Normalizers}
 
-\begin{lema}\label{lem:normalizadores} Let $\rho=1-x_*=q/n$. The following hold uniformly in $1\le h\le K$. \begin{enumerate}[(i)]
-\item $W_R(0)=n^2\rho/\lambda_\rho\,(1+O(n^{-1}))\asymp x_*^2n^2$ and $W_V(0)=H^4(1+O(n^{-1}))$. \item $\sum_v\log
-u_v=n\sum_f\int_{I_f}\log u_f+O(1)$. \item $\E_{\PP_h}\sum_t\log W_{\col(t)}(t)\le q\log W_R(0)+H\log W_V(0)-4N+O(n^{2/3})$.
+\begin{lema}\label{lem:normalizadores} Let $\rho=1-x_*=q/n$. The following hold uniformly in $1\le h\le K$.
+\begin{enumerate}[(i)]
+\item $W_R(0)=n^2\rho/\lambda_\rho\,(1+O(n^{-1}))\asymp x_*^2n^2$ and $W_V(0)=H^4(1+O(n^{-1}))$. \item
+$\sum_v\log
+u_v=n\sum_f\int_{I_f}\log u_f+O(1)$. \item $\E_{\PP_h}\sum_t\log W_{\col(t)}(t)\le q\log W_R(0)+H\log
+W_V(0)-4N+O(n^{2/3})$.
 \end{enumerate} \end{lema}
 
-\begin{proof} (i) By quadrature for the rescaled factors, which are positive and Lipschitz, $W_R(0)=x_*^2n^2\int
-r_Rr_Cu_Du_A\,(1+O(n^{-1}))=x_*^2n^2\rho/b\,(1+O(n^{-1}))$; moreover $x_*^2/b=1/\lambda_\rho$. In each family the sum of the weights is
-$H+O(1)$. For the rows we sum $n-1$ dummy contributions and $\sum u_R=nx_*+O(x_*)$. For the diagonals the sum is $\sum u_D=n\int
+\begin{proof} (i) By quadrature for the rescaled factors, which are positive and Lipschitz,
+$W_R(0)=x_*^2n^2\int
+r_Rr_Cu_Du_A\,(1+O(n^{-1}))=x_*^2n^2\rho/b\,(1+O(n^{-1}))$; moreover $x_*^2/b=1/\lambda_\rho$. In each
+family the sum of the weights is
+$H+O(1)$. For the rows we sum $n-1$ dummy contributions and $\sum u_R=nx_*+O(x_*)$. For the diagonals the
+sum is $\sum u_D=n\int
 u_D+O(1)=n(2-\rho)+O(1)$. Since $W_V(0)$ is the product of the four sums, $W_V(0)=H^4(1+O(n^{-1}))$.
 
-(ii) For the rows, $\sum\log u_R=n\log x_*+\sum\log r_R(\bar r)$. The constant $\log x_*$ is summed exactly $n$ times, and $\log r_R$
-is uniformly Lipschitz, so the quadrature error is $O(1)$ independently of $1/x_*$. The same holds for the columns, diagonals, and
+(ii) For the rows, $\sum\log u_R=n\log x_*+\sum\log r_R(\bar r)$. The constant $\log x_*$ is summed exactly
+$n$ times, and $\log r_R$
+is uniformly Lipschitz, so the quadrature error is $O(1)$ independently of $1/x_*$. The same holds for the
+columns, diagonals, and
 antidiagonals. The dummy vertices contribute zero.
 
-(iii) Fix a completed matching and a piece $p$ revealed at time $\mathsf t_p\in[0,1]$. Let $z=1-\mathsf t_p$, and let $W^{(p)}$ denote
-the normalizer for the color of $p$ at the time it is revealed. Conditional on the matching and on $\mathsf t_p$, each of the other
-pieces independently remains unrevealed with probability $z$. An \emph{ordinary} edge of the color of $p$ has its four vertices covered
-by four distinct pieces other than $p$ and is available with probability $z^4$. By the codegree-one property there are $O(n)$
-exceptional real edges of weight $O(x_*^2)$. Except for the one contained in $p$, each requires at least one other piece to remain
-unrevealed and is available with probability at most $z$. There are $O(n^3)$ exceptional virtual edges, each of weight at most one.
-Thus, uniformly in the matching, \[
+(iii) Fix a completed matching and a piece $p$ revealed at time $\mathsf t_p\in[0,1]$. Let
+$z=1-\mathsf t_p$, and let $W^{(p)}$ denote
+the normalizer for the color of $p$ at the time it is revealed. Conditional on the matching and on
+$\mathsf t_p$, each of the other
+pieces independently remains unrevealed with probability $z$. An \emph{ordinary} edge of the color of $p$
+has its four vertices covered
+by four distinct pieces other than $p$ and is available with probability $z^4$. Let $p$ be real. An
+exceptional real edge either
+shares a line with $p$ (at most $4n$ squares) or has two lines covered by the same piece $p'\ne p$. If $p'$
+is real, that square is
+the square of $p'$ by the codegree-one property, and there are at most $n$ squares with a queen; if $p'$ is
+virtual, each of the
+$\binom42=6$ pairs of its lines determines at most one square, again by the codegree-one property, which
+gives at most $6H$ squares.
+Hence there are at most $5n+6H=O(n)$ exceptional real edges, of weight $O(x_*^2)$. The piece $p$ itself is
+available with
+probability one and gives the constant term of the bound below; each of the others has a line covered by a
+piece other than $p$,
+which must remain unrevealed, and is available with probability at most $z$. If $p$ is virtual, an
+exceptional virtual edge shares a
+vertex with $p$ (at most $4N^3$) or has two vertices covered by the same piece (at most $6N^2$ per piece):
+there are $O(n^3)$ of
+them, of weight at most one, and $p$ itself gives the constant term. Thus, uniformly in the matching, \[
  \E W^{(p)}\le W_R(0)z^4+Cx_*^2nz+Cx_*^2\ \ (p\text{ real}),\qquad
  \E W^{(p)}\le W_V(0)z^4+Cn^3z+C\ \ (p\text{ virtual}).
-\] By Jensen's inequality, (i), and $\log(1+u+v)\le\log(1+u)+\log(1+v)$, the error terms are of orders $1/(nz^3)$ and $1/(n^2z^4)$ for
-real $p$ and $1/(nz^3)$ and $1/(n^4z^4)$ for virtual $p$. Since $\int_0^1\log z^4\,dz=-4$ and, for fixed $c>0$,
+\] By Jensen's inequality, (i), and $\log(1+u+v)\le\log(1+u)+\log(1+v)$, the error terms are of orders
+$1/(nz^3)$ and $1/(n^2z^4)$ for
+real $p$ and $1/(nz^3)$ and $1/(n^4z^4)$ for virtual $p$. Since $\int_0^1\log z^4\,dz=-4$ and, for fixed
+$c>0$,
 $\int_0^1\log(1+cn^{-1}z^{-3})\,dz=O(n^{-1/3})$, $\int_0^1\log(1+cn^{-2}z^{-4})\,dz=O(n^{-1/2})$, and
 $\int_0^1\log(1+cn^{-4}z^{-4})\,dz=O(n^{-1})$, we obtain \[
  \E\log W^{(p)}\le\log W_{\col(p)}(0)-4+O(n^{-1/3}).
-\] Since $\sum_t\log W_{\col(t)}(t)=\sum_p\log W^{(p)}$, summing over the $N$ pieces gives (iii). \end{proof}
+\] Since $\sum_t\log W_{\col(t)}(t)=\sum_p\log W^{(p)}$, summing over the $N$ pieces gives (iii).
+\end{proof}
 
 \begin{lema}\label{lem:retirada}
 $N_h(n)\ge\binom nh Q(n)/h!$.
 \end{lema}
 
-\begin{proof} Removing $h$ queens from a solution gives a placement in $\Om_h$, and each placement in $\Om_h$ has at most $h!$
-completions, because the $h$ missing queens occupy a permutation of the $h$ empty crossings. Hence $\binom nhQ\le h!N_h$. \end{proof}
+\begin{proof} Removing $h$ queens from a solution gives a placement in $\Om_h$, and each placement in
+$\Om_h$ has at most $h!$
+completions, because the $h$ missing queens occupy a permutation of the $h$ empty crossings. Hence
+$\binom nhQ\le h!N_h$. \end{proof}
 
-\begin{teorema}[Entropy comparison]\label{thm:comparacion} Fix $K$. There exists $d_n=\Delta_n+C_Kn^{2/3}+O_K(\log n)=o(n)$ such that
+\begin{teorema}[Entropy comparison]\label{thm:comparacion} Fix $K$. There exists
+$d_n=\Delta_n+C_Kn^{2/3}+O_K(\log n)=o(n)$ such that
 for all $0\le h\le K$, \[
  \KL{\PP_h}{\QQ_h}\le d_n,\qquad \QQ_h(S)\ge e^{-d_n},\qquad \KL{\mu_h}{\nu'_h}\le d_n .
 \] \end{teorema}
 
-\begin{proof}[Proof for $1\le h\le K$] By Lemmas~\ref{lem:identidad} and~\ref{lem:normalizadores} and Stirling's formula ($\log
+\begin{proof}[Proof for $1\le h\le K$] By Lemmas~\ref{lem:identidad} and~\ref{lem:normalizadores} and
+Stirling's formula ($\log
 H!=H\log H-H+O(\log n)$, and likewise for $q!$), \[
  \KL{\PP_h}{\QQ_h}\le q\log\frac{n^2\rho}{\lambda_\rho}-4q-n\sum_f\int\log u_f-(q\log q-q)
  -\log N_h+Cn^{2/3}+O(\log n),
-\] where we have used $4H\log H-4\log H!=4H+O(\log n)$ and $N-H=q$. With $q=n\rho$, we have $q\log(n^2\rho)-q\log q=q\log n$, so the
-right-hand side is $q\log n+n[-3\rho-\rho\log\lambda_\rho-\sum_f\int\log u_f]-\log N_h+Cn^{2/3}+O(\log n)$. The expression in brackets
-is $s^*(\rho)$, since the Euler equation gives $\int\nu\log\nu=\rho\log\lambda_\rho+\sum_f\int m_f\log u_f$ and $\int m_f\log
+\] where we have used $4H\log H-4\log H!=4H+O(\log n)$ and $N-H=q$. With $q=n\rho$, we have
+$q\log(n^2\rho)-q\log q=q\log n$, so the
+right-hand side is $q\log n+n[-3\rho-\rho\log\lambda_\rho-\sum_f\int\log u_f]-\log N_h+Cn^{2/3}+O(\log n)$.
+The expression in brackets
+is $s^*(\rho)$, since the Euler equation gives $\int\nu\log\nu=\rho\log\lambda_\rho+\sum_f\int m_f\log u_f$
+and $\int m_f\log
 u_f=\int\log u_f-\int u_f\log u_f$. Thus \[
  \KL{\PP_h}{\QQ_h}\le q\log n+ns^*(q/n)-\log N_h+Cn^{2/3}+O(\log n).
-\] By Lemma~\ref{lem:borde}, $ns^*(q/n)=ns_1+2h\log n+O_K(1)$. By Lemma~\ref{lem:retirada}, $-\log N_h\le-\log Q-\log\binom nh+\log
+\] By Lemma~\ref{lem:borde}, $ns^*(q/n)=ns_1+2h\log n+O_K(1)$. By Lemma~\ref{lem:retirada},
+$-\log N_h\le-\log Q-\log\binom nh+\log
 h!=-\log Q-h\log n+O_K(1)$. The terms in $\log n$ cancel exactly ($-h+2h-h=0$), and by~\eqref{eq:Delta},
-$\KL{\PP_h}{\QQ_h}\le\Delta_n+C_Kn^{2/3}+O_K(\log n)=d_n$. No rate is needed for $\Delta_n$. Since $\PP_h(S)=1$, Lemma~\ref{lem:exito}
-gives $\QQ_h(S)\ge e^{-d_n}$ and $\KL{\PP_h}{\QQ_h(\cdot\mid S)}\le d_n$. Projecting onto the final placement and applying data
+$\KL{\PP_h}{\QQ_h}\le\Delta_n+C_Kn^{2/3}+O_K(\log n)=d_n$. No rate is needed for $\Delta_n$. Since
+$\PP_h(S)=1$, Lemma~\ref{lem:exito}
+gives $\QQ_h(S)\ge e^{-d_n}$ and $\KL{\PP_h}{\QQ_h(\cdot\mid S)}\le d_n$. Projecting onto the final
+placement and applying data
 processing gives $\KL{\mu_h}{\nu'_h}\le d_n$. \end{proof}

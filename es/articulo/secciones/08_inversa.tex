@@ -25,7 +25,8 @@ $\alpha=(Nz_t)^{-1}$, $\beta_i=p_{d_i}/(Nz_t)$ y $k_g=\pi_{e_g}/(Nz_t^4)$, el ge
  +\sum_{g\in L}k_g\,Z_{L\setminus\{g\},J}.
 \]
 Un nacimiento no borra las otras marcas, por la geometría anterior; la parte real de una muerte
-de $V$ exige la marca activa y por eso aumenta $J$. En la región~\eqref{eq:regularidad}, con tolerancia $\eps n$, el
+de $V$ exige la marca activa y por eso aumenta $J$. En la región~\eqref{eq:regularidad}, con tolerancia
+$\eps n$, el
 resto respecto del generador verdadero satisface
 \[
  |R_{L,J}|\le C_\zeta\Bigl[(\eps/n+n^{-2})Z_{L,J}+(\eps/n^2+n^{-3})\sum_{g\in L}Z_{L\setminus\{g\},J}\Bigr];
@@ -81,9 +82,23 @@ a lo sumo $n$ reinas por arista ocupada y $n^2$ casillas posibles por arista dis
 suma de cambios absolutos es $O(n^{3-\ell})$: una diagonal fija corta cada fila y cada columna
 una sola vez, lo que afecta a $O(n)$ pares con dos aristas ocupadas, $O(n^2)$ con una y $O(n^3)$
 con ninguna; para los indicadores $\chi_{e_g}$ se usa que cada línea incide en $O(n)$ casillas,
-y los nacimientos dan los mismos órdenes. Los coeficientes $n^{-(2-\ell)}$ dan saltos $O(n)$.
-Los errores de muerte suman $O(\eps n+1)$ por paso. En un nacimiento hay que contar el estado
-fuente, no el destino: $n^{5-\ell}\,n^{-(2-\ell)}(\eps/n^2+n^{-3})=O(\eps n+1)$. Los segundos
+y los nacimientos dan los mismos órdenes. La tabla siguiente reúne estas cuentas con los
+coeficientes del Lema~\ref{lem:compensador} y los restos del generador; en un nacimiento se cuenta
+el estado fuente, con $\ell-1$ aristas ocupadas, y no el destino.
+\begin{center}\small
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+$\ell$ & patrones & coeficiente & cambio por paso & resto de muertes & resto de nacimientos\\
+\midrule
+$0$ & $O(n^4)$ & $O(n^{-2})$ & $O(n^3)$ & $n^4\cdot n^{-2}\,(\eps/n+n^{-2})$ & ---\\
+$1$ & $O(n^3)$ & $O(n^{-1})$ & $O(n^2)$ & $n^3\cdot n^{-1}\,(\eps/n+n^{-2})$
+ & $n^4\cdot n^{-1}\,(\eps/n^2+n^{-3})$\\
+$2$ & $O(n^2)$ & $O(1)$ & $O(n)$ & $n^2\cdot(\eps/n+n^{-2})$ & $n^3\cdot(\eps/n^2+n^{-3})$\\
+\bottomrule
+\end{tabular}
+\end{center}
+En cada fila, el coeficiente por el cambio por paso es $O(n)$, lo que acota los saltos, y cada
+resto es $O(\eps n+1)$ por paso. Los segundos
 incrementos temporales y los términos mixtos suman $O(1)$ por paso, por las cotas de derivadas
 del Lema~\ref{lem:compensador} y la cuenta de cambios. Se congelan estado y tiempo en la parada
 $\sigma'$ (Lema~\ref{lem:conc_directa}), incluida la transición de salida, cuya probabilidad

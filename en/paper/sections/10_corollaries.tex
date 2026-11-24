@@ -1,17 +1,23 @@
 \section{Consequences for a fixed number of layers}\label{sec:corolarios}
 
-We obtained the limit of $f_h(n)$ by comparing two consecutive layers. To pass from layer $h$ to the full board, it suffices to
-multiply the ratios between successive layers. Since there are only finitely many layers in the product, we can also sum their
+We obtained the limit of $f_h(n)$ by comparing two consecutive layers. To pass from layer $h$ to the full
+board, it suffices to
+multiply the ratios between successive layers. Since there are only finitely many layers in the product, we
+can also sum their
 logarithmic errors.
 
-\begin{proof}[Proof of Corollary~\ref{cor:cociente}] By definition~\eqref{eq:fh}, $N_j/N_{j-1}=(n-j+1)/(j^2f_j)$ for each $j\ge1$.
+\begin{proof}[Proof of Corollary~\ref{cor:cociente}] By definition~\eqref{eq:fh},
+$N_j/N_{j-1}=(n-j+1)/(j^2f_j)$ for each $j\ge1$.
 Multiplying over $j=1,\dots,h$ gives \[
  \frac{N_h}{Q}=\prod_{j=1}^h\frac{n-j+1}{j^2f_j}=\frac{(n)_h}{(h!)^2\prod_{j=1}^hf_j},
-\] and Theorem~\ref{thm:limite} gives $\prod_{j\le h}f_j\to F(0)^h>0$ and $(n)_h\sim n^h$. We have simply iterated the exact definition
+\] and Theorem~\ref{thm:limite} gives $\prod_{j\le h}f_j\to F(0)^h>0$ and $(n)_h\sim n^h$. We have simply
+iterated the exact definition
 of $f_h$. \end{proof}
 
-\begin{proof}[Proof of Corollary~\ref{cor:capas}] For each $h\le K$, $f_h(n)\to F(0)$ by Theorem~\ref{thm:limite}, and
-$F((h-\frac12)/n)\to F(0)$ and $F(h/n)\to F(0)$ by continuity of $F$ at zero (Theorem~\ref{thm:perfil}). Since $F(0)>0$, each of the
+\begin{proof}[Proof of Corollary~\ref{cor:capas}] For each $h\le K$, $f_h(n)\to F(0)$ by
+Theorem~\ref{thm:limite}, and
+$F((h-\frac12)/n)\to F(0)$ and $F(h/n)\to F(0)$ by continuity of $F$ at zero (Theorem~\ref{thm:perfil}).
+Since $F(0)>0$, each of the
 $K$ summands tends to zero. \end{proof}
 
 The proof sums only $K$ terms and does not justify interchanging the limits $K\to\infty$ and $n\to\infty$.

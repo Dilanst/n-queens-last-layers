@@ -1,7 +1,9 @@
 \section{Scope of the Lean verification}\label{sec:verificacion}
 
-The main statements of this paper have been formalized in Lean~4~\cite{Lean4} (version~4.19.0, with Mathlib~\cite{Mathlib} at revision
-\texttt{c44e0c8}) for a family of profiles constructed within the formalization and identified below with the family in the text. They
+The main statements of this paper have been formalized in Lean~4~\cite{Lean4} (version~4.19.0, with
+Mathlib~\cite{Mathlib} at revision
+\texttt{c44e0c8}) for a family of profiles constructed within the formalization and identified below with
+the family in the text. They
 are collected in a theorem with no hypotheses; its name and the file in which it is proved are:
 \begin{center}\small
 \begin{tabular}{@{}l@{\quad}l@{}}
@@ -9,34 +11,59 @@ Theorem: & \texttt{ArticuloA.Historias.conclusion\_del\_articulo\_A\_para\_los\_
 File: & \texttt{sources/CierreDeLosSeisBloquesDelArticuloA.lean}
 \end{tabular}
 \end{center}
-\noindent The code, comprising 659 modules, is available in~\cite{CodigoLean}; its README file explains how to build it and how to obtain the
+\noindent The code, comprising 659 modules, is available in~\cite{CodigoLean}; its README file explains how
+to build it and how to obtain the
 list of axioms. According to \texttt{\#print axioms}, the
 theorem uses only the axioms \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
 
-\emph{What the theorem states.} There exists a family $(\tilde\nu_x,\tilde b_x,\tilde r_{R,x},\tilde r_{C,x},\tilde u_{D,x},\tilde
-u_{A,x})_{x\in[0,1/2]}$ satisfying~\eqref{eq:perfil} and~\eqref{eq:euler} with mass $1-x$. Its four factors take values in an interval
-$[\kappa,M]\subset(0,\infty)$ and are $L$-Lipschitz, with $\kappa$, $M$, and $L$ independent of $x$. Its member $\tilde\nu_0$ maximizes
-$s$ among admissible densities of mass one. Let $\tilde F(x)=(1-x)/\tilde b_x$. For this family, on the $n\times n$ board the theorem
-establishes the following results. \begin{itemize} \item Theorem~\ref{thm:limite} with limit $1/\tilde b_0$, that is,
-$f_h(n)\to1/\tilde b_0$ for each fixed $h\ge1$, together with its uniform version over $1\le h\le K$. \item The asymptotic equivalence in
-Corollary~\ref{cor:cociente}, with $\tilde F(0)$. The exact identity preceding it is elementary. \item Corollary~\ref{cor:capas}, with
-$\tilde F((h-\sigma)/n)$ in the denominator for any $\sigma\in[0,1]$, including the cases $\sigma=\frac12$ and $\sigma=0$ in the
-statement. \item Theorem~\ref{thm:positiva} with an existentially quantified $\kappa$ bounding all four factors from below, without the
-explicit value given in Appendix~\ref{app:perfil}. \item All three parts of Theorem~\ref{thm:estructura}, with $\tilde\nu_0$ and its
+\emph{What the theorem states.} There exists a family
+$(\tilde\nu_x,\tilde b_x,\tilde r_{R,x},\tilde r_{C,x},\tilde u_{D,x},\tilde
+u_{A,x})_{x\in[0,1/2]}$ satisfying~\eqref{eq:perfil} and~\eqref{eq:euler} with mass $1-x$. Its four factors
+take values in an interval
+$[\kappa,M]\subset(0,\infty)$ and are $L$-Lipschitz, with $\kappa$, $M$, and $L$ independent of $x$. Its
+member $\tilde\nu_0$ maximizes
+$s$ among admissible densities of mass one. Let $\tilde F(x)=(1-x)/\tilde b_x$. For this family, on the
+$n\times n$ board the theorem
+establishes the following results. \begin{itemize} \item Theorem~\ref{thm:limite} with limit $1/\tilde b_0$,
+that is,
+$f_h(n)\to1/\tilde b_0$ for each fixed $h\ge1$, together with its uniform version over $1\le h\le K$. \item
+The asymptotic equivalence in
+Corollary~\ref{cor:cociente}, with $\tilde F(0)$. The exact identity preceding it is elementary. \item
+Corollary~\ref{cor:capas}, with
+$\tilde F((h-\sigma)/n)$ in the denominator for any $\sigma\in[0,1]$, including the cases $\sigma=\frac12$
+and $\sigma=0$ in the
+statement. \item Theorem~\ref{thm:positiva} with an existentially quantified $\kappa$ bounding all four
+factors from below, without the
+explicit value given in Appendix~\ref{app:perfil}. \item All three parts of Theorem~\ref{thm:estructura},
+with $\tilde\nu_0$ and its
 factors in place of $\nu_1$ and its factors. \end{itemize} All these conclusions refer to the same family.
 
-\emph{Identification with the profile in the text.} For $x\in(0,1/2]$, the density $\tilde\nu_x$ and its vacancies are bounded below by
-positive constants and satisfy the Euler equation with activity $\tilde b_x/x^2$. By the argument in the proof of Lemma~\ref{lem:borde}
-(concavity and stationarity at fixed mass), $\tilde\nu_x$ maximizes $s$ at mass $1-x$. For $x=0$, maximality is part of the statement.
-Since the maximizer at each mass is unique~\cite[Theorem~3.1(a) and Proposition~5.1]{Perfil}, a result outside the formalization,
-$\tilde\nu_x=\nu_x$ for $x\in(0,1/2]$ and $\tilde\nu_0=\nu_1$. Moreover, the density determines the factorization~\eqref{eq:perfil}
-with the diagonal vacancies as factors and $\int r_R=\int r_C=1$. Thus $\tilde b_x=b_x$ and $\tilde F=F$ on $[0,1/2]$, and the
-preceding statements apply to the profile in the text. The equality $F(0)=1/b_0$ holds by definition~\eqref{eq:F}. The verified conclusion is
+\emph{Identification with the profile in the text.} For $x\in(0,1/2]$, the density $\tilde\nu_x$ and its
+vacancies are bounded below by
+positive constants and satisfy the Euler equation with activity $\tilde b_x/x^2$. By the argument in the
+proof of Lemma~\ref{lem:borde}
+(concavity and stationarity at fixed mass), $\tilde\nu_x$ maximizes $s$ at mass $1-x$. For $x=0$, maximality
+is part of the statement.
+Since the maximizer at each mass is unique, by the strict concavity of $s$ (final paragraph of
+Section~\ref{subsec:variacional}),
+$\tilde\nu_x=\nu_x$ for $x\in(0,1/2]$ and $\tilde\nu_0=\nu_1$; this uniqueness is not formalized, and its
+proof does not
+use~\cite{Perfil}. Moreover, the density determines the factorization~\eqref{eq:perfil}
+with the diagonal vacancies as factors and $\int r_R=\int r_C=1$. Thus $\tilde b_x=b_x$ and $\tilde F=F$ on
+$[0,1/2]$, and the
+preceding statements apply to the profile in the text. The equality $F(0)=1/b_0$ holds by
+definition~\eqref{eq:F}. The verified conclusion is
 that $1/b_0$ is the limit.
 
-\emph{Limits of the verification.} The formalization constructs the family and obtains the first-order lower bound for $\log Q(n)$ by
-its own argument, without assuming Theorems~\ref{thm:perfil} and~\ref{thm:simkin}. That argument is not reproduced in this paper. Lean
-thus checks the statements. The proof in Sections~\ref{sec:preliminares} through~\ref{sec:corolarios}, which relies on
-Theorem~\ref{thm:simkin} and on~\cite{Perfil}, lies outside this verification, as do the explicit constants in
-Appendix~\ref{app:perfil} and the numerical values in Section~\ref{sec:discusion}. The list of axioms comes from a build that reused
-previously compiled modules; no full build from scratch and no independent check with \texttt{lean4checker} were carried out.
+\emph{Limits of the verification.} The formalization constructs the family and obtains the first-order lower
+bound for $\log Q(n)$ by
+its own argument, without assuming Theorems~\ref{thm:perfil} and~\ref{thm:simkin}. That argument is not
+reproduced in this paper. Lean
+thus checks the statements. The proof in Sections~\ref{sec:preliminares} through~\ref{sec:corolarios}, which
+relies on
+Theorem~\ref{thm:simkin} and on~\cite{Perfil}, lies outside this verification, as do the explicit constants
+in
+Appendix~\ref{app:perfil} and the numerical values in Section~\ref{sec:discusion}. The list of axioms comes
+from a build that reused
+previously compiled modules; no full build from scratch and no independent check with \texttt{lean4checker}
+were carried out.

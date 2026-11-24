@@ -10,7 +10,9 @@ Fijamos $K$ y $0\le h\le K$, y ponemos
  q=n-h,\qquad N=2n-1,\qquad H=N-q=n+h-1 .
 \]
 En esta sección y en las dos siguientes, para $h\ge1$ el perfil se evalúa en el parámetro
-objetivo $x_*=h/n$, fijo durante todo el proceso, y omitimos el subíndice $x_*$. La capa $h=0$
+objetivo $x_*=h/n$, fijo durante todo el proceso, y omitimos el subíndice $x_*$. Donde aparezcan
+a la vez este perfil objetivo y el perfil lleno, como en la Sección~\ref{subsec:trayectoria},
+escribiremos de nuevo el subíndice $x_*$ en el primero. La capa $h=0$
 se trata por separado en la Sección~\ref{subsec:h0}.
 
 \subsection{Hipergrafo aumentado y pesos}
@@ -25,7 +27,8 @@ En la Figura~\ref{fig:cruces-vacios}, las líneas de $(3,2)$ son $R_3$, $C_2$,
 $D_1$ y $A_5$, pues $3-2=1$ y $3+2=5$.
 Una elección real en esa casilla coloca una reina. Una elección virtual con
 esas mismas cuatro líneas las desactiva en el proceso sin colocar ninguna
-reina en el tablero. Esta distinción se usará al contar las reparaciones. Llamaremos \emph{piezas} a las aristas de una
+reina en el tablero. Esta distinción se usará al contar las reparaciones. Llamaremos \emph{piezas} a las
+aristas de una
 trayectoria, es decir, a las que elige el proceso, reales o virtuales según su color.
 
 Para $h\ge1$, los pesos de vértice son $u_R(\bar r)=x_*r_R(\bar r)$ en las filas físicas,
@@ -41,7 +44,8 @@ Se preasigna, sin revelarla, una palabra uniforme con $q$ colores reales y $H$ v
 cada paso $t=1,\dots,N$ se revela sólo el siguiente color, se elige una arista disponible (con
 sus cuatro vértices todavía activos) de ese color, con probabilidad proporcional a su peso, y se
 desactivan sus cuatro vértices. Una pieza virtual no coloca ninguna reina. Si el normalizador
-del color pedido, es decir, la suma de los pesos de sus aristas disponibles, es cero, el proceso pasa a un estado de fallo. $\QQ_h$ es la ley de las
+del color pedido, es decir, la suma de los pesos de sus aristas disponibles, es cero, el proceso pasa a un
+estado de fallo. $\QQ_h$ es la ley de las
 trayectorias y $S$ el evento de éxito (los $N$ pasos se completan).
 \end{definicion}
 
@@ -62,7 +66,10 @@ aristas resultante.
 
 Representamos el orden uniforme mediante tiempos independientes y uniformes en $[0,1]$
 asociados a las piezas; las piezas se revelan en orden creciente de tiempo. (La uniformidad del
-tiempo de una pieza aislada no bastaría: se usa la independencia.) La ley $\PP_h$ proyecta
+tiempo de una pieza aislada no bastaría: se usa la independencia.) Estos tiempos independientes,
+junto con la desigualdad de Jensen del Lema~\ref{lem:normalizadores}(iii), son el recurso de las
+cotas por entropía de Radhakrishnan~\cite{Radhakrishnan} y de Linial y Luria~\cite{LinialLuria}.
+La ley $\PP_h$ proyecta
 exactamente en $\mu_h$, y toda trayectoria de su soporte tiene probabilidad positiva bajo
 $\QQ_h$: la siguiente pieza del emparejamiento completo sigue disponible y tiene peso positivo.
 En particular $\PP_h(S)=1$.

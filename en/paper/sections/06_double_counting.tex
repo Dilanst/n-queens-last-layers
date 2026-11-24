@@ -1,33 +1,48 @@
 \section{Double counting between layers}\label{sec:doblecuenta}
 
-So far we have counted repairs starting from a crossing in layer $h$. To use this count to study $f_h(n)$, we need to relate it to the
-sizes $N_h$ and $N_{h-1}$. We do this by pairing each forward repair with the operation that undoes it. Fix $h\ge1$ and let $q=n-h$ and
+So far we have counted repairs starting from a crossing in layer $h$. To use this count to study $f_h(n)$,
+we need to relate it to the
+sizes $N_h$ and $N_{h-1}$. We do this by pairing each forward repair with the operation that undoes it. Fix
+$h\ge1$ and let $q=n-h$ and
 $m=q+1=n-h+1$.
 
-\begin{definicion}[Forward repairs and reverse operations]\label{def:reparaciones} A \emph{forward repair} starts from $P\in\Om_h$,
-chooses an empty crossing $(r,c)$ and a queen $(i,j)$ in $P$, and replaces that queen with $(r,j)$ and $(i,c)$ if the resulting
-placement is legal. A \emph{reverse operation} starts from $P'\in\Om_{h-1}$, chooses an ordered pair of distinct queens $(r,j),(i,c)$
-in $P'$, and replaces them with $(i,j)$ if the resulting placement is legal. The resulting empty crossing is $(r,c)$. \end{definicion}
+\begin{definicion}[Forward repairs and reverse operations]\label{def:reparaciones} A \emph{forward repair}
+starts from $P\in\Om_h$,
+chooses an empty crossing $(r,c)$ and a queen $(i,j)$ in $P$, and replaces that queen with $(r,j)$ and
+$(i,c)$ if the resulting
+placement is legal. A \emph{reverse operation} starts from $P'\in\Om_{h-1}$, chooses an ordered pair of
+distinct queens $(r,j),(i,c)$
+in $P'$, and replaces them with $(i,j)$ if the resulting placement is legal. The resulting empty crossing is
+$(r,c)$. \end{definicion}
 
-In Figure~\ref{fig:reparacion-tablero}(b), the first queen in the ordered pair is $(2,0)$ and the second is $(0,1)$. To undo the
-repair, we take the row of the second queen and the column of the first, restoring the queen at $(0,0)$. The row of the first queen and
+In Figure~\ref{fig:reparacion-tablero}(b), the first queen in the ordered pair is $(2,0)$ and the second is
+$(0,1)$. To undo the
+repair, we take the row of the second queen and the column of the first, restoring the queen at $(0,0)$. The
+row of the first queen and
 the column of the second are empty again and meet at the original crossing $(2,1)$.
 
-The two orientations of a pair correspond to the two possible replacements, so there is no further factor of two. In a legal placement
-the paired queens occupy different rows and columns and do not share a diagonal, so their eight lines are distinct. The two diagonals
-of $(i,j)$ are distinct from these eight lines, and neither removed queen attacks $(i,j)$ diagonally. Thus the reverse operation is
-legal exactly when the diagonal and antidiagonal of $(i,j)$ are empty in $P'$. Each legal forward repair corresponds to a unique legal
+The two orientations of a pair correspond to the two possible replacements, so there is no further factor of
+two. In a legal placement
+the paired queens occupy different rows and columns and do not share a diagonal, so their eight lines are
+distinct. The two diagonals
+of $(i,j)$ are distinct from these eight lines, and neither removed queen attacks $(i,j)$ diagonally. Thus
+the reverse operation is
+legal exactly when the diagonal and antidiagonal of $(i,j)$ are empty in $P'$. Each legal forward repair
+corresponds to a unique legal
 reverse operation, and conversely.
 
 For a bounded weight $w(r,c)$ that assigns the same value to an operation and its reverse, define \[
  D_w(P)=\sum_{r\in R_\vac,\,c\in C_\vac}w(r,c)\,A^{rc}(P),\qquad
  I_w(P')=\sum_{\substack{(r,j),(i,c)\in P'\\ \text{distinct}}}w(r,c)\,V_{D(i,j)}V_{A(i,j)},
-\] where $V_{D(i,j)}$ and $V_{A(i,j)}$ indicate that the diagonal and antidiagonal of $(i,j)$ are empty, respectively. For $w\equiv1$
+\] where $V_{D(i,j)}$ and $V_{A(i,j)}$ indicate that the diagonal and antidiagonal of $(i,j)$ are empty,
+respectively. For $w\equiv1$
 write $d_{h,1}=D_1$ and $d_h^\inv=I_1$.
 
-\begin{lema}[Double counting]\label{lem:doblecuenta} For every bounded weight $w$, \begin{equation}\label{eq:doblecuenta}
+\begin{lema}[Double counting]\label{lem:doblecuenta} For every bounded weight $w$,
+\begin{equation}\label{eq:doblecuenta}
  N_h\,\E_{\mu_h}D_w=N_{h-1}\,\E_{\mu_{h-1}}I_w ,
-\end{equation} and $|D_w|/(h^2n)\le\|w\|_\infty$, $|I_w|/n^2\le\|w\|_\infty$. In particular, with $\overline d_h=d_{h,1}/(h^2q)$ and
+\end{equation} and $|D_w|/(h^2n)\le\|w\|_\infty$, $|I_w|/n^2\le\|w\|_\infty$. In particular, with
+$\overline d_h=d_{h,1}/(h^2q)$ and
 $\overline d{}^{\,\inv}_h=d_h^\inv/(mq)$, \[
  0\le\overline d_h,\overline d{}^{\,\inv}_h\le1,\qquad
  \E_{\mu_h}\overline d_h=f_h\,\E_{\mu_{h-1}}\overline d{}^{\,\inv}_h,\qquad
@@ -36,12 +51,20 @@ $\overline d{}^{\,\inv}_h=d_h^\inv/(mq)$, \[
  f_h=\frac mn\,\frac{\E_{\mu_h}[D_w/(h^2n)]}{\E_{\mu_{h-1}}[I_w/n^2]} .
 \end{equation} \end{lema}
 
-\begin{proof} Both sides of~\eqref{eq:doblecuenta} sum $w(r,c)$ over the same set of pairs (placement, legal operation), by the
-bijection just described. Each crossing has at most $q$ candidate queens and there are $h^2$ crossings, so $0\le d_{h,1}\le h^2q$. A
-placement in $\Om_{h-1}$ has $m$ queens and $m(m-1)=mq$ ordered pairs, so $0\le d_h^\inv\le mq$. The weighted bounds follow from $q\le
-n$ and $m\le n$. Dividing~\eqref{eq:doblecuenta} by $N_h$ and using definition~\eqref{eq:fh} gives the identity between the means
-and~\eqref{eq:fh_cociente}. The lower bound on $f_h$ follows from $\overline d{}^{\,\inv}_h\le1$. \end{proof}
+\begin{proof} Both sides of~\eqref{eq:doblecuenta} sum $w(r,c)$ over the same set of pairs (placement, legal
+operation), by the
+bijection just described. Each crossing has at most $q$ candidate queens and there are $h^2$ crossings, so
+$0\le d_{h,1}\le h^2q$. A
+placement in $\Om_{h-1}$ has $m$ queens and $m(m-1)=mq$ ordered pairs, so $0\le d_h^\inv\le mq$. The
+weighted bounds follow from $q\le
+n$ and $m\le
+n$. Dividing~\eqref{eq:doblecuenta} by $N_h$ and using definition~\eqref{eq:fh} gives the identity between
+the means
+and~\eqref{eq:fh_cociente}. The lower bound on $f_h$ follows from $\overline d{}^{\,\inv}_h\le1$.
+\end{proof}
 
-We use the ratio~\eqref{eq:fh_cociente} only when its denominator is positive. In Section~\ref{sec:limite} positivity holds for large
-$n$ because the denominator converges to a positive limit. The argument does not divide by individual degrees or require every
+We use the ratio~\eqref{eq:fh_cociente} only when its denominator is positive. In Section~\ref{sec:limite}
+positivity holds for large
+$n$ because the denominator converges to a positive limit. The argument does not divide by individual
+degrees or require every
 placement to admit a repair. Individual degrees can be zero.

@@ -62,9 +62,11 @@ $\int u_R=\int u_C=1-\rho$ y $\int u_D=\int u_A=2-\rho$. El funcional de entrop�
 \]
 y $s^*(\rho)$ es su supremo sobre las densidades admisibles de masa $\rho$; ponemos
 $s_1=s^*(1)$. Para $0<\rho<1$ el óptimo $\nu$ es positivo y satisface la ecuación de Euler
-$\nu=\lambda_\rho\,u_Ru_Cu_Du_A$, con una constante $\lambda_\rho>0$, la \emph{actividad}~\cite[Teorema~3.1 y Lema~3.3]{Perfil}.
+$\nu=\lambda_\rho\,u_Ru_Cu_Du_A$, con una constante $\lambda_\rho>0$, la \emph{actividad}~\cite[Teorema~3.1
+y Lema~3.3]{Perfil}.
 
-Con $x=1-\rho$ se reescala: $r_R=u_R/x$, $r_C=u_C/x$ y $b_x=\lambda_\rho x^2$, la actividad reescalada. Entonces
+Con $x=1-\rho$ se reescala: $r_R=u_R/x$, $r_C=u_C/x$ y $b_x=\lambda_\rho x^2$, la actividad reescalada.
+Entonces
 \begin{equation}\label{eq:perfil}
  \nu=b_x\,r_Rr_Cu_Du_A,\qquad \int r_R=\int r_C=1,
 \end{equation}
@@ -84,7 +86,8 @@ en~\cite{Perfil}.
 
 \begin{teorema}[El perfil cerca del tablero lleno~\cite{Perfil}]\label{thm:perfil}
 Existen constantes $0<\kappa\le1$, $0<\underline r\le M<\infty$, $0<b_-\le b_+<\infty$ y
-$L_*<\infty$ tales que, para todo $x\in(0,1/2]$, el perfil óptimo de masa $1-x$~\cite[Teorema~3.1]{Perfil}, reescalado como
+$L_*<\infty$ tales que, para todo $x\in(0,1/2]$, el perfil óptimo de masa $1-x$~\cite[Teorema~3.1]{Perfil},
+reescalado como
 en~\eqref{eq:perfil}, satisface~\eqref{eq:euler} y:
 \begin{enumerate}[(a)]
 \item $b_-\le b_x\le b_+$, $\ \underline r\le r_{R,x},r_{C,x}\le M$ y
@@ -105,5 +108,11 @@ Las afirmaciones (a) y (c) son las Proposiciones~4.2, 5.2 y~5.3 de~\cite{Perfil}
 límite $\nu_1$ sea el único maximizador de masa uno es su Proposición~5.1 junto con la~5.2; la
 regularidad Lipschitz uniforme (b) es su Teorema~7.7, y la continuidad de $F$ en $0$, con
 $F(0)=1/b_0$, es su Teorema~8.1. El Apéndice~\ref{app:perfil} resume esas pruebas y da valores
-explícitos de las constantes. No se usa ninguna identificación del perfil con leyes discretas de colocaciones:
+explícitos de las constantes. No se usa ninguna identificación del perfil con leyes discretas de
+colocaciones:
 el Teorema~\ref{thm:perfil} es un enunciado sobre el problema continuo.
+
+La unicidad del maximizador de cada masa es, además, elemental. El dominio admisible de masa
+$\rho$ es convexo y $s$ es estrictamente cóncava en él, porque $\nu\mapsto-\int\nu\log\nu$ lo es
+y cada vacancia $u_f$ depende afínmente de $\nu$, de modo que $-\int u_f\log u_f$ es cóncava. Si
+dos maximizadores distintos alcanzaran $s^*(\rho)$, su punto medio daría un valor mayor.

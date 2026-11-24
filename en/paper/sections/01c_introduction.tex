@@ -1,22 +1,39 @@
-The comparison reduces the problem to tracking repairs throughout the process. While a fixed fraction of the pieces remains, the
-degrees and normalizers concentrate around their deterministic trajectories (Section~\ref{sec:regularidad}). A \emph{pattern} specifies
-conditions on the squares from which queens are removed in a repair or its reverse and on the diagonals of the squares to be occupied.
-Each specified square must already contain its queen or still be available, and each specified diagonal must be free of all pieces or
-at least free of queens. For the forward count we track $32$ patterns for each candidate square of a crossing, and for the reverse
-count we track $16$ for each pair of squares. Within each family, the expected change of a pattern can be expressed in terms of
-patterns in the same family, up to an error bounded in the proof. Solving the corresponding linear system backward gives a linear
-combination of patterns, the \emph{compensator}, that agrees with the counter at the chosen time and has small drift. A martingale
-inequality then yields concentration up to an early cut-off, when about $\delta n$ queens remain to be placed. After the cut-off, each
-queen changes the forward counter at each crossing by at most five and the reverse counter by $O(n)$. After division by $n$ and
+The comparison reduces the problem to tracking repairs throughout the process. While a fixed fraction of the
+pieces remains, the
+degrees and normalizers concentrate around their deterministic trajectories (Section~\ref{sec:regularidad}).
+A \emph{pattern} specifies
+conditions on the squares from which queens are removed in a repair or its reverse and on the diagonals of
+the squares to be occupied.
+Each specified square must already contain its queen or still be available, and each specified diagonal must
+be free of all pieces or
+at least free of queens. For the forward count we track $32$ patterns for each candidate square of a
+crossing, and for the reverse
+count we track $16$ for each pair of squares. Within each family, the expected change of a pattern can be
+expressed in terms of
+patterns in the same family, up to an error bounded in the proof. Solving the corresponding linear system
+backward gives a linear
+combination of patterns, the \emph{compensator}, that agrees with the counter at the chosen time and has
+small drift. A martingale
+inequality then yields concentration up to an early cut-off, when about $\delta n$ queens remain to be
+placed. After the cut-off, each
+queen changes the forward counter at each crossing by at most four and the reverse counter by $O(n)$. After
+division by $n$ and
 $n^2$, respectively, the effect of the entire final stage is $O(\delta)$.
 
-Once the loss after the cut-off has been bounded, the binary entropy inequality transfers concentration to the uniform law on each
-layer. For the lower bound, the forward count suffices, since with probability tending to one every empty crossing admits at least
-$a_0n/2$ repairs. To find the limit, we must take the position of the crossing into account. At $(r,c)$, the forward count concentrates
-around $n\,a(\bar r,\bar c)$. Choosing the weight $w=1/a$ gives $D_{1/a}/(h^2n)\to1$. With this same weight, the mean of the reverse
-counter divided by $n^2$ tends to $\int\Gamma/a$, where $\Gamma(r,c)$ is the limiting density of reverse operations that create the
-crossing $(r,c)$ (Lemma~\ref{lem:nucleo}). The identity $\Gamma=b_0\,r_Rr_C\,a$, which follows from the product form of the profile,
-gives $\int\Gamma/a=b_0$. Hence $f_h\to1/b_0=F(0)$. \ifverificacionLean Section~\ref{sec:verificacion} describes the Lean formalization
+Once the loss after the cut-off has been bounded, the binary entropy inequality transfers concentration to
+the uniform law on each
+layer. For the lower bound, the forward count suffices, since with probability tending to one every empty
+crossing admits at least
+$a_0n/2$ repairs. To find the limit, we must take the position of the crossing into account. At $(r,c)$, the
+forward count concentrates
+around $n\,a(\bar r,\bar c)$. Choosing the weight $w=1/a$ gives $D_{1/a}/(h^2n)\to1$. With this same weight,
+the mean of the reverse
+counter divided by $n^2$ tends to $\int\Gamma/a$, where $\Gamma(r,c)$ is the limiting density of reverse
+operations that create the
+crossing $(r,c)$ (Lemma~\ref{lem:nucleo}). The identity $\Gamma=b_0\,r_Rr_C\,a$, which follows from the
+product form of the profile,
+gives $\int\Gamma/a=b_0$. Hence $f_h\to1/b_0=F(0)$. \ifverificacionLean Section~\ref{sec:verificacion}
+describes the Lean formalization
 of the main statements and specifies what it verifies. \fi
 
 \begin{figure}[t] \centering \begin{tikzpicture}[
@@ -31,7 +48,8 @@ of the main statements and specifies what it verifies. \fi
 \node[caja] (dc) at (0,-3.4) {Double counting\\ between layers (§\ref{sec:doblecuenta})};
 \node[caja] (pos) at (3.6,-3.4) {Theorem~\ref{thm:positiva}\\ (§\ref{sec:positiva})};
 \node[caja] (lim) at (7.2,-3.4) {Theorems~\ref{thm:limite} and~\ref{thm:estructura}\\ (§\ref{sec:limite})};
-\node[caja] (cor) at (10.8,-3.4) {Corollaries~\ref{cor:cociente}\\ and~\ref{cor:capas} (§\ref{sec:corolarios})};
+\node[caja] (cor) at (10.8,-3.4)
+{Corollaries~\ref{cor:cociente}\\ and~\ref{cor:capas} (§\ref{sec:corolarios})};
 \draw[flecha] (perfil) -- (ref);
 \draw[flecha] (ref) -- (din);
 \draw[flecha] (din) -- (abs);
@@ -42,30 +60,51 @@ of the main statements and specifies what it verifies. \fi
 \draw[flecha] (dc) -- (pos);
 \draw[flecha] (dc.south) to[out=-25,in=-155] (lim.south);
 \draw[flecha] (lim) -- (cor);
-\end{tikzpicture} \caption{Logical structure of the proof. The double count is purely combinatorial. Every arrow leading to a result
+\end{tikzpicture}
+\caption{Logical structure of the proof. The double count is purely combinatorial. Every arrow leading to a
+result
 under $\mu_h$ uses the entropy comparison of Section~\ref{sec:referencia}.} \label{fig:esquema} \end{figure}
 
 \subsection{Related work}
 
-Simkin~\cite{Simkin} characterizes the exponential term of $Q(n)$ through entropy maximization and proves a large deviation principle
-for the profile of complete solutions. Earlier, Luria~\cite{Luria} obtained upper bounds using the entropy method. The first-order
-lower bound we use comes from Simkin's result (Theorem~\ref{thm:simkin}). To prove it, Simkin fixes a step \emph{queenon}, that is, a
-queenon (Section~\ref{sec:preliminares}) whose density is constant on each block of a grid. At each step he chooses a block with the
-probability assigned to it by this measure and places a queen at random on one of its available squares. At the end he
-completes the placement using absorbers~\cite[Section~5]{Simkin}. Luria and Simkin~\cite{LS} use a random greedy process to construct
-near-solutions, which they complete using absorbers to obtain a counting lower bound. Bowtell and Keevash~\cite{BK} study enumeration
-on the torus and its consequences for the ordinary board. The reference process and the absorbers of this paper are in the same spirit, but
-success under a construction process does not by itself identify the uniform law on placements with $h$ holes; that identification
-is the role of the entropy comparison. Comparing the uniform law with the output law of a random process is the main tool in Kwan's
-work~\cite{Kwan} on Steiner triple systems. Double counting the repairs between consecutive layers is an instance of the method of
+Simkin~\cite{Simkin} characterizes the exponential term of $Q(n)$ through entropy maximization and proves a
+large deviation principle
+for the profile of complete solutions. Earlier, Luria~\cite{Luria} obtained upper bounds using the entropy
+method. The first-order
+lower bound we use comes from Simkin's result (Theorem~\ref{thm:simkin}). To prove it, Simkin fixes a step
+\emph{queenon}, that is, a
+queenon (Section~\ref{sec:preliminares}) whose density is constant on each block of a grid. At each step he
+chooses a block with the
+probability assigned to it by this measure and places a queen at random on one of its available squares. At
+the end he
+completes the placement using absorbers~\cite[Section~5]{Simkin}. Luria and Simkin~\cite{LS} use a random
+greedy process (for random greedy matching in hypergraphs, see~\cite{BennettBohman}) to construct
+near-solutions, which they complete using absorbers to obtain a counting lower bound. Bowtell and
+Keevash~\cite{BK} study enumeration
+on the torus and its consequences for the ordinary board. The reference process and the absorbers of this
+paper are in the same spirit, but
+success under a construction process does not by itself identify the uniform law on placements with $h$
+holes; that identification
+is the role of the entropy comparison. Comparing the uniform law with the output law of a random process is
+the main tool in Kwan's
+work~\cite{Kwan} on Steiner triple systems; Ferber and Kwan~\cite{FerberKwan} use it again for
+these systems, and Kwan, Sah, and Sawhney~\cite{KSS} give its version for Latin squares.
+Double counting the repairs between consecutive layers is an
+instance of the method of
 \emph{switchings}~\cite{McKayWormald,HMcK}.
 
-The problem of completing a given partial placement dates back to 1850 and is NP-complete~\cite{GJN}. Glock, Munhá Correia, and
-Sudakov~\cite{GMS} prove that every legal placement of at most $n/60$ queens can be completed and construct placements of size close to
-$n/4$ that admit no completion. Nielsen~\cite{Nielsen} improves the upper bound on the extremal threshold to $0.216\,n$ for
-sufficiently large $n$. These are worst-case results. Here we study probabilities under the uniform law on nearly complete placements.
+The problem of completing a given partial placement dates back to 1850 and is NP-complete~\cite{GJN}. Glock,
+Munhá Correia, and
+Sudakov~\cite{GMS} prove that every legal placement of at most $n/60$ queens can be completed and construct
+placements of size close to
+$n/4$ that admit no completion. Nielsen~\cite{Nielsen} improves the upper bound on the extremal threshold to
+$0.216\,n$ for
+sufficiently large $n$. These are worst-case results. Here we study probabilities under the uniform law on
+nearly complete placements.
 
 To the best of our knowledge, Theorems~\ref{thm:limite} and~\ref{thm:estructura} and
-Corollary~\ref{cor:cociente} are new. We make no claim of novelty for the general tools used here, namely the chain rule for relative
-entropy, comparison with random processes~\cite{Kwan}, double counting and switchings~\cite{HMcK}, the differential equation
-method~\cite{Wormald}, and concentration inequalities~\cite{AlonSpencer}.
+Corollary~\ref{cor:cociente} are new. We make no claim of novelty for the general tools used here, namely
+the chain rule for relative
+entropy, comparison with random processes~\cite{Kwan}, double counting and switchings~\cite{HMcK}, the
+differential equation
+method~\cite{Wormald,Warnke,BennettDudek}, and concentration inequalities~\cite{AlonSpencer}.

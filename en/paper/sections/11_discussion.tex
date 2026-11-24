@@ -2,51 +2,81 @@
 
 \subsection{A numerical illustration}
 
-In the six finite-size rows of Table~\ref{tab:ilustracion}, $f_1$ and $f_2$ come from integer counts obtained by exhaustive
-enumeration. The values are rounded to six decimal places. In the final row, the existence of the common limit follows from
-Theorem~\ref{thm:limite}, with $F(0)=1/b_0$. The decimal to its right is a numerical estimate of $1/b_0$ without a certified error
+The six finite-size rows of Table~\ref{tab:ilustracion} list the integer counts $N_0$, $N_1$, and $N_2$,
+obtained by exhaustive
+enumeration, and the resulting values of $f_1$ and $f_2$, rounded to six decimal places. The values of
+$f_1(n)$ are not monotone in
+$n$. In the final row, the existence of the common limit follows from
+Theorem~\ref{thm:limite}, with $F(0)=1/b_0$. The decimal to its right is a numerical estimate of $1/b_0$
+without a certified error
 interval.
 
-The estimate $F'(0)\approx0.516$ is also numerical. It suggests comparing $f_h(n)$ with $F((h-\tfrac12)/n)$ at finite sizes. The usefulness of
-this comparison as a finite-size approximation is heuristic. The result proved in Corollary~\ref{cor:capas} concerns the sum over $K$
-fixed layers as $n\to\infty$. The ratios in the table are obtained from the counts using equation~\eqref{eq:fh}.
+The estimate $F'(0)\approx0.516$ is also numerical. It suggests comparing $f_h(n)$ with $F((h-\tfrac12)/n)$
+at finite sizes. The usefulness of
+this comparison as a finite-size approximation is heuristic. The result proved in Corollary~\ref{cor:capas}
+concerns the sum over $K$
+fixed layers as $n\to\infty$. The ratios in the table are obtained from the counts using
+equation~\eqref{eq:fh}.
 The counts and the program that reproduces them are available in~\cite{Codigo}.
 
-\begin{table}[ht] \centering \begin{tabular}{rccc}
+\begin{table}[ht] \centering \small \begin{tabular}{rrrrccc}
 \toprule
-$n$ & $f_1(n)$ & $f_2(n)$ & $F(0)$ (numerical)\\
+$n$ & $N_0(n)=Q(n)$ & $N_1(n)$ & $N_2(n)$ & $f_1(n)$ & $f_2(n)$ & $F(0)$ (numerical)\\
 \midrule
-10 & 0.127393 & 0.200891 & \\
-11 & 0.111437 & 0.181943 & \\
-12 & 0.123894 & 0.170782 & \\
-13 & 0.122402 & 0.165452 & \\
-14 & 0.109393 & 0.158389 & \\
-15 & 0.114223 & 0.152947 & \\
-$\infty$ & \multicolumn{2}{c}{common limit (Theorem~\ref{thm:limite})} & 0.080914\\
+10 & 724 & 56,832 & 636,524 & 0.127393 & 0.200891 & \\
+11 & 2,680 & 264,544 & 3,634,976 & 0.111437 & 0.181943 & \\
+12 & 14,200 & 1,375,368 & 22,146,756 & 0.123894 & 0.170782 & \\
+13 & 73,712 & 7,828,784 & 141,952,580 & 0.122402 & 0.165452 & \\
+14 & 365,596 & 46,788,624 & 960,059,292 & 0.109393 & 0.158389 & \\
+15 & 2,279,184 & 299,307,416 & 6,849,285,616 & 0.114223 & 0.152947 & \\
+$\infty$ & \multicolumn{5}{c}{common limit of $f_1$ and $f_2$ (Theorem~\ref{thm:limite})} & 0.080914\\
 \bottomrule
-\end{tabular} \caption{Exact values of $f_1$ and $f_2$ obtained by exhaustive enumeration and rounded to six decimal places, together
-with the numerical value of the common limit. The value $0.080914$ is the second-order Richardson extrapolation of the values on the
-grids with $128$ and $256$ points ($0.0809029$ and $0.0809114$). Using the grids with $64$ and $128$ points changes the extrapolation
-by less than $10^{-8}$ (see~\cite[Section~9]{Perfil}). This is a numerical value, not certified by interval arithmetic.} \label{tab:ilustracion}
+\end{tabular}
+\caption{Exact counts $N_0(n)=Q(n)$, $N_1(n)$, and $N_2(n)$, obtained by exhaustive enumeration; values of
+$f_1$ and $f_2$,
+computed with~\eqref{eq:fh} and rounded to six decimal places; and the numerical value of the common limit.
+The column $N_0$ agrees
+with sequence A000170 in~\cite{OEIS}, and $N_1(10)$ and $N_2(10)$ also appear in triangle A348129
+of that encyclopedia, which counts the placements of $k$ nonattacking queens on an $n\times n$ board.
+The value $0.080914$ is the second-order Richardson extrapolation of
+the values on the
+grids with $128$ and $256$ points ($0.0809029$ and $0.0809114$). Using the grids with $64$ and $128$ points
+changes the extrapolation
+by less than $10^{-8}$ (see~\cite[Section~9]{Perfil}). This is a numerical value, not certified by interval
+arithmetic.} \label{tab:ilustracion}
 \end{table}
 
 \subsection{Open questions}
 
-\begin{enumerate}[1.] \item \emph{Rate.} It is unknown whether $f_h(n)-F(0)$, or $\log[f_h(n)/F((h-\frac12)/n)]$, is of order $1/n$. To
-transfer from the reference law to the uniform law we use the relative entropy bound $d_n=o(n)$ of Theorem~\ref{thm:comparacion}, which
-gives no rate, and fixed tolerances. These estimates do not justify interchanging the limits to deduce a rate. \item \emph{A growing
-number of layers.} The constant term of $\log Q(n)$ depends on all layers. Since $F$ extends to a positive analytic function on
-$[0,1]$~\cite[Theorem~8.1]{Perfil}, we can consider $\tau_{n,h}=n\log[f_h(n)/F((h-\frac12)/n)]$ for all layers, $1\le h\le n$. One
-sufficient approach would be to prove convergence of the averages $\frac1n\sum_h\tau_{n,h}$ over those $h$ with $h/n$ in each compact
-subset of $(0,1)$ and to control both endpoints uniformly. At the full-board endpoint, for example, this would require \[
+\begin{enumerate}[1.] \item \emph{Rate.} It is unknown whether $f_h(n)-F(0)$, or
+$\log[f_h(n)/F((h-\frac12)/n)]$, is of order $1/n$. To
+transfer from the reference law to the uniform law we use the relative entropy bound $d_n=o(n)$ of
+Theorem~\ref{thm:comparacion}, which
+gives no rate, and fixed tolerances. These estimates do not justify interchanging the limits to deduce a
+rate. \item \emph{A growing
+number of
+layers.} The constant term of $\log Q(n)$ depends on all layers. Since $F$ extends to a positive analytic
+function on
+$[0,1]$~\cite[Theorem~8.1]{Perfil}, we can consider $\tau_{n,h}=n\log[f_h(n)/F((h-\frac12)/n)]$ for all
+layers, $1\le h\le n$. One
+sufficient approach would be to prove convergence of the averages $\frac1n\sum_h\tau_{n,h}$ over those $h$
+with $h/n$ in each compact
+subset of $(0,1)$ and to control both endpoints uniformly. At the full-board endpoint, for example, this
+would require \[
  \lim_{x_0\downarrow0}\ \limsup_{n\to\infty}\ \sum_{h\le x_0n}
  \Bigl|\log\frac{f_h(n)}{F((h-\frac12)/n)}\Bigr|=0 .
-\] Convergence for each fixed $h$ does not imply this condition. \item \emph{Joint law of the holes.} For $h>1$ we identify only the
-mean measure of the empty crossings. Are the positions of the empty rows and columns asymptotically independent? Does the unweighted
-$d_{h,1}/n$ concentrate? \item \emph{Effective constants.} The proof gives no explicit threshold $n_0$ or useful constants for boards
+\] Convergence for each fixed $h$ does not imply this condition. \item \emph{Joint law of the holes.} For
+$h>1$ we identify only the
+mean measure of the empty crossings. Are the positions of the empty rows and columns asymptotically
+independent? Does the unweighted
+$d_{h,1}/n$ concentrate? \item \emph{Effective constants.} The proof gives no explicit threshold $n_0$ or
+useful constants for boards
 of moderate size. \end{enumerate}
 
-Returning to the board with $n-1$ queens, the probability that the last queen can be placed at the unique empty crossing tends to
-$1/b_0$. If $h$ queens are missing, with $h$ fixed, the same value describes the probability of adding a queen at a randomly chosen
-crossing. When $h$ grows, the remaining problem is to control how the differences between the fraction $f_h(n)$ in each layer and the
+Returning to the board with $n-1$ queens, the probability that the last queen can be placed at the unique
+empty crossing tends to
+$1/b_0$. If $h$ queens are missing, with $h$ fixed, the same value describes the probability of adding a
+queen at a randomly chosen
+crossing. When $h$ grows, the remaining problem is to control how the differences between the fraction
+$f_h(n)$ in each layer and the
 corresponding value of $F$ accumulate.

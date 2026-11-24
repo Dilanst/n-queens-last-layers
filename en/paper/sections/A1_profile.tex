@@ -1,16 +1,23 @@
 \section{Regularity of the profile up to the full board}\label{app:perfil}
 
-This appendix summarizes the proof of Theorem~\ref{thm:perfil}. Full proofs are given in~\cite{Perfil}. Section~3 establishes existence
-of the optimum and the Euler equations, Section~4 gives the two-sided bounds, Section~5 establishes continuity up to $x=0$, and
-Section~7 proves uniform Lipschitz regularity. Write $\ell_R(r,c)=r$, $\ell_C=c$, $\ell_D=r-c$, $\ell_A=r+c$, and let $M_f\nu$ denote
-the projection of $\nu$ onto the family $f$. For comparison with~\cite{Perfil}, our notation $M_f$, $J_f$ (fiber integrals of the
-rescaled system), $\phi$ (directions), $e^t$ (residuals), and $d_f$ corresponds there to $T_f$, $\Phi_f$, $w$, $\eta^t$, and $a_f$,
-respectively. In that reference the limits at $x=0$ carry the subscript~$0$ ($r_{R,0}$, etc.). In~\cite{Perfil}, $J_f$ denotes the
+This appendix summarizes the proof of Theorem~\ref{thm:perfil}. Full proofs are given in~\cite{Perfil}.
+Section~3 establishes existence
+of the optimum and the Euler equations, Section~4 gives the two-sided bounds, Section~5 establishes
+continuity up to $x=0$, and
+Section~7 proves uniform Lipschitz regularity. Write $\ell_R(r,c)=r$, $\ell_C=c$, $\ell_D=r-c$,
+$\ell_A=r+c$, and let $M_f\nu$ denote
+the projection of $\nu$ onto the family $f$. For comparison with~\cite{Perfil}, our notation $M_f$, $J_f$
+(fiber integrals of the
+rescaled system), $\phi$ (directions), $e^t$ (residuals), and $d_f$ corresponds there to $T_f$, $\Phi_f$,
+$w$, $\eta^t$, and $a_f$,
+respectively. In that reference the limits at $x=0$ carry the subscript~$0$ ($r_{R,0}$, etc.).
+In~\cite{Perfil}, $J_f$ denotes the
 fiber integral before rescaling.
 
 \subsection{The rescaled system and its bounds}
 
-For $0<x\le1/2$, the rescaled profile satisfies~\eqref{eq:perfil}--\eqref{eq:euler} with $b=b_x=(1-x)/F(x)$. The diagonal vacancies
+For $0<x\le1/2$, the rescaled profile satisfies~\eqref{eq:perfil}--\eqref{eq:euler} with $b=b_x=(1-x)/F(x)$.
+The diagonal vacancies
 retain their original values without division by $x$. With \[
  \kappa_0=\tfrac1{10},\quad M_0=\tfrac65,\quad
  L_0=\tfrac2{\kappa_0}\bigl\{M_0+e^{-1}+4\log(2/\kappa_0)\bigr\}+4\log(2/\kappa_0),
@@ -18,19 +25,25 @@ retain their original values without division by $x$. With \[
  M=2e^{L_0},\quad b_-=\tfrac12,\quad b_+=e^{L_0}M^2,\quad \kappa=\frac1{1+b_+M^2},
 \] we have, for every $0<x\le1/2$ \cite[Proposition~4.2]{Perfil}, \begin{equation}\label{eq:cotas_perfil}
  b_-\le b\le b_+,\qquad \frac1{1+b_+}\le r_R,r_C\le M,\qquad \kappa\le u_D,u_A\le1,
-\end{equation} and the limit at $x=0$ inherits the same bounds. Thus in Theorem~\ref{thm:perfil}, $\underline r=1/(1+b_+)$. These
+\end{equation} and the limit at $x=0$ inherits the same bounds. Thus in Theorem~\ref{thm:perfil},
+$\underline r=1/(1+b_+)$. These
 are very conservative analytic constants, of no numerical use.
 
-\emph{How the bound $\kappa$ on the diagonal vacancies is obtained, without circularity.} The density $1-\frac15\cos(2\pi r)\cos(2\pi c)$ is admissible and has mass one,
-with row and column marginals equal to one and diagonal marginals at most $9/10$. Comparing the Euler equation with the multiple of
-this density having mass $\rho$ bounds $\int-\log u_D+\int-\log u_A$ by $L_0$. Jensen's inequality, the geometric normalization, and
-$\int r_R=\int r_C=1$ give the bounds on $b,r_R,r_C$, and finally~\eqref{eq:euler} gives $u_D,u_A\ge\kappa$. The argument requires no
+\emph{How the bound $\kappa$ on the diagonal vacancies is obtained, without circularity.} The density
+$1-\frac15\cos(2\pi r)\cos(2\pi c)$ is admissible and has mass one,
+with row and column marginals equal to one and diagonal marginals at most $9/10$. Comparing the Euler
+equation with the multiple of
+this density having mass $\rho$ bounds $\int-\log u_D+\int-\log u_A$ by $L_0$. Jensen's inequality, the
+geometric normalization, and
+$\int r_R=\int r_C=1$ give the bounds on $b,r_R,r_C$, and finally~\eqref{eq:euler} gives $u_D,u_A\ge\kappa$.
+The argument requires no
 assumptions on the discrete model.
 
 For the translations, fix \begin{gather*}
  m_0=\min\{\kappa,(1+b_+)^{-1}\},\qquad \overline K=\max\{1,M,(b_-\kappa^2)^{-1}\},\\
  \overline B=b_+\overline K^2,\qquad c_0=b_-m_0^4,\qquad \lambda_c=\min\{c_0/2,\kappa/5\}.
-\end{gather*} The row and column factors and their extensions used below lie in $[m_0,\overline K]$, and the diagonal factors lie in
+\end{gather*} The row and column factors and their extensions used below lie in $[m_0,\overline K]$, and the
+diagonal factors lie in
 $[\kappa,1]$. Every density along the logarithmic segment lies between $c_0$ and $\overline B$.
 
 \subsection{Coercivity in the translation directions}
@@ -38,25 +51,36 @@ $[\kappa,1]$. Every density along the logarithmic segment lies between $c_0$ and
 In $\mathcal H=\bigoplus_fL^2(I_f)$ write $v=(\log r_R,\log r_C,\log u_D,\log u_A)$ and \[
  \mathcal E_{x,b}(v)=\sum_{f=R,C}\int(xe^{v_f}-v_f)+\sum_{f=D,A}\int(e^{v_f}-v_f)
  +b\int_{[0,1]^2}\exp\Bigl(\sum_fv_f\circ\ell_f\Bigr).
-\] With $\nu_v=b\exp(\sum_fv_f\circ\ell_f)$, its gradient is $\mathcal G_{R,C}=xe^{v_{R,C}}-1+M_{R,C}\nu_v$ and $\mathcal
-G_{D,A}=e^{v_{D,A}}-1+M_{D,A}\nu_v$. The profile satisfies $\mathcal G_{x,b}(v)=0$, including at $x=0$ by uniform convergence. If
+\] With $\nu_v=b\exp(\sum_fv_f\circ\ell_f)$, its gradient is $\mathcal G_{R,C}=xe^{v_{R,C}}-1+M_{R,C}\nu_v$
+and $\mathcal
+G_{D,A}=e^{v_{D,A}}-1+M_{D,A}\nu_v$. The profile satisfies $\mathcal
+G_{x,b}(v)=0$, including at $x=0$ by uniform convergence. If
 $S_\phi=\sum_f\phi_f\circ\ell_f$, the Hessian satisfies \[
  \langle\phi,D\mathcal G_{x,b}(v)\phi\rangle=x\sum_{R,C}\int e^{v_f}\phi_f^2+\sum_{D,A}\int e^{v_f}\phi_f^2
  +\int\nu_vS_\phi^2\ \ge\ \kappa\bigl(\|\phi_D\|_2^2+\|\phi_A\|_2^2\bigr)+c_0\|S_\phi\|_2^2 ,
 \] by the preceding bounds, which also hold along segments.
 
-\begin{lema}[Coercivity with one transverse family fixed]\label{lem:coercividad} If $\phi_C=0$ or $\phi_R=0$, then
-$\langle\phi,D\mathcal G_{x,b}(v)\phi\rangle\ge\lambda_c\|\phi\|_{\mathcal H}^2$. Consequently, if $\widetilde v_C=v_C$ and the bounds
+\begin{lema}[Coercivity with one transverse family fixed]\label{lem:coercividad} If $\phi_C=0$ or
+$\phi_R=0$, then
+$\langle\phi,D\mathcal G_{x,b}(v)\phi\rangle\ge\lambda_c\|\phi\|_{\mathcal H}^2$. Consequently, if
+$\widetilde v_C=v_C$ and the bounds
 hold along the segment, \[
- \|\widetilde v-v\|_{\mathcal H}\le\|\mathcal G_{x,b}(\widetilde v)-\mathcal G_{x,b}(v)\|_{\mathcal H}/\lambda_c ,
+ \|\widetilde v-v\|_{\mathcal H}\le\|\mathcal G_{x,b}(\widetilde v)-\mathcal
+G_{x,b}(v)\|_{\mathcal H}/\lambda_c ,
 \] and the same conclusion holds if we fix $R$ in place of $C$. \end{lema}
 
-\begin{proof} With $\phi_C=0$, $\phi_R\circ\ell_R=S_\phi-\phi_D\circ\ell_D-\phi_A\circ\ell_A$. Lifting $R$ to the square is an
-isometry, and lifting $D$ or $A$ does not increase the $L^2$ norm, since their fibers have parametric length at most one. From
-$|a-b-c|^2\le2a^2+4(b^2+c^2)$ we obtain $\|\phi\|_{\mathcal H}^2\le2\|S_\phi\|_2^2+5(\|\phi_D\|_2^2+\|\phi_A\|_2^2)$, which, together
-with the Hessian bound, gives coercivity. Integrate the Hessian along the logarithmic segment and apply the Cauchy--Schwarz inequality.
+\begin{proof} With $\phi_C=0$, $\phi_R\circ\ell_R=S_\phi-\phi_D\circ\ell_D-\phi_A\circ\ell_A$. Lifting $R$
+to the square is an
+isometry, and lifting $D$ or $A$ does not increase the $L^2$ norm, since their fibers have parametric length
+at most one. From
+$|a-b-c|^2\le2a^2+4(b^2+c^2)$ we obtain
+$\|\phi\|_{\mathcal H}^2\le2\|S_\phi\|_2^2+5(\|\phi_D\|_2^2+\|\phi_A\|_2^2)$, which, together
+with the Hessian bound, gives coercivity. Integrate the Hessian along the logarithmic segment and apply the
+Cauchy--Schwarz inequality.
 The case $\phi_R=0$ follows by symmetry. \end{proof}
 
-At $x=0$, the quadratic form vanishes on $\phi=(1,-1,0,0)$, so the estimate does not hold for arbitrary variations. The normalization
-$\int r_R=\int r_C=1$ fixes the representation of the solution, but equality of masses is not equivalent to orthogonality to the neutral
+At $x=0$, the quadratic form vanishes on $\phi=(1,-1,0,0)$, so the estimate does not hold for arbitrary
+variations. The normalization
+$\int r_R=\int r_C=1$ fixes the representation of the solution, but equality of masses is not equivalent to
+orthogonality to the neutral
 mode. The proof below therefore keeps $C$ fixed pointwise while translating $R$, and vice versa.

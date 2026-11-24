@@ -16,12 +16,13 @@
 \newcommand*{\DOIcodigo}{}
 % Artículo del perfil variacional: basta rellenar uno de los dos identificadores.
 % Su DOI de Zenodo, sin «https://doi.org/» (por ejemplo 10.5281/zenodo.1234567).
-\newcommand*{\DOIPerfil}{10.5281/zenodo.24220042}
+\newcommand*{\DOIPerfil}{10.5281/zenodo.24509033}
 % O su número de arXiv (por ejemplo 2611.01234).
 \newcommand*{\arXivPerfil}{}
 \ifx\DOIcodigoLean\empty\typeout{AVISO: falta el DOI del codigo Lean (DOIcodigoLean).}\fi
 \ifx\DOIcodigo\empty\typeout{AVISO: falta el DOI del repositorio numerico (DOIcodigo).}\fi
-\ifx\DOIPerfil\empty\ifx\arXivPerfil\empty\typeout{AVISO: falta DOIPerfil o arXivPerfil (articulo del perfil).}\fi\fi
+\ifx\DOIPerfil\empty\ifx\arXivPerfil\empty\typeout{AVISO: falta DOIPerfil o arXivPerfil (articulo del
+perfil).}\fi\fi
 
 \title{Completabilidad de las últimas capas\\ en el problema de las $n$ reinas}
 \author{Dilan Steven Mejia\thanks{\href{mailto:mejiadilan@hotmail.com}{\nolinkurl{mejiadilan@hotmail.com}}}}
@@ -47,6 +48,7 @@
 \input{secciones/03b_referencia}
 \input{secciones/03c_referencia}
 \input{secciones/04_regularidad}
+\input{secciones/04b_regularidad}
 \input{secciones/05a_absorbedores}
 \input{secciones/05b_absorbedores}
 \input{secciones/05c_absorbedores}
@@ -58,11 +60,11 @@
 \input{secciones/10_corolarios}
 \input{secciones/11_discusion}
 \ifverificacionLean\input{secciones/01d_verificacion}\fi
-\input{secciones/12_declaracion}
 
 \appendix
 \input{secciones/A1_perfil}
 \input{secciones/A2_perfil}
 
+\input{secciones/12_declaracion}
 \input{secciones/bibliografia}
 \end{document}

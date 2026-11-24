@@ -3,7 +3,9 @@
 El problema de las $n$ reinas consiste en colocar $n$ reinas en un tablero de
 $n\times n$ de modo que ninguna ataque a otra. En una solución hay exactamente una
 reina en cada fila y en cada columna, y a lo sumo una en cada diagonal de cualquiera
-de las dos direcciones. Denotamos por $Q(n)$ el número de soluciones.
+de las dos direcciones. Denotamos por $Q(n)$ el número de soluciones (sucesión A000170
+de~\cite{OEIS}); Bell y Stevens~\cite{BellStevens} recopilan los resultados conocidos sobre el
+problema.
 
 Consideremos el tablero un paso antes de completarse. Si ya hay $n-1$ reinas que
 no se atacan, quedan una sola fila y una sola columna vacías. Su intersección es
@@ -86,7 +88,7 @@ cada diagonal está vacía con densidad $u_{D,x}$ o $u_{A,x}$. Para las últimas
 relevante es $F(0)=1/b_0$.
 
 \begin{teorema}[Ley de las últimas capas]\label{thm:limite}
-Para cada $h\ge1$ fijo,
+Con el perfil del Teorema~\ref{thm:perfil}, tomado de~\cite{Perfil}, para cada $h\ge1$ fijo,
 \[
  \lim_{n\to\infty}f_h(n)=F(0)=\frac1{b_0}\in(0,\infty).
 \]
@@ -105,8 +107,8 @@ Para cada $h\ge1$ fijo,
 \end{corolario}
 
 El paso de la capa $h$ a la capa $h-1$ lleva la fracción de huecos de $h/n$ a
-$(h-1)/n$. El corolario siguiente compara cada $f_h(n)$ con el valor de $F$
-en el punto medio, $(h-\tfrac12)/n$.
+$(h-1)/n$. El corolario siguiente toma como referencia el valor de $F$ en el punto
+medio, $(h-\tfrac12)/n$.
 
 \begin{corolario}[Las capas fijas no dejan constante residual]\label{cor:capas}
 Para cada $K$ fijo,
@@ -116,6 +118,10 @@ Para cada $K$ fijo,
 y lo mismo vale si $F((h-\tfrac12)/n)$ se sustituye por $F(h/n)$.
 \end{corolario}
 
+El corolario es el Teorema~\ref{thm:limite} escrito con logaritmos: cada sumando tiende a cero
+porque $f_h(n)\to F(0)$ y $F$ es continua en $0$. Por eso no distingue el punto medio, y la
+conclusión vale igual con $F(x_{n,h})$ para cualesquiera $x_{n,h}\to0$.
+
 El número $K$ se fija antes de que crezca el tablero. Identificar el término
 constante de $\log Q(n)$ exigiría controlar además las capas cuyo índice crece
 con $n$. Para las dos últimas capas damos además una prueba directa de una cota inferior
@@ -124,7 +130,7 @@ explícita para $\liminf_nf_h(n)$, que no necesita la concentración de la cuent
 
 \begin{teorema}[Cota inferior con constante explícita]\label{thm:positiva}
 Sea $\kappa\in(0,1]$ la cota inferior de las vacancias diagonales $u_{D,x}$ y $u_{A,x}$ del perfil
-(Teorema~\ref{thm:perfil}) y $a_0=(\kappa/2)^4/16$. Entonces
+del Teorema~\ref{thm:perfil}, tomado de~\cite{Perfil}, y $a_0=(\kappa/2)^4/16$. Entonces
 \[
  \liminf_{n\to\infty}f_h(n)\ge\frac{a_0}{2}>0,\qquad h=1,2.
 \]

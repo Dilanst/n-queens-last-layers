@@ -1,21 +1,30 @@
 \subsection{Layer zero}\label{subsec:h0}
 
-At $h=0$ the weights $x_*r_R$ of the physical rows and columns vanish, so direct substitution of $x_*=0$ in the preceding construction
+At $h=0$ the weights $x_*r_R$ of the physical rows and columns vanish, so direct substitution of $x_*=0$ in
+the preceding construction
 is impossible. We use an explicit limiting extension.
 
-\begin{definicion}[Reference process in layer zero]\label{def:referencia_cero} Let $q=n$, $H=n-1$, $N=2n-1$. The real edges have weight
-$v_e=r_Rr_Cu_Du_A$, evaluated at the full-board profile. The vertex weights for virtual edges are zero on physical rows and columns,
-one on their dummy vertices, and $u_D,u_A$ on diagonals and antidiagonals. The color word is still uniform, and the process enters the
-failure state if there is no edge of the requested color. The laws $\QQ_0$, $\PP_0$, and $\nu'_0$ are defined as before.
+\begin{definicion}[Reference process in layer zero]\label{def:referencia_cero} Let $q=n$, $H=n-1$, $N=2n-1$.
+The real edges have weight
+$v_e=r_Rr_Cu_Du_A$, evaluated at the full-board profile. The vertex weights for virtual edges are zero on
+physical rows and columns,
+one on their dummy vertices, and $u_D,u_A$ on diagonals and antidiagonals. The color word is still uniform,
+and the process enters the
+failure state if there is no edge of the requested color. The laws $\QQ_0$, $\PP_0$, and $\nu'_0$ are
+defined as before.
 \end{definicion}
 
-\begin{proof}[Proof of Theorem~\ref{thm:comparacion} for $h=0$] \emph{Support.} Every solution uses all physical rows and columns, so
-its virtual completions use only dummy row and column vertices. Thus every trajectory in the support of $\PP_0$, the uniform law on
-solutions, completions, and orders, has positive probability under $\QQ_0$ despite the zero weights outside this support.
+\begin{proof}[Proof of Theorem~\ref{thm:comparacion} for $h=0$] \emph{Support.} Every solution uses all
+physical rows and columns, so
+its virtual completions use only dummy row and column vertices. Thus every trajectory in the support of
+$\PP_0$, the uniform law on
+solutions, completions, and orders, has positive probability under $\QQ_0$ despite the zero weights outside
+this support.
 
 \emph{Identity.} The product of the weights along any trajectory in this support is \[
  \mathcal K=\prod_{R}r_R\prod_{C}r_C\prod_{D}u_D\prod_{A}u_A>0
-\] (products over the physical vertices). There are $Q(H!)^3N!$ comparison trajectories, and the color word has probability exactly
+\] (products over the physical vertices). There are $Q(H!)^3N!$ comparison trajectories, and the color word
+has probability exactly
 $n!H!/N!$. Hence \[
  \KL{\PP_0}{\QQ_0}=\E\sum_t\log W_{\col(t)}(t)-\log\mathcal K-\log Q-\log n!-4\log H! .
 \] The term $\log0$ does not appear.
@@ -23,16 +32,24 @@ $n!H!/N!$. Hence \[
 \emph{Normalizers.} For the Lipschitz full-board profile, the masses give \[
  W_R(0)=\frac{n^2}{b_0}\bigl(1+O(n^{-1})\bigr),\qquad
  W_V(0)=H^2\Bigl(\sum_Du_D\Bigr)\Bigl(\sum_Au_A\Bigr)=H^4\bigl(1+O(n^{-1})\bigr),
-\] since $\int u_D=\int u_A=1$ on domains of length two and each discrete sum is $n\int+O(1)$. Likewise, $\log\mathcal K=n\mathcal
-J+O(1)$ with $\mathcal J=\int\log r_R+\int\log r_C+\int\log u_D+\int\log u_A$. As a completed matching is revealed, ordinary edges
-survive with probability $z^4$. There are $O(n)$ exceptional real edges of weight $O(1)$ and $O(n^3)$ exceptional virtual edges of
-weight at most one. Except for the piece itself, each requires another piece to remain unrevealed. The zero virtual weights merely set
-some terms of the virtual normalizer to zero. As in Lemma~\ref{lem:normalizadores}, Jensen's inequality gives an integrated error of
-$O(n^{-1/3})$ per piece. By Stirling's formula and $s_1=-3-\log b_0-\mathcal J$ (which is $s[\nu_1]$ evaluated with
+\] since $\int u_D=\int u_A=1$ on domains of length two and each discrete sum is $n\int+O(1)$. Likewise,
+$\log\mathcal K=n\mathcal
+J+O(1)$ with $\mathcal J=\int\log r_R+\int\log r_C+\int\log u_D+\int\log
+u_A$. As a completed matching is revealed, ordinary edges
+survive with probability $z^4$. There are $O(n)$ exceptional real edges of weight $O(1)$ and $O(n^3)$
+exceptional virtual edges of
+weight at most one (by the count in the proof of Lemma~\ref{lem:normalizadores}(iii)). Except for the piece
+itself, each requires another piece to remain unrevealed. The zero virtual weights merely set
+some terms of the virtual normalizer to zero. As in Lemma~\ref{lem:normalizadores}, Jensen's inequality
+gives an integrated error of
+$O(n^{-1/3})$ per piece. By Stirling's formula and $s_1=-3-\log b_0-\mathcal J$ (which is $s[\nu_1]$
+evaluated with
 $\nu_1=b_0r_Rr_Cu_Du_A$ and with row and column marginals equal to one), we obtain \[
  \KL{\PP_0}{\QQ_0}\le n\log n+ns_1-\log Q+Cn^{2/3}+O(\log n)\le d_n .
 \] The other two inequalities follow as for $h\ge1$. \end{proof}
 
-\begin{observacion} The proof for $1\le h\le K$ is uniform in $h$. It uses only $x_*=h/n$, cancellation of the factor $x_*^2$,
-Lemma~\ref{lem:retirada}, and Lemma~\ref{lem:borde}. The same $d_n$ works simultaneously for $h=0,\dots,K$. This gives no uniformity
+\begin{observacion} The proof for $1\le h\le K$ is uniform in $h$. It uses only $x_*=h/n$, cancellation of
+the factor $x_*^2$,
+Lemma~\ref{lem:retirada}, and Lemma~\ref{lem:borde}. The same $d_n$ works simultaneously for $h=0,\dots,K$.
+This gives no uniformity
 when $K=K(n)\to\infty$. \end{observacion}

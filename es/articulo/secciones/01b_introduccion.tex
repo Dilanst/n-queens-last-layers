@@ -1,7 +1,9 @@
 El Teorema~\ref{thm:limite} ya implica la positividad de $\lim_nf_h(n)$ para cada $h$ fijo.
 En efecto, \eqref{eq:F} y las cotas del Teorema~\ref{thm:perfil}(a) y~(c) dan
 $F(0)\ge\kappa^2>a_0/2$. La prueba directa del Teorema~\ref{thm:positiva} está en la
-Sección~\ref{sec:positiva}. La constante es conservadora y el
+Sección~\ref{sec:positiva}. Lo enunciamos sólo para las dos últimas capas porque su papel es
+mostrar la cuenta directa sin la cuenta inversa de la Sección~\ref{sec:inversa}; para todo $h$
+fijo, el Teorema~\ref{thm:limite} da ya una conclusión más fuerte. La constante es conservadora y el
 umbral $n_0$ es existencial.
 
 Para entender esa prueba, volvamos al caso de la última reina. Si el cruce
@@ -30,7 +32,8 @@ cruce con cero inserciones directas y una reparación legal.
 
 Sea $A^{rc}(P)$ el número de
 reparaciones legales en $(r,c)$ y $d_{h,1}(P)=\sum A^{rc}(P)$, sumando sobre los $h^2$ cruces
-vacíos; el subíndice $1$ alude a las reparaciones de un movimiento, en las que se retira una sola reina. Escribimos $\bar r=(r+\frac12)/n$ y $\bar c=(c+\frac12)/n$ para los centros de las
+vacíos; el subíndice $1$ alude a las reparaciones de un movimiento, en las que se retira una sola reina.
+Escribimos $\bar r=(r+\frac12)/n$ y $\bar c=(c+\frac12)/n$ para los centros de las
 casillas. Para expresar cómo varía el número de reparaciones con la posición del
 cruce, usamos el perfil lleno. Denotamos su densidad por $\nu_1$: el subíndice
 es la masa de reinas, igual a uno, que corresponde a $x=0$. Escribimos sus factores sin
@@ -42,16 +45,18 @@ el subíndice $x$ (la constante conserva el suyo, $b_0$) y ponemos
 Se tiene $\kappa^4\le a\le1$.
 
 \begin{teorema}[Estructura típica]\label{thm:estructura}
-Sea $h\ge1$ fijo y $P$ distribuida según $\mu_h$.
+Sea $h\ge1$ fijo y $P$ distribuida según $\mu_h$. Los factores $r_R,r_C$, la constante $b_0$ y
+las funciones $\psi$ y $a$ son los del perfil lleno del Teorema~\ref{thm:perfil}, tomado
+de~\cite{Perfil}.
 \begin{enumerate}[(a)]
 \item \emph{Reparaciones de un movimiento.} En probabilidad,
 \[
  \max_{(r,c)\ \text{cruce vacío de }P}\ \Bigl|\frac{A^{rc}(P)}{n}-a(\bar r,\bar c)\Bigr|\longrightarrow0 .
 \]
-\item \emph{Posición media de los huecos.} Para toda función continua $t$ en $[0,1]^2$,
+\item \emph{Posición media de los huecos.} Para toda función continua $\varphi$ en $[0,1]^2$,
 \[
- \E_{\mu_h}\Bigl[\frac1{h^2}\sum_{(r,c)\ \text{cruce vacío}}t(\bar r,\bar c)\Bigr]
- \longrightarrow\int_{[0,1]^2}t(r,c)\,r_R(r)\,r_C(c)\,dr\,dc .
+ \E_{\mu_h}\Bigl[\frac1{h^2}\sum_{(r,c)\ \text{cruce vacío}}\varphi(\bar r,\bar c)\Bigr]
+ \longrightarrow\int_{[0,1]^2}\varphi(r,c)\,r_R(r)\,r_C(c)\,dr\,dc .
 \]
 Para $h=1$ esto es la convergencia débil de la ley de la posición del único cruce vacío.
 \item \emph{Contador sin peso.} $\E_{\mu_h}[d_{h,1}]/(h^2n)\to B_1/b_0$, donde
@@ -70,9 +75,14 @@ de los cruces vacíos se concentre. En (c) se trata de
 convergencia de medias: por (a), $d_{h,1}/n-\sum a(\bar r,\bar c)\to0$, y el segundo término
 puede seguir siendo aleatorio, de modo que no se afirma concentración de $d_{h,1}/n$.
 \item El valor $F(0)\approx0{,}0809$ procede de una resolución numérica determinista del
-problema variacional~\cite[Sección~9]{Perfil}, sin certificación de error. A tamaño finito los valores exactos, obtenidos por
-enumeración exhaustiva, quedan lejos del límite (por ejemplo $f_1(15)\approx0{,}114$ y $f_2(15)\approx0{,}153$;
+problema variacional~\cite[Sección~9]{Perfil}, sin certificación de error. A tamaño finito los valores
+exactos, obtenidos por
+enumeración exhaustiva, quedan lejos del límite (por ejemplo $f_1(15)\approx0{,}114$ y
+$f_2(15)\approx0{,}153$;
 Tabla~\ref{tab:ilustracion}); el teorema no da información sobre la velocidad de convergencia.
+\item Los Teoremas~\ref{thm:limite}, \ref{thm:positiva} y~\ref{thm:estructura} usan el perfil del
+Teorema~\ref{thm:perfil}, cuyas propiedades se toman de~\cite{Perfil}; el
+Apéndice~\ref{app:perfil} resume las pruebas de las cotas y de la regularidad Lipschitz.
 \end{enumerate}
 \end{observacion}
 
@@ -98,7 +108,8 @@ $\mu_{h-1}$ en la inversa. Para tratar ambas, la Sección~\ref{sec:referencia}
 construye un proceso aleatorio para cada capa $h$. Coloca sucesivamente piezas reales
 (reinas) y piezas virtuales, que no colocan ninguna reina pero desactivan las líneas que tocan,
 hasta que no queda ninguna línea activa; los pesos proceden del perfil variacional. Denotemos por
-$\nu'_h$ la ley de la colocación final en la capa $h$, condicionada al éxito del proceso. Una identidad entrópica, las estimaciones
+$\nu'_h$ la ley de la colocación final en la capa $h$, condicionada al éxito del proceso. Una identidad
+entrópica, las estimaciones
 de los normalizadores (las sumas de pesos que normalizan cada elección) y la cota inferior de
 primer orden de Simkin dan
 $\KL{\mu_h}{\nu'_h}=o(n)$. En consecuencia, un evento con probabilidad a lo sumo

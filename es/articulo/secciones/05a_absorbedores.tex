@@ -15,7 +15,8 @@ Después hay que comprobar que las diagonales de ambos destinos estén libres de
 
 Fijamos una raíz $(r,c)$. Sea $\mathcal I_{rc}$ el conjunto de casillas $e=(i,j)$ con $i\ne r$,
 $j\ne c$ y cuyos \emph{destinos} $(r,j)$ e $(i,c)$ no se atacan (filtro $G=1$); se excluyen a lo
-sumo $Cn$ casillas. Llamamos \emph{candidatas} de la raíz a las casillas de $\mathcal I_{rc}$, y \emph{ocupadas}
+sumo $Cn$ casillas. Llamamos \emph{candidatas} de la raíz a las casillas de $\mathcal I_{rc}$, y
+\emph{ocupadas}
 a las candidatas que tienen reina. Las cuatro líneas de $e$ y las cuatro diagonales y antidiagonales de sus
 destinos son ocho vértices distintos: éste es el uso del filtro $G$. Denotamos estas cuatro
 últimas por $d_1,\dots,d_4$ y su lista por $\mathcal D(r,c;i,j)$.
@@ -38,8 +39,6 @@ físico prolongado es
 Si la fila $r$ y la columna $c$ están físicamente vacías, $A^{rc}$ coincide con el número de
 reparaciones legales de un movimiento en el cruce $(r,c)$, pues retirar la reina de $e$ y colocar
 sus dos destinos es legal exactamente cuando las cuatro diagonales de los destinos están vacías.
-La disponibilidad ponderada reescalada es $\overline Y^{rc}=\sum_{e\in\mathcal I_{rc}}v_eZ^\di_{e,\varnothing}$;
-con los pesos originales vale $x_*^2\overline Y^{rc}$.
 
 \subsection{Generador de referencia}
 
@@ -50,7 +49,8 @@ En tiempo discreto, con $z=(N-t)/N$, definimos
 y el operador lineal
 \begin{equation}\label{eq:generador}
 \begin{aligned}
- \cL Z^\oc_{e,J}&=-|J|\,\alpha\,Z^\oc_{e,J}-\sum_{i\notin J}\beta_i\,Z^\oc_{e,J\cup\{i\}}+k_e\,Z^\di_{e,J},\\
+ \cL
+Z^\oc_{e,J}&=-|J|\,\alpha\,Z^\oc_{e,J}-\sum_{i\notin J}\beta_i\,Z^\oc_{e,J\cup\{i\}}+k_e\,Z^\di_{e,J},\\
  \cL Z^\di_{e,J}&=-(4+|J|)\,\alpha\,Z^\di_{e,J}-\sum_{i\notin J}\beta_i\,Z^\di_{e,J\cup\{i\}} .
 \end{aligned}
 \end{equation}
@@ -58,7 +58,8 @@ Una marca activa muere a tasa $\alpha$, por una pieza real o virtual. La muerte 
 sólo se produce por una pieza real, que exige la marca activa correspondiente; por eso convierte
 $V_{d_i}$ en una contribución con $\chi_{d_i}$, con tasa $\beta_i$. La muerte virtual afecta a
 $\chi$ pero no a $V$. El nacimiento de $O_e$ tiene probabilidad exactamente
-$[q_t/(N-t)]\,v_e/W$ por el indicador de sus cuatro líneas activas, que en la región~\eqref{eq:regularidad} es
+$[q_t/(N-t)]\,v_e/W$ por el indicador de sus cuatro líneas activas, que en la región~\eqref{eq:regularidad}
+es
 $k_e\chi_e$ salvo errores; el nacimiento no toca los cuatro destinos, distintos de sus líneas.
 
 \begin{lema}[Comparación con el generador verdadero]\label{lem:generador}
@@ -71,11 +72,31 @@ restos que satisfacen
 \end{lema}
 
 \begin{proof}
-Ajustar $\eps$ absorbe el error de colores de~\eqref{eq:regularidad}. Las
-tasas~\eqref{eq:tasas} controlan cada borrado simple, y la probabilidad de borrar dos marcas
-distintas en un paso es $O_\zeta(n^{-2})$. La selección de $e$, que borra sus cuatro marcas
-activas, está incluida en ese error para $Z^\di$, pero su nacimiento en $Z^\oc$ se conserva
-exactamente.
+Consideremos un paso desde un estado de la región. Ajustar $\eps$ absorbe el error de colores
+de~\eqref{eq:regularidad}. Por~\eqref{eq:tasas}, una marca activa $v$ se borra con probabilidad
+$\alpha+O_\zeta(\eps/n+n^{-2})$, y por una pieza real con probabilidad
+$p_v/(Nz)+O_\zeta(\eps/n+n^{-2})$; borrar dos marcas distintas en un mismo paso tiene probabilidad
+$O_\zeta(n^{-2})$.
+
+\emph{Bloque disponible.} Si $Z^\di_{e,J}=1$, el patrón se anula cuando se borra una de sus
+$4+|J|$ marcas activas, las cuatro líneas de $e$ y las $d_i$ con $i\in J$, o cuando una pieza real
+ocupa una $d_i$ con $i\notin J$. Esto último exige $\chi_{d_i}=1$ y, como
+$\chi_{d_i}V_{d_i}=\chi_{d_i}$, contribuye $-\beta_iZ^\di_{e,J\cup\{i\}}$ salvo el error de las
+tasas. Ningún paso crea un patrón disponible, porque las marcas no renacen. Por
+inclusión--exclusión se obtiene la segunda línea de~\eqref{eq:generador} con un resto
+$O_\zeta(\eps/n+n^{-2})$; la selección de $e$, que borra a la vez sus cuatro marcas, tiene
+probabilidad $O(n^{-2})$ y queda en ese resto.
+
+\emph{Bloque ocupado.} Si $O_e=1$, las líneas de $e$ ya están inactivas y $Z^\oc_{e,J}$ sólo
+cambia por las marcas de los destinos; la misma cuenta da los dos primeros términos de la primera
+línea de~\eqref{eq:generador}, con un resto a lo sumo $C_\zeta(\eps/n+n^{-2})\,O_e$. Si $O_e=0$,
+el patrón nace cuando se elige $e$ como pieza real, lo que exige $\chi_e=1$ y no toca $M_J$, pues
+las ocho líneas son distintas. Esa probabilidad es $[q_t/(N-t)]\,v_e/W$; en la región,
+$q_t/(N-t)=(q/N)(1+O_\zeta(\eps))$ y $W=W_0z^4(1+O_\zeta(\eps))$, así que vale
+$k_e(1+O_\zeta(\eps))$ cuando $\chi_e=1$. El nacimiento aporta, pues, $k_eZ^\di_{e,J}$ más un
+error a lo sumo $C_\zeta\eps k_eZ^\di_{e,J}$. Como $k_e=O_\zeta(n^{-2})$, éste es el término
+$\eps n^{-2}Z^\di_{e,J}$ del resto ocupado: procede del error relativo $\eps$ en la tasa de
+nacimiento.
 \end{proof}
 
 No se factoriza ninguna probabilidad conjunta bajo $\mu_h$: el generador actúa sobre

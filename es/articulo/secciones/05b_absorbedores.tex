@@ -1,18 +1,39 @@
 \subsection{Compensación hacia atrás y concentración}
 
 Fijamos un tiempo entero $T\le T_\zeta$ y una raíz. Para el valor terminal
-$\sum_eZ^\oc_{e,\varnothing}$ resolvemos hacia atrás $\partial_t\Phi+\cL_t\Phi=0$ en el espacio
-lineal generado por~\eqref{eq:patrones}, escribiendo
-$\Phi_t=\sum_{e,J}\{c^\oc_{e,J}(t)Z^\oc_{e,J}+c^\di_{e,J}(t)Z^\di_{e,J}\}$. Se usa la ecuación
-en tiempo real; el error al muestrear en enteros es $O_\zeta(n^{-1})$ para la suma que sigue. Por
-variación de constantes en dimensión $32$ (el sistema~\eqref{eq:generador} es triangular, con
-coeficientes $O_\zeta(1/n)$; el bloque ocupado es acotado y alimenta al disponible con la fuente
-$k_e=O_\zeta(n^{-2})$ durante $O(n)$ pasos), uniformemente,
+$\sum_eZ^\oc_{e,\varnothing}$ resolvemos hacia atrás, en tiempo continuo $t\in[0,T]$, la ecuación
+$\partial_t\Phi+\cL_t\Phi=0$ en el espacio lineal generado por~\eqref{eq:patrones}, escribiendo
+$\Phi_t=\sum_{e,J}\{c^\oc_{e,J}(t)Z^\oc_{e,J}+c^\di_{e,J}(t)Z^\di_{e,J}\}$. La solución tiene forma
+cerrada. Con $\Delta y=(T-t)/N$ y $z=z_t$, sean
+\[
+ \theta_e=\frac{\pi_e\,\Delta y}{z^4},\qquad \xi_{e,i}=\frac{p_{d_i}\,\Delta y}{z};
+\]
+entonces
+\begin{equation}\label{eq:compensador_directo}
+ \Phi_t=\sum_{e\in\mathcal I_{rc}}\bigl(O_e+\theta_e\chi_e\bigr)
+ \prod_{i=1}^4\bigl(V_{d_i}-\xi_{e,i}\chi_{d_i}\bigr),
+\end{equation}
+es decir, $c^\oc_{e,J}=\prod_{i\in J}(-\xi_{e,i})$ y $c^\di_{e,J}=\theta_e\prod_{i\in J}(-\xi_{e,i})$.
+En efecto, en $t=T$ se anulan $\theta_e$ y los $\xi_{e,i}$, y queda el valor terminal. Como
+$\partial_t\Delta y=\partial_tz=-1/N$, se tiene $\partial_t\xi_{e,i}=-\beta_i+\alpha\xi_{e,i}$ y
+$\partial_t\theta_e=-k_e+4\alpha\theta_e$; derivando los productos,
+\[
+\begin{aligned}
+ \partial_tc^\oc_{e,J}&=|J|\,\alpha\,c^\oc_{e,J}+\sum_{i\in J}\beta_i\,c^\oc_{e,J\setminus\{i\}},\\
+ \partial_tc^\di_{e,J}&=(4+|J|)\,\alpha\,c^\di_{e,J}+\sum_{i\in J}\beta_i\,c^\di_{e,J\setminus\{i\}}
+ -k_e\,c^\oc_{e,J},
+\end{aligned}
+\]
+que son las ecuaciones hacia atrás: por~\eqref{eq:generador}, con ellas se anula el coeficiente de
+cada patrón en $\partial_t\Phi+\cL\Phi$. Es la misma estructura del Lema~\ref{lem:compensador}. Como
+$0\le\Delta y/z\le1$, $p_{d_i}\le1$, $\pi_e\le C/n$ y $z\ge\zeta$, se obtiene, uniformemente,
 \begin{equation}\label{eq:coeficientes}
  |c^\oc|\le C_\zeta,\quad |\partial_tc^\oc|\le C_\zeta/n,\quad |c^\di|\le C_\zeta/n,\quad
  |\partial_tc^\di|\le C_\zeta/n^2,
 \end{equation}
-y además $|\partial_t^2c^\oc|=O_\zeta(n^{-2})$ y $|\partial_t^2c^\di|=O_\zeta(n^{-3})$.
+y además $|\partial_t^2c^\oc|=O_\zeta(n^{-2})$ y $|\partial_t^2c^\di|=O_\zeta(n^{-3})$. Los
+coeficientes resuelven la ecuación en tiempo continuo y se evalúan en tiempos enteros; el error
+de esta discretización se acota en la prueba siguiente.
 
 \begin{lema}[Concentración de los absorbedores]\label{lem:conc_directa}
 Para toda tolerancia fija $\gamma>0$, eligiendo $\eps$ suficientemente pequeña en el
@@ -25,11 +46,18 @@ e^{-c_{\zeta,\eps}n}$. La unión sobre las $n^2$ raíces y los $O(n)$ tiempos co
 \end{lema}
 
 \begin{proof}
-\emph{Deriva.} Como $\sum_eO_e\le n$ y hay $n^2$ casillas, el Lema~\ref{lem:generador}
-y~\eqref{eq:coeficientes} dan $|\E(\Phi_{t+1}-\Phi_t\mid\mathcal F_t)|\le C_\zeta(\eps+n^{-1})$.
-En la discretización, $\sum|\Delta Z^\oc|=O(1)$ y $\sum|\Delta Z^\di|=O(n)$ por raíz; así los
-términos mixtos $\Delta c^\oc\Delta Z^\oc$ y $\Delta c^\di\Delta Z^\di$, y los segundos
-incrementos temporales de los coeficientes, suman $O_\zeta(n^{-1})$.
+\emph{Deriva.} Sea $\Delta c=c(t+1)-c(t)$ para cada coeficiente. Por la ecuación hacia atrás,
+$\sum c\,\cL Z=-\sum\partial_tc\,Z$, y por tanto
+\[
+ \E(\Phi_{t+1}-\Phi_t\mid\mathcal F_t)=\sum c\,\bigl[\E(\Delta Z\mid\mathcal F_t)-\cL Z\bigr]
+ +\sum(\Delta c-\partial_tc)\,Z+\E\Bigl(\sum\Delta c\,\Delta Z\Bigm|\mathcal F_t\Bigr),
+\]
+con las sumas sobre los patrones de la raíz y los coeficientes evaluados en $t$. Como
+$\sum_eO_e\le n$ y hay $n^2$ casillas, el Lema~\ref{lem:generador} y~\eqref{eq:coeficientes}
+acotan el primer término por $C_\zeta(\eps+n^{-1})$. Los otros dos forman el error de
+discretización: por las cotas de $\partial_t^2c$, el segundo es $O_\zeta(n^{-1})$; como
+$\sum|\Delta Z^\oc|=O(1)$ y $\sum|\Delta Z^\di|=O(n)$ por raíz, el tercero también. Así
+$|\E(\Phi_{t+1}-\Phi_t\mid\mathcal F_t)|\le C_\zeta(\eps+n^{-1})$.
 
 \emph{Saltos.} Una diagonal de destino afecta a lo sumo a dos candidatas ocupadas, por unicidad
 de filas y columnas. Cualquier vértice aparece en $O(n)$ patrones disponibles de esta raíz, con
@@ -37,7 +65,8 @@ coeficientes $O(1/n)$. Un nacimiento añade un término ocupado de coeficiente a
 el cambio de coeficientes, esto da $|\Delta\Phi|\le C_\zeta$, también en la transición de salida.
 
 \emph{Martingala.} El Lema~\ref{lem:regularidad} con tolerancia $\eps/2$ acota
-$\Pr(\sigma'\le T_\zeta)$. Congelamos $\widetilde\Phi_s=\Phi_{s\wedge\sigma'}(\text{estado}_{s\wedge\sigma'})$,
+$\Pr(\sigma'\le T_\zeta)$. Congelamos
+$\widetilde\Phi_s=\Phi_{s\wedge\sigma'}(\text{estado}_{s\wedge\sigma'})$,
 incluido su argumento temporal. La cota de la deriva vale también en la transición de salida; la
 martingala $\widetilde\Phi_s-\widetilde\Phi_0-\sum_{u<s}\E(\Delta\widetilde\Phi_u\mid\mathcal F_u)$
 tiene saltos acotados, y el error acumulado de deriva es $C_\zeta(2n\eps+2)$. Se fija $\eps$ para
@@ -53,37 +82,39 @@ Con $y=T/N$,
 \end{lema}
 
 \begin{proof}
-Al inicio $O_e=0$ y $\chi_v=V_v=1$ en todas las líneas. La solución hacia delante del sistema lineal
-ideal~\eqref{eq:generador} con esos datos es, en el tiempo $y$ y con $z=1-y$,
+Al inicio $O_e=0$ y $\chi_v=V_v=1$ en todas las líneas, y en $t=0$ se tiene $\Delta y=y$ y $z=1$;
+por~\eqref{eq:compensador_directo}, $\Phi_0=\sum_e\theta_e\prod_i(1-\xi_{e,i})$, que
+es~\eqref{eq:valor_inicial}. Lo mismo se obtiene por dualidad. La solución hacia delante del
+sistema lineal ideal~\eqref{eq:generador} con esos datos es, en el tiempo $y$ y con $z=1-y$,
 \[
  Z^{\di,*}_{e,J}=z^{4+|J|}\prod_{i\notin J}(1-yp_{d_i}),\qquad
  Z^{\oc,*}_{e,J}=y\,\pi_e\,z^{|J|}\prod_{i\notin J}(1-yp_{d_i}),
 \]
 como se comprueba derivando: la fuente $k_eZ^{\di,*}_{e,J}$ cancela $z^4$ y los demás términos
-son exactamente los de~\eqref{eq:generador}. Por dualidad con la ecuación hacia atrás,
-$\Phi_0=\sum_eZ^{\oc,*}_{e,\varnothing}(y)$. Es la solución de un sistema lineal, no una
+son exactamente los de~\eqref{eq:generador}. Sea $Z^*(t)$ el vector de estos valores con $y=t/N$,
+y $c(t)$ el de los coeficientes de $\Phi_t$. Entonces $\frac{d}{dt}\langle c(t),Z^*(t)\rangle=0$,
+porque $c$ resuelve la ecuación hacia atrás y $Z^*$ la ecuación hacia delante con el mismo
+operador; así $\Phi_0=\langle c(0),Z^*(0)\rangle=\langle c(T),Z^*(T)\rangle
+=\sum_eZ^{\oc,*}_{e,\varnothing}(T/N)$. Es la solución de un sistema lineal, no una
 factorización de la ley verdadera.
 \end{proof}
 
-Con valor terminal $\overline Y^{rc}_T/n$ y sólo el bloque disponible, el mismo argumento da
-concentración a escala $n$ alrededor de
-\[
- \frac{z^4}{n}\sum_{e\in\mathcal I_{rc}}v_e\prod_{i=1}^4(1-yp_{d_i}).
-\]
-Así se siguen simultáneamente $A$ e $\overline Y$, sin una jerarquía ilimitada de patrones.
-
-\subsection{Trayectoria límite}
+\subsection{Trayectoria límite}\label{subsec:trayectoria}
 
 Como $x_*\to0$, los perfiles objetivo convergen al perfil lleno $\nu_1$, de vacancias
-diagonales $u_D,u_A\ge\kappa$. Por el Teorema~\ref{thm:perfil} y~\eqref{eq:balance},
-$\pi_e=b\,v_e/n\,(1+O(n^{-1}))$ y $p_{d}=1-u_{d}+O(n^{-1})$; las cuadraturas son uniformes y
-las $O(n)$ exclusiones de $G$, fila y columna aportan $O(1/n)$. Por tanto, uniformemente en la
-raíz,
+diagonales $u_D,u_A\ge\kappa$. En esta subsección el perfil objetivo lleva el subíndice $x_*$, y
+los símbolos sin subíndice denotan el perfil lleno. Por el Teorema~\ref{thm:perfil}
+y~\eqref{eq:balance}, $\pi_e=b_{x_*}v_e/n\,(1+O(n^{-1}))$, donde $b_{x_*}v_e$ es el valor de
+$\nu_{x_*}$ en el centro de $e$, y $p_d=1-u_{d,x_*}+O(n^{-1})$, donde $u_{d,x_*}$ es la vacancia
+de $d$ en el perfil objetivo; por el Teorema~\ref{thm:perfil}(c), $\nu_{x_*}\to\nu_1$ y
+$u_{d,x_*}\to u_d$ uniformemente. Las cuadraturas son uniformes y las $O(n)$ exclusiones de $G$,
+fila y columna aportan $O(1/n)$. Por tanto, uniformemente en la raíz,
 \begin{equation}\label{eq:trayectoria}
  \frac{a_n^{rc}(y)}n\longrightarrow\tilde a(y;\bar r,\bar c):=
  y\int_{[0,1]^2}\nu_1(i,j)\prod_{d\in\mathcal D(r,c;i,j)}\bigl[1-y(1-u_d)\bigr]\,di\,dj .
 \end{equation}
-En el límite, $u_d$ es la vacancia del perfil lleno. Por~\eqref{eq:regularidad}, $|q_t-qz_t|\le\eps n$ salvo probabilidad $e^{-cn}$, de modo que $1-y$ es, en probabilidad, el límite de la fracción
+En el límite, $u_d$ es la vacancia del perfil lleno. Por~\eqref{eq:regularidad}, $|q_t-qz_t|\le\eps n$ salvo
+probabilidad $e^{-cn}$, de modo que $1-y$ es, en probabilidad, el límite de la fracción
 de piezas reales pendientes; no se sustituye el perfil objetivo por el perfil óptimo de masa
 $y$. La
 función $\tilde a$ cumple $\partial_y\tilde a=\int\nu_1\prod_d\vartheta_d

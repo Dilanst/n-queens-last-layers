@@ -1,21 +1,35 @@
-\begin{abstract} \noindent In a legal placement of $n-1$ queens on an $n\times n$ board, the only square where the last queen can be placed is
-the intersection of the empty row and the empty column. We study the probability that this square is unattacked when the placement is
-chosen uniformly at random. When $h\ge1$ queens are missing, the $h$ empty rows and the $h$ empty columns intersect in $h^2$ squares,
-which we call empty crossings. Let $f_h(n)$ denote the mean fraction of these crossings where a queen can be placed. We prove that for
-each fixed $h$, $f_h(n)\to F(0)=1/b_0>0$, where $b_0$ is the normalization constant of the variational profile on the full board. The
-proof uses Simkin's lower bound on the number of solutions and the regularity of the variational profile up to the full
-board, established in a companion paper. For $f_1$ and $f_2$ we also give a direct proof of an explicit, albeit very conservative,
+\begin{abstract} \noindent In a legal placement of $n-1$ queens on an $n\times n$ board, the only square
+where the last queen can be placed is
+the intersection of the empty row and the empty column. We study the probability that this square is
+unattacked when the placement is
+chosen uniformly at random. When $h\ge1$ queens are missing, the $h$ empty rows and the $h$ empty columns
+intersect in $h^2$ squares,
+which we call empty crossings. Let $f_h(n)$ denote the mean fraction of these crossings where a queen can be
+placed. We prove that for
+each fixed $h$, $f_h(n)\to F(0)=1/b_0>0$, where $b_0$ is the normalization constant of the variational
+profile on the full board. The
+proof uses Simkin's lower bound on the number of solutions and the regularity of the variational profile up
+to the full
+board, established in a companion paper. For $f_1$ and $f_2$ we also give a direct proof of an explicit,
+albeit very conservative,
 asymptotic lower bound.
 
-\smallskip\noindent If $N_h(n)$ counts the legal placements of $n-h$ queens and $Q(n)=N_0(n)$, it follows that $N_h(n)/Q(n)\sim n^h/((h!)^2F(0)^h)$.
-Moreover, for each fixed $K$, $\sum_{h\le K}\log[f_h(n)/F(h/n)]\to0$, where $F(x)=(1-x)/b_x$ and $b_x$ is the normalization constant of
-the profile of mass $1-x$. The proof compares the uniform law with a reference process, at relative entropy $o(n)$, and counts, in
-both directions, the repairs connecting two consecutive layers. This count also yields the mean spatial distribution of the empty
-crossings and shows that the number of repairs per crossing is concentrated. \ifverificacionLean The main statements have also been
-formalized in Lean~4. The scope of this verification is described at the end of the paper. \fi The numerical estimate
+\smallskip\noindent If $N_h(n)$ counts the legal placements of $n-h$ queens and $Q(n)=N_0(n)$, it follows
+that $N_h(n)/Q(n)\sim n^h/((h!)^2F(0)^h)$.
+Moreover, for each fixed $K$, $\sum_{h\le K}\log[f_h(n)/F(h/n)]\to0$, where $F(x)=(1-x)/b_x$ and $b_x$ is
+the normalization constant of
+the profile of mass $1-x$. The proof compares the uniform law with a reference process, at relative entropy
+$o(n)$, and counts, in
+both directions, the repairs connecting two consecutive layers. This count also yields the mean spatial
+distribution of the empty
+crossings and shows that the number of repairs per crossing is concentrated. \ifverificacionLean The main
+statements have also been
+formalized in Lean~4. The scope of this verification is described at the end of the paper. \fi The numerical
+estimate
 $F(0)\approx0.0809$ has no certified error bound.
 
-\medskip\noindent \textbf{Keywords:} $n$-queens problem; asymptotic enumeration; completability; relative entropy; absorbers;
+\medskip\noindent \textbf{Keywords:} $n$-queens problem; asymptotic enumeration; completability; relative
+entropy; absorbers;
 differential equation method; double counting.
 
 \noindent \textbf{MSC 2020:} 05A16; 05C70; 60C05; 94A17. \end{abstract}

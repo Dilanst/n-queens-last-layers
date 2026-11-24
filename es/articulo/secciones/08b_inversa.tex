@@ -19,10 +19,17 @@ $I_w/n^2\to B_w$ en probabilidad y en media.
 \end{proposicion}
 
 \begin{proof}
-Se corta cuando faltan $m_\delta=\lceil\delta n\rceil$ piezas reales, con $\delta\in(0,1/4)$ libre (no el $\delta_0$ de la Sección~\ref{sec:absorbedores}). El control de los colores,
-$q_t=qz_t+O(\eps n)$ con $q/n\to1$, asegura $\tau_\delta\le T_{\delta/4}$ e
-$y_{\tau_\delta}=1-\delta+O(\eps+n^{-1})$; se fija $\delta$, después $\eps\ll\delta$ y después
-$n$. La unión sobre horizontes deterministas permite el corte aleatorio. Una reina nueva crea a
+Se corta cuando faltan $m_\delta=\lceil\delta n\rceil$ piezas reales, con $\delta\in(0,1/4)$ libre
+(no el $\delta_0$ de la Sección~\ref{sec:absorbedores}); en el corte, $q_{\tau_\delta}=m_\delta$.
+Por el control de los colores en~\eqref{eq:regularidad}, $q_t=qz_t+O(\eps n)$ hasta
+$T_{\delta/4}$, con $q/n\to1$. Así, en $T_{\delta/4}$ quedan menos de $m_\delta$ piezas reales, de
+modo que $\tau_\delta\le T_{\delta/4}$, y en el corte $z_{\tau_\delta}=\delta+O(\eps+n^{-1})$, es
+decir,
+\[
+ y_{\tau_\delta}=\tau_\delta/N=1-\delta+O(\eps+n^{-1})
+\]
+(el \emph{enlace temporal}). Se fija $\delta$, después $\eps\ll\delta$ y después $n$. La unión sobre
+horizontes deterministas permite el corte aleatorio. Una reina nueva crea a
 lo sumo $2n$ pares inversos y destruye a lo sumo $2n$ por sus dos diagonales; las piezas
 virtuales no cambian $I_w$. Así, los últimos $m_\delta$ pasos reales cambian $I_w$ en a lo sumo
 $4nm_\delta\|w\|_\infty$. Para cada tolerancia final fija se escoge $\delta$ suficientemente

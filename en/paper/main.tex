@@ -17,12 +17,13 @@
 \newcommand*{\DOIcodigo}{}
 % Variational profile paper: filling in one of the two identifiers is enough.
 % Its Zenodo DOI, without "https://doi.org/" (for example 10.5281/zenodo.1234567).
-\newcommand*{\DOIPerfil}{10.5281/zenodo.24220042}
+\newcommand*{\DOIPerfil}{10.5281/zenodo.24509033}
 % Or its arXiv number (for example 2611.01234).
 \newcommand*{\arXivPerfil}{}
 \ifx\DOIcodigoLean\empty\typeout{WARNING: missing DOI of the Lean code (DOIcodigoLean).}\fi
 \ifx\DOIcodigo\empty\typeout{WARNING: missing DOI of the numerical repository (DOIcodigo).}\fi
-\ifx\DOIPerfil\empty\ifx\arXivPerfil\empty\typeout{WARNING: missing DOIPerfil or arXivPerfil (profile paper).}\fi\fi
+\ifx\DOIPerfil\empty\ifx\arXivPerfil\empty\typeout{WARNING: missing DOIPerfil or arXivPerfil (profile
+paper).}\fi\fi
 
 \title{Completability of the Final Layers\\ in the $n$-Queens Problem}
 \author{Dilan Steven Mejia\thanks{\href{mailto:mejiadilan@hotmail.com}{\nolinkurl{mejiadilan@hotmail.com}}}}
@@ -31,7 +32,8 @@
 \hypersetup{pdftitle={Completability of the Final Layers in the n-Queens Problem},
  pdfauthor={Dilan Steven Mejia},
  pdfsubject={The n-queens problem. MSC 2020: 05A16, 05C70, 60C05, 94A17},
- pdfkeywords={n-queens problem, asymptotic enumeration, completability, relative entropy, absorbers, differential equation method, double counting},
+ pdfkeywords={n-queens problem, asymptotic enumeration, completability, relative entropy, absorbers,
+differential equation method, double counting},
  pdflang={en}}
 
 \begin{document}
@@ -47,6 +49,7 @@
 \input{sections/03b_reference_process}
 \input{sections/03c_reference_process}
 \input{sections/04_regularity}
+\input{sections/04b_regularity}
 \input{sections/05a_absorbers}
 \input{sections/05b_absorbers}
 \input{sections/05c_absorbers}
@@ -58,11 +61,11 @@
 \input{sections/10_corollaries}
 \input{sections/11_discussion}
 \ifverificacionLean\input{sections/01d_lean_verification}\fi
-\input{sections/12_ai_use}
 
 \appendix
 \input{sections/A1_profile}
 \input{sections/A2_profile}
 
+\input{sections/12_ai_use}
 \input{sections/bibliography}
 \end{document}

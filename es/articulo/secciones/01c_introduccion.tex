@@ -13,7 +13,7 @@ lineal correspondiente se obtiene una combinación lineal de patrones, el \emph{
 que coincide con el contador en el instante elegido y cuya deriva es pequeña; una
 desigualdad de martingalas da entonces la concentración hasta un corte
 temprano, cuando quedan unas $\delta n$ reinas por colocar. Después del corte, cada reina
-cambia el contador directo de cada cruce en a lo sumo cinco unidades y el contador
+cambia el contador directo de cada cruce en a lo sumo cuatro unidades y el contador
 inverso en $O(n)$. Al dividir por $n$ y por $n^2$, respectivamente, el efecto
 de todo el tramo final es $O(\delta)$.
 
@@ -47,7 +47,8 @@ principales y precisa qué comprueba.
 \node[caja] (dc) at (0,-3.4) {Doble cuenta\\ entre capas (§\ref{sec:doblecuenta})};
 \node[caja] (pos) at (3.6,-3.4) {Teorema~\ref{thm:positiva}\\ (§\ref{sec:positiva})};
 \node[caja] (lim) at (7.2,-3.4) {Teoremas~\ref{thm:limite} y~\ref{thm:estructura}\\ (§\ref{sec:limite})};
-\node[caja] (cor) at (10.8,-3.4) {Corolarios~\ref{cor:cociente}\\ y~\ref{cor:capas} (§\ref{sec:corolarios})};
+\node[caja] (cor) at (10.8,-3.4)
+{Corolarios~\ref{cor:cociente}\\ y~\ref{cor:capas} (§\ref{sec:corolarios})};
 \draw[flecha] (perfil) -- (ref);
 \draw[flecha] (ref) -- (din);
 \draw[flecha] (din) -- (abs);
@@ -76,13 +77,16 @@ probarla, Simkin fija una \emph{queenon} escalonada, es decir, una queenon
 paso elige un bloque con la probabilidad que esa medida le asigna, coloca en él una
 reina al azar entre las casillas disponibles y, al final, completa la colocación con
 absorbedores~\cite[Sección~5]{Simkin}. Luria y Simkin~\cite{LS} construyen casi-soluciones
-mediante un proceso voraz aleatorio y las completan con absorbedores para obtener una cota
+mediante un proceso voraz aleatorio (para el emparejamiento voraz aleatorio en hipergrafos,
+véase~\cite{BennettBohman}) y las completan con absorbedores para obtener una cota
 inferior de conteo, y Bowtell y Keevash~\cite{BK} estudian el conteo toroidal y sus
 consecuencias para el tablero ordinario. El proceso de referencia y los absorbedores de este
 trabajo siguen ese espíritu, pero el éxito bajo un proceso de construcción no identifica por sí
 solo la ley uniforme sobre las colocaciones con $h$ huecos: esa identificación es el papel de
 la comparación entrópica. Comparar la ley uniforme con la del resultado de un proceso aleatorio
-es la herramienta principal del trabajo de Kwan~\cite{Kwan} sobre sistemas triples de Steiner.
+es la herramienta principal del trabajo de Kwan~\cite{Kwan} sobre sistemas triples de Steiner;
+Ferber y Kwan~\cite{FerberKwan} la emplean de nuevo con esos sistemas, y Kwan, Sah y
+Sawhney~\cite{KSS} dan su versión para cuadrados latinos.
 A su vez, la doble cuenta de reparaciones entre capas consecutivas es una forma del método de
 conmutaciones (\emph{switchings})~\cite{McKayWormald,HMcK}.
 
@@ -99,5 +103,6 @@ Hasta donde sabemos, los
 Teoremas~\ref{thm:limite} y~\ref{thm:estructura} y el Corolario~\ref{cor:cociente} son nuevos.
 No se reclama novedad para las herramientas generales: regla de la cadena de la entropía
 relativa, comparación con procesos aleatorios~\cite{Kwan}, dobles cuentas y
-conmutaciones~\cite{HMcK}, método de ecuaciones diferenciales~\cite{Wormald} y desigualdades de
+conmutaciones~\cite{HMcK}, método de ecuaciones
+diferenciales~\cite{Wormald,Warnke,BennettDudek} y desigualdades de
 concentración~\cite{AlonSpencer}.

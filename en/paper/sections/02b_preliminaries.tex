@@ -1,69 +1,116 @@
 \subsection{Simkin's first-order estimate}
 
-\begin{teorema}[{\cite[Theorem~2.11]{Simkin}}]\label{thm:simkin} $\log Q(n)\ge n\log n+ns_1-o(n)$, with $s_1=s^*(1)=s[\nu_1]$. \end{teorema}
+\begin{teorema}[{Consequence of~\cite[Theorem~2.11]{Simkin}}]\label{thm:simkin}
+$\log Q(n)\ge n\log n+ns_1-o(n)$, with $s_1=s^*(1)=s[\nu_1]$. \end{teorema}
 
-Theorem~2.11 of~\cite{Simkin} is stated for \emph{queenons}~\cite[Definitions~2.1, 2.3 and~2.4]{Simkin}, which form the weak closure of
-the step permutons with subuniform diagonal marginals. After translating the square to $[-\frac12,\frac12]^2$, a density whose row and
-column marginals equal one defines a permuton, and the diagonal marginals are subuniform precisely when $m_D,m_A\le1$.
+Theorem~2.11 of~\cite{Simkin} is stated for \emph{queenons}~\cite[Definitions~2.1, 2.3 and~2.4]{Simkin},
+which form the weak closure of
+the step permutons with subuniform diagonal marginals. After translating the square to
+$[-\frac12,\frac12]^2$, a density whose row and
+column marginals equal one defines a permuton, and the diagonal marginals are subuniform precisely when
+$m_D,m_A\le1$.
 
-\begin{lema}\label{lem:queenon} The measure with density $\nu_1$, translated to $[-\frac12,\frac12]^2$, is a queenon. \end{lema}
+\begin{lema}\label{lem:queenon} The measure with density $\nu_1$, translated to $[-\frac12,\frac12]^2$, is a
+queenon. \end{lema}
 
-\begin{proof} By Theorem~\ref{thm:perfil}, $\nu_1$ is continuous on the closed square, has row and column marginals equal to one, and
-has diagonal projections satisfying $m_D=1-u_D\le1-\kappa$ and $m_A=1-u_A\le1-\kappa$. For $N\ge1$, let $\nu^{(N)}$ be the density
-whose value on each cell of the $N\times N$ grid is the average of $\nu_1$ over that cell. On a horizontal strip of width $1/N$, the
-row marginal of $\nu^{(N)}$ is the average of the row marginal of $\nu_1$, which equals one. The same holds for the columns, so
+\begin{proof} By Theorem~\ref{thm:perfil}, $\nu_1$ is continuous on the closed square, has row and column
+marginals equal to one, and
+has diagonal projections satisfying $m_D=1-u_D\le1-\kappa$ and $m_A=1-u_A\le1-\kappa$. For $N\ge1$, let
+$\nu^{(N)}$ be the density
+whose value on each cell of the $N\times N$ grid is the average of $\nu_1$ over that cell. On a horizontal
+strip of width $1/N$, the
+row marginal of $\nu^{(N)}$ is the average of the row marginal of $\nu_1$, which equals one. The same holds
+for the columns, so
 $\nu^{(N)}$ is a step permuton. If $\omega$ is the modulus of uniform continuity of $\nu_1$, then
-$|\nu^{(N)}-\nu_1|\le\omega(\sqrt2/N)$ and, since the diagonal fibers have parametric length (in $r$) at most one,
-$m_D[\nu^{(N)}],m_A[\nu^{(N)}]\le1-\kappa+\omega(\sqrt2/N)\le1$ for sufficiently large $N$. This is the normalization used
-in~\cite{Simkin}. The pushforward of the measure under $(r,c)\mapsto r\mp c$ has density given by the fiber integral in $r$ because the
-Jacobian is one. Thus $\nu^{(N)}$ has subuniform diagonal marginals and converges uniformly to $\nu_1$, hence in total variation and in
+$|\nu^{(N)}-\nu_1|\le\omega(\sqrt2/N)$ and, since the diagonal fibers have parametric length (in $r$) at
+most one,
+$m_D[\nu^{(N)}],m_A[\nu^{(N)}]\le1-\kappa+\omega(\sqrt2/N)\le1$ for sufficiently large $N$. This is the
+normalization used
+in~\cite{Simkin}. The pushforward of the measure under $(r,c)\mapsto r\mp c$ has density given by the fiber
+integral in $r$ because the
+Jacobian is one. Thus $\nu^{(N)}$ has subuniform diagonal marginals and converges uniformly to $\nu_1$,
+hence in total variation and in
 particular weakly. \end{proof}
 
-By Lemma~\ref{lem:queenon}, Theorem~2.11 of~\cite{Simkin} applies to $\nu_1$ as stated. There is no need to invoke Remark~2.7 there,
-which extends the theorem to all permutons with subuniform diagonal marginals. After translation, the diagonal vacancy densities are
-$u_D,u_A$, each with integral one. In Definition~2.9 of~\cite{Simkin}, each divergence from the uniform law on $[-1,1]$ equals $\int
-u\log u+\log2$, and the two constants cancel with $2\log2$. Simkin's functional at $\nu_1$ is therefore $-3-\int\nu_1\log\nu_1-\int
-u_D\log u_D-\int u_A\log u_A=s[\nu_1]=s_1$. The lower bound in his Theorem~2.11 for this profile yields the claim. First fix the
-tolerance, then take the limit inferior in $n$, and finally let the tolerance tend to zero. This argument gives no rate for the remainder,
-and we write \begin{equation}\label{eq:Delta}
+\begin{proof}[Proof of Theorem~\ref{thm:simkin}] By Lemma~\ref{lem:queenon}, Theorem~2.11 of~\cite{Simkin}
+applies to $\nu_1$
+as stated. There is no need to invoke Remark~2.7 there,
+which extends the theorem to all permutons with subuniform diagonal marginals. After translation, the
+diagonal vacancy densities are
+$u_D,u_A$, each with integral one. In Definition~2.9 of~\cite{Simkin}, each divergence from the uniform law
+on $[-1,1]$ equals $\int
+u\log
+u+\log2$, and the two constants cancel with $2\log2$. Simkin's functional at $\nu_1$ is therefore
+$-3-\int\nu_1\log\nu_1-\int
+u_D\log u_D-\int u_A\log
+u_A=s[\nu_1]=s_1$. The lower bound in his Theorem~2.11 for this profile yields the claim. First fix the
+tolerance, then take the limit inferior in $n$, and finally let the tolerance tend to zero. \end{proof}
+
+This argument gives no rate for the remainder, and we write \begin{equation}\label{eq:Delta}
  \Delta_n=\bigl[n\log n+ns_1-\log Q(n)\bigr]_+=o(n).
 \end{equation}
 
+Simkin also proves the matching upper bound~\cite[Theorem~1.1]{Simkin}, and the maximum of his functional
+over queenons is the
+negative of his constant $\alpha\in(1.94,\,1.9449)$~\cite[Section~2]{Simkin}. By the same computation, this
+functional equals $s[\nu]$
+at a queenon with density $\nu$, which is admissible of mass one, and equals $-\infty$ at all other
+queenons. Since $\nu_1$ maximizes
+$s$ at mass one, $s_1$ is this maximum; that is, $-s_1$ is the constant $\alpha$ of~\cite{Simkin} and
+$\log Q(n)=n\log n+ns_1+o(n)$. Nobel, Agrawal and Boyd~\cite{NAB} obtain, with floating-point computations
+and without
+certification, $1.944000752\le-s_1\le1.944001082$.
+
 \subsection{The variational value near the full board}
 
-\begin{lema}\label{lem:borde} As $x\downarrow0$, $s^*(1-x)-s^*(1)=2x\log(1/x)+O(x)$. Consequently, for fixed $K$ and $0\le h\le K$, \[
+\begin{lema}\label{lem:borde} As $x\downarrow0$, $s^*(1-x)-s^*(1)=2x\log(1/x)+O(x)$. Consequently, for fixed
+$K$ and $0\le h\le K$, \[
  n\bigl[s^*(1-h/n)-s_1\bigr]=2h\log n+O_K(1).
 \] \end{lema}
 
 This is Proposition~8.3 of~\cite{Perfil}, where the supporting-line inequality (Theorem~3.1(d), with
-$\theta=-\log\lambda_\rho$) and the continuity of $s^*$ at $\rho=1$ (Proposition~5.1) are also proved. We include the proof for completeness.
+$\theta=-\log\lambda_\rho$) and the continuity of $s^*$ at $\rho=1$ (Proposition~5.1) are also proved. We
+include the proof for completeness.
 
-\begin{proof} The functional $s$ is concave on the admissible domain. At a positive profile $\nu=\lambda_\rho\prod_fu_f$, its
+\begin{proof} The functional $s$ is concave on the admissible domain. At a positive profile
+$\nu=\lambda_\rho\prod_fu_f$, its
 derivative in the direction of an admissible variation $\dot\nu$ with $\int\dot\nu=\dot\rho$ is \[
  \dot s=\int\Bigl[-3-1-\log\nu+\sum_f(1+\log u_f)\Bigr]\dot\nu=-\log\lambda_\rho\;\dot\rho ,
-\] since $-\log\nu+\sum_f\log u_f=-\log\lambda_\rho$ and $-3-1+4=0$. Concavity and stationarity at fixed mass identify the value
+\] since $-\log\nu+\sum_f\log u_f=-\log\lambda_\rho$ and $-3-1+4=0$. Concavity and stationarity at fixed
+mass identify the value
 $s^*(\rho)$ and give the supporting-line inequality \[
  s^*(\rho')\le s^*(\rho)-\log\lambda_\rho\,(\rho'-\rho).
-\] On compact subintervals of $(0,1)$, $s^*$ is concave and hence absolutely continuous. At its points of differentiability, the
-supergradient $-\log\lambda_\rho$ equals its derivative. The two-sided bounds on $b_x=\lambda_\rho(1-\rho)^2$ give
-$-\log\lambda_\rho=2\log(1-\rho)+O(1)$. By Theorem~\ref{thm:perfil}(c) and continuity of $u\log u$, the optimal value at mass $1-x$
-tends to $s[\nu_1]$, which equals $s^*(1)$ because $\nu_1$ is the maximizer of mass one (Theorem~\ref{thm:perfil}). This proves
-continuity of $s^*$ at $\rho=1$. Together with the integrability of $\log(1-\rho)$, this allows us to integrate, giving \[
+\] On compact subintervals of $(0,1)$, $s^*$ is concave and hence absolutely continuous. At its points of
+differentiability, the
+supergradient $-\log\lambda_\rho$ equals its derivative. The two-sided bounds on
+$b_x=\lambda_\rho(1-\rho)^2$ give
+$-\log\lambda_\rho=2\log(1-\rho)+O(1)$. By Theorem~\ref{thm:perfil}(c) and continuity of $u\log u$, the
+optimal value at mass $1-x$
+tends to $s[\nu_1]$, which equals $s^*(1)$ because $\nu_1$ is the maximizer of mass one
+(Theorem~\ref{thm:perfil}). This proves
+continuity of $s^*$ at $\rho=1$. Together with the integrability of $\log(1-\rho)$, this allows us to
+integrate, giving \[
  s^*(1)-s^*(1-x)=\int_{1-x}^1\bigl[2\log(1-\rho)+O(1)\bigr]d\rho=2x\log x-2x+O(x).
-\] This proves the first assertion. The second follows on setting $x=h/n$, which gives $n[2(h/n)\log(n/h)+O(h/n)]=2h\log n+O_K(1)$. \end{proof}
+\] This proves the first assertion. The second follows on setting $x=h/n$, which gives
+$n[2(h/n)\log(n/h)+O(h/n)]=2h\log n+O_K(1)$. \end{proof}
 
 The argument uses only concavity and does not differentiate the profile with respect to its parameter.
 
 \subsection{Two relative entropy lemmas}
 
-\begin{lema}[Conditioning on success]\label{lem:exito} Let $\PP,\QQ$ be laws on a finite set and let $S$ be an event with $\PP(S)=1$
-and $\QQ(S)>0$. Then $\KL{\PP}{\QQ(\cdot\mid S)}=\KL{\PP}{\QQ}+\log\QQ(S)$. In particular, $\QQ(S)\ge e^{-\KL{\PP}{\QQ}}$ and
+\begin{lema}[Conditioning on success]\label{lem:exito} Let $\PP,\QQ$ be laws on a finite set and let $S$ be
+an event with $\PP(S)=1$
+and $\QQ(S)>0$. Then $\KL{\PP}{\QQ(\cdot\mid S)}=\KL{\PP}{\QQ}+\log\QQ(S)$. In particular,
+$\QQ(S)\ge e^{-\KL{\PP}{\QQ}}$ and
 $\KL{\PP}{\QQ(\cdot\mid S)}\le\KL{\PP}{\QQ}$. \end{lema}
 
-\begin{proof} On $S$, $\QQ(\omega\mid S)=\QQ(\omega)/\QQ(S)$. Take the expectation of $\log(\PP/\QQ(\cdot\mid
-S))=\log(\PP/\QQ)+\log\QQ(S)$ under $\PP$. Nonnegativity of the left-hand side gives both consequences. \end{proof}
+\begin{proof} On $S$, $\QQ(\omega\mid S)=\QQ(\omega)/\QQ(S)$. Take the expectation of
+$\log(\PP/\QQ(\cdot\mid
+S))=\log(\PP/\QQ)+\log\QQ(S)$ under $\PP$. Nonnegativity of the left-hand side gives both consequences.
+\end{proof}
 
-\begin{lema}[Binary transfer]\label{lem:binaria} Let $\mu,\nu$ be laws on a finite set and let $B$ be an event with $\nu(B)<1$. Then \[
+\begin{lema}[Binary transfer]\label{lem:binaria} Let $\mu,\nu$ be laws on a finite set and let $B$ be an
+event with $\nu(B)<1$. Then \[
  \mu(B)\log\frac1{\nu(B)}\le\KL{\mu}{\nu}+\log2 .
 \] If $\nu(B)=0$ and $\KL{\mu}{\nu}<\infty$, then $\mu(B)=0$. \end{lema}
 
@@ -74,6 +121,8 @@ S))=\log(\PP/\QQ)+\log\QQ(S)$ under $\PP$. Nonnegativity of the left-hand side g
 \end{aligned}
 \] The case $p'=0$ follows from absolute continuity. \end{proof}
 
-In Sections~\ref{sec:regularidad}--\ref{sec:inversa} we also use the Azuma--Hoeffding inequality for martingales with bounded
-increments~\cite{AlonSpencer} and the discrete Gronwall inequality in the usual form used in the differential equation
-method~\cite{Wormald}.
+In Sections~\ref{sec:regularidad}--\ref{sec:inversa} we also use the Azuma--Hoeffding inequality for
+martingales with bounded
+increments~\cite{AlonSpencer} and the discrete Gronwall inequality in the usual form used in the
+differential equation
+method~\cite{Wormald,Warnke,BennettDudek}.

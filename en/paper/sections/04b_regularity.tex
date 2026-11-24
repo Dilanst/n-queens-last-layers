@@ -1,0 +1,105 @@
+\subsection{Deterministic trajectories}
+
+Let $\mathcal A_t$ be the set of active vertices after $t$ steps. We define auxiliary degrees even for
+vertices that have already been
+removed, by setting \[
+ \deg_v(t)=\sum_{e\ni v}v_e\,\ind\{e\setminus\{v\}\subset\mathcal A_t\},\quad
+ W(t)=\sum_{e\subset\mathcal A_t}v_e,\quad U_f(t)=\sum_{v\in f\cap\mathcal A_t}u_v .
+\] If $v$ is still active, $\deg_v(t)$ is its available real degree. We group in $\Upsilon$ the following
+$4N+6$
+coordinates: the degrees $\deg_v$ of the $4N$ vertices (zero at the dummy vertices), $W/n$, the four sums
+$U_R,U_C,U_D,U_A$, and
+$q_t$. Their target values are, respectively, \[
+ \Upsilon^*=\bigl(\deg_v^0z^3,\ W_0z^4/n,\ U_f^0z,\ qz\bigr),\qquad z=z_t ,
+\] and at $t=0$ they coincide with $\Upsilon(0)$. For fixed $\zeta>0$, let
+$T_\zeta=\lfloor(1-\zeta)N\rfloor$.
+
+\begin{lema}[Dynamic regularity]\label{lem:regularidad} Let $0\le h\le K$ and $\zeta>0$. For every
+sufficiently small fixed tolerance
+$\eps>0$, with probability $1-e^{-c_{\zeta,\eps}n}$ the process runs without failure up to $T_\zeta$ and
+\begin{equation}\label{eq:regularidad}
+ \max_{t\le T_\zeta}\max_i|\Upsilon_i(t)-\Upsilon_i^*(t)|\le\eps n .
+\end{equation} Success beyond $T_\zeta$ is not required. \end{lema}
+
+\begin{proof} Let $E_t=\max_i|\Upsilon_i(t)-\Upsilon_i^*(t)|$, so that $E_0=0$, and let $\sigma$ be the
+first time at which
+$E_t\ge\eps_0n$ or the process fails. Fix $\eps_0>0$ small enough that in the region $E_t<\eps_0 n$ and for
+$t\le T_\zeta$ we have
+$W\ge c_\zeta n^2$ and $U_f\ge c_\zeta n$. An immediate failure from this region is impossible.
+
+\emph{Removal probabilities.} Since the color word is uniform and hidden, the color of the next step is real
+with probability
+$q_t/(N-t)$. If it is real, the chosen edge contains the active vertex $v$ with probability $\deg_v/W$. If
+it is virtual, since the
+available virtual edges are all quadruples of active vertices and their weight is a product, it contains $v$
+with probability
+$u_v\prod_{f'\ne f}U_{f'}\big/\prod_{f'}U_{f'}=u_v/U_f$, where $f$ is the family of $v$. In the region, each
+active vertex therefore
+satisfies \begin{equation}\label{eq:tasas}
+ P_R(v)=\frac{q_t}{N-t}\frac{\deg_v}{W}=\frac{p_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}{n^2}\Bigr),\qquad
+ P_V(v)=\frac{N-t-q_t}{N-t}\frac{u_v}{U_f}=\frac{u_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}{n^2}\Bigr),
+\end{equation} for the probabilities that a real or virtual piece removes $v$. Indeed, $N-t=Nz$ with
+$z\ge\zeta$ and, in the
+region, \[
+ q_t=qz+O(E_t),\quad \deg_v=\deg_v^0z^3+O(E_t),\quad W=W_0z^4+O(nE_t),\quad U_f=U_f^0z+O(E_t),
+\] with $\deg_v^0=O(n)$ and $W_0\asymp n^2$. Hence $q_t/(N-t)=q/N+O_\zeta(E_t/n)$ and
+$\deg_v/W=\deg_v^0/(W_0z)+O_\zeta(E_t/n^2)$,
+whose product is $p_v/(Nz)+O_\zeta(E_t/n^2)$ because $p_v=q\deg_v^0/W_0$. Likewise, $N-t-q_t=Hz+O(E_t)$ and,
+by~\eqref{eq:balance}, $U_f=Hz+O(E_t+1)$, which gives the second formula; the summand $1$ in the error comes
+from
+$U_f^0=H+O(1)$. By~\eqref{eq:balance}, the sum of the two probabilities is $1/(Nz)$ up to the same error.
+
+\emph{Drifts.} The probability of removing two given distinct vertices in the same step is
+$O_\zeta(n^{-2})$. For real pieces this
+follows from codegree one, and for virtual pieces from the Cartesian structure and $U_f\asymp n$. Two
+vertices in the same family
+cannot be removed in a single step. A summand of $\deg_v$ disappears when one of the other three vertices of
+its edge is removed, so
+by inclusion--exclusion \[
+\begin{aligned}
+ \E(\Delta\deg_v\mid\mathcal F_t)&=-\sum_{e\ni v}v_e\,\ind\{e\setminus\{v\}\subset\mathcal A_t\}
+ \Bigl[\sum_{w\in e\setminus\{v\}}\bigl(P_R(w)+P_V(w)\bigr)+O_\zeta(n^{-2})\Bigr]\\
+ &=-\frac{3\deg_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}n\Bigr),
+\end{aligned}
+\] since $\deg_v=O(n)$. This computation uses the removal probabilities of the other three vertices of each
+edge, which depend on
+their degrees through~\eqref{eq:tasas}; this is why the degrees of all vertices are tracked simultaneously,
+and the formula holds
+even if $v$ is inactive. Likewise, the drifts of $W/n$ and $U_f$ are $-4(W/n)/(Nz)$ and $-U_f/(Nz)$, with
+errors
+$O_\zeta((E_t+1)/n)$. Since the color word is assigned in advance and kept hidden,
+$\E(\Delta q_t\mid\mathcal F_t)=-q_t/(N-t)$
+holds exactly. On the other hand, $\Delta z=-1/N$ gives $\Delta(z^k)=-kz^{k-1}/N+O(n^{-2})$ for $k\le4$, and
+since $\deg_v^0$,
+$W_0/n$, $U_f^0$, and $q$ are $O(n)$, the target values satisfy
+$\Delta\Upsilon_i^*=-k_i\Upsilon_i^*/(Nz)+O(n^{-1})$, with
+$k_i=3,4,1,1$ for the degrees, $W/n$, the $U_f$, and $q_t$. Subtracting and using
+$|\Upsilon_i-\Upsilon_i^*|\le E_t$, for each
+coordinate \begin{equation}\label{eq:deriva}
+ \bigl|\E(\Delta \Upsilon_i\mid\mathcal F_t)-\Delta \Upsilon_i^*(t)\bigr|\le C_\zeta(E_t+1)/n .
+\end{equation}
+
+\emph{Stopped martingales.} By codegree one, $|\Delta\deg_v|\le3C$ even when $v$ is removed. We also have
+$|\Delta(W/n)|\le4C$,
+$|\Delta U_f|\le1$, and $|\Delta q_t|\le1$. Let $B$ be a common bound and let
+$M_i(t)=\Upsilon_i(t\wedge\sigma)-\Upsilon_i(0)-\sum_{s<t\wedge\sigma}\E(\Delta \Upsilon_i\mid\mathcal
+F_s)$, whose increments are at
+most $2B$ in absolute value, including the exit step. Azuma's inequality and a union bound over $O(n)$
+coordinates and $O(n)$ times give $\Pr\{\max_{i,t\le T_\zeta}|M_i(t)|>\gamma_0n\}\le Cn^2e^{-c\gamma_0^2n}$.
+
+\emph{Closing the argument.} The stopped error is $\Upsilon(t\wedge\sigma)-\Upsilon^*(t\wedge\sigma)$, since
+we stop both the process
+and the time argument of the target value. Since $\Upsilon(0)=\Upsilon^*(0)$, summing~\eqref{eq:deriva}
+gives, pathwise and for
+$t\le T_\zeta$, \[
+ E_{t\wedge\sigma}\le\max_{i,s}|M_i(s)|+\frac{C_\zeta}n\sum_{s<t\wedge\sigma}(E_s+1).
+\] Since $T_\zeta<N<2n$, the discrete Gronwall inequality gives \[
+ \max_{s\le T_\zeta}E_{s\wedge\sigma}\le C'_\zeta\bigl(\max_{i,t}|M_i(t)|+1\bigr),\qquad
+C'_\zeta=e^{2C_\zeta}.
+\] For fixed $\eps<\eps_0/2$, choose $\gamma_0<\eps/(2C'_\zeta)$ and then
+take $n$ large. The bound is smaller than $\eps n$, ruling out an exit $E_\sigma\ge\eps_0n$. Nor could a
+failure have occurred from the
+interior. This gives~\eqref{eq:regularidad} and $\sigma>T_\zeta$ with the stated tail bound. At $h=0$ the
+proof is the same. It uses
+only positive normalizers of orders $n^2$ and $n$ and requires no positivity of the individual virtual
+weights. \end{proof}

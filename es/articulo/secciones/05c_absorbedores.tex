@@ -34,7 +34,8 @@ $A^{rc}_{\tau_{\delta_0}}\ge\eta^4n/16=a_0n$ para todas las raíces. La afirmaci
 se alcance el corte; un fallo previo ya está cubierto por el Lema~\ref{lem:regularidad}.
 \end{proof}
 
-\emph{Orden de las elecciones.} Se fijan $\eta,a_0,\delta_0$ y $\zeta=\delta_0/4$; después las tolerancias de los
+\emph{Orden de las elecciones.} Se fijan $\eta,a_0,\delta_0$ y $\zeta=\delta_0/4$; después las tolerancias
+de los
 Lemas~\ref{lem:regularidad}--\ref{lem:conc_directa}, que dependen de ellas; finalmente se toma
 $n$ grande. No se exige uniformidad cuando $\delta\to0$. Las constantes son analíticas y muy
 conservadoras.
@@ -42,13 +43,14 @@ conservadoras.
 \subsection{Pérdida determinista después del corte}
 
 \begin{lema}\label{lem:perdida}
-Sea $\delta\in(0,1/4)$ y $(r,c)$ una raíz cuya fila y cuya columna permanecen físicamente vacías. Cada pieza real
+Sea $\delta\in(0,1/4)$ y $(r,c)$ una raíz cuya fila y cuya columna permanecen físicamente vacías. Cada pieza
+real
 crea a lo sumo una candidata ocupada de $(r,c)$ y anula el término de a lo sumo cuatro; las piezas
 virtuales no cambian $A^{rc}$. En consecuencia, en el evento de éxito y para todo cruce
 finalmente vacío,
 \[
  A^{rc}_{\mathrm{final}}\ge A^{rc}_{\tau_\delta}-4m_\delta,\qquad
- |A^{rc}_{\mathrm{final}}-A^{rc}_{\tau_\delta}|\le5m_\delta .
+ |A^{rc}_{\mathrm{final}}-A^{rc}_{\tau_\delta}|\le4m_\delta .
 \]
 \end{lema}
 
@@ -56,7 +58,8 @@ finalmente vacío,
 Una nueva reina en la casilla $g$ sólo puede crear el término $Z^\oc_{g,\varnothing}$. Destruye
 el término de una candidata ocupada $e$ si $g$ está en una de las diagonales de destino de $e$;
 $g$ está en una diagonal y una antidiagonal, y cada una de ellas es diagonal de destino de a lo
-sumo dos candidatas ocupadas, por unicidad de filas y columnas. Las piezas virtuales sólo
+sumo dos candidatas ocupadas, por unicidad de filas y columnas. Así, cada pieza real cambia
+$A^{rc}$ en un entero de $[-4,1]$. Las piezas virtuales sólo
 desactivan vértices, y $A^{rc}$ depende únicamente de $O$ y $V$. Tras el corte se colocan
 exactamente $m_\delta$ piezas reales.
 \end{proof}

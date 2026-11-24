@@ -1,45 +1,64 @@
 \section{The reverse count: sixteen patterns}\label{sec:inversa}
 
-To determine the value of the limit, we need to evaluate the denominator in the double-counting identity. Viewed from the layer with
-one more queen, a repair is identified by the pair of queens it leaves on the board. The reverse counter therefore tracks pairs, and
+To determine the value of the limit, we need to evaluate the denominator in the double-counting identity.
+Viewed from the layer with
+one more queen, a repair is identified by the pair of queens it leaves on the board. The reverse counter
+therefore tracks pairs, and
 its normalization is of order $n^2$.
 
-Throughout this section $0\le h\le K$ (including layer zero), the process is $\QQ_h$, and $w$ is a bounded continuous function on
+Throughout this section $0\le h\le K$ (including layer zero), the process is $\QQ_h$, and $w$ is a bounded
+continuous function on
 $[0,1]^2$ evaluated at the centers of the root squares. We study $I_w$ on the final placement.
 
 \subsection{Patterns and an explicit compensator}
 
-Write a compatible ordered pair as $e_1=(r,j)$, $e_2=(i,c)$. The operation inserts $e^\star=(i,j)$ and creates the root $o=(r,c)$. The
-eight lines of the pair are distinct, and the two diagonals $d_1,d_2$ of $e^\star$ are distinct from them. We sum only over compatible
+Write a compatible ordered pair as $e_1=(r,j)$, $e_2=(i,c)$. The operation inserts $e^\star=(i,j)$ and
+creates the root $o=(r,c)$. The
+eight lines of the pair are distinct, and the two diagonals $d_1,d_2$ of $e^\star$ are distinct from them.
+We sum only over compatible
 pairs. For $L\subseteq\{1,2\}$ and $J\subseteq\{1,2\}$ define \[
  Z_{L,J}=\prod_{g\in L}O_{e_g}\prod_{g\notin L}\chi_{e_g}\prod_{i\in J}\chi_{d_i}\prod_{i\notin J}V_{d_i}.
-\] There are sixteen patterns per pair. Let $\ell=|L|$. For $z_t\ge\zeta$, with $\alpha=(Nz_t)^{-1}$, $\beta_i=p_{d_i}/(Nz_t)$, and
+\] There are sixteen patterns per pair. Let $\ell=|L|$. For $z_t\ge\zeta$, with $\alpha=(Nz_t)^{-1}$,
+$\beta_i=p_{d_i}/(Nz_t)$, and
 $k_g=\pi_{e_g}/(Nz_t^4)$, the ideal generator is \[
  \cL Z_{L,J}=-\bigl[4(2-\ell)+|J|\bigr]\alpha\,Z_{L,J}-\sum_{i\notin J}\beta_i\,Z_{L,J\cup\{i\}}
  +\sum_{g\in L}k_g\,Z_{L\setminus\{g\},J}.
-\] By the geometry above, a birth does not erase the other marks. The real-piece part of the death of a mark $V$ requires the active mark and
-therefore enlarges $J$. In the region~\eqref{eq:regularidad}, with tolerance $\eps n$, the remainder relative to the true generator
+\] By the geometry above, a birth does not erase the other marks. The real-piece part of the death of a mark
+$V$ requires the active mark and
+therefore enlarges $J$. In the region~\eqref{eq:regularidad}, with tolerance $\eps n$, the remainder
+relative to the true generator
 satisfies \[
  |R_{L,J}|\le C_\zeta\Bigl[(\eps/n+n^{-2})Z_{L,J}+(\eps/n^2+n^{-3})\sum_{g\in L}Z_{L\setminus\{g\},J}\Bigr];
-\] the bound $O(n^{-2})$ on double deletions covers both real pieces, by codegree one, and virtual pieces, by their Cartesian structure.
+\] the bound $O(n^{-2})$ on double deletions covers both real pieces, by codegree one, and virtual pieces,
+by their Cartesian structure.
 
-Fix a deterministic horizon $T\le T_\zeta$ and set $\Delta y=(T-t)/N$, $\theta_g=\pi_{e_g}\Delta y/z_t^4$, and $\xi_i=p_{d_i}\Delta y/z_t$.
+Fix a deterministic horizon $T\le T_\zeta$ and set $\Delta y=(T-t)/N$, $\theta_g=\pi_{e_g}\Delta y/z_t^4$,
+and $\xi_i=p_{d_i}\Delta y/z_t$.
 
 \begin{lema}[Compensator]\label{lem:compensador} The function \[
  \Phi^{(e_1,e_2)}_t=\bigl(O_{e_1}+\theta_1\chi_{e_1}\bigr)\bigl(O_{e_2}+\theta_2\chi_{e_2}\bigr)
  \bigl(V_{d_1}-\xi_1\chi_{d_1}\bigr)\bigl(V_{d_2}-\xi_2\chi_{d_2}\bigr)
-\] solves $\partial_t\Phi+\cL\Phi=0$ with terminal value $O_{e_1}O_{e_2}V_{d_1}V_{d_2}$ at $t=T$. Its coefficients
-$c_{L,J}=\prod_{g\notin L}\theta_g\prod_{i\in J}(-\xi_i)$ in the basis $Z_{L,J}$ satisfy $|c_{L,J}|\le C_\zeta n^{-(2-\ell)}$,
-$|\partial_tc_{L,J}|\le C_\zeta n^{-(3-\ell)}$, and $|\partial_t^2c_{L,J}|\le C_\zeta n^{-(4-\ell)}$. \end{lema}
+\] solves $\partial_t\Phi+\cL\Phi=0$ with terminal value $O_{e_1}O_{e_2}V_{d_1}V_{d_2}$ at $t=T$. Its
+coefficients
+$c_{L,J}=\prod_{g\notin L}\theta_g\prod_{i\in J}(-\xi_i)$ in the basis $Z_{L,J}$ satisfy
+$|c_{L,J}|\le C_\zeta n^{-(2-\ell)}$,
+$|\partial_tc_{L,J}|\le C_\zeta n^{-(3-\ell)}$, and $|\partial_t^2c_{L,J}|\le C_\zeta n^{-(4-\ell)}$.
+\end{lema}
 
-\begin{proof} The ideal generator is a sum of operators, each acting on just one of the ten distinct marks, so it suffices for each
-factor to solve its own backward equation. For $O_{e_g}+\theta_g\chi_{e_g}$ we have $\cL O_{e_g}=k_g\chi_{e_g}$ and
-$\cL\chi_{e_g}=-4\alpha\chi_{e_g}$, and $\theta_g'+k_g-4\alpha\theta_g=0$ because $\partial_t\Delta y=\partial_tz_t=-1/N$. For
-$V_{d_i}-\xi_i\chi_{d_i}$ we have $\cL V_{d_i}=-\beta_i\chi_{d_i}$ and $\cL\chi_{d_i}=-\alpha\chi_{d_i}$, and
-$\xi_i'+\beta_i-\alpha\xi_i=0$. At $t=T$, $\Delta y=0$. The coefficient bounds follow from $\pi_{e_g}=O(n^{-1})$ and $p_{d_i}=O(1)$.
+\begin{proof} The ideal generator is a sum of operators, each acting on just one of the ten distinct marks,
+so it suffices for each
+factor to solve its own backward equation. For $O_{e_g}+\theta_g\chi_{e_g}$ we have
+$\cL O_{e_g}=k_g\chi_{e_g}$ and
+$\cL\chi_{e_g}=-4\alpha\chi_{e_g}$, and $\theta_g'+k_g-4\alpha\theta_g=0$ because
+$\partial_t\Delta y=\partial_tz_t=-1/N$. For
+$V_{d_i}-\xi_i\chi_{d_i}$ we have $\cL V_{d_i}=-\beta_i\chi_{d_i}$ and $\cL\chi_{d_i}=-\alpha\chi_{d_i}$,
+and
+$\xi_i'+\beta_i-\alpha\xi_i=0$. At $t=T$, $\Delta y=0$. The coefficient bounds follow from
+$\pi_{e_g}=O(n^{-1})$ and $p_{d_i}=O(1)$.
 \end{proof}
 
-Multiplying each pair by $w(\bar r,\bar c)$ and summing gives the aggregate compensator at $t=0$, where $\chi\equiv
+Multiplying each pair by $w(\bar r,\bar c)$ and summing gives the aggregate compensator at $t=0$, where
+$\chi\equiv
 V\equiv1$ and $O\equiv0$: \[
  \Phi_0=y_T^2\sum_{(e_1,e_2)}\pi_{e_1}\pi_{e_2}\bigl(1-y_Tp_{d_1}\bigr)\bigl(1-y_Tp_{d_2}\bigr)
  w(\bar r,\bar c),\qquad y_T=T/N .
@@ -47,17 +66,43 @@ V\equiv1$ and $O\equiv0$: \[
 
 \subsection{Concentration}
 
-\begin{lema}\label{lem:conc_inversa} For every fixed tolerance $\gamma>0$, $\Pr\{|I_w(T)-\Phi_0|>\gamma n^2,\ T<\sigma'\}\le
+\begin{lema}\label{lem:conc_inversa} For every fixed tolerance $\gamma>0$,
+$\Pr\{|I_w(T)-\Phi_0|>\gamma n^2,\ T<\sigma'\}\le
 e^{-c_{\zeta,\gamma,w}n}$, and a union bound over $O(n)$ horizons preserves the tail estimate. \end{lema}
 
-\begin{proof} For $\ell=0,1,2$, the sum of the indicators with $\ell$ occupied edges is $O(n^{4-\ell})$. There are at most $n$ choices
-of queen per occupied edge and $n^2$ possible squares per available edge. In one step the sum of the absolute changes is
-$O(n^{3-\ell})$. A fixed diagonal meets any row or column in at most one square, affecting $O(n)$ pairs with two occupied edges,
-$O(n^2)$ with one, and $O(n^3)$ with none. For the indicators $\chi_{e_g}$ we use the fact that each line is incident to $O(n)$
-squares. Births give the same orders. The coefficients $n^{-(2-\ell)}$ give increments of size $O(n)$. The errors from deaths sum to
-$O(\eps n+1)$ per step. For a birth we must count the source state, not the resulting state: $n^{5-\ell}\,n^{-(2-\ell)}(\eps/n^2+n^{-3})=O(\eps
-n+1)$. The second time differences and mixed terms sum to $O(1)$ per step by the derivative bounds in Lemma~\ref{lem:compensador} and
-the count of changes. We freeze both state and time at the stopping time $\sigma'$ (Lemma~\ref{lem:conc_directa}), including the exit
-step. The probability of exit by $T_\zeta$ is $e^{-cn}$. The accumulated drift is $O_\zeta(\eps n^2+n)$, and the martingale increments
-are $O_\zeta(n)$ over $O(n)$ steps. Choosing the tolerance first and then $\eps$, Azuma's inequality gives the bound. No union bound
+\begin{proof} For $\ell=0,1,2$, the sum of the indicators with $\ell$ occupied edges is $O(n^{4-\ell})$.
+There are at most $n$ choices
+of queen per occupied edge and $n^2$ possible squares per available edge. In one step the sum of the
+absolute changes is
+$O(n^{3-\ell})$. A fixed diagonal meets any row or column in at most one square, affecting $O(n)$ pairs with
+two occupied edges,
+$O(n^2)$ with one, and $O(n^3)$ with none. For the indicators $\chi_{e_g}$ we use the fact that each line is
+incident to $O(n)$
+squares. Births give the same orders. The following table collects these counts together with the
+coefficients of
+Lemma~\ref{lem:compensador} and the remainders of the generator; for a birth we count the source state, with
+$\ell-1$ occupied edges,
+and not the resulting state.
+\begin{center}\small
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+$\ell$ & patterns & coefficient & change per step & death remainder & birth remainder\\
+\midrule
+$0$ & $O(n^4)$ & $O(n^{-2})$ & $O(n^3)$ & $n^4\cdot n^{-2}\,(\eps/n+n^{-2})$ & ---\\
+$1$ & $O(n^3)$ & $O(n^{-1})$ & $O(n^2)$ & $n^3\cdot n^{-1}\,(\eps/n+n^{-2})$
+ & $n^4\cdot n^{-1}\,(\eps/n^2+n^{-3})$\\
+$2$ & $O(n^2)$ & $O(1)$ & $O(n)$ & $n^2\cdot(\eps/n+n^{-2})$ & $n^3\cdot(\eps/n^2+n^{-3})$\\
+\bottomrule
+\end{tabular}
+\end{center}
+In each row, the coefficient times the change per step is $O(n)$, which bounds the increments, and each
+remainder is $O(\eps n+1)$
+per step. The second time differences and mixed terms sum to $O(1)$ per step by the derivative bounds in
+Lemma~\ref{lem:compensador} and
+the count of changes. We freeze both state and time at the stopping time $\sigma'$
+(Lemma~\ref{lem:conc_directa}), including the exit
+step. The probability of exit by $T_\zeta$ is $e^{-cn}$. The accumulated drift is $O_\zeta(\eps n^2+n)$, and
+the martingale increments
+are $O_\zeta(n)$ over $O(n)$ steps. Choosing the tolerance first and then $\eps$, Azuma's inequality gives
+the bound. No union bound
 over the $n^4$ pairs is needed. \end{proof}

@@ -62,19 +62,23 @@ $S_\phi=\sum_f\phi_f\circ\ell_f$, el hessiano cumple
 usando las cotas anteriores, también a lo largo de segmentos.
 
 \begin{lema}[Coercividad fijando una familia transversal]\label{lem:coercividad}
-Si $\phi_C=0$, o si $\phi_R=0$, entonces $\langle\phi,D\mathcal G_{x,b}(v)\phi\rangle\ge\lambda_c\|\phi\|_{\mathcal H}^2$.
+Si $\phi_C=0$, o si $\phi_R=0$, entonces
+$\langle\phi,D\mathcal G_{x,b}(v)\phi\rangle\ge\lambda_c\|\phi\|_{\mathcal H}^2$.
 Por consiguiente, si $\widetilde v_C=v_C$ y las cotas valen a lo largo del segmento,
 \[
- \|\widetilde v-v\|_{\mathcal H}\le\|\mathcal G_{x,b}(\widetilde v)-\mathcal G_{x,b}(v)\|_{\mathcal H}/\lambda_c ,
+ \|\widetilde v-v\|_{\mathcal H}\le\|\mathcal G_{x,b}(\widetilde v)-\mathcal
+G_{x,b}(v)\|_{\mathcal H}/\lambda_c ,
 \]
 y lo mismo si se fija $R$ en lugar de $C$.
 \end{lema}
 
 \begin{proof}
-Con $\phi_C=0$, $\phi_R\circ\ell_R=S_\phi-\phi_D\circ\ell_D-\phi_A\circ\ell_A$. Levantar $R$ al cuadrado es una
+Con $\phi_C=0$, $\phi_R\circ\ell_R=S_\phi-\phi_D\circ\ell_D-\phi_A\circ\ell_A$. Levantar $R$ al cuadrado es
+una
 isometría y levantar $D$ o $A$ no aumenta la norma $L^2$, pues sus fibras tienen longitud
 paramétrica a lo sumo uno. De $|a-b-c|^2\le2a^2+4(b^2+c^2)$ resulta
-$\|\phi\|_{\mathcal H}^2\le2\|S_\phi\|_2^2+5(\|\phi_D\|_2^2+\|\phi_A\|_2^2)$, lo que con la cota del hessiano
+$\|\phi\|_{\mathcal H}^2\le2\|S_\phi\|_2^2+5(\|\phi_D\|_2^2+\|\phi_A\|_2^2)$, lo que con la cota del
+hessiano
 da la coercividad. Se integra el hessiano en el segmento logarítmico y se aplica
 Cauchy--Schwarz. El caso $\phi_R=0$ es simétrico.
 \end{proof}

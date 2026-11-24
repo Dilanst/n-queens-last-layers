@@ -1,69 +1,103 @@
 \section{Introduction}\label{sec:intro}
 
-The $n$-queens problem asks for a placement of $n$ queens on an $n\times n$ board such that no two queens attack each other. A solution
-has exactly one queen in each row and each column and at most one on each diagonal in either direction. We denote the number of
-solutions by $Q(n)$.
+The $n$-queens problem asks for a placement of $n$ queens on an $n\times n$ board such that no two queens
+attack each other. A solution
+has exactly one queen in each row and each column and at most one on each diagonal in either direction. We
+denote the number of
+solutions by $Q(n)$ (sequence A000170 in~\cite{OEIS}); Bell and Stevens~\cite{BellStevens} survey the known
+results on the
+problem.
 
-Consider a board one step from completion. Once $n-1$ nonattacking queens have been placed, exactly one row and one column remain
-empty. Their intersection is the only square where the last queen could be placed without moving the others. The placement can be
-completed if and only if both diagonals through that square are free. If the placement of the $n-1$ queens is chosen uniformly at
+Consider a board one step from completion. Once $n-1$ nonattacking queens have been placed, exactly one row
+and one column remain
+empty. Their intersection is the only square where the last queen could be placed without moving the others.
+The placement can be
+completed if and only if both diagonals through that square are free. If the placement of the $n-1$ queens
+is chosen uniformly at
 random, what is the probability of this event as the board grows?
 
-We use small boards as examples. In the figures, rows and columns are numbered from zero, with the row coordinate given first.
+We use small boards as examples. In the figures, rows and columns are numbered from zero, with the row
+coordinate given first.
 Figure~\ref{fig:ejemplos} shows a solution on the $4\times4$ board and another on the $5\times5$ board.
 
 \input{figures/examples}
 
-Throughout the paper we fix the board size and group placements by the number of missing queens. This explains the word \emph{layer} in
-the title. For example, removing the queen $(4,4)$ in Figure~\ref{fig:ejemplos}(b) gives a placement in layer $h=1$ of the $5\times5$ board.
+Throughout the paper we fix the board size and group placements by the number of missing queens. This
+explains the word \emph{layer} in
+the title. For example, removing the queen $(4,4)$ in Figure~\ref{fig:ejemplos}(b) gives a placement in
+layer $h=1$ of the $5\times5$ board.
 Putting it back takes us to layer $h=0$.
 
-The same question makes sense when $h$ queens are missing. We then say that the placement has $h$ \emph{holes}. We call the set
-$\Om_h(n)$ of legal placements of $n-h$ queens \emph{layer $h$}. Let $N_h(n)=|\Om_h(n)|$ and let $\mu_h$ be the uniform law on this
-layer whenever it contains at least one placement. Take a placement with law $\mu_h$. Its $h$ empty rows and $h$ empty columns
-intersect in $h^2$ \emph{empty crossings}. By the positions of the holes we shall mean the positions of these crossings. Choose one of them
-uniformly at random. We say it is \emph{available} if a queen can be added there, which is equivalent to both of its diagonals being
-free. For $h>1$, this experiment concerns the next insertion, even though some queens will still remain to be placed.
+The same question makes sense when $h$ queens are missing. We then say that the placement has $h$
+\emph{holes}. We call the set
+$\Om_h(n)$ of legal placements of $n-h$ queens \emph{layer $h$}. Let $N_h(n)=|\Om_h(n)|$ and let $\mu_h$ be
+the uniform law on this
+layer whenever it contains at least one placement. Take a placement with law $\mu_h$. Its $h$ empty rows and
+$h$ empty columns
+intersect in $h^2$ \emph{empty crossings}. By the positions of the holes we shall mean the positions of
+these crossings. Choose one of them
+uniformly at random. We say it is \emph{available} if a queen can be added there, which is equivalent to
+both of its diagonals being
+free. For $h>1$, this experiment concerns the next insertion, even though some queens will still remain to
+be placed.
 
-The probability of a legal insertion can be expressed in terms of the sizes of two consecutive layers. Each placement in layer $h-1$
-has $n-h+1$ queens that we can remove individually to return to layer $h$. Conversely, each placement in layer $h$ offers $h^2$
-crossings at which to try an insertion. Counting legal insertions in both directions (Lemma~\ref{lem:interpretacion}) shows that the
+The probability of a legal insertion can be expressed in terms of the sizes of two consecutive layers. Each
+placement in layer $h-1$
+has $n-h+1$ queens that we can remove individually to return to layer $h$. Conversely, each placement in
+layer $h$ offers $h^2$
+crossings at which to try an insertion. Counting legal insertions in both directions
+(Lemma~\ref{lem:interpretacion}) shows that the
 mean fraction of available crossings under $\mu_h$ is the ratio \begin{equation}\label{eq:fh}
  f_h(n)=\frac{(n-h+1)\,N_{h-1}(n)}{h^2\,N_h(n)} ,
-\end{equation} which we take as the definition of $f_h(n)$ for $1\le h\le n$. Thus $f_1(n)$ answers the question about the last queen
+\end{equation} which we take as the definition of $f_h(n)$ for $1\le h\le n$. Thus $f_1(n)$ answers the
+question about the last queen
 exactly. We prove that for each fixed $h$, $f_h(n)$ tends to the same positive constant as the board grows.
 
-To see what is being averaged, return to Figure~\ref{fig:ejemplos}(b) and remove the queens $(1,3)$ and $(4,4)$. With three queens left
-on the $5\times5$ board, there are two holes and four crossings (Figure~\ref{fig:cruces-vacios}). The empty rows are $1$ and $4$, and the empty
-columns are $3$ and $4$. The queen at $(3,2)$ attacks $(1,4)$ along the antidiagonal with sum $5$ and $(4,3)$ along the diagonal with
+To see what is being averaged, return to Figure~\ref{fig:ejemplos}(b) and remove the queens $(1,3)$ and
+$(4,4)$. With three queens left
+on the $5\times5$ board, there are two holes and four crossings (Figure~\ref{fig:cruces-vacios}). The empty
+rows are $1$ and $4$, and the empty
+columns are $3$ and $4$. The queen at $(3,2)$ attacks $(1,4)$ along the antidiagonal with sum $5$ and
+$(4,3)$ along the diagonal with
 difference $1$. Each of the other two crossings can receive a queen.
 
 \input{figures/crosses}
 
-We write $X_h(P)$ for the number of available crossings in a placement $P$. In the example, $X_2(P)=2$, so a uniformly chosen crossing
-on this board can receive a queen with probability $2/4$. To obtain $f_2(5)$, we must average this fraction over all legal placements
+We write $X_h(P)$ for the number of available crossings in a placement $P$. In the example, $X_2(P)=2$, so a
+uniformly chosen crossing
+on this board can receive a queen with probability $2/4$. To obtain $f_2(5)$, we must average this fraction
+over all legal placements
 of three queens on the $5\times5$ board.
 
 \subsection{Main results}
 
-To identify the constant, we write $x=h/n$ for the fraction of holes. As $n$ grows with $h$ fixed, $x$ tends to zero. This leads us to
-study the full-board endpoint of the variational profile, namely the density $\nu_x$ on $[0,1]^2$ with mass $1-x$ that maximizes the
+To identify the constant, we write $x=h/n$ for the fraction of holes. As $n$ grows with $h$ fixed, $x$ tends
+to zero. This leads us to
+study the full-board endpoint of the variational profile, namely the density $\nu_x$ on $[0,1]^2$ with mass
+$1-x$ that maximizes the
 entropy functional of Section~\ref{subsec:variacional}. For $x\in[0,1/2]$ it has the form \[
  \nu_x(r,c)=b_x\,r_{R,x}(r)\,r_{C,x}(c)\,u_{D,x}(r-c)\,u_{A,x}(r+c),
  \qquad \int_0^1 r_{R,x}=\int_0^1 r_{C,x}=1,
-\] where $r_{R,x}$ and $r_{C,x}$ describe the rescaled profiles of the empty rows and columns, $u_{D,x}$ and $u_{A,x}$ describe the
-\emph{vacancies} of the diagonals and antidiagonals (the density of those that remain empty), and $b_x>0$ is the normalization
+\] where $r_{R,x}$ and $r_{C,x}$ describe the rescaled profiles of the empty rows and columns, $u_{D,x}$ and
+$u_{A,x}$ describe the
+\emph{vacancies} of the diagonals and antidiagonals (the density of those that remain empty), and $b_x>0$ is
+the normalization
 constant. The properties of the profile are proved in~\cite{Perfil}. We define \begin{equation}\label{eq:F}
  F(x)=\frac{1-x}{b_x}=\int_{[0,1]^2}r_{R,x}(r)\,r_{C,x}(c)\,u_{D,x}(r-c)\,u_{A,x}(r+c)\,dr\,dc .
-\end{equation} Heuristically, $F(x)$ is the probability that both diagonals through a typical empty crossing are free when there are
-$xn$ holes. The position of the crossing has law $r_{R,x}r_{C,x}$, and each diagonal is empty with density $u_{D,x}$ or $u_{A,x}$
+\end{equation} Heuristically, $F(x)$ is the probability that both diagonals through a typical empty crossing
+are free when there are
+$xn$ holes. The position of the crossing has law $r_{R,x}r_{C,x}$, and each diagonal is empty with density
+$u_{D,x}$ or $u_{A,x}$
 according to its direction. For the final layers the relevant constant is $F(0)=1/b_0$.
 
-\begin{teorema}[Law of the final layers]\label{thm:limite} For each fixed $h\ge1$, \[
+\begin{teorema}[Law of the final layers]\label{thm:limite} With the profile of Theorem~\ref{thm:perfil},
+taken
+from~\cite{Perfil}, for each fixed $h\ge1$, \[
  \lim_{n\to\infty}f_h(n)=F(0)=\frac1{b_0}\in(0,\infty).
 \] In particular, $\max_{1\le h\le K}|f_h(n)-F(0)|\to0$ for each fixed $K$. \end{teorema}
 
-Each factor $f_j(n)$ relates two consecutive layers. Multiplying these relations from $j=1$ to $j=h$ brings the number of complete
+Each factor $f_j(n)$ relates two consecutive layers. Multiplying these relations from $j=1$ to $j=h$ brings
+the number of complete
 solutions into the denominator.
 
 \begin{corolario}[Ratio of layer sizes]\label{cor:cociente} For each fixed $h\ge1$, \[
@@ -71,18 +105,31 @@ solutions into the denominator.
  \sim\frac{n^h}{(h!)^2F(0)^h},\qquad (n)_h=n(n-1)\cdots(n-h+1).
 \] \end{corolario}
 
-Passing from layer $h$ to layer $h-1$ changes the fraction of holes from $h/n$ to $(h-1)/n$. The next corollary compares each $f_h(n)$
-with the value of $F$ at the midpoint, $(h-\tfrac12)/n$.
+Passing from layer $h$ to layer $h-1$ changes the fraction of holes from $h/n$ to $(h-1)/n$. The next
+corollary uses as reference
+the value of $F$ at the midpoint, $(h-\tfrac12)/n$.
 
 \begin{corolario}[Fixed layers contribute no residual constant]\label{cor:capas} For each fixed $K$, \[
  \sum_{h=1}^K\log\frac{f_h(n)}{F\bigl((h-\tfrac12)/n\bigr)}\longrightarrow0,
 \] and the same holds with $F(h/n)$ in place of $F((h-\tfrac12)/n)$. \end{corolario}
 
-The number $K$ is fixed before the board size tends to infinity. Identifying the constant term of $\log Q(n)$ would also require
-control over layers whose index grows with $n$. For the final two layers we also give a direct proof of an explicit lower bound on
+The corollary is Theorem~\ref{thm:limite} written with logarithms: each summand tends to zero because
+$f_h(n)\to F(0)$ and $F$ is
+continuous at $0$. Hence it does not single out the midpoint, and the conclusion holds equally with
+$F(x_{n,h})$ for any
+$x_{n,h}\to0$.
+
+The number $K$ is fixed before the board size tends to infinity. Identifying the constant term of
+$\log Q(n)$ would also require
+control over layers whose index grows with $n$. For the final two layers we also give a direct proof of an
+explicit lower bound on
 $\liminf_nf_h(n)$ that does not require concentration of the reverse count (Section~\ref{sec:inversa}).
 
-\begin{teorema}[Lower bound with an explicit constant]\label{thm:positiva} Let $\kappa\in(0,1]$ be the lower bound on the diagonal
-vacancies $u_{D,x}$ and $u_{A,x}$ of the profile (Theorem~\ref{thm:perfil}), and let $a_0=(\kappa/2)^4/16$. Then \[
+\begin{teorema}[Lower bound with an explicit constant]\label{thm:positiva} Let $\kappa\in(0,1]$ be the lower
+bound on the diagonal
+vacancies $u_{D,x}$ and $u_{A,x}$ of the profile of Theorem~\ref{thm:perfil}, taken from~\cite{Perfil}, and
+let
+$a_0=(\kappa/2)^4/16$. Then \[
  \liminf_{n\to\infty}f_h(n)\ge\frac{a_0}{2}>0,\qquad h=1,2.
-\] In particular, there exist $c>0$ and $n_0$ such that $f_1(n),f_2(n)\ge c$ for all $n\ge n_0$. \end{teorema}
+\] In particular, there exist $c>0$ and $n_0$ such that $f_1(n),f_2(n)\ge c$ for all $n\ge n_0$.
+\end{teorema}

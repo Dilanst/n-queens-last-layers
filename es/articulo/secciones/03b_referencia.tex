@@ -26,10 +26,18 @@ $\mathsf t_p\in[0,1]$; sea $z=1-\mathsf t_p$ y sea $W^{(p)}$ el normalizador del
 momento en que se revela. Condicionalmente al emparejamiento y a $\mathsf t_p$, cada una de las
 demás piezas sigue sin revelar, independientemente, con probabilidad $z$. Una arista
 \emph{ordinaria} del color de $p$ tiene sus cuatro vértices cubiertos por cuatro piezas distintas
-de $p$ y está disponible con probabilidad $z^4$. Por codegrado uno hay $O(n)$ aristas reales
-excepcionales, de peso $O(x_*^2)$; salvo la contenida en $p$, cada una necesita al menos otra
-pieza sin revelar y está disponible con probabilidad a lo sumo $z$. Las excepciones virtuales son
-$O(n^3)$, de peso a lo sumo uno. Así, uniformemente en el emparejamiento,
+de $p$ y está disponible con probabilidad $z^4$. Sea $p$ real. Una arista real excepcional, o
+bien comparte una línea con $p$ (a lo sumo $4n$ casillas), o bien tiene dos líneas cubiertas por
+una misma pieza $p'\ne p$. Si $p'$ es real, esa casilla es la de $p'$ por codegrado uno, y hay a
+lo sumo $n$ casillas con reina; si $p'$ es virtual, cada una de las $\binom42=6$ parejas de sus
+líneas determina a lo sumo una casilla, de nuevo por codegrado uno, lo que da a lo sumo $6H$
+casillas. Hay, pues, a lo sumo $5n+6H=O(n)$ aristas reales excepcionales, de peso $O(x_*^2)$. La
+propia $p$ está disponible con probabilidad uno y da el término constante de la cota siguiente;
+cada una de las demás tiene una línea cubierta por una pieza distinta de $p$, que debe seguir sin
+revelar, y está disponible con probabilidad a lo sumo $z$. Si $p$ es virtual, una arista virtual
+excepcional comparte un vértice con $p$ (a lo sumo $4N^3$) o tiene dos vértices cubiertos por una
+misma pieza (a lo sumo $6N^2$ por pieza): son $O(n^3)$, de peso a lo sumo uno, y la propia $p$ da
+el término constante. Así, uniformemente en el emparejamiento,
 \[
  \E W^{(p)}\le W_R(0)z^4+Cx_*^2nz+Cx_*^2\ \ (p\text{ real}),\qquad
  \E W^{(p)}\le W_V(0)z^4+Cn^3z+C\ \ (p\text{ virtual}).

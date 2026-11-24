@@ -1,6 +1,6 @@
 \subsection{El primer orden de Simkin}
 
-\begin{teorema}[{\cite[Teorema~2.11]{Simkin}}]\label{thm:simkin}
+\begin{teorema}[{Consecuencia de~\cite[Teorema~2.11]{Simkin}}]\label{thm:simkin}
 $\log Q(n)\ge n\log n+ns_1-o(n)$, con $s_1=s^*(1)=s[\nu_1]$.
 \end{teorema}
 
@@ -30,19 +30,31 @@ Así $\nu^{(N)}$ tiene marginales diagonales subuniformes y converge uniformemen
 luego en variación total y, en particular, débilmente.
 \end{proof}
 
+\begin{proof}[Demostración del Teorema~\ref{thm:simkin}]
 Por el Lema~\ref{lem:queenon}, el Teorema~2.11 de~\cite{Simkin} se aplica a $\nu_1$ tal como
 está enunciado; no hace falta su Observación~2.7, que lo extiende a todos los permutones con
-marginales diagonales subuniformes. Tras la traslación, las densidades de vacancia diagonal son $u_D,u_A$, ambas de integral
+marginales diagonales subuniformes. Tras la traslación, las densidades de vacancia diagonal son $u_D,u_A$,
+ambas de integral
 uno; en la Definición~2.9 de~\cite{Simkin}, cada divergencia respecto de la uniforme en $[-1,1]$
 vale $\int u\log u+\log2$, y las dos constantes se cancelan con $2\log2$. El funcional de
 Simkin en $\nu_1$ es, por tanto,
 $-3-\int\nu_1\log\nu_1-\int u_D\log u_D-\int u_A\log u_A=s[\nu_1]=s_1$. La cota inferior de
 su Teorema~2.11 para este perfil da el enunciado: primero se fija la tolerancia, se toma el
-límite inferior en $n$ y después se hace tender la tolerancia a cero. No se obtiene de ahí
-ninguna tasa para el resto, y escribimos
+límite inferior en $n$ y después se hace tender la tolerancia a cero.
+\end{proof}
+
+No se obtiene de ahí ninguna tasa para el resto, y escribimos
 \begin{equation}\label{eq:Delta}
  \Delta_n=\bigl[n\log n+ns_1-\log Q(n)\bigr]_+=o(n).
 \end{equation}
+
+Simkin prueba además la cota superior correspondiente~\cite[Teorema~1.1]{Simkin}, y el máximo de su
+funcional sobre las queenons es el opuesto de su constante $\alpha\in(1{,}94;\,1{,}9449)$
+\cite[Sección~2]{Simkin}. Por la misma cuenta, ese funcional vale $s[\nu]$ en una queenon con
+densidad $\nu$, que es admisible de masa uno, y vale $-\infty$ en las demás. Como $\nu_1$ maximiza
+$s$ en masa uno, $s_1$ es ese máximo; es decir, $-s_1$ es la constante $\alpha$ de~\cite{Simkin} y
+$\log Q(n)=n\log n+ns_1+o(n)$. Nobel, Agrawal y Boyd~\cite{NAB} obtienen, con cálculos en coma
+flotante y sin certificación, $1{,}944000752\le-s_1\le1{,}944001082$.
 
 \subsection{El valor variacional cerca del tablero lleno}
 
@@ -55,7 +67,8 @@ $0\le h\le K$,
 \end{lema}
 
 Es la Proposición~8.3 de~\cite{Perfil}, donde también se prueban la desigualdad de soporte
-(Teorema~3.1(d), donde $\theta=-\log\lambda_\rho$) y la continuidad de $s^*$ en $\rho=1$ (Proposición~5.1). Incluimos la prueba
+(Teorema~3.1(d), donde $\theta=-\log\lambda_\rho$) y la continuidad de $s^*$ en $\rho=1$ (Proposición~5.1).
+Incluimos la prueba
 por completitud.
 
 \begin{proof}
@@ -121,4 +134,5 @@ El caso $p'=0$ es la continuidad absoluta.
 
 En las Secciones~\ref{sec:regularidad}--\ref{sec:inversa} usaremos además la desigualdad de
 Azuma--Hoeffding para martingalas con incrementos acotados~\cite{AlonSpencer} y la desigualdad
-de Gronwall discreta, en la forma habitual del método de ecuaciones diferenciales~\cite{Wormald}.
+de Gronwall discreta, en la forma habitual del método de ecuaciones
+diferenciales~\cite{Wormald,Warnke,BennettDudek}.

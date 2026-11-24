@@ -2,9 +2,10 @@
 
 \subsection{Una ilustración numérica}
 
-En las seis filas de tamaño finito de la Tabla~\ref{tab:ilustracion}, $f_1$ y $f_2$
-proceden de conteos enteros por enumeración completa. Se muestran redondeados a seis
-decimales. En la última fila, la existencia del límite común es el Teorema~\ref{thm:limite}, con
+En las seis filas de tamaño finito de la Tabla~\ref{tab:ilustracion} figuran los conteos enteros
+$N_0$, $N_1$ y $N_2$, obtenidos por enumeración completa, y los valores de $f_1$ y $f_2$ que
+resultan de ellos, redondeados a seis decimales. Los valores de $f_1(n)$ no son monótonos en
+$n$. En la última fila, la existencia del límite común es el Teorema~\ref{thm:limite}, con
 $F(0)=1/b_0$; el decimal que figura a su derecha es una estimación numérica de $1/b_0$, sin
 intervalo de error certificado.
 
@@ -17,21 +18,26 @@ Los conteos y el programa que los reproduce están en~\cite{Codigo}.
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{rccc}
+\small
+\begin{tabular}{rrrrccc}
 \toprule
-$n$ & $f_1(n)$ & $f_2(n)$ & $F(0)$ (numérico)\\
+$n$ & $N_0(n)=Q(n)$ & $N_1(n)$ & $N_2(n)$ & $f_1(n)$ & $f_2(n)$ & $F(0)$ (numérico)\\
 \midrule
-10 & 0{,}127393 & 0{,}200891 & \\
-11 & 0{,}111437 & 0{,}181943 & \\
-12 & 0{,}123894 & 0{,}170782 & \\
-13 & 0{,}122402 & 0{,}165452 & \\
-14 & 0{,}109393 & 0{,}158389 & \\
-15 & 0{,}114223 & 0{,}152947 & \\
-$\infty$ & \multicolumn{2}{c}{límite común (Teorema~\ref{thm:limite})} & 0{,}080914\\
+10 & 724 & 56\,832 & 636\,524 & 0{,}127393 & 0{,}200891 & \\
+11 & 2\,680 & 264\,544 & 3\,634\,976 & 0{,}111437 & 0{,}181943 & \\
+12 & 14\,200 & 1\,375\,368 & 22\,146\,756 & 0{,}123894 & 0{,}170782 & \\
+13 & 73\,712 & 7\,828\,784 & 141\,952\,580 & 0{,}122402 & 0{,}165452 & \\
+14 & 365\,596 & 46\,788\,624 & 960\,059\,292 & 0{,}109393 & 0{,}158389 & \\
+15 & 2\,279\,184 & 299\,307\,416 & 6\,849\,285\,616 & 0{,}114223 & 0{,}152947 & \\
+$\infty$ & \multicolumn{5}{c}{límite común de $f_1$ y $f_2$ (Teorema~\ref{thm:limite})} & 0{,}080914\\
 \bottomrule
 \end{tabular}
-\caption{Valores exactos de $f_1$ y $f_2$, obtenidos por enumeración exhaustiva y
-redondeados a seis decimales, y valor numérico del límite común. El valor $0{,}080914$ es la
+\caption{Conteos exactos $N_0(n)=Q(n)$, $N_1(n)$ y $N_2(n)$, obtenidos por enumeración
+exhaustiva; valores de $f_1$ y $f_2$, calculados con~\eqref{eq:fh} y redondeados a seis
+decimales; y valor numérico del límite común. La columna $N_0$ coincide con la sucesión A000170
+de~\cite{OEIS}, y $N_1(10)$ y $N_2(10)$ figuran también en el triángulo A348129 de esa
+enciclopedia, que cuenta las colocaciones de $k$ reinas sin ataques en un tablero de $n\times n$.
+El valor $0{,}080914$ es la
 extrapolación de Richardson de segundo orden de los valores en las mallas de $128$ y $256$ puntos
 ($0{,}0809029$ y $0{,}0809114$); con las mallas de $64$ y $128$ puntos la extrapolación cambia en
 menos de $10^{-8}$ (véase~\cite[Sección~9]{Perfil}). Es un valor numérico, sin certificación por
@@ -58,7 +64,8 @@ uniforme de los dos bordes; en el del tablero lleno, por ejemplo,
 \]
 La convergencia para cada $h$ fijo no implica esta condición.
 \item \emph{Ley conjunta de los huecos.} Para $h>1$ se identifica sólo la medida media de los
-cruces vacíos. ¿Son asintóticamente independientes las posiciones de las filas y las columnas vacías? ¿Se concentra
+cruces vacíos. ¿Son asintóticamente independientes las posiciones de las filas y las columnas vacías? ¿Se
+concentra
 $d_{h,1}/n$ sin peso?
 \item \emph{Constantes efectivas.} La prueba no da un umbral $n_0$ explícito ni constantes útiles
 para tamaños moderados.

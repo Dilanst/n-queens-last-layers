@@ -1,32 +1,43 @@
 \section{A positive bound for the final two layers}\label{sec:positiva}
 
-We first apply double counting in one direction only. The deterministic bound on the number of reverse operations turns a lower bound on the
-mean number of forward repairs into the lower bound on $f_h$ in Theorem~\ref{thm:positiva}. The early cut-off supplies the repairs
-under the reference process. It remains to determine what proportion of the layer retains this bound under the uniform law.
+We first apply double counting in one direction only. The deterministic bound on the number of reverse
+operations turns a lower bound on the
+mean number of forward repairs into the lower bound on $f_h$ in Theorem~\ref{thm:positiva}. The early
+cut-off supplies the repairs
+under the reference process. It remains to determine what proportion of the layer retains this bound under
+the uniform law.
 
-Let $h\in\{1,2\}$ and let $\mathcal B_n\subseteq\Om_h(n)$ be the event that some empty crossing has fewer than $a_0n/2$ legal one-move
+Let $h\in\{1,2\}$ and let $\mathcal B_n\subseteq\Om_h(n)$ be the event that some empty crossing has fewer
+than $a_0n/2$ legal one-move
 repairs (including the $G$ filter).
 
-\emph{Under the process.} Let $\omega$ be a successful trajectory on which~\eqref{eq:corte} holds. For every crossing that is empty at
+\emph{Under the process.} Let $\omega$ be a successful trajectory on which~\eqref{eq:corte} holds. For every
+crossing that is empty at
 the end, Lemma~\ref{lem:perdida} with $\delta=\delta_0$ and~\eqref{eq:constantes} give \[
  A^{rc}_{\mathrm{final}}\ge a_0n-4\delta_0n-4\ge a_0n/2
-\] for large $n$, since $a_0>8\delta_0$. The bound~\eqref{eq:corte} holds simultaneously for all roots before we select those that
+\] for large $n$, since $a_0>8\delta_0$. The bound~\eqref{eq:corte} holds simultaneously for all roots
+before we select those that
 remain empty, so there is no survivorship bias. By Lemma~\ref{lem:corte}, \[
  \QQ_h(S\cap\{\text{the final placement lies in }\mathcal B_n\})\le e^{-cn}.
 \] Failure of the full process need not be rare.
 
-\emph{Transfer.} By Theorem~\ref{thm:comparacion}, $\QQ_h(S)\ge e^{-d_n}$, so $\nu'_h(\mathcal B_n)\le e^{-cn+d_n}\le e^{-cn/2}$ for
+\emph{Transfer.} By Theorem~\ref{thm:comparacion}, $\QQ_h(S)\ge e^{-d_n}$, so
+$\nu'_h(\mathcal B_n)\le e^{-cn+d_n}\le e^{-cn/2}$ for
 large $n$. Lemma~\ref{lem:binaria} and $\KL{\mu_h}{\nu'_h}\le d_n=o(n)$ give \[
  \mu_h(\mathcal B_n)\le\frac{d_n+\log2}{cn-d_n}\longrightarrow0 .
 \] This gives convergence to zero under $\mu_h$ without an exponential tail bound.
 
-\emph{Double counting.} Each placement in $\Om_h$ has exactly $h^2$ empty crossings, and $d_{h,1}$ sums the repairs over all of them.
+\emph{Double counting.} Each placement in $\Om_h$ has exactly $h^2$ empty crossings, and $d_{h,1}$ sums the
+repairs over all of them.
 On $\mathcal B_n^c$, $d_{h,1}\ge h^2a_0n/2$. By Lemma~\ref{lem:doblecuenta}, \[
  f_h\ge\frac{\E_{\mu_h}d_{h,1}}{h^2(n-h)}\ge\frac{a_0n}{2(n-h)}\,\mu_h(\mathcal B_n^c),
  \qquad\text{hence}\qquad \liminf_{n\to\infty}f_h(n)\ge\frac{a_0}2 .
 \] Normalizing by the $h^2$ crossings avoids losing a factor of $h^2$. \qed
 
-\begin{observacion} The result is asymptotic and provides no useful constant for small boards. We do not replace $a_0$ with the
-numerical mean of the profile. The proof uses the reference process as defined, without conditioning its transitions during the
-analysis or taking any product of vacancies under $\mu_h$. Here the number of queens placed after the cut-off is $m_{\delta_0}\asymp
+\begin{observacion} The result is asymptotic and provides no useful constant for small boards. We do not
+replace $a_0$ with the
+numerical mean of the profile. The proof uses the reference process as defined, without conditioning its
+transitions during the
+analysis or taking any product of vacancies under $\mu_h$. Here the number of queens placed after the
+cut-off is $m_{\delta_0}\asymp
 n$. \end{observacion}

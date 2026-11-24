@@ -1,34 +1,47 @@
 \section{Absorbers: forward patterns and early cut-off}\label{sec:absorbedores}
 
-Fix $1\le h\le K$ and work under $\QQ_h$. We track the queens that could be removed to make a repair at a given crossing. The degree
-estimates from the preceding section allow us to estimate how their number changes when the next piece is placed.
+Fix $1\le h\le K$ and work under $\QQ_h$. We track the queens that could be removed to make a repair at a
+given crossing. The degree
+estimates from the preceding section allow us to estimate how their number changes when the next piece is
+placed.
 
 \subsection{Repairs at a crossing and line marks}
 
-The \emph{root} is the square $(r,c)$ that we track as a possible empty crossing. In Figure~\ref{fig:reparacion-tablero} it would be
-$(2,1)$. The candidate queen occupies $(0,0)$ and its two \emph{destinations} are $(2,0)$ and $(0,1)$. We first check that the destinations are
-compatible with each other. We call this condition the $G$ filter. We then check that the diagonals of both destinations are free of other
+The \emph{root} is the square $(r,c)$ that we track as a possible empty crossing. In
+Figure~\ref{fig:reparacion-tablero} it would be
+$(2,1)$. The candidate queen occupies $(0,0)$ and its two \emph{destinations} are $(2,0)$ and $(0,1)$. We
+first check that the destinations are
+compatible with each other. We call this condition the $G$ filter. We then check that the diagonals of both
+destinations are free of other
 queens.
 
-Fix a root $(r,c)$. Let $\mathcal I_{rc}$ be the set of squares $e=(i,j)$ with $i\ne r$ and $j\ne c$ whose \emph{destinations} $(r,j)$ and
-$(i,c)$ do not attack each other (filter $G=1$). This excludes at most $Cn$ squares. The \emph{candidates} for the root are the
-squares in $\mathcal I_{rc}$. Candidates that contain a queen are called \emph{occupied}. The four lines of $e$ and the four diagonals
-and antidiagonals of its destinations are eight distinct vertices. This is where we use the $G$ filter. We denote the latter four lines by
+Fix a root $(r,c)$. Let $\mathcal I_{rc}$ be the set of squares $e=(i,j)$ with $i\ne r$ and $j\ne c$ whose
+\emph{destinations} $(r,j)$ and
+$(i,c)$ do not attack each other (filter $G=1$). This excludes at most $Cn$ squares. The \emph{candidates}
+for the root are the
+squares in $\mathcal I_{rc}$. Candidates that contain a queen are called \emph{occupied}. The four lines of
+$e$ and the four diagonals
+and antidiagonals of its destinations are eight distinct vertices. This is where we use the $G$ filter. We
+denote the latter four lines by
 $d_1,\dots,d_4$ and their list by $\mathcal D(r,c;i,j)$.
 
-For a vertex $v$, let $\chi_v$ indicate that $v$ is active and let $V_v$ indicate that line $v$ is physically free of queens. We always
-have $\chi_v\le V_v$. The \emph{mark} of a line $v$ is its state: the line carries the active mark if $\chi_v=1$ and the mark $V$ if $V_v=1$. Let
-$O_e$ indicate that a real queen has been placed at $e$, and let $\chi_e=\prod_{v\in e}\chi_v$. For $J\subseteq\{1,2,3,4\}$ set
+For a vertex $v$, let $\chi_v$ indicate that $v$ is active and let $V_v$ indicate that line $v$ is
+physically free of queens. We always
+have $\chi_v\le V_v$. The \emph{mark} of a line $v$ is its state: the line carries the active mark if
+$\chi_v=1$ and the mark $V$ if $V_v=1$. Let
+$O_e$ indicate that a real queen has been placed at $e$, and let $\chi_e=\prod_{v\in e}\chi_v$. For
+$J\subseteq\{1,2,3,4\}$ set
 \begin{equation}\label{eq:patrones}
  M_J=\prod_{i\in J}\chi_{d_i}\prod_{i\notin J}V_{d_i},\qquad
  Z^\oc_{e,J}=O_e\,M_J,\qquad Z^\di_{e,J}=\chi_e\,M_J .
-\end{equation} There are $32$ patterns per square, and apart from the remainder terms in Lemma~\ref{lem:generador}, the process
+\end{equation} There are $32$ patterns per square, and apart from the remainder terms in
+Lemma~\ref{lem:generador}, the process
 generates no others. The extended physical counter is \[
  A^{rc}=\sum_{e\in\mathcal I_{rc}}Z^\oc_{e,\varnothing}=\sum_{e\in\mathcal I_{rc}}O_e\prod_{i=1}^4V_{d_i}.
-\] If row $r$ and column $c$ are physically empty, $A^{rc}$ equals the number of legal one-move repairs at crossing $(r,c)$. Indeed,
-removing the queen at $e$ and placing queens at its two destinations is legal exactly when the four destination diagonals are empty. The rescaled
-weighted availability is $\overline Y^{rc}=\sum_{e\in\mathcal I_{rc}}v_eZ^\di_{e,\varnothing}$. With the original weights it is
-$x_*^2\overline Y^{rc}$.
+\] If row $r$ and column $c$ are physically empty, $A^{rc}$ equals the number of legal one-move repairs at
+crossing $(r,c)$. Indeed,
+removing the queen at $e$ and placing queens at its two destinations is legal exactly when the four
+destination diagonals are empty.
 
 \subsection{Reference generator}
 
@@ -36,23 +49,60 @@ In discrete time, with $z=(N-t)/N$, define \[
  \alpha=\frac1{Nz},\qquad \beta_i=\frac{p_{d_i}}{Nz},\qquad k_e=\frac{\pi_e}{Nz^4},
 \] and the linear operator \begin{equation}\label{eq:generador}
 \begin{aligned}
- \cL Z^\oc_{e,J}&=-|J|\,\alpha\,Z^\oc_{e,J}-\sum_{i\notin J}\beta_i\,Z^\oc_{e,J\cup\{i\}}+k_e\,Z^\di_{e,J},\\
+ \cL
+Z^\oc_{e,J}&=-|J|\,\alpha\,Z^\oc_{e,J}-\sum_{i\notin J}\beta_i\,Z^\oc_{e,J\cup\{i\}}+k_e\,Z^\di_{e,J},\\
  \cL Z^\di_{e,J}&=-(4+|J|)\,\alpha\,Z^\di_{e,J}-\sum_{i\notin J}\beta_i\,Z^\di_{e,J\cup\{i\}} .
 \end{aligned}
-\end{equation} An active mark dies at rate $\alpha$ when hit by a real or virtual piece. A mark $V$ dies only when hit by a real piece,
-which requires the corresponding active mark. This turns $V_{d_i}$ into a contribution with $\chi_{d_i}$ at rate $\beta_i$. A virtual
-death affects $\chi$ but leaves $V$ intact. The birth probability for $O_e$ is exactly $[q_t/(N-t)]\,v_e/W$ times the indicator that
-its four lines are active. In the region~\eqref{eq:regularidad} this probability is $k_e\chi_e$ up to error terms. The birth does not
+\end{equation} An active mark dies at rate $\alpha$ when hit by a real or virtual piece. A mark $V$ dies
+only when hit by a real piece,
+which requires the corresponding active mark. This turns $V_{d_i}$ into a contribution with $\chi_{d_i}$ at
+rate $\beta_i$. A virtual
+death affects $\chi$ but leaves $V$ intact. The birth probability for $O_e$ is exactly $[q_t/(N-t)]\,v_e/W$
+times the indicator that
+its four lines are active. In the region~\eqref{eq:regularidad} this probability is $k_e\chi_e$ up to error
+terms. The birth does not
 affect the four destination lines, which are distinct from its own lines.
 
-\begin{lema}[Comparison with the true generator]\label{lem:generador} In the region~\eqref{eq:regularidad}, the true drifts differ
+\begin{lema}[Comparison with the true generator]\label{lem:generador} In the region~\eqref{eq:regularidad},
+the true drifts differ
 from~\eqref{eq:generador} by remainder terms satisfying \[
  |R^\oc_{e,J}|\le C_\zeta\bigl[(\eps/n+n^{-2})\,O_e+\eps n^{-2}\,Z^\di_{e,J}\bigr],\qquad
  |R^\di_{e,J}|\le C_\zeta(\eps/n+n^{-2}).
 \] \end{lema}
 
-\begin{proof} Adjusting $\eps$ absorbs the error in the colors from~\eqref{eq:regularidad}. The rates~\eqref{eq:tasas} control each
-single deletion, and the probability of deleting two distinct marks in one step is $O_\zeta(n^{-2})$. Selecting $e$ deletes its four
-active marks. This is included in the error for $Z^\di$, but its birth in $Z^\oc$ is retained exactly. \end{proof}
+\begin{proof} Consider one step from a state in the region. Adjusting $\eps$ absorbs the error in the colors
+from~\eqref{eq:regularidad}. By~\eqref{eq:tasas}, an active mark $v$ is deleted with probability
+$\alpha+O_\zeta(\eps/n+n^{-2})$, and
+by a real piece with probability $p_v/(Nz)+O_\zeta(\eps/n+n^{-2})$; deleting two distinct marks in one step
+has probability
+$O_\zeta(n^{-2})$.
 
-We do not factor any joint probability under $\mu_h$. The generator acts on indicators of the reference process.
+\emph{Available block.} If $Z^\di_{e,J}=1$, the pattern vanishes when one of its $4+|J|$ active marks is
+deleted, namely the four
+lines of $e$ and the $d_i$ with $i\in J$, or when a real piece occupies some $d_i$ with $i\notin J$. The
+latter requires
+$\chi_{d_i}=1$ and, since $\chi_{d_i}V_{d_i}=\chi_{d_i}$, contributes $-\beta_iZ^\di_{e,J\cup\{i\}}$ up to
+the error in the rates.
+No step creates an available pattern, because marks are never restored. Inclusion--exclusion gives the
+second line
+of~\eqref{eq:generador} with a remainder $O_\zeta(\eps/n+n^{-2})$; selecting $e$, which deletes its four
+marks at once, has
+probability $O(n^{-2})$ and is included in this remainder.
+
+\emph{Occupied block.} If $O_e=1$, the lines of $e$ are already inactive and $Z^\oc_{e,J}$ changes only
+through the marks of the
+destinations; the same computation gives the first two terms of the first line of~\eqref{eq:generador}, with
+a remainder at most
+$C_\zeta(\eps/n+n^{-2})\,O_e$. If $O_e=0$, the pattern is born when $e$ is chosen as a real piece, which
+requires $\chi_e=1$ and
+leaves $M_J$ unchanged because the eight lines are distinct. This probability is $[q_t/(N-t)]\,v_e/W$; in
+the region,
+$q_t/(N-t)=(q/N)(1+O_\zeta(\eps))$ and $W=W_0z^4(1+O_\zeta(\eps))$, so it equals $k_e(1+O_\zeta(\eps))$ when
+$\chi_e=1$. The birth
+therefore contributes $k_eZ^\di_{e,J}$ plus an error at most $C_\zeta\eps k_eZ^\di_{e,J}$. Since
+$k_e=O_\zeta(n^{-2})$, this is the
+term $\eps n^{-2}Z^\di_{e,J}$ in the occupied remainder: it comes from the relative error $\eps$ in the
+birth rate. \end{proof}
+
+We do not factor any joint probability under $\mu_h$. The generator acts on indicators of the reference
+process.

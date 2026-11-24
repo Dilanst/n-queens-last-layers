@@ -1,0 +1,103 @@
+\subsection{Trayectorias deterministas}
+
+Sea $\mathcal A_t$ el conjunto de vértices activos tras $t$ pasos. Definimos grados auxiliares
+incluso para vértices ya eliminados:
+\[
+ \deg_v(t)=\sum_{e\ni v}v_e\,\ind\{e\setminus\{v\}\subset\mathcal A_t\},\quad
+ W(t)=\sum_{e\subset\mathcal A_t}v_e,\quad U_f(t)=\sum_{v\in f\cap\mathcal A_t}u_v .
+\]
+Si $v$ sigue activo, $\deg_v(t)$ es su grado real disponible. Agrupamos en $\Upsilon$ las $4N+6$
+coordenadas siguientes: los grados $\deg_v$ de los $4N$ vértices (nulos en los ficticios),
+$W/n$, las cuatro sumas $U_R,U_C,U_D,U_A$ y $q_t$. Sus valores objetivo son, respectivamente,
+\[
+ \Upsilon^*=\bigl(\deg_v^0z^3,\ W_0z^4/n,\ U_f^0z,\ qz\bigr),\qquad z=z_t ,
+\]
+y en $t=0$ coinciden con $\Upsilon(0)$. Para $\zeta>0$ fijo sea $T_\zeta=\lfloor(1-\zeta)N\rfloor$.
+
+\begin{lema}[Regularidad dinámica]\label{lem:regularidad}
+Sea $0\le h\le K$ y $\zeta>0$. Para toda tolerancia fija $\eps>0$ suficientemente pequeña, con
+probabilidad $1-e^{-c_{\zeta,\eps}n}$ no hay fallo hasta $T_\zeta$ y
+\begin{equation}\label{eq:regularidad}
+ \max_{t\le T_\zeta}\max_i|\Upsilon_i(t)-\Upsilon_i^*(t)|\le\eps n .
+\end{equation}
+No se exige éxito después de $T_\zeta$.
+\end{lema}
+
+\begin{proof}
+Sea $E_t=\max_i|\Upsilon_i(t)-\Upsilon_i^*(t)|$, de modo que $E_0=0$, y sea $\sigma$ la primera
+salida $E_t\ge\eps_0n$ o fallo, con
+$\eps_0>0$ fijo y tan pequeño que, en la región $E_t<\eps_0 n$ y para $t\le T_\zeta$, se tenga
+$W\ge c_\zeta n^2$ y $U_f\ge c_\zeta n$. Desde esa región un fallo inmediato es imposible.
+
+\emph{Probabilidades de eliminación.} Como la palabra de colores es uniforme y no se ha revelado,
+el color del paso siguiente es real con probabilidad $q_t/(N-t)$. Si es real, la arista elegida
+contiene al vértice activo $v$ con probabilidad $\deg_v/W$. Si es virtual, como las aristas
+virtuales disponibles son todas las cuaternas de vértices activos y su peso es un producto, contiene a $v$
+con probabilidad $u_v\prod_{f'\ne f}U_{f'}\big/\prod_{f'}U_{f'}=u_v/U_f$, donde $f$ es la
+familia de $v$. En la región, cada vértice activo satisface, por tanto,
+\begin{equation}\label{eq:tasas}
+ P_R(v)=\frac{q_t}{N-t}\frac{\deg_v}{W}=\frac{p_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}{n^2}\Bigr),\qquad
+ P_V(v)=\frac{N-t-q_t}{N-t}\frac{u_v}{U_f}=\frac{u_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}{n^2}\Bigr),
+\end{equation}
+para las probabilidades de que $v$ sea eliminado por una pieza real o virtual. En efecto,
+$N-t=Nz$ con $z\ge\zeta$ y, en la región,
+\[
+ q_t=qz+O(E_t),\quad \deg_v=\deg_v^0z^3+O(E_t),\quad W=W_0z^4+O(nE_t),\quad U_f=U_f^0z+O(E_t),
+\]
+con $\deg_v^0=O(n)$ y $W_0\asymp n^2$. Así $q_t/(N-t)=q/N+O_\zeta(E_t/n)$ y
+$\deg_v/W=\deg_v^0/(W_0z)+O_\zeta(E_t/n^2)$, cuyo producto es $p_v/(Nz)+O_\zeta(E_t/n^2)$, pues
+$p_v=q\deg_v^0/W_0$. Del mismo modo, $N-t-q_t=Hz+O(E_t)$ y, por~\eqref{eq:balance},
+$U_f=Hz+O(E_t+1)$, de donde la segunda fórmula; el sumando $1$ del error procede de
+$U_f^0=H+O(1)$. Por~\eqref{eq:balance}, la suma de las dos probabilidades es $1/(Nz)$ más ese
+error.
+
+\emph{Derivas.} Eliminar dos vértices distintos dados en un mismo paso tiene probabilidad
+$O_\zeta(n^{-2})$: por codegrado uno en las reales y por la estructura cartesiana, con
+$U_f\asymp n$, en las virtuales; en una misma familia es imposible. Un sumando de $\deg_v$
+desaparece cuando se elimina uno de los otros tres vértices de su arista, de modo que, por
+inclusión--exclusión,
+\[
+\begin{aligned}
+ \E(\Delta\deg_v\mid\mathcal F_t)&=-\sum_{e\ni v}v_e\,\ind\{e\setminus\{v\}\subset\mathcal A_t\}
+ \Bigl[\sum_{w\in e\setminus\{v\}}\bigl(P_R(w)+P_V(w)\bigr)+O_\zeta(n^{-2})\Bigr]\\
+ &=-\frac{3\deg_v}{Nz}+O_\zeta\Bigl(\frac{E_t+1}n\Bigr),
+\end{aligned}
+\]
+pues $\deg_v=O(n)$. Esta cuenta usa las probabilidades de eliminación de los otros tres vértices
+de cada arista, que dependen de sus grados por~\eqref{eq:tasas}; por eso se siguen a la vez los
+grados de todos los vértices, y la fórmula vale aunque $v$ esté inactivo. Del mismo modo, las
+derivas de $W/n$ y $U_f$ son $-4(W/n)/(Nz)$ y $-U_f/(Nz)$, con errores $O_\zeta((E_t+1)/n)$. Como
+la palabra de colores se preasigna sin revelarla, $\E(\Delta q_t\mid\mathcal F_t)=-q_t/(N-t)$
+exactamente. Por otra parte, $\Delta z=-1/N$ da $\Delta(z^k)=-kz^{k-1}/N+O(n^{-2})$ para $k\le4$,
+y como $\deg_v^0$, $W_0/n$, $U_f^0$ y $q$ son $O(n)$, los valores objetivo cumplen
+$\Delta\Upsilon_i^*=-k_i\Upsilon_i^*/(Nz)+O(n^{-1})$, con $k_i=3,4,1,1$ para los grados, $W/n$,
+las $U_f$ y $q_t$. Restando y usando $|\Upsilon_i-\Upsilon_i^*|\le E_t$, para toda coordenada
+\begin{equation}\label{eq:deriva}
+ \bigl|\E(\Delta \Upsilon_i\mid\mathcal F_t)-\Delta \Upsilon_i^*(t)\bigr|\le C_\zeta(E_t+1)/n .
+\end{equation}
+
+\emph{Martingalas detenidas.} Por codegrado uno, $|\Delta\deg_v|\le3C$ aun al eliminar $v$;
+también $|\Delta(W/n)|\le4C$, $|\Delta U_f|\le1$ y $|\Delta q_t|\le1$. Sea $B$ una cota común y
+$M_i(t)=\Upsilon_i(t\wedge\sigma)-\Upsilon_i(0)-\sum_{s<t\wedge\sigma}\E(\Delta \Upsilon_i\mid\mathcal
+F_s)$, de
+saltos a lo sumo $2B$, incluida la transición de salida. Azuma y la unión sobre $O(n)$
+coordenadas y $O(n)$ tiempos dan
+$\Pr\{\max_{i,t\le T_\zeta}|M_i(t)|>\gamma_0n\}\le Cn^2e^{-c\gamma_0^2n}$.
+
+\emph{Cierre.} El error detenido es $\Upsilon(t\wedge\sigma)-\Upsilon^*(t\wedge\sigma)$: se
+detienen tanto el proceso como el tiempo del valor objetivo. Como $\Upsilon(0)=\Upsilon^*(0)$,
+sumando~\eqref{eq:deriva} se obtiene, trayectoria a trayectoria y para $t\le T_\zeta$,
+\[
+ E_{t\wedge\sigma}\le\max_{i,s}|M_i(s)|+\frac{C_\zeta}n\sum_{s<t\wedge\sigma}(E_s+1).
+\]
+Como $T_\zeta<N<2n$, la desigualdad de Gronwall discreta da
+\[
+ \max_{s\le T_\zeta}E_{s\wedge\sigma}\le C'_\zeta\bigl(\max_{i,t}|M_i(t)|+1\bigr),\qquad
+C'_\zeta=e^{2C_\zeta}.
+\]
+Fijada $\eps<\eps_0/2$, se elige $\gamma_0<\eps/(2C'_\zeta)$ y después $n$ grande: la cota es
+menor que $\eps n$, lo que contradice una salida $E_\sigma\ge\eps_0n$; tampoco pudo producirse un
+fallo desde el interior. Se obtiene~\eqref{eq:regularidad} y $\sigma>T_\zeta$ con la cola
+anunciada. En $h=0$ la prueba es la misma: sólo usa normalizadores positivos de órdenes $n^2$ y
+$n$, no pesos virtuales individuales positivos.
+\end{proof}
